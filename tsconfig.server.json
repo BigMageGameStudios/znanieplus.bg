@@ -6,13 +6,13 @@
     "module": "commonjs",
     "types": []
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts",
-    "src/globals/server_config.ts",
-    "src/globals/server_config_example.ts"
-  ],
   "angularCompilerOptions": {
     "entryModule": "src/app/app.server.module#AppServerModule"
-  }
+  },
+  "files": [
+    "src/main.server.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
 }

@@ -15,9 +15,7 @@ export class LazyImageComponent implements AfterViewInit {
   @Input('height') height: string;
   @Input('objectFit') objectFit: string;
 
-  @ViewChild('container', {
-    static: false
-  }) container: ElementRef;
+  @ViewChild('container') container: ElementRef;
 
   ngAfterViewInit() {
 

@@ -1,4 +1,4 @@
-import { Injectable, Inject, PLATFORM_ID, Output, EventEmitter } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID, Output, EventEmitter, Directive } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { connect } from 'socket.io-client';
 import { Environment } from '../../../globals/config'
@@ -6,6 +6,7 @@ import { User } from 'src/app/models/user';
 import { AdminProvidersModule } from './module';
 import { Apartment } from 'src/app/models/apartment';
 
+@Directive()
 @Injectable({
     providedIn: AdminProvidersModule
 })
