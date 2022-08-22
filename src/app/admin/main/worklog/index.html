@@ -1,0 +1,27 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let worklog of worklogs; trackBy:track">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <button mat-icon-button class="flat-icon-button" aria-label="Example icon-button with a heart icon"
+                    (click)="openDialog($event, worklog)">
+                    <i class="flaticon-pencil"></i>
+                </button>
+                Дневник {{ worklog.createdAt | date:'dd/LL/yyyy' }}
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="log">
+            {{worklog.log}}
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+<div class="right">
+    <button mat-button (click)="onLoadMore()" *ngIf="!loaded">
+        Зреди още...
+    </button>
+</div>
+<button mat-mini-fab class="fixed-button flat-icon-button" color="primary" (click)="openDialog($event)">
+    <i class="flaticon-add-1"></i>
+</button>

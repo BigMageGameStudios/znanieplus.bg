@@ -1,0 +1,84 @@
+@import '../../../../stylesheets/variables';
+
+div.photo {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    max-height: 85vh;
+
+    img {
+        border-radius: 2px;
+        width: 80vw;
+        height: 85vh;
+        object-fit: contain;
+        object-position: center;
+    }
+
+}
+
+div.list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    position: absolute;
+    bottom: 1vh;
+    max-width: 1160px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    overflow: hidden;
+    z-index: 999;
+
+    div {
+        flex: 0 0 auto;
+        width: 170px;
+        height: 110px;
+        overflow: hidden;
+        border-radius: 2px;
+        max-height: 14vh;
+
+        &:not(:first-child) {
+            margin-left: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            object-fit: cover;
+
+            &.active {
+                outline: 5px solid white;
+                outline-offset: -4px;
+            }
+        }
+    }
+
+}
+
+a.close,
+a.full-screen {
+    width: 48px !important;
+    height: 48px !important;
+    line-height: 56px !important;
+    color: white !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+a.close {
+    right: 0;
+}
+
+a.full-screen {
+    right: 36px;
+}
+
+@media (max-width: 550px) {
+    div.list {
+        max-width: 300px !important;
+    }
+
+}

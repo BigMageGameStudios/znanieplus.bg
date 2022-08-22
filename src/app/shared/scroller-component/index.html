@@ -1,0 +1,50 @@
+<div class="box" [ngSwitch]="template">
+    <div class="list" #list>
+        <div *ngFor="let item of data; trackBy:track" class="item">
+            <a [routerLink]="'/apartment/'+item.key" *ngSwitchCase="types.appartment" aria-label="Виж">
+                <lazy-image-component class="flex" objectFit="cover" [src]="api_url+'/min_uploads/images/' + item.photos[item.cover].name" width="100%" height="250px">
+                </lazy-image-component>
+            </a>
+            <a *ngSwitchCase="types.person" aria-label="Виж">
+                <lazy-image-component class="flex" objectFit="cover" [src]="api_url+'/min_uploads/images/' + item.profilePicture.name"  width="100%" height="250px">
+                </lazy-image-component>
+            </a>
+            <div class="information flex" [class.person]="template == types.person">
+                <div *ngSwitchCase="types.appartment">
+                    Цена
+                    <span class="block">
+                        {{item.price | number:'1.0-0'}} {{ item.getCurrency().name }}
+                    </span>
+                </div>
+                <div *ngSwitchCase="types.appartment">
+                    <h4>
+                        {{item.type}}
+                    </h4>
+                    <h4>
+                        {{item.address}}, {{item.city}}
+                    </h4>
+                </div>
+                <div *ngSwitchCase="types.person">
+                    <h4 class="bold">
+                        {{item.firstname}} {{item.lastname}}
+                    </h4>
+                    <h4>
+                        {{item.phone}}
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="prev" (click)="prev()">
+        <a matRipple>
+            <i class="flaticon-left-arrow"></i>
+        </a>
+    </div>
+
+    <div class="next" (click)="next()">
+        <a matRipple>
+            <i class="flaticon-right-arrow"></i>
+        </a>
+    </div>
+</div>

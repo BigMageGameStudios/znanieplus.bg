@@ -1,0 +1,23 @@
+div.image-container {
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        opacity: 0;
+        -webkit-transition: opacity 150ms ease-in-out;
+        -moz-transition: opacity 150ms ease-in-out;
+        -ms-transition: opacity 150ms ease-in-out;
+        -o-transition: opacity 150ms ease-in-out;
+        transition: opacity 150ms ease-in-out;
+
+        &.loaded {
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+  div.image-container {
+        height: auto !important;
+    }
+}

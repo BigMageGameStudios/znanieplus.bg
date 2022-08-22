@@ -1,0 +1,10 @@
+@import '../../../../../stylesheets/variables';
+
+form.flex {
+    flex-direction: column;
+    width: 400px;
+
+    mat-form-field {
+        margin-bottom: 20px;
+    }
+}

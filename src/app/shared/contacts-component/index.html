@@ -1,0 +1,45 @@
+<div class="gray">
+    <div class="container">
+        <div class="contacts">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="center">
+                    <h2 class="title">
+                        <span>Свържете се с нас</span>
+                    </h2>
+                </div>
+                <div class="form flex">
+                    <div class="right">
+                        <div class="relative">
+                            <label for="name">Name</label>
+                            <input id="name" type="text" placeholder="Име*" autocomplete="name" formControlName="name"
+                                aria-labelledby="name" />
+                        </div>
+                        <div class="relative">
+                            <label for="email">E-mail</label>
+                            <input id="email" type="text" placeholder="Имейл адрес*" autocomplete="email"
+                                formControlName="email" />
+                        </div>
+                    </div>
+                    <div>
+                        <div class="relative">
+                            <label for="phone">Phone</label>
+                            <input id="phone" type="text" placeholder="Телефон за връзка" autocomplete="phone"
+                                formControlName="phone" />
+                        </div>
+                        <div class="relative">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Съобщение*" rows="5" autocomplete="off"
+                                formControlName="message"></textarea>
+                        </div>
+                    </div>
+                    <div class="contact">
+                        <h4>Централен Офис</h4>
+                        <p class="margin">гр. Свети Влас, ул. Русалка</p>
+                        <p>+359 878 106 323</p>
+                        <p class="margin">office@kvadratenmetar.bg</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

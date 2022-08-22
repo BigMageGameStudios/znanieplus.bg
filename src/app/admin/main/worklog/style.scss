@@ -1,0 +1,23 @@
+@import '../../../../../stylesheets/variables';
+
+mat-accordion {
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
+
+    mat-panel-title {
+        align-items: center;
+
+        button {
+            i {
+                &::before {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    div.log{
+        white-space: pre-line;
+    }
+}

@@ -1,0 +1,278 @@
+@import '../../../../stylesheets/variables';
+
+div.container {
+
+    div.banner {
+        height: 50vh;
+        max-height: 500px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+
+        lazy-image-component {
+            height: 100%;
+            width: calc(100% - 140px);
+        }
+
+        div.frame {
+            height: 85%;
+            width: calc(100% - 200px);
+            position: absolute;
+            left: 110px;
+            top: 25px;
+            border-left: solid 18px $yellow;
+            border-bottom: solid 18px $yellow;
+            z-index: 3;
+
+            h4 {
+                writing-mode: tb-rl;
+                transform: rotate(180deg);
+                position: absolute;
+                left: -28px;
+                margin: 0;
+                top: 5px;
+                font-weight: 100;
+                text-transform: uppercase;
+                font-size: 14px;
+                cursor: default;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                height: 18px;
+                width: 12px;
+                background: $yellow;
+                z-index: 1;
+            }
+        }
+    }
+
+    div.apartments {
+        padding-top: 60px;
+        justify-content: space-between;
+
+        div {
+            position: relative;
+            align-items: center;
+
+
+            &.sale {
+                left: 10px;
+            }
+
+            lazy-image-component {
+                padding: 20px;
+                border: solid 4px $yellow;
+            }
+
+            div.description {
+                max-width: 320px;
+                background-color: $yellow;
+                padding: 10px;
+                padding: 18px;
+                position: relative;
+                top: -20px;
+                left: -10px;
+
+                h4 {
+                    margin: 0;
+                }
+
+                p {
+                    font-size: 14px;
+                    margin: 2px 0;
+                }
+            }
+        }
+    }
+
+    div.company {
+        padding-top: 60px;
+
+        div {
+            &:first-child {
+                flex: 1;
+            }
+
+            &:nth-child(2) {
+                flex: 1.5;
+                padding-left: 20px;
+                padding-top: 10px;
+
+                h2 {
+                    left: -80px;
+                }
+
+                p {
+                    margin: 10px 0;
+                    font-size: 14px;
+                }
+            }
+
+            lazy-image-component {
+                width: 100%;
+                height: 249px;
+            }
+        }
+    }
+
+    div.new-apartments {
+        padding-top: 60px;
+
+        h2 {
+            left: 100px;
+        }
+
+        div.view-all {
+            text-align: center;
+
+            a {
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                color: black;
+                text-decoration: none;
+
+                &::before {
+                    height: 6px !important;
+                }
+            }
+        }
+    }
+
+    div.office {
+        position: relative;
+        padding-top: 60px;
+
+        lazy-image-component {
+            width: 100%;
+            height: 513px;
+        }
+
+        h1 {
+            font-size: 30px;
+            color: white;
+            position: absolute;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            top: 45%;
+            font-weight: 100;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            margin: 0;
+            padding: 10px 0;
+        }
+    }
+
+    div.team {
+        padding-top: 60px;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    div.banner {
+        div.frame {
+            height: 70% !important;
+        }
+    }
+
+    div.office {
+        h1 {
+            font-size: 24px !important;
+            top: 35% !important;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    div.banner {
+        height: 25vh !important;
+
+        div.frame {
+            height: 75% !important;
+        }
+    }
+
+    div.apartments {
+        flex-direction: column !important;
+
+        div.rent,
+        div.sale {
+            flex-direction: row !important;
+            justify-content: center;
+        }
+
+        div.rent {
+            margin-bottom: 50px !important;
+        }
+
+        div.sale {
+            left: 0px !important;
+        }
+    }
+
+    div.company {
+        flex-direction: column;
+
+        div {
+            lazy-image-component {
+                height: auto !important;
+            }
+
+            h2 {
+                left: 0 !important;
+            }
+        }
+    }
+
+    div.new-apartments {
+        h2 {
+            left: 10px !important;
+        }
+    }
+
+    div.office {
+        h1 {
+            font-size: 22px !important;
+            top: 30% !important;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    div.office {
+        h1 {
+            font-size: 20px !important;
+            top: 25% !important;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    div.banner {
+        height: 32vh !important;
+
+        lazy-image-component {
+            width: calc(100% - 60px) !important;
+        }
+
+        div.frame {
+            left: 30px !important;
+            width: 100% !important;
+        }
+    }
+
+    div.apartments {
+        padding-left: 10px !important;
+    }
+
+    div.office {
+        lazy-image-component {
+            height: 230px !important;
+        }
+    }
+}

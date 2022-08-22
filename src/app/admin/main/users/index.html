@@ -1,0 +1,55 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef> Име </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="flex">
+                <div>
+                    <button class="left" mat-icon-button aria-label="Example icon-button with a heart icon"
+                        (click)="openDialog(element)">
+                        <i class="flaticon-user-1"></i>
+                    </button>
+                    <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                        (click)="openWorkLog(element)">
+                        <i class="flaticon-list-1"></i>
+                    </button>
+                </div>
+                <div>
+                    {{element.firstname}}
+                </div>
+            </div>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef> Фамилия </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Имейл </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+    <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Роля </th>
+        <td mat-cell *matCellDef="let element"> {{element.getRole()}} </td>
+    </ng-container>
+    <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> Длъжност </th>
+        <td mat-cell *matCellDef="let element"> {{element.getPosition()}} </td>
+    </ng-container>
+    <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef> Активен </th>
+        <td mat-cell *matCellDef="let element;">
+            <mat-slide-toggle [(ngModel)]="element.active" color="accent" (change)="changeActive($event, element)">
+            </mat-slide-toggle>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<button mat-mini-fab class="fixed-button flat-icon-button" color="primary" (click)="openDialog()">
+    <i class="flaticon-person"></i>
+</button>
+<div class="right">
+    <button mat-button (click)="onLoadMore()" *ngIf="!loaded">
+        Зреди още...
+    </button>
+</div>

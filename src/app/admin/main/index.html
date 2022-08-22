@@ -1,0 +1,45 @@
+<mat-toolbar>
+    <!-- <button mat-icon-button class="flat-icon-button" (click)="sideNav.toggle()">
+        <i class="flaticon-menu"></i>
+    </button> -->
+    <a class="brand flex" routerLink="/">
+        <img src="/assets/images/logo.png" alt="logo">
+    </a>
+    <span></span>
+    <button mat-icon-button class="letter" [matMenuTriggerFor]="menu">
+        <span class="letter">
+            {{user.email[0]}}
+        </span>
+    </button>
+    <mat-menu #menu="matMenu" x-position="before">
+        <a mat-menu-item routerLink="/admin/work-log">
+            <span>Работен дневник</span>
+        </a>
+        <a mat-menu-item routerLink="/admin/my-apartments">
+            <span>Моите апартаменти</span>
+        </a>
+        <button mat-menu-item (click)="changePassword()">
+            <span>Смени паролата</span>
+        </button>
+        <button mat-menu-item (click)="logOut()">
+            <span>Изход</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
+<mat-drawer-container>
+    <mat-drawer #sideNav mode="side" opened="true">
+        <h5 mat-subheader>Админ панел</h5>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let m of userMenu" [routerLink]="m.link" routerLinkActive="active">
+                <i mat-list-icon [class]="m.icon"></i>
+                <span matLine>{{m.name}}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="router-container">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

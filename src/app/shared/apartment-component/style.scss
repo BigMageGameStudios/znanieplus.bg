@@ -1,0 +1,78 @@
+@import '../../../../stylesheets/variables';
+
+div.item {
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    &:not(:first-child) {
+        margin-left: 20px;
+    }
+
+    lazy-image-component {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 2px;
+        opacity: 0.9;
+        transition: .4s ease;
+    }
+
+    &:hover {
+        lazy-image-component {
+            opacity: 1;
+        }
+
+    }
+
+    div.information {
+        max-width: 225px;
+        left: 20px;
+        position: relative;
+        background-color: $yellow;
+        padding: 5px;
+        top: -20px;
+
+        div:first-child {
+            font-size: 13px;
+            font-weight: 600;
+            white-space: pre;
+        }
+
+        div:nth-child(2) {
+            text-align: right;
+            flex: 1;
+
+            h4 {
+                margin: 0;
+                font-weight: 300;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    div.item {
+        lazy-image-component {
+            height: 350px !important;
+        }
+
+        div.information {
+            max-width: 275px !important;
+            left: 50px !important;
+
+            div:first-child {
+                font-size: 14px !important;
+            }
+
+            div:nth-child(2) {
+                h4 {
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+
+}

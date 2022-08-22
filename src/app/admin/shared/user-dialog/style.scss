@@ -1,0 +1,28 @@
+@import '../../../../../stylesheets/variables';
+
+form {
+    flex-direction: column;
+
+    a.profile-picture {
+        padding-bottom: 20px;
+        cursor: pointer;
+
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border: solid 2px rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+
+            &.error {
+                border-color: red;
+            }
+        }
+    }
+
+    div.form {
+        margin-bottom: 30px;
+        flex-direction: column;
+        width: 300px;
+    }
+}

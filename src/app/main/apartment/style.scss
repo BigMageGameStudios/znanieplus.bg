@@ -1,0 +1,290 @@
+@import '../../../../stylesheets/variables';
+
+div.container {
+
+    h4.ad-type {
+        margin: 20px 0 0 0;
+    }
+
+    div.banner {
+        height: 50vh;
+        max-height: 500px;
+        overflow: hidden;
+        position: relative;
+        padding-top: 20px;
+        cursor: pointer;
+
+        div.frame {
+            height: 80%;
+            width: calc(100% - 180px);
+            position: absolute;
+            top: 45px;
+            border-right: solid 18px $yellow;
+            border-bottom: solid 18px $yellow;
+            z-index: 3;
+            right: 95px;
+
+            h4 {
+                writing-mode: tb-rl;
+                transform: rotate(180deg);
+                position: absolute;
+                right: -28px;
+                margin: 0;
+                top: 5px;
+                font-weight: 100;
+                text-transform: uppercase;
+                font-size: 14px;
+                cursor: default;
+            }
+
+            h2 {
+                color: white;
+                position: absolute;
+                bottom: 0;
+                margin: 0;
+                font-size: 32px;
+                max-width: 380px;
+                background: rgba(0, 0, 0, 0.35);
+                border-radius: 2px;
+                padding: 5px;
+            }
+
+
+            div.prev {
+                left: -12px;
+                border-bottom-left-radius: 3px;
+                border-top-left-radius: 3px;
+            }
+
+            div.next {
+                right: 40px;
+                border-bottom-right-radius: 3px;
+                border-top-right-radius: 3px;
+            }
+
+            div.prev,
+            div.next {
+                position: absolute;
+                z-index: 1;
+                top: 45%;
+                display: flex;
+
+                a {
+                    color: white;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    width: 52px;
+                    height: 52px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    i {
+                        color: white;
+
+                        &::before {
+                            font-size: 32px !important;
+                        }
+                    }
+                }
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                height: 18px;
+                width: 27px;
+                background: $yellow;
+                z-index: 1;
+                right: 0;
+            }
+        }
+
+    }
+
+    div.information {
+        justify-content: space-between;
+        max-width: 1000px;
+        margin: 20px 0;
+        padding-left: 10px;
+        border-left: solid 3px $yellow;
+
+        div.characters {
+            flex: 4;
+
+            div {
+                margin-bottom: 2px;
+
+                div:first-child {
+                    flex: 1;
+                }
+
+                div:nth-child(2) {
+                    flex: 2;
+                }
+            }
+        }
+
+        div.date {
+            flex: 1;
+
+            h3 {
+                margin: 0;
+            }
+
+            p {
+                margin: 0 0 10px 0;
+            }
+        }
+    }
+
+    div.description {
+        padding-top: 40px;
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        div {
+            &:first-child {
+                flex: 3;
+                padding-right: 80px;
+
+                div {
+                    white-space: pre-line;
+                }
+            }
+
+            &:nth-child(2) {
+                flex: 1;
+            }
+        }
+    }
+
+    div.new-apartments {
+        padding-top: 60px;
+        padding-bottom: 30px;
+
+        h2 {
+            left: 100px;
+        }
+
+        div.view-all {
+            text-align: center;
+
+            a {
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                color: black;
+                text-decoration: none;
+
+                &::before {
+                    height: 6px !important;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    div.description {
+        div {
+            &:first-child {
+                flex: 2.5 !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    div.description {
+        div {
+            &:first-child {
+                flex: 2 !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    div.frame {
+        width: calc(100% - 170px) !important;
+        right: 14px !important;
+    }
+}
+
+@media (max-width: 700px) {
+    a.banner {
+        height: 38vh !important;
+        padding-top: 0px !important;
+    }
+
+    div.frame {
+        width: 92% !important;
+        height: 70% !important;
+
+        h2 {
+            font-size: 29px !important;
+        }
+
+        div.prev,
+        div.next {
+            top: 15% !important;
+        }
+
+        div.prev {
+            left: 0 !important;
+        }
+
+        div.next {
+            right: 25px !important;
+        }
+    }
+
+    div.information {
+        flex-direction: column;
+
+        div.characters {
+            div.flex {
+                justify-content: space-between;
+                padding-right: 5px;
+
+                div:first-child {
+                    flex: unset !important;
+                }
+
+                div:nth-child(2) {
+                    flex: unset !important;
+                    text-align: right;
+                }
+            }
+        }
+
+    }
+
+    div.description {
+        flex-direction: column;
+        padding-top: 10px !important;
+
+        div {
+            &:first-child {
+                flex: unset !important;
+                padding-right: 0px !important;
+
+                h2 {
+                    padding-left: 10px !important
+                }
+
+                div {
+                    padding: 0 10px;
+                }
+
+            }
+
+            &:nth-child(2) {
+                flex: unset;
+            }
+        }
+    }
+}

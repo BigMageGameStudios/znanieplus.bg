@@ -1,0 +1,65 @@
+@import '../../../../stylesheets/variables';
+
+div.login {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-card {
+        padding: 0px;
+        width: 800px;
+
+        div.flex {
+
+            div.logo {
+                background: url(/assets/images/logo.png) no-repeat;
+                background-position: center center;
+                flex: 1;
+            }
+
+            div.form {
+                flex: 1;
+
+                mat-card-content {
+                    padding: 3rem;
+
+                    p {
+                        margin: 0 0 12px 5px;
+                        color: rgba(0, 0, 0, .54) !important;
+                        font-size: 10px;
+                    }
+
+                    form {
+                        margin-top: 30px;
+
+                        mat-form-field {
+                            width: 100%;
+                            margin-top: 10px;
+                        }
+
+                        section {
+                            margin-top: 15px;
+                        }
+
+                        button {
+                            width: 100%;
+                            margin-top: 20px;
+                        }
+                    }
+
+                    div.actions {
+                        margin-top: 10px;
+
+                        a {
+                            text-decoration: none;
+                            color: black;
+                            font-size: 13px
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

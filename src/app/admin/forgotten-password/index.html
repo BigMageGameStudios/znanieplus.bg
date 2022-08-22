@@ -1,0 +1,44 @@
+<div class="login">
+    <mat-card>
+        <div class="flex">
+            <div class="logo flex">
+
+            </div>
+            <div class="form">
+                <mat-card-content>
+                    <h1>
+                        Забравена парола
+                    </h1>
+                    <p>
+                        Админ панел Квадратен Метър БГ
+                    </p>
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <mat-form-field>
+                            <input matInput formControlName="email" placeholder="Имейл..." autocomplete="email" #email>
+                            <mat-error *ngIf="loginForm.controls.email.hasError('email')">
+                                Невалиден имейл !
+                            </mat-error>
+                            <mat-error *ngIf="loginForm.controls.email.hasError('required')">
+                                Полето е задължително !
+                            </mat-error>
+                            <mat-error *ngIf="loginForm.controls.email.hasError('maxlength')">
+                                Максималната дължина е 255 !
+                            </mat-error>
+                            <mat-error *ngFor="let error of errors.email">
+                                {{error}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary" [disabled]="isSubmit">Потвърди</button>
+                    </form>
+                    <div class="actions text-center">
+                        <a routerLink="/admin/login">Вход?</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="success" *ngIf="result">
+                        Моля, проверете Вашият имейл за допълнителните инструкции !
+                    </div>
+                </mat-card-content>
+            </div>
+        </div>
+    </mat-card>
+</div>

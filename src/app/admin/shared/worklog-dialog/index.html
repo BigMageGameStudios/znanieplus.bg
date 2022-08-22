@@ -1,0 +1,21 @@
+<form class="flex" [formGroup]="form" (ngSubmit)="submit()">
+
+    <mat-form-field>
+        <textarea matInput type="text" placeholder="Работен дневник..." formControlName="log" autocomplete="off"
+            rows="8">
+                </textarea>
+        <mat-error *ngIf="form.controls.log.hasError('required')">
+            Полето е задължително !
+        </mat-error>
+        <mat-error *ngIf="form.controls.log.hasError('maxlength')">
+            Максималната дължина е 16384 символа !
+        </mat-error>
+        <mat-error *ngFor="let error of errors.log">
+            {{error}}
+        </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="isSubmit">
+        {{edit ? 'Коригирай' : 'Добави'}}
+    </button>
+</form>
