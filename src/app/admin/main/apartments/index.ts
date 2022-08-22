@@ -12,25 +12,20 @@ import { GalleryDialog, GalleryDialogModule } from 'src/app/shared/gallery-dialo
 import { ConfirmDialog, ConfirmDialogModule } from 'src/app/shared/confirm-dialog';
 
 @NgModule({
-  declarations: [
-    AdminApartmentsComponent,
-  ],
-  entryComponents: [
-    ApartmentDialog,
-    GalleryDialog,
-    ConfirmDialog
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild([{ path: '', component: AdminApartmentsComponent }]),
-    MatButtonModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatRippleModule,
-    ApartmentDialogModule,
-    GalleryDialogModule,
-    ConfirmDialogModule
-  ]
+    declarations: [
+        AdminApartmentsComponent,
+    ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild([{ path: '', component: AdminApartmentsComponent }]),
+        MatButtonModule,
+        MatDialogModule,
+        MatExpansionModule,
+        MatRippleModule,
+        ApartmentDialogModule,
+        GalleryDialogModule,
+        ConfirmDialogModule
+    ]
 })
 
 export class AdminApartmentsModule { }

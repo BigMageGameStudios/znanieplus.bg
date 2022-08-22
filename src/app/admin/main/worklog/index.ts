@@ -9,20 +9,17 @@ import { AdminWorkLogComponent } from './component';
 import { WorkLogDialog, WorkLogDialogModule } from '../../shared/worklog-dialog';
 
 @NgModule({
-  declarations: [
-    AdminWorkLogComponent,
-  ],
-  entryComponents: [
-    WorkLogDialog
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild([{ path: '', component: AdminWorkLogComponent }]),
-    MatButtonModule,
-    MatDialogModule,
-    MatExpansionModule,
-    WorkLogDialogModule
-  ]
+    declarations: [
+        AdminWorkLogComponent,
+    ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild([{ path: '', component: AdminWorkLogComponent }]),
+        MatButtonModule,
+        MatDialogModule,
+        MatExpansionModule,
+        WorkLogDialogModule
+    ]
 })
 
 export class AdminWorkLogModule { }

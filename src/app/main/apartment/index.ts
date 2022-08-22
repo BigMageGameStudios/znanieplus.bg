@@ -13,24 +13,21 @@ import { BrokerModule } from 'src/app/shared/broker-component';
 import { GalleryDialogModule, GalleryDialog } from 'src/app/shared/gallery-dialog';
 
 @NgModule({
-  declarations: [
-    ApartmentComponent,
-  ],
-  entryComponents: [
-    GalleryDialog
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild([{ path: '', component: ApartmentComponent }]),
-    MatButtonModule,
-    MatRippleModule,
-    MatDialogModule,
-    ContactsModule,
-    ScrollerModule,
-    GalleryModule,
-    BrokerModule,
-    GalleryDialogModule
-  ]
+    declarations: [
+        ApartmentComponent,
+    ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild([{ path: '', component: ApartmentComponent }]),
+        MatButtonModule,
+        MatRippleModule,
+        MatDialogModule,
+        ContactsModule,
+        ScrollerModule,
+        GalleryModule,
+        BrokerModule,
+        GalleryDialogModule
+    ]
 })
 
 export class ApartmentModule { }

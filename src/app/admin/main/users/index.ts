@@ -12,24 +12,20 @@ import { AdminUsersComponent } from './component';
 import { AdminWorklogDialog, AdminWorklogDialogModule } from '../../shared/admin-worklog-dialog';
 
 @NgModule({
-  declarations: [
-    AdminUsersComponent,
-  ],
-  entryComponents: [
-    UserDialog,
-    AdminWorklogDialog
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild([{ path: '', component: AdminUsersComponent }]),
-    FormsModule,
-    MatTableModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatSlideToggleModule,
-    UserDialogModule,
-    AdminWorklogDialogModule
-  ]
+    declarations: [
+        AdminUsersComponent,
+    ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild([{ path: '', component: AdminUsersComponent }]),
+        FormsModule,
+        MatTableModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        UserDialogModule,
+        AdminWorklogDialogModule
+    ]
 })
 
 export class AdminUsersModule { }
