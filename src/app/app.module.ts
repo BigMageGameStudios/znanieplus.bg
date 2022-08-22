@@ -16,12 +16,13 @@ import { environment } from '../environments/environment';
     BrowserModule.withServerTransition({ appId: 'project' }),
     TransferHttpCacheModule,
     RouterModule.forRoot(MODULE_ROUTES, {
-      initialNavigation: 'enabled',
-      scrollPositionRestoration: 'enabled',
-      malformedUriErrorHandler: malFormedURI,
-      scrollOffset: [0, 84],
-      anchorScrolling: 'enabled'
-    }),
+    initialNavigation: 'enabled',
+    scrollPositionRestoration: 'enabled',
+    malformedUriErrorHandler: malFormedURI,
+    scrollOffset: [0, 84],
+    anchorScrolling: 'enabled',
+    relativeLinkResolution: 'legacy'
+}),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule
   ],
