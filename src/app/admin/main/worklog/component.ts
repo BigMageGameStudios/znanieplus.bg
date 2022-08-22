@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnDestroy, OnInit, Inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
 import { WorkLogDialog } from '../../shared/worklog-dialog';

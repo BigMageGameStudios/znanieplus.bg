@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnDestroy, OnInit, Inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ApartmentDialog } from '../../shared/apartment-dialog';
 import { Apartment } from 'src/app/models/apartment';

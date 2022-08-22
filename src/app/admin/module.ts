@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 
 import { MODULE_ROUTES, MODULE_COMPONENTS } from './routes';
 import { AdminGuardsModule } from './guards/module';
