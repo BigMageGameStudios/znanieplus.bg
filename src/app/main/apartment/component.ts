@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
-import { Types, Environment, ApartmentTypes } from 'src/globals/config';
+import { Types, Environment, ApartmentTypes } from 'src/globals';
 import { GalleryDialog } from 'src/app/shared/gallery-dialog';
 import { Apartment } from 'src/app/models/apartment';
 import { SEOProvider } from 'src/app/providers';

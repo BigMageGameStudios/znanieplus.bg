@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Types } from 'src/globals/config';
+import { Types } from 'src/globals';
 import { User } from 'src/app/models/user';
 import { Apartment } from 'src/app/models/apartment';
 import { SEOProvider } from 'src/app/providers';

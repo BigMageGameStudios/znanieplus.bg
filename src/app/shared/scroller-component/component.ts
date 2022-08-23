@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ElementRef, PLATFORM_ID, Inject, Input } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Types, Environment } from 'src/globals/config';
+import { Types, Environment } from 'src/globals';
 
 @Component({
   selector: 'scroller-component',

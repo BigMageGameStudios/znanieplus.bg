@@ -1,4 +1,4 @@
-import { Currency, ApartmentTypes } from 'src/globals/config';
+import { Currency, ApartmentTypes } from 'src/globals';
 
 export class Apartment {
 

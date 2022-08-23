@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { ApiProvider } from 'src/app/providers';
 import { MainProvidersModule } from './module';
 import { Apartment } from 'src/app/models/apartment';
-import { Sort } from 'src/globals/config';
+import { Sort } from 'src/globals';
 
 @Injectable({
     providedIn: MainProvidersModule

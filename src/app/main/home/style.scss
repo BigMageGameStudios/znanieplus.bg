@@ -4,7 +4,7 @@ div.container {
 
     div.banner {
         height: 50vh;
-        max-height: 500px;
+        max-height: 555px;
         overflow: hidden;
         position: relative;
         display: flex;
@@ -16,7 +16,7 @@ div.container {
         }
 
         div.frame {
-            height: 85%;
+            height: 83%;
             width: calc(100% - 200px);
             position: absolute;
             left: 110px;

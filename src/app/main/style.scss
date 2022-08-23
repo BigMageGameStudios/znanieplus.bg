@@ -43,7 +43,7 @@ mat-toolbar {
             height: 100%;
 
             a.logo {
-                height: 90%;
+                height: 45%;
                 outline: none;
                 flex: 1;
 
@@ -92,7 +92,7 @@ mat-toolbar {
 }
 
 div.router {
-    margin-top: 56px;
+    margin-top: 84px;
     flex: 1;
     > router-outlet + * {
         flex: 1;
@@ -276,7 +276,7 @@ mat-drawer-container {
     }
 
     div.router {
-        margin-top: 56px;
+        margin-top: 56px !important;
     }
 
     div.footer {

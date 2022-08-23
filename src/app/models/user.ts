@@ -1,4 +1,4 @@
-import { UserPositions } from 'src/globals/config';
+import { UserPositions } from 'src/globals';
 
 export class User {
 

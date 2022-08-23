@@ -1,6 +1,6 @@
 import { Component, Inject, ChangeDetectionStrategy, ChangeDetectorRef, ViewChildren, HostListener, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Environment } from 'src/globals/config';
+import { Environment } from 'src/globals';
 
 @Component({
   selector: 'gallery-dialog',

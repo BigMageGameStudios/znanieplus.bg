@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Environment } from 'src/globals/config';
+import { Environment } from 'src/globals';
 
 @Component({
   selector: 'broker-component',

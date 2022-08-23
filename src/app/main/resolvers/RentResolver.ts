@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/r
 import { Observable } from 'rxjs';
 import { ApartmentProvider } from '../providers';
 import { MainResolversModule } from './module';
-import { ApartmentTypes } from 'src/globals/config';
+import { ApartmentTypes } from 'src/globals';
 
 @Injectable({ providedIn: MainResolversModule })
 

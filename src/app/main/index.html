@@ -1,7 +1,7 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="over">
     <div class="icon">
-      <img width="45" src="/assets/images/logo.png" />
+      <img width="45" src="/assets/images/logo-banner.png" />
     </div>
     <ul>
       <li>
@@ -12,21 +12,21 @@
       </li>
       <li>
         <a routerLink="/sale" routerLinkActive="active" (click)="drawer.toggle()" aria-label="Апартаменти за продажба">
-          Продажба
+          Обекти
         </a>
       </li>
       <li>
         <a routerLink="/rent" routerLinkActive="active" (click)="drawer.toggle()"
-          aria-label="Апартаменти под наем">Наем</a>
+          aria-label="Апартаменти под наем">Профил</a>
+      </li>
+      <li>
+        <a routerLink="/rent" routerLinkActive="active" (click)="drawer.toggle()"
+          aria-label="Апартаменти под наем">Партньори</a>
       </li>
       <li>
         <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'" (click)="drawer.toggle()"
           aria-label="За нас">За
           нас</a>
-      </li>
-      <li>
-        <a routerLink="/" fragment="team" [class.active]="activeRoute == 'team'" (click)="drawer.toggle()"
-          aria-label="Екип">Екип</a>
       </li>
       <li>
         <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'" (click)="drawer.toggle()"
@@ -39,17 +39,16 @@
       <mat-toolbar-row class="desktop" [class.scroll]="active">
         <div class="container flex">
           <a class="flex logo" routerLink="/" fragment="home" aria-label="Начална страница"
-            aria-label="Начална страница"><img src="/assets/images/logo.png" alt="logo" /> </a>
+            aria-label="Начална страница"><img src="/assets/images/logo-banner.png" alt="logo" /> </a>
           <div class="navigation flex">
             <a routerLink="/" fragment="home" [class.active]="activeRoute == 'home'"
               aria-label="Начална страница"><span>Начало</span></a>
+            <a routerLink="/sale" routerLinkActive="active" aria-label="Апартаменти за продажба"><span>Обекти</span></a>
             <a routerLink="/sale" routerLinkActive="active"
-              aria-label="Апартаменти за продажба"><span>Продажба</span></a>
-            <a routerLink="/rent" routerLinkActive="active" aria-label="Апартаменти под наем"><span>Наем</span></a>
+              aria-label="Апартаменти за продажба"><span>Партньори</span></a>
+            <a routerLink="/rent" routerLinkActive="active" aria-label="Апартаменти под наем"><span>Профил</span></a>
             <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'"
               aria-label="За нас"><span>За нас</span></a>
-            <a routerLink="/" fragment="team" [class.active]="activeRoute == 'team'"
-              aria-label="Екип"><span>Екип</span></a>
             <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'"
               aria-label="Контакти"><span>Контакти</span></a>
           </div>
@@ -93,7 +92,7 @@
               </li>
               <li>
                 <a routerLink="/" fragment="about-us" aria-label="За нас">
-                За нас
+                  За нас
                 </a>
               </li>
               <li>
@@ -108,7 +107,7 @@
               Централен офис гр. Свети Влас, ул. Русалка
             </a>
             <a>
-              +359 878 106 323 
+              +359 878 106 323
             </a>
           </div>
         </div>

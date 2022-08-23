@@ -2,8 +2,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apartment } from 'src/app/models/apartment';
 import { ApartmentProvider } from '../providers';
-import { Sort } from 'src/globals/config';
-import { ApartmentTypes } from 'src/globals/config';
+import { ApartmentTypes, Sort } from 'src/globals';
 import { SEOProvider } from 'src/app/providers';
 
 @Component({
