@@ -1,12 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { NgModule } from '@angular/core';
-import { RouterModule, UrlSerializer } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { TransferHttpCacheModule } from '@nguniversal/common';
+import { ErrorHandler, NgModule, ɵɵinject } from '@angular/core';
+import { Router, RouterModule, UrlSerializer } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
+
+import { TransferHttpCacheModule } from './modules/transfer-http';
+import { PreloadStrategy } from './modules/preload-strategy';
 
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './app.routes';
 import { environment } from '../environments/environment';
+import { ErrorIntercept } from './helpers/error.interceptor';
+import { CustomViewportScroller } from './modules/custom-viewport-scroller';
 
 @NgModule({
   declarations: [
@@ -16,15 +21,26 @@ import { environment } from '../environments/environment';
     BrowserModule.withServerTransition({ appId: 'project' }),
     TransferHttpCacheModule,
     RouterModule.forRoot(MODULE_ROUTES, {
-    initialNavigation: 'enabled',
-    scrollPositionRestoration: 'enabled',
-    malformedUriErrorHandler: malFormedURI,
-    scrollOffset: [0, 84],
-    anchorScrolling: 'enabled',
-    relativeLinkResolution: 'legacy'
-}),
+      initialNavigation: 'enabledBlocking',
+      scrollPositionRestoration: 'enabled',
+      malformedUriErrorHandler: malFormedURI,
+      preloadingStrategy: PreloadStrategy,
+      anchorScrolling: 'enabled',
+      scrollOffset: [0, 56]
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule
+  ],
+  providers: [
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorIntercept,
+      multi: true
+    },
+    {
+      provide: ViewportScroller,
+      useFactory: () => new CustomViewportScroller(ɵɵinject(DOCUMENT), window, ɵɵinject(ErrorHandler), ɵɵinject(Router))
+    },
   ],
   exports: [
     RouterModule

@@ -12,9 +12,9 @@ export class UpdateProvider {
     @Inject(PLATFORM_ID) private platformId
   ) {
     if (isPlatformBrowser(this.platformId) && this.SwUpdate.isEnabled) {
-      this.SwUpdate.available.subscribe(() => {
-        location.reload(true);
-      });
+      // this.SwUpdate.available.subscribe(() => {
+      //   location.reload(true);
+      // });
     }
   }
 }

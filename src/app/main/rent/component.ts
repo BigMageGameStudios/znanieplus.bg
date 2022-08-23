@@ -69,7 +69,7 @@ export class RentComponent {
     });
   }
 
-  onLoadMore(reset) {
+  onLoadMore(reset?) {
     if (!this.loaded || reset) {
       this.ApartmentProvider.get({
         skip: this.skip,

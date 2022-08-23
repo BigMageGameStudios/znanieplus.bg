@@ -12,14 +12,14 @@
           "/index.html",
           "/*.css",
           "/*.js",
-          "/manifest.webmanifest"
+          "/manifest.json"
         ]
       }
     },
     {
       "name": "assets",
       "installMode": "lazy",
-      "updateMode": "prefetch",
+      "updateMode": "lazy",
       "resources": {
         "files": [
           "/assets/**"
@@ -29,7 +29,7 @@
     {
       "name": "static-assets",
       "installMode": "lazy",
-      "updateMode": "prefetch",
+      "updateMode": "lazy",
       "resources": {
         "urls": []
       }

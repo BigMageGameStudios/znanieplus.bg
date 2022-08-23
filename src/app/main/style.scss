@@ -91,6 +91,22 @@ mat-toolbar {
     }
 }
 
+div.router {
+    margin-top: 56px;
+    flex: 1;
+    > router-outlet + * {
+        flex: 1;
+        padding: 104px 15px 15px 50px;
+        background-color: var(--black);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // &:not(management-user-tables-page):not(management-orders-page):not(management-menu-page) {
+        //     overflow-x: auto;
+        // }
+    }
+}
+
 div.footer {
     background-color: $footer_background;
     color: white;

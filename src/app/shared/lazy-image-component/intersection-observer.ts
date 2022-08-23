@@ -1,8 +1,8 @@
 class Intersection {
 
-    private observer: IntersectionObserver;
+    private observer!: IntersectionObserver;
 
-    private getObserver() {
+    private getObserver(): Promise<IntersectionObserver> {
         return new Promise((resolve, reject) => {
             if (this.observer == null && 'IntersectionObserver' in window) {
                 this.observer = new IntersectionObserver((entries, self) => {
@@ -26,7 +26,7 @@ class Intersection {
         });
     }
 
-    observe(item, callback) {
+    observe(item: HTMLElement | any, callback: Function) {
         return this.getObserver().then((observer: IntersectionObserver) => {
             item.callback = callback;
             return observer.observe(item);

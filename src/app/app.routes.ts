@@ -6,10 +6,6 @@ export const MODULE_ROUTES: Route[] = [
     loadChildren: () => import('./main/module').then(m => m.MainModule),
   },
   {
-    path: 'admin',
-    loadChildren: () => import('./admin/module').then(m => m.AdminModule),
-  },
-  {
     path: '**',
     redirectTo: ''
   },

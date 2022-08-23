@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'contacts-component',
@@ -10,20 +10,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class ContactsComponent {
 
-  form = new FormGroup({
-    name: new FormControl('', [
+  form = new UntypedFormGroup({
+    name: new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(255),
     ]),
-    email: new FormControl('', [
+    email: new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(255),
       Validators.email,
     ]),
-    phone: new FormControl('', [
+    phone: new UntypedFormControl('', [
       Validators.required
     ]),
-    message: new FormControl('', [
+    message: new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(500),
     ])

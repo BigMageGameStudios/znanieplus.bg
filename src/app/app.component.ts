@@ -1,11 +1,12 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { UpdateProvider } from './providers/UpdateProvider';
 
 @Component({
   selector: 'app-root',
-  styleUrls: [],
   templateUrl: 'app.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['../../stylesheets/application.scss']
 })
 
 export class AppComponent {

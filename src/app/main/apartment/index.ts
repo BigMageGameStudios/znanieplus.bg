@@ -10,7 +10,7 @@ import { ContactsModule } from 'src/app/shared/contacts-component';
 import { ScrollerModule } from 'src/app/shared/scroller-component';
 import { GalleryModule } from 'src/app/shared/gallery-component';
 import { BrokerModule } from 'src/app/shared/broker-component';
-import { GalleryDialogModule, GalleryDialog } from 'src/app/shared/gallery-dialog';
+import { GalleryDialogModule } from 'src/app/shared/gallery-dialog';
 
 @NgModule({
     declarations: [

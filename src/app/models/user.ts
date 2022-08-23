@@ -1,8 +1,6 @@
-import { IUser } from 'src/app/utilities/types';
 import { UserPositions } from 'src/globals/config';
-import { UserRoles } from 'src/globals/config';
 
-export class User implements IUser {
+export class User {
 
     _id;
     type;
@@ -30,14 +28,6 @@ export class User implements IUser {
         this.active = active;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-    }
-
-    getRole() {
-        for (let key in UserRoles) {
-            if (UserRoles[key].id == this.role) {
-                return UserRoles[key].name;
-            }
-        }
     }
 
     getPosition() {
