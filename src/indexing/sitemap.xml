@@ -1,39 +1,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>https://www.kvadratenmetar.bg/</loc>
+        <loc>https://www.znanieplus.bg/</loc>
         <lastmod>2019-01-29T11:04:29+00:00</lastmod>
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>https://www.kvadratenmetar.bg/#home</loc>
+        <loc>https://www.znanieplus.bg/#home</loc>
         <lastmod>2019-01-29T11:04:29+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://www.kvadratenmetar.bg/#about-us</loc>
+        <loc>https://www.znanieplus.bg/#about-us</loc>
         <lastmod>2019-01-29T11:04:29+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://www.kvadratenmetar.bg/#team</loc>
+        <loc>https://www.znanieplus.bg/#team</loc>
         <lastmod>2019-01-29T11:04:29+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>
-            https://www.kvadratenmetar.bg/#contacts
+            https://www.znanieplus.bg/#contacts
         </loc>
         <lastmod>2019-01-29T11:04:29+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://www.kvadratenmetar.bg/rent</loc>
+        <loc>https://www.znanieplus.bg/rent</loc>
         <lastmod>2019-01-29T11:04:29+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://www.kvadratenmetar.bg/sale</loc>
+        <loc>https://www.znanieplus.bg/sale</loc>
         <lastmod>2019-01-29T11:04:29+00:00</lastmod>
         <priority>0.80</priority>
     </url>

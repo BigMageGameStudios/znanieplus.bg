@@ -3,20 +3,23 @@
 div.container {
 
     div.banner {
-        height: 50vh;
+        height: 55vh;
         max-height: 555px;
         overflow: hidden;
         position: relative;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
+        margin-top: 15px;
 
         lazy-image-component {
             height: 100%;
-            width: calc(100% - 140px);
+            width: calc(100% - 180px);
+            margin-left: 110px;
+            margin-top: 15px;
         }
 
         div.frame {
-            height: 83%;
+            height: 85%;
             width: calc(100% - 200px);
             position: absolute;
             left: 110px;
@@ -49,7 +52,7 @@ div.container {
         }
     }
 
-    div.apartments {
+    div.places {
         padding-top: 60px;
         justify-content: space-between;
 
@@ -89,7 +92,7 @@ div.container {
     }
 
     div.company {
-        padding-top: 60px;
+        margin: 80px 0;
 
         div {
             &:first-child {
@@ -118,8 +121,8 @@ div.container {
         }
     }
 
-    div.new-apartments {
-        padding-top: 60px;
+    div.list-places {
+        margin: 60px 0;
 
         h2 {
             left: 100px;
@@ -173,6 +176,171 @@ div.container {
 
 }
 
+div.block {
+    height: 60px;
+    width: 100%;
+    background: $yellow;
+}
+
+div.info {
+    max-width: 1200px;
+    margin: 80px auto 50px;
+
+    h4 {
+        margin: 8px 0;
+        color: #352b2c;
+        text-align: center;
+        font-size: 22px;
+        line-height: 1.4rem;
+        font-weight: 500;
+
+        span {
+            color: #1574f5;
+        }
+    }
+
+    h3 {
+        margin: 0 0 50px 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: #edb406;
+        text-align: center;
+    }
+
+    div.list {
+        margin: 30px 0;
+
+        div.item {
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+
+            button {
+                span {
+                    position: absolute;
+                    font-size: 14px;
+                    color: white;
+                    background-color: rgba(21, 116, 245, 0.9);
+                    width: 35px;
+                    height: 35px;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    font-weight: bold;
+                    bottom: -10px;
+                    left: 0;
+                }
+            }
+
+            h4 {
+                color: #352b2c;
+                font-weight: 600;
+                margin: 24px 0 12px 0;
+                font-size: 18px;
+            }
+
+            p {
+                margin: 5px;
+                color: #666;
+                font-size: 14px;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+div.prices {
+    padding: 0 25px 25px;
+    position: relative;
+    width: 100%;
+
+    &::after {
+        content: "";
+        background: $yellow;
+        height: 350px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .container {
+        margin: 0 auto;
+        padding: 50px 0 0;
+        max-width: 1200px;
+        width: 100%;
+
+        .pricing-table {
+            box-shadow: 0 2px 2px rgb(0 0 0 / 20%), 0 1px 0 rgb(0 0 0 / 2%);
+            flex-direction: row;
+        }
+
+        .panel {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px 25px;
+            position: relative;
+            width: 100%;
+            z-index: 4;
+
+            .pricing-plan {
+                border-bottom: none;
+                border-right: 1px solid #e1f1ff;
+                flex-basis: 100%;
+                padding: 25px 50px;
+                flex-direction: column;
+                align-items: center;
+
+                &:last-child {
+                    border-right: none;
+                }
+            }
+
+            .pricing-plan:last-child {
+                border-bottom: none;
+            }
+
+            .pricing-header {
+                color: #888;
+                font-weight: 600;
+                letter-spacing: 1px;
+            }
+
+            .pricing-features {
+                color: #016ff9;
+                font-weight: 600;
+                letter-spacing: 1px;
+                margin: 50px 0 25px;
+            }
+
+            .pricing-features-item {
+                border-top: 1px solid #e1f1ff;
+                font-size: 12px;
+                line-height: 1.5;
+                padding: 15px 0;
+            }
+
+            .pricing-features-item:last-child {
+                border-bottom: 1px solid #e1f1ff;
+            }
+
+            .pricing-price {
+                color: #016ff9;
+                display: block;
+                font-size: 24px;
+                font-weight: 700;
+            }
+        }
+
+        .pricing-table * {
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+}
+
 @media (max-width: 1000px) {
     div.banner {
         div.frame {
@@ -197,7 +365,7 @@ div.container {
         }
     }
 
-    div.apartments {
+    div.places {
         flex-direction: column !important;
 
         div.rent,
@@ -229,7 +397,7 @@ div.container {
         }
     }
 
-    div.new-apartments {
+    div.list-places {
         h2 {
             left: 10px !important;
         }
@@ -266,7 +434,7 @@ div.container {
         }
     }
 
-    div.apartments {
+    div.places {
         padding-left: 10px !important;
     }
 

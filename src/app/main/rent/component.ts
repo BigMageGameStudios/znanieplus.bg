@@ -44,10 +44,10 @@ export class RentComponent {
       title: 'Квадратен метър - Обяви за недвижи имоти под наем',
       description: 'Обяви за недвижи имоти под наем.',
       keywords: 'агенция,недвижими имоти,наем на имоти,наем',
-      ogUrl: 'https://www.kvadratenmetar.bg/rent',
+      ogUrl: 'https://www.znanieplus.bg/rent',
       ogType: 'article',
       ogDescription: 'Обяви за недвижи имоти под наем.',
-      ogImage: 'https://www.kvadratenmetar.bg/assets/images/logo.png',
+      ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
       canonicalURL: '/rent'
     });
 

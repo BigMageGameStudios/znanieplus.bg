@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { UpdateProvider } from './providers/UpdateProvider';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +10,6 @@ import { UpdateProvider } from './providers/UpdateProvider';
 
 export class AppComponent {
 
-  constructor(
-    private UpdateProvider: UpdateProvider
-  ) { }
+  constructor() { }
 
 }

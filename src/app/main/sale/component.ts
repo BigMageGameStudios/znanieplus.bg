@@ -44,10 +44,10 @@ export class SaleComponent {
       title: 'Квадратен метър - Обяви за недвижи имоти за продажба',
       description: 'Обяви за недвижи имоти за продажба.',
       keywords: 'агенция,недвижими имоти,продажба на имоти,продажба',
-      ogUrl: 'https://www.kvadratenmetar.bg/sale',
+      ogUrl: 'https://www.znanieplus.bg/sale',
       ogType: 'article',
       ogDescription: 'Обяви за недвижи имоти за продажба.',
-      ogImage: 'https://www.kvadratenmetar.bg/assets/images/logo.png',
+      ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
       canonicalURL: '/sale'
     });
 

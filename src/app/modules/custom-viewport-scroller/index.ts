@@ -7,7 +7,12 @@ import { Router } from '@angular/router';
  */
 
 export class CustomViewportScroller implements ViewportScroller {
-    private offset: () => [number, number] = () => [0, 0];
+    private offset: () => [number, number] = () => {
+        if (this.window.screen.width < 800) {
+            return [0, 64];
+        }
+        return [0, 84];
+    };
 
     constructor(
         private document: Document,
@@ -127,6 +132,7 @@ export class CustomViewportScroller implements ViewportScroller {
 
     private scrollToElement(el: Element): void {
         const [x, y] = this.offset();
+
         const rect = el.getBoundingClientRect();
         const { width = 0, height = 0 } = rect;
         const left = rect.left + this.window.pageXOffset;

@@ -26,7 +26,6 @@ import { CustomViewportScroller } from './modules/custom-viewport-scroller';
       malformedUriErrorHandler: malFormedURI,
       preloadingStrategy: PreloadStrategy,
       anchorScrolling: 'enabled',
-      scrollOffset: [0, 84]
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule

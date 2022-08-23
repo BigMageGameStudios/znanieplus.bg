@@ -5,32 +5,28 @@
     </div>
     <ul>
       <li>
-        <a routerLink="/" [class.active]="activeRoute == 'home'" fragment="home" (click)="drawer.toggle()"
-          aria-label="Начална страница">
+        <a routerLink="/" [class.active]="activeRoute == 'home'" fragment="home" (click)="drawer.toggle()">
           Начало
         </a>
       </li>
       <li>
-        <a routerLink="/sale" routerLinkActive="active" (click)="drawer.toggle()" aria-label="Апартаменти за продажба">
+        <a routerLink="/sale" routerLinkActive="active" (click)="drawer.toggle()">
           Обекти
         </a>
       </li>
       <li>
-        <a routerLink="/rent" routerLinkActive="active" (click)="drawer.toggle()"
-          aria-label="Апартаменти под наем">Профил</a>
+        <a routerLink="/rent" routerLinkActive="active" (click)="drawer.toggle()">Профил</a>
       </li>
       <li>
-        <a routerLink="/rent" routerLinkActive="active" (click)="drawer.toggle()"
-          aria-label="Апартаменти под наем">Партньори</a>
+        <a routerLink="/rent" routerLinkActive="active" (click)="drawer.toggle()">Партньори</a>
       </li>
       <li>
-        <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'" (click)="drawer.toggle()"
-          aria-label="За нас">За
-          нас</a>
+        <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'" (click)="drawer.toggle()">
+          За нас</a>
       </li>
       <li>
-        <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'" (click)="drawer.toggle()"
-          aria-label="Контакти">Контакти</a>
+        <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'"
+          (click)="drawer.toggle()">Контакти</a>
       </li>
     </ul>
   </mat-drawer>
@@ -38,19 +34,16 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row class="desktop" [class.scroll]="active">
         <div class="container flex">
-          <a class="flex logo" routerLink="/" fragment="home" aria-label="Начална страница"
-            aria-label="Начална страница"><img src="/assets/images/logo-banner.png" alt="logo" /> </a>
+          <a class="flex logo" routerLink="/" fragment="home">
+            <img src="/assets/images/logo-banner.png" alt="logo" />
+          </a>
           <div class="navigation flex">
-            <a routerLink="/" fragment="home" [class.active]="activeRoute == 'home'"
-              aria-label="Начална страница"><span>Начало</span></a>
-            <a routerLink="/sale" routerLinkActive="active" aria-label="Апартаменти за продажба"><span>Обекти</span></a>
-            <a routerLink="/sale" routerLinkActive="active"
-              aria-label="Апартаменти за продажба"><span>Партньори</span></a>
-            <a routerLink="/rent" routerLinkActive="active" aria-label="Апартаменти под наем"><span>Профил</span></a>
-            <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'"
-              aria-label="За нас"><span>За нас</span></a>
-            <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'"
-              aria-label="Контакти"><span>Контакти</span></a>
+            <a routerLink="/" fragment="home" [class.active]="activeRoute == 'home'"><span>Начало</span></a>
+            <a routerLink="/sale" routerLinkActive="active"><span>Обекти</span></a>
+            <a routerLink="/sale" routerLinkActive="active"><span>Партньори</span></a>
+            <a routerLink="/rent" routerLinkActive="active"><span>Профил</span></a>
+            <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
+            <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'"><span>Контакти</span></a>
           </div>
         </div>
       </mat-toolbar-row>
@@ -59,7 +52,7 @@
           <i class="flaticon-menu"></i>
         </button>
         <a class="title black-color">
-          <span>Квадратен метър бг</span>
+          <span>Знание плюс</span>
         </a>
       </mat-toolbar-row>
     </mat-toolbar>
@@ -69,53 +62,58 @@
     <div class="footer">
       <div class="container information flex">
         <div class="logo flex">
-          <lazy-image-component objectFit="contain" src="/assets/images/logo-footer.png" width="109px" height="108px">
+          <lazy-image-component objectFit="contain" src="/assets/images/logo-banner.png" width="210px" height="130px">
           </lazy-image-component>
         </div>
         <div class="navigation flex">
           <div class="bordered flex">
             <ul>
               <li>
-                <a routerLink="/" fragment="home" aria-label="Начална страница">
+                <a routerLink="/" fragment="home">
                   Начало
                 </a>
               </li>
               <li>
-                <a routerLink="/sale" aria-label="Апартаменти за продажба">
-                  Продажба
+                <a routerLink="/sale">
+                  Обекти
                 </a>
               </li>
               <li>
-                <a routerLink="/rent" aria-label="Апартаменти под наем">
-                  Наем
+                <a routerLink="/rent">
+                  Партньори
                 </a>
               </li>
               <li>
-                <a routerLink="/" fragment="about-us" aria-label="За нас">
+                <a routerLink="/" fragment="about-us">
+                  Профил
+                </a>
+              </li>
+              <li>
+                <a routerLink="/" fragment="team">
                   За нас
                 </a>
               </li>
               <li>
-                <a routerLink="/" fragment="team" aria-label="Екип">
-                  Екип
+                <a routerLink="/" fragment="team">
+                  Контакти
                 </a>
               </li>
             </ul>
           </div>
           <div class="flex">
             <a>
-              Централен офис гр. Свети Влас, ул. Русалка
+              Централен офис гр. София, ул. Адрес 42
             </a>
             <a>
-              +359 878 106 323
+              +359 888 123 456
             </a>
           </div>
         </div>
       </div>
       <div class="rights">
         <h4>
-          &copy; {{getDate()}} Квадратен Метър БГ | <a href="https://www.primecode.company/" target="_blank"
-            aria-label="Изработка www.primecode.company" rel="noreferrer">Designed by
+          &copy; {{getDate()}} ЗНАНИЕ ПЛЮС | <a href="https://www.primecode.company/" target="_blank"
+            rel="noreferrer">Designed by
             Prime Code Company</a>
         </h4>
       </div>

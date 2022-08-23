@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
 export class SEOProvider {
 
     canonicalURL: HTMLLinkElement;
-    url = 'https://www.kvadratenmetar.bg'
+    url = 'https://www.znanieplus.bg'
 
     constructor(
         private Meta: Meta,
