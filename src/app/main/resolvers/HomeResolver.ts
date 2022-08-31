@@ -18,6 +18,7 @@ export class HomeResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
+    return [];
     return forkJoin([
       this.ApartmentProvider.get({
         skip: 0,

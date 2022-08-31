@@ -18,7 +18,7 @@ export class SaleResolver implements Resolve<any> {
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     const { page = 1 } = route.queryParams;
-
+    return []
     return this.ApartmentProvider.get({
       skip: 0,
       limit: Number(page) * 12,
