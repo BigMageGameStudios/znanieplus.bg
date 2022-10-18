@@ -55,6 +55,7 @@ div.container {
     div.places {
         padding-top: 60px;
         justify-content: space-between;
+        display: none;
 
         div {
             position: relative;
@@ -243,14 +244,15 @@ div.info {
                 margin: 5px;
                 color: #666;
                 font-size: 14px;
-                max-width: 300px;
+                max-width: 420px;
                 text-align: center;
             }
         }
     }
 }
 
-div.prices {
+div.prices { 
+    display: none;
     padding: 0 25px 25px;
     position: relative;
     width: 100%;
@@ -363,6 +365,10 @@ div.prices {
         div.frame {
             height: 75% !important;
         }
+    
+        lazy-image-component {
+                margin-left: 0px !important;
+         }
     }
 
     div.places {
@@ -414,7 +420,7 @@ div.prices {
 @media (max-width: 600px) {
     div.office {
         h1 {
-            font-size: 20px !important;
+            font-size: 18px !important;
             top: 25% !important;
         }
     }
