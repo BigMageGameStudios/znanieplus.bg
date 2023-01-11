@@ -1,0 +1,19 @@
+.container{
+    min-height: 70vh;
+}
+mat-form-field{
+    width: 300px;
+    margin: auto;
+}
+
+#valid{
+    color: green;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+#invalid{
+    color: red;
+    font-size: 22px;
+    font-weight: 800;
+}

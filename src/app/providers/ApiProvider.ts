@@ -18,31 +18,31 @@ export class ApiProvider {
 
     get(path: string) {
         return this.HttpClient
-            .get(`${Environment.api_url}/api/${Environment.api_version}/${path}`, { withCredentials: true })
+            .get(`${Environment.api_url}/api/${path}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 
     post(path: string, body?) {
         return this.HttpClient
-            .post(`${Environment.api_url}/api/${Environment.api_version}/${path}`, body, { withCredentials: true })
+            .post(`${Environment.api_url}/api/${path}`, body, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 
     put(path: string, body) {
         return this.HttpClient
-            .put(`${Environment.api_url}/api/${Environment.api_version}/${path}`, body, { withCredentials: true })
+            .put(`${Environment.api_url}/api/${path}`, body, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 
     patch(path: string, body) {
         return this.HttpClient
-            .patch(`${Environment.api_url}/api/${Environment.api_version}/${path}`, body, { withCredentials: true })
+            .patch(`${Environment.api_url}/api/${path}`, body, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 
     delete(path: string) {
         return this.HttpClient
-            .delete(`${Environment.api_url}/api/${Environment.api_version}/${path}`, { withCredentials: true })
+            .delete(`${Environment.api_url}/api/${path}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 

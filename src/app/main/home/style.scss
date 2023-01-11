@@ -347,6 +347,48 @@ div.prices {
     }
 }
 
+mat-accordion {
+    flex: 1.8;
+}
+
+mat-expansion-panel {
+    box-shadow: unset;
+    border-top: solid 1px #ddd;
+    border-radius: 0;
+
+    mat-panel-title {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    &.mat-expanded {
+        border-color: #ffd145;
+
+        mat-expansion-panel-header {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        mat-panel-title {
+            color: #ffd145;
+            font-weight: 600;
+            transition: ease 400ms;
+        }
+
+        span.mat-expansion-indicator {
+            &::after {
+                color: #ffd145 !important;
+                transition: ease 400ms;
+            }
+        }
+    }
+
+    mat-expansion-panel-header {
+        &:hover:not(.mat-expanded) {
+            background-color: transparent;
+        }
+    }
+}
+
 @media (max-width: 1000px) {
     div.banner {
         div.frame {
@@ -374,7 +416,9 @@ div.prices {
                 margin-left: 0px !important;
          }
     }
-
+    #about-cover{
+        display: none;
+    }
     div.places {
         flex-direction: column !important;
 

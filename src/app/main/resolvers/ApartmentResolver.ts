@@ -19,7 +19,6 @@ export class ApartmentResolver implements Resolve<any> {
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     const { key } = route.params;
-    return null;
     return this.ApartmentProvider.getByKey(key).pipe(map((data) => {
       if (data === null) {
         this.Router.navigateByUrl('/#home');

@@ -1,15 +1,11 @@
 <div class="container">
     <div class="banner flex" (click)="openGallery()">
-        <gallery-component [src]="api_url+'/min_uploads/images/' + apartment.photos[apartment.cover].name"></gallery-component>
+        <gallery-component [src]="api_url+'/storage/' + apartment.photo"></gallery-component>
         <div class="frame">
             <h4>
-                Квадратен метър бг
+                Знание плюс
             </h4>
-
-            <h2>
-                {{apartment.type}}, {{apartment.quadrature}} м2, {{ apartment.price | number:'1.0-0'}} <span class="currency">{{apartment.getCurrency().name}}</span>
-            </h2>
-            <div class="prev">
+            <!-- <div class="prev">
                 <a matRipple>
                     <i class="flaticon-left-arrow"></i>
                 </a>
@@ -19,22 +15,24 @@
                 <a matRipple>
                     <i class="flaticon-right-arrow"></i>
                 </a>
+            </div> -->
+        </div>
+    </div>
+    <div class="description flex">
+        <div>
+            <h2 class="title">
+                <span> {{apartment.name}}</span>
+            </h2>
+            <div>
+                {{apartment.description}}
             </div>
         </div>
     </div>
     <h4 class="ad-type">
-        {{apartment.getApartmentType().name}}
+       
     </h4>
     <div class="information flex">
         <div class="characters">
-            <div class="flex">
-                <div>
-                    Квадратура /м2/:
-                </div>
-                <div>
-                    {{apartment.quadrature}}
-                </div>
-            </div>
             <div class="flex">
                 <div>
                     Адрес:
@@ -45,85 +43,41 @@
             </div>
             <div class="flex">
                 <div>
-                    Етаж:
+                    Уебсайт:
                 </div>
                 <div>
-                    {{apartment.floor}}
-                </div>
-            </div>
-            <div class="flex">
-                <div>
-                    Строителство:
-                </div>
-                <div>
-                    {{apartment.construction}}
+                    {{apartment.website}}
                 </div>
             </div>
             <div class="flex">
                 <div>
-                    Година на строутелство:
+                    Електронна поща:
                 </div>
                 <div>
-                    {{apartment.year}}
-                </div>
-            </div>
-            <div class="flex">
-                <div>
-                    Акт 16:
-                </div>
-                <div>
-                    {{apartment.act16 ? 'Да' : 'Не'}}
+                    {{apartment.mail}}
                 </div>
             </div>
             <div class="flex">
                 <div>
-                    Цена за /м2/{{apartment.getCurrency().nameBG}}:
+                    Телефон:
                 </div>
                 <div>
-                    {{apartment.m2price | number:'1.0-0'}} <span
-                        class="currency">{{apartment.getCurrency().name}}</span>
-                </div>
-            </div>
-            <div class="flex">
-                <div>
-                    Цена:
-                </div>
-                <div>
-                    {{ apartment.price | number:'1.0-0'}} <span class="currency">{{apartment.getCurrency().name}}</span>
+                    {{apartment.phone}}
                 </div>
             </div>
         </div>
         <div class="date">
             <div>
                 <h3>
-                    Публикувано на:
+                    Отстъпка:
                 </h3>
-                <p>{{ apartment.createdAt | date:'dd.LL.yyyy' }}</p>
+                <p>{{ apartment.promo}} %</p>
             </div>
-            <div>
-                <h3>
-                    Номер на обява:
-                </h3>
-                <p>№{{apartment.key}}</p>
-            </div>
-        </div>
-    </div>
-    <div class="description flex">
-        <div>
-            <h2 class="title">
-                <span>Описание на имота</span>
-            </h2>
-            <div>
-                {{apartment.description}}
-            </div>
-        </div>
-        <div>
-            <broker-component [broker]="apartment.user"></broker-component>
         </div>
     </div>
 </div>
 <contacts-component></contacts-component>
-<div class="container">
+<!-- <div class="container">
     <div class="new-apartments">
         <h2 class="title">
             <span>Други предложения</span>
@@ -135,4 +89,4 @@
             </a>
         </div>
     </div>
-</div>
+</div> -->

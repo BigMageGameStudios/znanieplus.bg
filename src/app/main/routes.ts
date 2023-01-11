@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { MainComponent } from './component';
-import { HomeResolver, RentResolver, SaleResolver, ApartmentResolver } from './resolvers';
+import { HomeResolver, ApartmentResolver } from './resolvers';
 
 export const MODULE_ROUTES: Route[] = [
   {
@@ -14,26 +14,30 @@ export const MODULE_ROUTES: Route[] = [
           result: HomeResolver
         }
       },
+      // {
+      //   path: 'sale',
+      //   loadChildren: () => import('./sale/index').then(m => m.SaleModule),
+      //   resolve: {
+      //     apartments: SaleResolver
+      //   }
+      // },
+      // {
+      //   path: 'rent',
+      //   loadChildren: () => import('./rent/index').then(m => m.RentModule),
+      //   resolve: {
+      //     apartments: RentResolver
+      //   }
+      // },
       {
-        path: 'sale',
-        loadChildren: () => import('./sale/index').then(m => m.SaleModule),
-        resolve: {
-          apartments: SaleResolver
-        }
-      },
-      {
-        path: 'rent',
-        loadChildren: () => import('./rent/index').then(m => m.RentModule),
-        resolve: {
-          apartments: RentResolver
-        }
-      },
-      {
-        path: 'apartment/:key',
+        path: 'place/:key',
         loadChildren: () => import('./apartment/index').then(m => m.ApartmentModule),
         resolve: {
           apartment: ApartmentResolver
         }
+      },
+      {
+        path: 'card',
+        loadChildren: () => import('./card/index').then(m => m.CardModule),
       }
     ]
   }

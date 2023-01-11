@@ -39,8 +39,8 @@
           </a>
           <div class="navigation flex">
             <a routerLink="/" fragment="home" [class.active]="activeRoute == 'home'"><span>Начало</span></a>
-            <!-- <a routerLink="/sale" routerLinkActive="active"><span>Обекти</span></a>
-            <a routerLink="/sale" routerLinkActive="active"><span>Партньори</span></a>
+            <a routerLink="/" fragment="places" [class.active]="activeRoute == 'places'"><span>Обекти</span></a>
+            <!-- <a routerLink="/sale" routerLinkActive="active"><span>Партньори</span></a>
             <a routerLink="/rent" routerLinkActive="active"><span>Профил</span></a> -->
             <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
             <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'"><span>Контакти</span></a>
@@ -73,12 +73,12 @@
                   Начало
                 </a>
               </li>
-              <!-- <li>
-                <a routerLink="/sale">
+              <li>
+                <a routerLink="/" fragment="places">
                   Обекти
                 </a>
               </li>
-              <li>
+             <!--  <li>
                 <a routerLink="/rent">
                   Партньори
                 </a>
@@ -96,6 +96,12 @@
               <li>
                 <a routerLink="/" fragment="team">
                   Контакти
+                </a>
+              </li>
+
+              <li>
+                <a routerLink="/card">
+                  Провери карта
                 </a>
               </li>
             </ul>
