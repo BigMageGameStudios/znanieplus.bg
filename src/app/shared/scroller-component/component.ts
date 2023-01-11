@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ElementRef, PLATFORM_ID, Inject, Input } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Types, Environment } from 'src/globals';
+import { Environment } from 'src/globals';
 
 @Component({
   selector: 'scroller-component',
@@ -13,10 +13,8 @@ export class ScrollerComponent {
 
   interval;
   api_url = Environment.api_url;
-  @Input('template') template: number;
   @Input('data') data: Array<any>;
 
-  types = Types;
   step = 500;
   actions = {
     next: 0,

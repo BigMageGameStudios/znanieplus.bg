@@ -14,20 +14,6 @@ export const MODULE_ROUTES: Route[] = [
           result: HomeResolver
         }
       },
-      // {
-      //   path: 'sale',
-      //   loadChildren: () => import('./sale/index').then(m => m.SaleModule),
-      //   resolve: {
-      //     apartments: SaleResolver
-      //   }
-      // },
-      // {
-      //   path: 'rent',
-      //   loadChildren: () => import('./rent/index').then(m => m.RentModule),
-      //   resolve: {
-      //     apartments: RentResolver
-      //   }
-      // },
       {
         path: 'place/:key',
         loadChildren: () => import('./apartment/index').then(m => m.ApartmentModule),

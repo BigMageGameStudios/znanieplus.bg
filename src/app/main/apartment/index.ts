@@ -7,9 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { ApartmentComponent } from './component';
 import { ContactsModule } from 'src/app/shared/contacts-component';
-import { ScrollerModule } from 'src/app/shared/scroller-component';
 import { GalleryModule } from 'src/app/shared/gallery-component';
-import { BrokerModule } from 'src/app/shared/broker-component';
 import { GalleryDialogModule } from 'src/app/shared/gallery-dialog';
 
 @NgModule({
@@ -23,9 +21,7 @@ import { GalleryDialogModule } from 'src/app/shared/gallery-dialog';
         MatRippleModule,
         MatDialogModule,
         ContactsModule,
-        ScrollerModule,
         GalleryModule,
-        BrokerModule,
         GalleryDialogModule
     ]
 })

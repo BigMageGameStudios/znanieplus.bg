@@ -6,6 +6,10 @@ export const MODULE_ROUTES: Route[] = [
     loadChildren: () => import('./main/module').then(m => m.MainModule),
   },
   {
+    path: 'error',
+    loadChildren: () => import('./error').then(m => m.ErrorPageModule),
+  },
+  {
     path: '**',
     redirectTo: ''
   },

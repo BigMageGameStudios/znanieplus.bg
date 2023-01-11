@@ -2,13 +2,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
-import { Types, Environment, ApartmentTypes } from 'src/globals';
+import { Environment } from 'src/globals';
 import { GalleryDialog } from 'src/app/shared/gallery-dialog';
-import { Apartment } from 'src/app/models/apartment';
-import { SEOProvider } from 'src/app/providers';
 
 @Component({
-  selector: 'apartment-page',
+  selector: 'place-page',
   templateUrl: 'index.html',
   styleUrls: ['style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -16,30 +14,15 @@ import { SEOProvider } from 'src/app/providers';
 
 export class ApartmentComponent {
 
-  apartment: any;
-  templates = Types;
+  item: any;
   api_url = Environment.api_url;
 
   constructor(
     ActivatedRoute: ActivatedRoute,
     private MatDialog: MatDialog,
-    private SEOProvider: SEOProvider
   ) {
-    const { apartment } = ActivatedRoute.snapshot.data;
-    console.log(apartment)
-    this.apartment = apartment;
-
-  }
-
-  getAllLink() {
-    switch (this.apartment.apartmentType) {
-      case (ApartmentTypes.rent.id): {
-        return '/rent';
-      }
-      case (ApartmentTypes.sale.id): {
-        return '/sale';
-      }
-    }
+    const { item } = ActivatedRoute.snapshot.data;
+    this.item = item;
   }
 
   openGallery() {
@@ -48,8 +31,8 @@ export class ApartmentComponent {
       backdropClass: 'black',
       autoFocus: false,
       data: {
-        cover: this.apartment.cover,
-        photos: this.apartment.photos
+        cover: this.item.cover,
+        photos: this.item.photos
       }
     });
   }

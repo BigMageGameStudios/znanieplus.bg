@@ -1,7 +1,7 @@
-<div class="box" [ngSwitch]="template">
+<div class="box">
     <div class="list" #list>
         <div *ngFor="let item of data; trackBy:track" class="item">
-            <a [routerLink]="'/place/'+item.id" *ngSwitchCase="types.appartment" aria-label="Виж">
+            <a [routerLink]="'/place/'+item.id" aria-label="Виж">
                 <lazy-image-component class="flex" objectFit="cover" [src]="'https://dashboard.znanieplus.bg/storage/' + item.photo" width="100%" height="250px">
                 </lazy-image-component>
             </a>
