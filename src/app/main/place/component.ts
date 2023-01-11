@@ -12,7 +12,7 @@ import { GalleryDialog } from 'src/app/shared/gallery-dialog';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ApartmentComponent {
+export class PlaceComponent {
 
   item: any;
   api_url = Environment.api_url;

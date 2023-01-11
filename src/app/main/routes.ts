@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { MainComponent } from './component';
-import { HomeResolver, ApartmentResolver } from './resolvers';
+import { HomeResolver, PlaceResolver } from './resolvers';
 
 export const MODULE_ROUTES: Route[] = [
   {
@@ -16,9 +16,9 @@ export const MODULE_ROUTES: Route[] = [
       },
       {
         path: 'place/:key',
-        loadChildren: () => import('./apartment/index').then(m => m.ApartmentModule),
+        loadChildren: () => import('./place/index').then(m => m.PlaceModule),
         resolve: {
-          apartment: ApartmentResolver
+          apartment: PlaceResolver
         }
       },
       {

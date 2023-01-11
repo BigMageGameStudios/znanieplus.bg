@@ -9,7 +9,7 @@ import { MainProvidersModule } from './module';
     providedIn: MainProvidersModule
 })
 
-export class ApartmentProvider {
+export class PlaceProvider {
 
     private mpath = 'places';
 

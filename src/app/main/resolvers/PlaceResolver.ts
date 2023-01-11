@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ApartmentProvider } from '../providers';
+import { PlaceProvider } from '../providers';
 import { MainResolversModule } from './module';
 import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: MainResolversModule })
 
-export class ApartmentResolver implements Resolve<any> {
+export class PlaceResolver implements Resolve<any> {
 
   constructor(
-    private ApartmentProvider: ApartmentProvider,
+    private PlaceProvider: PlaceProvider,
     private Router: Router
   ) { }
 
@@ -19,7 +19,7 @@ export class ApartmentResolver implements Resolve<any> {
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     const { key } = route.params;
-    return this.ApartmentProvider.getByKey(key).pipe(map((data) => {
+    return this.PlaceProvider.getByKey(key).pipe(map((data) => {
       if (data === null) {
         this.Router.navigateByUrl('/#home');
         return [];

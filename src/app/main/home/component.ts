@@ -11,14 +11,14 @@ import { SEOProvider } from 'src/app/providers';
 
 export class HomeComponent {
 
-  appartments: any[];
+  items: any[];
 
   constructor(
     private ActivatedRoute: ActivatedRoute,
     private SEOProvider: SEOProvider
   ) {
-    const apartments = this.ActivatedRoute.snapshot.data.result.data.data;
-    this.appartments = apartments;
+    const items = this.ActivatedRoute.snapshot.data.result.data.data;
+    this.items = items;
     this.SEOProvider.set({
       title: 'Знание плюс',
       description: '',
