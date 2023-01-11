@@ -12,7 +12,7 @@ import { LazyImageModule } from '../shared/lazy-image-component';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: '', component: ErrorPage, title: 'Error' }]),
+    RouterModule.forChild([{ path: '', component: ErrorPage, title: 'ЗНАНИЕ ПЛЮЧ | ГРЕШКА' }]),
     MatRippleModule,
     LazyImageModule
   ]
