@@ -18,7 +18,7 @@ export const MODULE_ROUTES: Route[] = [
         path: 'place/:key',
         loadChildren: () => import('./place/index').then(m => m.PlaceModule),
         resolve: {
-          apartment: PlaceResolver
+          item: PlaceResolver
         }
       },
       {
