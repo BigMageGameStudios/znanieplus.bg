@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Inject, PLATFORM_ID } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
+import { Subscription } from 'rxjs';
+import { WINDOW } from './modules/window';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +14,28 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
 
 export class AppComponent {
 
-  constructor() { }
+  subscription!: Subscription;
+
+  constructor(
+    private SwUpdate: SwUpdate,
+    @Inject(WINDOW) private window: Window,
+    @Inject(PLATFORM_ID) private platformId: Object,
+  ) { }
+
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId) && this.SwUpdate.isEnabled) {
+
+      this.subscription = this.SwUpdate.versionUpdates.subscribe((event) => {
+        switch (event.type) {
+          case ('VERSION_READY'): {
+            this.window.location.reload();
+            break;
+          }
+        }
+
+      });
+
+    }
+  }
 
 }

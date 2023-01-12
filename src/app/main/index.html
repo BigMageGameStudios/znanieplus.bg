@@ -10,12 +10,18 @@
         </a>
       </li>
       <li>
+        <a routerLink="/" [class.active]="activeRoute == 'places'" fragment="places" (click)="drawer.toggle()">
+          Обекти
+        </a>
+      </li>
+      <li>
         <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'" (click)="drawer.toggle()">
           За нас</a>
       </li>
       <li>
-        <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'"
-          (click)="drawer.toggle()">Контакти</a>
+        <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'" (click)="drawer.toggle()">
+          Контакти
+        </a>
       </li>
     </ul>
   </mat-drawer>
