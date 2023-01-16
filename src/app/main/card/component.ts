@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CardProvider } from '../providers';
 
 @Component({
@@ -12,7 +12,7 @@ import { CardProvider } from '../providers';
 export class CardComponent {
 
   form = new FormGroup({
-    text: new FormControl('')
+    text: new FormControl('', [Validators.required])
   });
 
   active = false;
@@ -66,22 +66,25 @@ export class CardComponent {
   }
 
   onSubmit() {
-    const value = this.form.value.text;
-    const element: any = document.activeElement;
-    element.blur();
+    if(this.form.valid){
 
-    this.active = false;
-    this.submited = false;
+      const value = this.form.value.text;
+      const element: any = document.activeElement;
+      element.blur();
+  
+      this.active = false;
+      this.submited = false;
+  
+      this.card.get(value).subscribe((data: any) => {
+        if(data.active){
+          this.active = true;
+        }
+        this.submited = true;
+        this.toClean = true;
+        this.change.markForCheck();
+      });
 
-    this.card.get(value).subscribe((data: any) => {
-      if(data.active){
-        this.active = true;
-      }
-      this.submited = true;
-      this.toClean = true;
-      this.change.markForCheck();
-    })
-
+    }
 
   }
 

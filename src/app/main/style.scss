@@ -1,5 +1,11 @@
 @import '../../../stylesheets/variables';
 
+:host {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 mat-toolbar {
     background: transparent !important;
     position: fixed;
@@ -94,7 +100,8 @@ mat-toolbar {
 div.router {
     margin-top: 84px;
     flex: 1;
-    > router-outlet + * {
+
+    >router-outlet+* {
         flex: 1;
         padding: 104px 15px 15px 50px;
         background-color: var(--black);
@@ -182,6 +189,9 @@ div.footer {
 
 mat-drawer-container {
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
     mat-drawer {
         width: 65%;
@@ -221,6 +231,12 @@ mat-drawer-container {
                 }
             }
         }
+    }
+
+    mat-drawer-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -276,7 +292,7 @@ mat-drawer-container {
     }
 
     div.router {
-        margin-top: 64px !important;
+        margin-top: 56px !important;
     }
 
     div.footer {

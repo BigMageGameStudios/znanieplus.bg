@@ -1,11 +1,13 @@
 <div class="container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field color="primary">
-            <input #inputBillOfLanding matInput placeholder="Номер на карта" formControlName="text">
+            <input #inputBillOfLanding matInput placeholder="Номер на карта" formControlName="text" autocomplete="off">
             <button class="image-button" aria-label="Clear" (click)="onClear()" matRipple type="button" matSuffix>
-                X
+                <lazy-image-component objectFit="contain" class="flex" src="/assets/images/close.svg" width="32px" height="32px">
+                </lazy-image-component>
             </button>
         </mat-form-field>
+        <button mat-raised-button type="submit">Потвърждаване</button>
     </form>
 
     <ng-container *ngIf="submited">

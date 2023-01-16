@@ -1,0 +1,50 @@
+<div class="flex box">
+    <div class="video-container relative" [hidden]="!canStream">
+        <video #video autoplay muted playsinline></video>
+        <ng-container *ngIf="canStream">
+            <div class="border">
+
+            </div>
+            <div class="blur">
+
+            </div>
+            <div class="message">
+                {{ translations['message'] }}
+            </div>
+        </ng-container>
+    </div>
+    <div *ngIf="streamError" class="instructions">
+        <div class="flex items">
+            <h3>{{ translations['safari-title'] }}</h3>
+            <p>
+                {{ translations['safari-1'] }}
+            </p>
+            <p>{{ translations['safari-2'] }}</p>
+            <lazy-image-component src="/assets/safari1.png" width="auto" height="100%" objectFit="contain">
+            </lazy-image-component>
+            <p>{{ translations['safari-3'] }}</p>
+            <lazy-image-component src="/assets/safari2.png" width="auto" height="100%" objectFit="contain">
+            </lazy-image-component>
+        </div>
+        <div class="flex items">
+            <h3>{{ translations['chrome-title'] }}</h3>
+            <p>
+                {{ translations['chrome-1'] }}
+            </p>
+            <p>{{ translations['chrome-2'] }}</p>
+            <lazy-image-component src="/assets/chrome1.jpg" width="auto" height="100%" objectFit="contain">
+            </lazy-image-component>
+            <p>{{ translations['chrome-3'] }}</p>
+            <lazy-image-component src="/assets/chrome2.jpg" width="auto" height="100%" objectFit="contain">
+            </lazy-image-component>
+            <p>{{ translations['chrome-4'] }}</p>
+            <lazy-image-component src="/assets/chrome3.jpg" width="auto" height="100%" objectFit="contain">
+            </lazy-image-component>
+            <p>{{ translations['chrome-5'] }}</p>
+            <lazy-image-component src="/assets/chrome4.jpg" width="auto" height="100%" objectFit="contain">
+            </lazy-image-component>
+            <p>{{ translations['chrome-6'] }}</p>
+        </div>
+    </div>
+</div>
+<canvas #canvas hidden></canvas>

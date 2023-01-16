@@ -8,7 +8,7 @@ div.container {
 
     div.banner {
         height: 50vh;
-        max-height: 500px;
+        max-height: 670px;
         overflow: hidden;
         position: relative;
         padding-top: 20px;
@@ -160,31 +160,6 @@ div.container {
             }
         }
     }
-
-    div.new-apartments {
-        padding-top: 60px;
-        padding-bottom: 30px;
-
-        h2 {
-            left: 100px;
-        }
-
-        div.view-all {
-            text-align: center;
-
-            a {
-                font-size: 16px;
-                font-weight: 600;
-                cursor: pointer;
-                color: black;
-                text-decoration: none;
-
-                &::before {
-                    height: 6px !important;
-                }
-            }
-        }
-    }
 }
 
 @media (max-width: 1000px) {
@@ -220,9 +195,17 @@ div.container {
         padding-top: 0px !important;
     }
 
+    div.banner{
+        height: 32vh !important;
+    }
+
     div.frame {
         width: 92% !important;
         height: 70% !important;
+
+        &::before{
+            width: 26px !important;
+        }
 
         h2 {
             font-size: 29px !important;

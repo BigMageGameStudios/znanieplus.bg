@@ -5,7 +5,7 @@
 
       img {
           height: 100%;
-          width: calc(100% - 12.7%);
+          width: calc( 100% - 138px );
           object-fit: cover;
           right: 0;
           z-index: 2;
@@ -32,5 +32,8 @@
   @media (max-width: 700px) {
     div {
         width: calc(100vw - 8px) !important;
+        img{
+            width: calc( 100% - 50px );
+        }
     }
 }

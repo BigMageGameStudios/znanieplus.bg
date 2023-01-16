@@ -1,6 +1,12 @@
 @import "variables";
 @import "fonts";
 
+app-root{
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
+
 :focus {
     outline: none;
 }
