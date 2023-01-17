@@ -49,8 +49,7 @@
               "./stylesheets/fonts.scss",
               "./stylesheets/theme.scss",
               "src/assets/flaticon/flaticon.css"
-            ],
-            "webWorkerTsConfig": "tsconfig.worker.json"
+            ]
           },
           "configurations": {
             "production": {
@@ -163,10 +162,6 @@
                 {
                   "replace": "src/app/modules/smoothscroll/client/index.ts",
                   "with": "src/app/modules/smoothscroll/server/index.ts"
-                },
-                {
-                  "replace": "src/app/main/scan/component.ts",
-                  "with": "src/app/main/scan/component.ssr.ts"
                 }
               ],
               "sourceMap": false,

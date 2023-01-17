@@ -24,10 +24,6 @@ export const MODULE_ROUTES: Route[] = [
       {
         path: 'card',
         loadChildren: () => import('./card/index').then(m => m.CardModule),
-      },
-      {
-        path: 'scan',
-        loadChildren: () => import('./scan/index').then(m => m.ScanModule),
       }
     ]
   }
