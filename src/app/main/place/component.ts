@@ -31,8 +31,7 @@ export class PlaceComponent {
       backdropClass: 'black',
       autoFocus: false,
       data: {
-        cover: this.item.cover,
-        photos: this.item.photos
+        photo: this.item.photo
       }
     });
   }
