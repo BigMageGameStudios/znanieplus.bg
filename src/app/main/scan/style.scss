@@ -1,0 +1,23 @@
+:host{
+    position: relative;
+}
+
+div#valid, div#invalid{
+    position: absolute;
+    z-index: 1;
+    padding: 9px;
+    border-radius: 12px;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: pre;
+    color: white;
+}
+
+div#invalid{
+    background: #af0909;
+}
+
+div#valid{
+    background: #035603;
+}

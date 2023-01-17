@@ -22,6 +22,10 @@ export const MODULE_ROUTES: Route[] = [
         }
       },
       {
+        path: 'scan',
+        loadChildren: () => import('./scan/index').then(m => m.ScanModule),
+      },
+      {
         path: 'card',
         loadChildren: () => import('./card/index').then(m => m.CardModule),
       }
