@@ -1,24 +1,18 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { SEOProvider } from 'src/app/providers';
 
 @Component({
-  selector: 'home-page',
+  selector: 'presentation-page',
   templateUrl: 'index.html',
   styleUrls: ['style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class HomeComponent {
-
-  items: any[];
+export class PresentationComponent {
 
   constructor(
-    private ActivatedRoute: ActivatedRoute,
     private SEOProvider: SEOProvider
   ) {
-    const items = this.ActivatedRoute.snapshot.data.result.data.data;
-    this.items = items;
     this.SEOProvider.set({
       title: 'Знание плюс',
       description: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
@@ -27,7 +21,7 @@ export class HomeComponent {
       ogType: 'article',
       ogDescription: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
       ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
-      canonicalURL: '/'
+      canonicalURL: '/presentation'
     });
   }
 

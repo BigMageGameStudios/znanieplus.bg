@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, ChangeDetectorRef, Inject, PLATFORM_ID } from '@angular/core';
 import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
+import { SEOProvider } from 'src/app/providers';
 import { CardProvider } from '../providers';
 
 @Component({
@@ -25,9 +26,21 @@ export class ScanPage implements OnInit, OnDestroy {
 
   constructor(
     private card: CardProvider,
+    private SEOProvider: SEOProvider,
     private change: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platform: Object
-  ) { }
+  ) {
+    this.SEOProvider.set({
+      title: 'Знание плюс | Сканиране',
+      description: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
+      keywords: 'знание,карта,отстъпка,култура,социална придобивка',
+      ogUrl: 'https://www.znanieplus.bg',
+      ogType: 'article',
+      ogDescription: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
+      ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
+      canonicalURL: '/scan'
+    });
+  }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platform)) {

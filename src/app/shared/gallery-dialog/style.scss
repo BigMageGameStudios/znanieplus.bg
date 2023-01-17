@@ -58,14 +58,16 @@ div.list {
 
 a.close,
 a.full-screen {
-    width: 48px !important;
-    height: 48px !important;
-    line-height: 56px !important;
-    color: white !important;
+    width: 36px !important;
+    height: 36px !important;
     position: absolute;
     top: 0;
     right: 0;
     z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 a.close {
@@ -73,7 +75,7 @@ a.close {
 }
 
 a.full-screen {
-    right: 36px;
+    right: 42px;
 }
 
 @media (max-width: 550px) {
