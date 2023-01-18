@@ -1,19 +1,21 @@
 <div class="photo">
-    <img [src]="api_url+'/min_uploads/images/' + items[index].name" alt="photo"/>
+    <img [src]="api_url+'/storage/' + items[index].name" alt="photo"/>
 </div>
 
 <div class="list">
     <div class="responsive" *ngFor="let item of items; let i = index" #images>
         <a (click)="changeImage(i)">
-            <img [src]="api_url+'/min_uploads/images/' + item.name" [class.active]="index == i" alt="photo"/>
+            <img [src]="api_url+'/storage/' + item.name" [class.active]="index == i" alt="photo"/>
         </a>
     </div>
 </div>
 
-<a class="full-screen" mat-icon-button (click)="setFullScreen()" aria-label="full-screen">
-    <i class="flaticon-full-screen"></i>
+<a class="full-screen" mat-ripple (click)="setFullScreen()" aria-label="full-screen">
+    <lazy-image-component objectFit="contain" class="flex" src="/assets/images/full-screen.svg" width="34px" height="34px">
+    </lazy-image-component>
 </a>
 
-<a class="close" mat-icon-button (click)="close()" aria-label="close">
-    <i class="flaticon-close"></i>
+<a class="close" mat-ripple (click)="close()" aria-label="close">
+    <lazy-image-component objectFit="contain" class="flex" src="/assets/images/close-white.svg" width="30px" height="30px">
+    </lazy-image-component>
 </a>

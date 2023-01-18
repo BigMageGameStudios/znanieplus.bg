@@ -25,6 +25,7 @@ export class GalleryDialog implements AfterViewInit{
   ) {
     this.items = this.data.photos;
     this.index = this.data.cover;
+    console.log(data)
   }
 
   @HostListener('document:keydown.arrowright') handleRight() {

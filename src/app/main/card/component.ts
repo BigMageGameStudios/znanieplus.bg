@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SEOProvider } from 'src/app/providers';
 import { CardProvider } from '../providers';
 
 @Component({
@@ -24,8 +25,20 @@ export class CardComponent {
 
   constructor(
     private card: CardProvider,
-    private change: ChangeDetectorRef
-  ) { }
+    private SEOProvider: SEOProvider,
+    private change: ChangeDetectorRef,
+  ) {
+    this.SEOProvider.set({
+      title: 'Знание плюс | Сканиране',
+      description: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
+      keywords: 'знание,карта,отстъпка,култура,социална придобивка',
+      ogUrl: 'https://www.znanieplus.bg',
+      ogType: 'article',
+      ogDescription: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
+      ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
+      canonicalURL: '/card'
+    });
+   }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
