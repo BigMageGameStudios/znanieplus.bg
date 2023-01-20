@@ -92,6 +92,11 @@ mat-toolbar {
                         }
                     }
                 }
+
+                .yellow{
+                    color: #ffd145 !important;
+                    font-weight: 800;
+                }    
             }
         }
     }
@@ -207,6 +212,8 @@ mat-drawer-container {
             padding-left: 25px;
         }
 
+        
+
         ul {
             list-style: none;
             padding-left: 20px;
@@ -231,6 +238,11 @@ mat-drawer-container {
                 }
             }
         }
+
+        .yellow{
+            color: #ffd145 !important;
+            font-weight: 800;
+        }    
     }
 
     mat-drawer-content {

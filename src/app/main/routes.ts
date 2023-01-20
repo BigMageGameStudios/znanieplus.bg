@@ -28,6 +28,18 @@ export const MODULE_ROUTES: Route[] = [
       {
         path: 'card',
         loadChildren: () => import('./card/index').then(m => m.CardModule),
+      },
+      {
+        path: 'cookies',
+        loadChildren: () => import('./cookies/index').then(m => m.CookiesModule),
+      },
+      {
+        path: 'privacy',
+        loadChildren: () => import('./privacy/index').then(m => m.PrivacyModule),
+      },
+      {
+        path: 'terms',
+        loadChildren: () => import('./terms/index').then(m => m.TermsModule),
       }
     ]
   }

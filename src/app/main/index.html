@@ -23,6 +23,11 @@
           Контакти
         </a>
       </li>
+      <li>
+        <a class="yellow" routerLink="/scan">
+          Провери карта
+        </a>
+      </li>
     </ul>
   </mat-drawer>
   <mat-drawer-content>
@@ -33,6 +38,9 @@
             <img src="/assets/images/logo-banner.png" alt="logo" />
           </a>
           <div class="navigation flex">
+            <a class="yellow" routerLink="/card">
+              Провери карта
+            </a>
             <a routerLink="/" fragment="home" [class.active]="activeRoute == 'home'"><span>Начало</span></a>
             <a routerLink="/" fragment="places" [class.active]="activeRoute == 'places'"><span>Обекти</span></a>
             <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
@@ -92,16 +100,32 @@
                   Провери карта с мобилно устройство
                 </a>
               </li>
-
             </ul>
           </div>
           <div class="flex">
             <a>
-              Централен офис гр. София, ул. Бойчо Войвода 7
+              Централен офис: гр. София, ул. Бойчо Войвода 7
             </a>
             <a>
               +359 887 428 307
             </a>
+            <div class="navigation flex">
+              <div class="bordered flex">
+                <ul>
+                <li>
+                  <a routerLink="/cookies">
+                    Използване на бисквитки 
+                  </a>
+                </li>
+
+                <li>
+                  <a routerLink="/privacy">
+                    Политика за поверителност
+                  </a>
+                </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

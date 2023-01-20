@@ -1,0 +1,25 @@
+.inner{
+    margin-left: 20px;
+}
+table{
+    margin: auto;
+    border: 1px solid black;
+}
+tr{
+   border: 1px solid black;
+   padding: 10px;
+}
+td{
+    border: 1px solid black;
+    padding: 10px;
+ }
+
+ @media screen and (max-width: 600px) {
+    .container{
+        padding: 10px;
+    }
+
+    table{
+        font-size: 12px;
+    }
+ }
