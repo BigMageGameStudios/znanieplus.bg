@@ -22,17 +22,18 @@ export class AppComponent {
     @Inject(PLATFORM_ID) private platformId: Object,
   ) { }
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId) && this.SwUpdate.isEnabled) {
 
-      this.window.navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        for (let registration of registrations) {
-          registration.unregister()
+      if(this.window.navigator && this.window.navigator.serviceWorker) {
+        try{
+          const registrations = await this.window.navigator.serviceWorker.getRegistrations();
+          const promises = registrations.map((item) => item.unregister());
+          await Promise.all(promises);
+        }catch(error){
+          console.warn(error);
         }
-      }).catch((err) =>{
-        console.log('Service Worker registration failed: ', err);
-
-      });
+      }
 
       this.subscription = this.SwUpdate.versionUpdates.subscribe((event) => {
         switch (event.type) {
