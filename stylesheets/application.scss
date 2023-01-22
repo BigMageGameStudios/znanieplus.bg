@@ -144,6 +144,11 @@ h2.title {
     z-index: 9999;
 }
 
+.link{
+    text-decoration: none;
+    color: #506ee1;
+}
+
 @media (max-width: 750px) {
     div.container {
         width: 100vw !important;
