@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { ErrorHandler, NgModule, ɵɵinject } from '@angular/core';
 import { Router, RouterModule, UrlSerializer } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -9,7 +8,6 @@ import { TransferHttpCacheModule } from './modules/transfer-http';
 import { PreloadStrategy } from './modules/preload-strategy';
 
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './app.routes';
-import { environment } from '../environments/environment';
 import { ErrorIntercept } from './helpers/error.interceptor';
 import { CustomViewportScroller } from './modules/custom-viewport-scroller';
 
@@ -27,7 +25,6 @@ import { CustomViewportScroller } from './modules/custom-viewport-scroller';
       preloadingStrategy: PreloadStrategy,
       anchorScrolling: 'enabled',
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule
   ],
   providers: [
