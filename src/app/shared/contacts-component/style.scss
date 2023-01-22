@@ -18,6 +18,10 @@ div.gray {
                 flex: 1;
             }
 
+            div.margin{
+                margin-top: 18px;
+            }
+
             div.right {
                 padding-right: 20px;
             }
@@ -37,8 +41,9 @@ div.gray {
 
             label {
                 position: absolute;
-                color: white;
+                color: black;
                 top: -18px;
+                font-size: 14px;
             }
 
             textarea {
