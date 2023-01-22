@@ -15,12 +15,11 @@ mat-toolbar {
     mat-toolbar-row.mobile {
         display: none;
         background-color: white;
-        -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.55);
-        -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.55);
-        box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.55);
+        -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.10);
+        -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.10);
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.10);
 
-        a.title {
-            text-decoration: none;
+        img.title {
             margin-left: 15px;
         }
 
@@ -42,9 +41,9 @@ mat-toolbar {
         height: 84px !important;
 
         &.scroll {
-            -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.55);
-            -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.55);
-            box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.55);
+            -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.10);
+            -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.10);
+            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.10);
             height: 56px !important;
         }
 

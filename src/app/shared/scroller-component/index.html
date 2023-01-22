@@ -12,23 +12,23 @@
                     </span>
                 </div>
                 <div >
-                    <h4>
+                    <h3>
                         {{item.name}}
-                    </h4>
+                    </h3>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="prev" (click)="prev()">
-        <a matRipple>
-            <i class="flaticon-left-arrow"></i>
-        </a>
+        <button  class="image-button" matRipple>
+            <img class="flex contain" src="/assets/images/arrow-left.svg" width="32" height="32" loading="lazy" decoding="async" alt="card"/>
+        </button>
     </div>
 
     <div class="next" (click)="next()">
-        <a matRipple>
-            <i class="flaticon-right-arrow"></i>
-        </a>
+        <button  class="image-button" matRipple>
+            <img class="flex contain" src="/assets/images/arrow-right.svg" width="32" height="32" loading="lazy" decoding="async" alt="card"/>
+        </button>
     </div>
 </div>
