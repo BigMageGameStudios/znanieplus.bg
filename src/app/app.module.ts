@@ -9,6 +9,7 @@ import { TransferHttpCacheModule } from './modules/transfer-http';
 import { PreloadStrategy } from './modules/preload-strategy';
 
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './app.routes';
+import { environment } from '../environments/environment';
 import { ErrorIntercept } from './helpers/error.interceptor';
 import { CustomViewportScroller } from './modules/custom-viewport-scroller';
 
@@ -26,7 +27,7 @@ import { CustomViewportScroller } from './modules/custom-viewport-scroller';
       preloadingStrategy: PreloadStrategy,
       anchorScrolling: 'enabled',
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule
   ],
   providers: [

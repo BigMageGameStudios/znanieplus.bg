@@ -22,18 +22,8 @@ export class AppComponent {
     @Inject(PLATFORM_ID) private platformId: Object,
   ) { }
 
-  async ngAfterViewInit() {
+  ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId) && this.SwUpdate.isEnabled) {
-
-      if(this.window.navigator && this.window.navigator.serviceWorker) {
-        try{
-          const registrations = await this.window.navigator.serviceWorker.getRegistrations();
-          const promises = registrations.map((item) => item.unregister());
-          await Promise.all(promises);
-        }catch(error){
-          console.warn(error);
-        }
-      }
 
       this.subscription = this.SwUpdate.versionUpdates.subscribe((event) => {
         switch (event.type) {
