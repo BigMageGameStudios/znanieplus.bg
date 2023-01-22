@@ -1,7 +1,7 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="over">
     <div class="icon">
-      <img width="125" src="/assets/images/logo-banner.png" />
+      <img loading="lazy" decoding="async" width="125" height="30" class="contain" src="/assets/images/logo-banner.png" />
     </div>
     <ul>
       <li>
@@ -35,7 +35,7 @@
       <mat-toolbar-row class="desktop" [class.scroll]="active">
         <div class="container flex">
           <a class="flex logo" routerLink="/" fragment="home">
-            <img src="/assets/images/logo-banner.png" alt="logo" />
+            <img loading="lazy" decoding="async" src="/assets/images/logo-banner.png" alt="logo" />
           </a>
           <div class="navigation flex">
             <a class="yellow" routerLink="/card">
@@ -50,7 +50,7 @@
       </mat-toolbar-row>
       <mat-toolbar-row class="mobile">
         <button mat-icon-button (click)="drawer.toggle()" aria-label="drawer">
-          <img src="/assets/images/drawer.svg" alt="logo" />
+          <img loading="lazy" decoding="async" src="/assets/images/drawer.svg" alt="logo" />
         </button>
         <a class="title black-color" routerLink="/" fragment="home" >
           <span>Знание плюс</span>
@@ -63,8 +63,7 @@
     <div class="footer">
       <div class="container information flex">
         <div class="logo flex">
-          <lazy-image-component objectFit="contain" src="/assets/images/logo-banner.png" width="210px" height="130px">
-          </lazy-image-component>
+          <img loading="lazy" decoding="async" class="contain" src="/assets/images/logo-banner.png" width="210px" height="130px" />
         </div>
         <div class="navigation flex">
           <div class="bordered flex">
@@ -131,7 +130,7 @@
       </div>
       <div class="rights">
         <h4>
-          &copy; {{getDate()}} ЗНАНИЕ ПЛЮС | <a href="https://www.primecode.company/" target="_blank"
+          &copy; {{getDate()}} ЗНАНИЕ ПЛЮС | <a href="https://www.prime-code.com" target="_blank"
             rel="noreferrer">Designed by
             Prime Code Company</a>
         </h4>

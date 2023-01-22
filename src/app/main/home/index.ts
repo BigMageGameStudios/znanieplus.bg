@@ -8,7 +8,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeComponent } from './component';
 import { ScrollerModule } from '../../shared/scroller-component';
 import { ContactsModule } from 'src/app/shared/contacts-component';
-import { LazyImageModule } from 'src/app/shared/lazy-image-component';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { LazyImageModule } from 'src/app/shared/lazy-image-component';
     MatRippleModule,
     ScrollerModule,
     ContactsModule,
-    MatExpansionModule,
-    LazyImageModule
+    MatExpansionModule
   ]
 })
 

@@ -5,17 +5,15 @@
 <div class="list">
     <div class="responsive" *ngFor="let item of items; let i = index" #images>
         <a (click)="changeImage(i)">
-            <img [src]="api_url+'/storage/' + item.name" [class.active]="index == i" alt="photo"/>
+            <img decoding="async" loading="lazy" [src]="api_url+'/storage/' + item.name" [class.active]="index == i" alt="photo"/>
         </a>
     </div>
 </div>
 
 <a class="full-screen" mat-ripple (click)="setFullScreen()" aria-label="full-screen">
-    <lazy-image-component objectFit="contain" class="flex" src="/assets/images/full-screen.svg" width="34px" height="34px">
-    </lazy-image-component>
+    <img class="contain flex" decoding="async" loading="lazy" src="/assets/images/full-screen.svg" width="34px" height="34px"/>
 </a>
 
 <a class="close" mat-ripple (click)="close()" aria-label="close">
-    <lazy-image-component objectFit="contain" class="flex" src="/assets/images/close-white.svg" width="30px" height="30px">
-    </lazy-image-component>
+    <img class="contain flex" decoding="async" loading="lazy" src="/assets/images/close-white.svg" width="30px" height="30px"/>
 </a>

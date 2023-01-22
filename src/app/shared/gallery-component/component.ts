@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectionStrategy, ElementRef, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'gallery-component',
@@ -10,15 +10,7 @@ import { Component, ViewChild, ChangeDetectionStrategy, ElementRef, Input } from
 export class GalleryComponent {
 
   @Input('src') src: string;
-  @ViewChild('image', { static: true }) image: ElementRef;
 
-  constructor() {
-
-  }
-
-  onImageLoad() {
-    const classlist = this.image.nativeElement.classList;
-    classlist.add('loaded')
-  }
+  constructor() {}
 
 }

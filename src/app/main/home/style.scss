@@ -9,9 +9,9 @@ div.container {
         position: relative;
         display: flex;
         justify-content: center;
-        margin-top: 15px;
+        padding-top: 15px;
 
-        lazy-image-component {
+        img {
             height: 100%;
             width: calc(100% - 180px);
             margin-left: 110px;
@@ -66,7 +66,7 @@ div.container {
                 left: 10px;
             }
 
-            lazy-image-component {
+            img {
                 padding: 20px;
                 border: solid 4px $yellow;
             }
@@ -115,7 +115,7 @@ div.container {
                 }
             }
 
-            lazy-image-component {
+            img {
                 width: 100%;
                 height: 249px;
             }
@@ -150,7 +150,7 @@ div.container {
         position: relative;
         padding-top: 60px;
 
-        lazy-image-component {
+        img {
             width: 100%;
             height: 731px;
         }
@@ -450,7 +450,7 @@ mat-expansion-panel {
             height: 75% !important;
         }
 
-        lazy-image-component {
+        img {
             margin-left: 0px !important;
         }
     }
@@ -481,7 +481,7 @@ mat-expansion-panel {
         flex-direction: column;
 
         div {
-            lazy-image-component {
+            img {
                 height: auto !important;
             }
 
@@ -527,7 +527,7 @@ mat-expansion-panel {
     div.banner {
         height: 32vh !important;
 
-        lazy-image-component {
+        img {
             width: calc(100% - 60px) !important;
         }
 
@@ -542,7 +542,7 @@ mat-expansion-panel {
     }
 
     div.office {
-        lazy-image-component {
+        img {
             height: 230px !important;
         }
     }

@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { ScanPage } from './component';
-import { LazyImageModule } from 'src/app/shared/lazy-image-component';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { LazyImageModule } from 'src/app/shared/lazy-image-component';
       path: '',
       component: ScanPage
     }]),
-    MatDialogModule,
-    LazyImageModule
+    MatDialogModule
   ]
 })
 

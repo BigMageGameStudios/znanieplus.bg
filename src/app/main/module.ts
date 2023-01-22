@@ -12,7 +12,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MODULE_ROUTES, MODULE_COMPONENTS } from './routes';
 import { MainProvidersModule } from './providers/module';
 import { MainResolversModule } from './resolvers/module';
-import { LazyImageModule } from '../shared/lazy-image-component';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { LazyImageModule } from '../shared/lazy-image-component';
     MatSidenavModule,
     MatDialogModule,
     MainProvidersModule,
-    MainResolversModule,
-    LazyImageModule
+    MainResolversModule
   ]
 })
 

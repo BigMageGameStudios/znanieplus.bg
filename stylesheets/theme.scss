@@ -19,4 +19,5 @@ $dark-theme: mat.define-light-theme((
  typography: mat.define-typography-config(),
  density: 0,
 ));
+
 @include mat.all-component-themes($dark-theme);

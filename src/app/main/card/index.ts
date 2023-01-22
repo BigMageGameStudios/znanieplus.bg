@@ -7,7 +7,6 @@ import { MatRippleModule } from '@angular/material/core';
 import { CardComponent } from './component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { LazyImageModule } from 'src/app/shared/lazy-image-component';
 
 @NgModule({
     declarations: [
@@ -20,8 +19,7 @@ import { LazyImageModule } from 'src/app/shared/lazy-image-component';
         MatRippleModule,
         FormsModule,
         ReactiveFormsModule,
-        MatInputModule,
-        LazyImageModule
+        MatInputModule
     ]
 })
 

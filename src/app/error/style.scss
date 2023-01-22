@@ -5,7 +5,7 @@
     justify-content: center;
 }
 
-lazy-image-component {
+img {
     flex: 1;
     max-width: 40%;
 }
@@ -48,7 +48,7 @@ div.actions {
 }
 
 @media (max-width: 500px) {
-    lazy-image-component {
+    img {
         position: absolute;
         max-width: 100%;
         left: 0;
