@@ -47,8 +47,7 @@
             ],
             "styles": [
               "./stylesheets/fonts.scss",
-              "./stylesheets/theme.scss",
-              "src/assets/flaticon/flaticon.css"
+              "./stylesheets/theme.scss"
             ]
           },
           "configurations": {
@@ -137,8 +136,8 @@
               }
             ],
             "styles": [
-              "./stylesheets/application.scss",
-              "src/assets/flaticon/flaticon.css"
+              "./stylesheets/fonts.scss",
+              "./stylesheets/theme.scss"
             ],
             "scripts": []
           }
@@ -198,8 +197,7 @@
             ],
             "styles": [
               "./stylesheets/fonts.scss",
-              "./stylesheets/theme.scss",
-              "src/assets/flaticon/flaticon.css"
+              "./stylesheets/theme.scss"
             ]
           },
           "configurations": {
