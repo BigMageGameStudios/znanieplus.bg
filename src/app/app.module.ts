@@ -27,7 +27,7 @@ import { CustomViewportScroller } from './modules/custom-viewport-scroller';
       preloadingStrategy: PreloadStrategy,
       anchorScrolling: 'enabled',
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
     HttpClientModule
   ],
   providers: [
