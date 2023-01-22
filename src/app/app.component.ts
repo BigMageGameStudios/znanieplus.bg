@@ -25,6 +25,15 @@ export class AppComponent {
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId) && this.SwUpdate.isEnabled) {
 
+      this.window.navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (let registration of registrations) {
+          registration.unregister()
+        }
+      }).catch((err) =>{
+        console.log('Service Worker registration failed: ', err);
+
+      });
+
       this.subscription = this.SwUpdate.versionUpdates.subscribe((event) => {
         switch (event.type) {
           case ('VERSION_READY'): {

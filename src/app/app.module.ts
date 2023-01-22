@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { ErrorHandler, NgModule, ɵɵinject } from '@angular/core';
 import { Router, RouterModule, UrlSerializer } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -25,6 +26,7 @@ import { CustomViewportScroller } from './modules/custom-viewport-scroller';
       preloadingStrategy: PreloadStrategy,
       anchorScrolling: 'enabled',
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
     HttpClientModule
   ],
   providers: [

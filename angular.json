@@ -65,7 +65,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "serviceWorker": false,
+              "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json",
               "budgets": [
                 {
@@ -215,7 +215,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "serviceWorker": false,
+              "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json",
               "budgets": [
                 {
