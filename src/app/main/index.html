@@ -5,6 +5,11 @@
     </div>
     <ul>
       <li>
+        <a routerLink="/scan"  routerLinkActive="active" (click)="drawer.toggle()">
+          Провери карта
+        </a>
+      </li>
+      <li>
         <a routerLink="/" [class.active]="activeRoute == 'home'" fragment="home" (click)="drawer.toggle()">
           Начало
         </a>
@@ -23,11 +28,6 @@
           Контакти
         </a>
       </li>
-      <li>
-        <a class="yellow" routerLink="/scan">
-          Провери карта
-        </a>
-      </li>
     </ul>
   </mat-drawer>
   <mat-drawer-content>
@@ -38,9 +38,7 @@
             <img loading="lazy" decoding="async" src="/assets/images/logo-banner.png" alt="logo" />
           </a>
           <div class="navigation flex">
-            <a class="yellow" routerLink="/card">
-              Провери карта
-            </a>
+            <a routerLink="/card" routerLinkActive="active"><span>Провери карта</span></a>
             <a routerLink="/" fragment="home" [class.active]="activeRoute == 'home'"><span>Начало</span></a>
             <a routerLink="/" fragment="places" [class.active]="activeRoute == 'places'"><span>Обекти</span></a>
             <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
