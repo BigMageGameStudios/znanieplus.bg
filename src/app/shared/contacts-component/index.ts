@@ -5,13 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContactsComponent } from './component';
 import { MatButtonModule } from '@angular/material/button';
 import { MailProvider } from 'src/app/providers/MailProvider';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRippleModule
   ],
   providers: [
     MailProvider

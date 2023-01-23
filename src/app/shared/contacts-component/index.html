@@ -32,7 +32,7 @@
                             <label for="message">Съобщение</label>
                             <textarea  [class.error]="form.get('message').invalid" placeholder="Съобщение *" rows="5" autocomplete="nope" formControlName="message"></textarea>
                         </div>
-                        <button mat-raised-button color="primary" type="submit" [disabled]="loading">Потвърди</button>
+                        <button matRipple class="primary-btn" type="submit" [disabled]="loading">Потвърди</button>
                     </div>
 
                     <div class="contact">

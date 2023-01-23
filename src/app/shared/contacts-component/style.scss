@@ -124,6 +124,8 @@ div.gray {
                 max-width: 300px;
                 width: 100%;
                 text-transform: uppercase;
+                padding: 12px 0;
+                border-radius: 4px;
             }
         }
         form.submitted{
@@ -171,7 +173,12 @@ div.gray {
             }
 
             div.contact {
+                margin-top: 24px;
                 text-align: center;
+            }
+
+            button{
+                max-width: unset !important ;
             }
         }
     }
