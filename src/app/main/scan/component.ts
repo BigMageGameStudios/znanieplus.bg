@@ -92,7 +92,7 @@ export class ScanPage implements OnInit, OnDestroy {
 
       const qrCodeErrorCallback = (decodedText, decodedResult) => { };
 
-      const config = { fps: 10, qrbox: { width: 280, height: 200 }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13] };
+      const config = { fps: 20, qrbox: { width: 250, height: 180 }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13] };
 
       try {
         await this.scanner.start({ facingMode: "environment" }, config, qrCodeSuccessCallback, qrCodeErrorCallback);

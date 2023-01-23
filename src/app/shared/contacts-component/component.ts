@@ -48,9 +48,12 @@ export class ContactsComponent {
       this.loading = true;
       this.change.markForCheck();
       this.mailProvider.post(this.form.value).subscribe((data) => {
+
         if(data?.result){
+          this.submitted = false;
           this.formDirective.resetForm();
         }
+
         this.loading = false;
         this.change.markForCheck();
       });
