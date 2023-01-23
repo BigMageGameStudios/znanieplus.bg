@@ -83,7 +83,7 @@ mat-toolbar {
                         position: relative;
                     }
 
-                    &.active {
+                    &.active.activated {
                         &::before {
                             content: " ";
                             background-color: $yellow;
@@ -229,7 +229,7 @@ mat-drawer-container {
                     font-size: 18px;
                     position: relative;
 
-                    &.active::before {
+                    &.active.activated::before {
                         content: "";
                         position: absolute;
                         bottom: -5px;

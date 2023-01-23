@@ -1,4 +1,7 @@
 export { Environment } from './config'
+export const EMAIL_PROVIDER = 'https://prime-code.com/api/1/mail/send/znanieplus'
+
+
 export const FileTypes = {
   image: {
     type: 1,

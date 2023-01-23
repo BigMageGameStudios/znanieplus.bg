@@ -1,39 +1,40 @@
 <div class="gray">
     <div class="container">
         <div class="contacts">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" [class.submitted]="submitted" #formDirective="ngForm">
                 <div class="center">
                     <h2 class="title">
-                        <span>Свържи се с нас</span>                     
+                        <span>Свържи се с нас</span>
                     </h2>
-                    <p class="intro">Поискай от нас индивидуална оферта, кандидатствай за одобрение в партньорската ни мрежа или просто сподели какво мислиш за ЗНАНИЕ+</p>
-                    
+                    <p class="intro">
+                        Поискай от нас индивидуална оферта, кандидатствай за одобрение в партньорската ни
+                        мрежа или просто сподели какво мислиш за ЗНАНИЕ+
+                    </p>
+
                 </div>
                 <div class="form flex">
                     <div class="right">
                         <div class="relative margin">
                             <label for="name">Име</label>
-                            <input id="name" type="text" placeholder="Име *" autocomplete="name" formControlName="name"
-                                aria-labelledby="name" />
+                            <input [class.error]="form.get('name').invalid" type="text" placeholder="Име *" autocomplete="nope" formControlName="name" aria-labelledby="name" />
                         </div>
                         <div class="relative margin">
                             <label for="email">Имейл адрес</label>
-                            <input id="email" type="text" placeholder="Имейл адрес *" autocomplete="email"
-                                formControlName="email" />
+                            <input [class.error]="form.get('email').invalid" type="email" placeholder="Имейл адрес *" autocomplete="nope" formControlName="email" />
                         </div>
                     </div>
                     <div>
                         <div class="relative margin">
                             <label for="phone">Телефон за връзка</label>
-                            <input id="phone" type="text" placeholder="Телефон за връзка" autocomplete="phone"
-                                formControlName="phone" />
+                            <input [class.error]="form.get('phone').invalid" type="tel" placeholder="Телефон за връзка" autocomplete="nope" formControlName="phone" />
                         </div>
                         <div class="relative margin">
                             <label for="message">Съобщение</label>
-                            <textarea id="message" placeholder="Съобщение *" rows="5" autocomplete="off"
-                                formControlName="message"></textarea>
+                            <textarea  [class.error]="form.get('message').invalid" placeholder="Съобщение *" rows="5" autocomplete="nope" formControlName="message"></textarea>
                         </div>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="loading">Потвърди</button>
                     </div>
+
                     <div class="contact">
                         <h3>Централен Офис</h3>
                         <p class="margin">гр. София, ул. Бойчо Войвода 7</p>

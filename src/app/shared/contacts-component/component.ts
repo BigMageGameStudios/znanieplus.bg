@@ -1,5 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
+import { validateEmail } from 'src/app/helpers/emailValidator';
+import { MailProvider } from 'src/app/providers/MailProvider';
 
 @Component({
   selector: 'contacts-component',
@@ -10,27 +12,49 @@ import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms
 
 export class ContactsComponent {
 
-  form = new UntypedFormGroup({
-    name: new UntypedFormControl('', [
+  form = new FormGroup({
+    name: new FormControl('', [
       Validators.required,
       Validators.maxLength(255),
     ]),
-    email: new UntypedFormControl('', [
+    email: new FormControl('', [
       Validators.required,
       Validators.maxLength(255),
-      Validators.email,
+      validateEmail,
     ]),
-    phone: new UntypedFormControl('', [
-      Validators.required
+    phone: new FormControl('', [
+      Validators.pattern("^((\\+359)|(359)|(00359)|0)?((89)|(98)|(88)|87)[0-9]{7}$")
     ]),
-    message: new UntypedFormControl('', [
+    message: new FormControl('', [
       Validators.required,
       Validators.maxLength(500),
     ])
   });
 
-  constructor() { }
+  @ViewChild("formDirective") formDirective!: FormGroupDirective;
 
-  onSubmit() { }
+  submitted = false;
+  loading = false;
+
+  constructor(
+    private change: ChangeDetectorRef,
+    private mailProvider: MailProvider
+  ) { }
+
+  onSubmit() { 
+    this.submitted = true;
+    this.change.markForCheck();
+    if(this.form.valid){
+      this.loading = true;
+      this.change.markForCheck();
+      this.mailProvider.post(this.form.value).subscribe((data) => {
+        if(data?.result){
+          this.formDirective.resetForm();
+        }
+        this.loading = false;
+        this.change.markForCheck();
+      });
+    }
+  }
 
 }

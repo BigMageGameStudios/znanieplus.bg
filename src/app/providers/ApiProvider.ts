@@ -47,9 +47,8 @@ export class ApiProvider {
     }
 
     private handleError(error) {
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        return throwError(errMsg);
+        const errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        return throwError(() => new Error(errMsg));
     }
 
 }

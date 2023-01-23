@@ -5,26 +5,26 @@
     </div>
     <ul>
       <li>
-        <a routerLink="/scan"  routerLinkActive="active" (click)="drawer.toggle()">
+        <a routerLink="/scan"  routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
           Провери карта
         </a>
       </li>
       <li>
-        <a routerLink="/" [class.active]="activeRoute == 'home'" fragment="home" (click)="drawer.toggle()">
+        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'home'" fragment="home" (click)="drawer.toggle()">
           Начало
         </a>
       </li>
       <li>
-        <a routerLink="/" [class.active]="activeRoute == 'places'" fragment="places" (click)="drawer.toggle()">
+        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'places'" fragment="places" (click)="drawer.toggle()">
           Обекти
         </a>
       </li>
       <li>
-        <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'" (click)="drawer.toggle()">
+        <a routerLink="/" routerLinkActive="activated" fragment="about-us" [class.active]="activeRoute == 'about-us'" (click)="drawer.toggle()">
           За нас</a>
       </li>
       <li>
-        <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'" (click)="drawer.toggle()">
+        <a routerLink="/" routerLinkActive="activated" fragment="contacts" [class.active]="activeRoute == 'contacts'" (click)="drawer.toggle()">
           Контакти
         </a>
       </li>
@@ -38,11 +38,11 @@
             <img loading="lazy" decoding="async" src="/assets/images/logo-banner.png" alt="logo" />
           </a>
           <div class="navigation flex">
-            <a routerLink="/card" routerLinkActive="active"><span>Провери карта</span></a>
-            <a routerLink="/" fragment="home" [class.active]="activeRoute == 'home'"><span>Начало</span></a>
-            <a routerLink="/" fragment="places" [class.active]="activeRoute == 'places'"><span>Обекти</span></a>
-            <a routerLink="/" fragment="about-us" [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
-            <a routerLink="/" fragment="contacts" [class.active]="activeRoute == 'contacts'"><span>Контакти</span></a>
+            <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()"><span>Провери карта</span></a>
+            <a routerLink="/" fragment="home" routerLinkActive="activated" [class.active]="activeRoute == 'home'"><span>Начало</span></a>
+            <a routerLink="/" fragment="places" routerLinkActive="activated" [class.active]="activeRoute == 'places'"><span>Обекти</span></a>
+            <a routerLink="/" fragment="about-us"  routerLinkActive="activated"[class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
+            <a routerLink="/" fragment="contacts" routerLinkActive="activated" [class.active]="activeRoute == 'contacts'"><span>Контакти</span></a>
           </div>
         </div>
       </mat-toolbar-row>
@@ -87,13 +87,13 @@
                 </a>
               </li>
               <li>
-                <a routerLink="/card">
+                <a routerLink="/card" (click)="removeFragment()">
                   Провери карта
                 </a>
               </li>
 
               <li>
-                <a routerLink="/scan">
+                <a routerLink="/scan" (click)="removeFragment()">
                   Провери карта с мобилно устройство
                 </a>
               </li>
@@ -130,7 +130,7 @@
         <h4>
           &copy; {{getDate()}} ЗНАНИЕ ПЛЮС | <a href="https://www.prime-code.com" target="_blank"
             rel="noreferrer">Designed by
-            Prime Code Company</a>
+            Prime Code</a>
         </h4>
       </div>
     </div>

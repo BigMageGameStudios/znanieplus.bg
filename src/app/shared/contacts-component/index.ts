@@ -3,12 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ContactsComponent } from './component';
+import { MatButtonModule } from '@angular/material/button';
+import { MailProvider } from 'src/app/providers/MailProvider';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule
+  ],
+  providers: [
+    MailProvider
   ],
   declarations: [
     ContactsComponent

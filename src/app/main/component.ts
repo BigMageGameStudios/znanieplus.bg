@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, HostListener } from '@angular/core';
+import { Component, ChangeDetectionStrategy, HostListener, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -15,8 +15,9 @@ export class MainComponent {
   url = '/';
 
   constructor(
+    private Router: Router,
+    private change: ChangeDetectorRef,
     private ActivatedRoute: ActivatedRoute,
-    private Router: Router
   ) { }
 
   ngOnInit() {
@@ -25,6 +26,7 @@ export class MainComponent {
         return this.activeRoute = 'home';
       }
       this.activeRoute = data;
+      this.change.markForCheck();
     });
   }
 
@@ -35,6 +37,11 @@ export class MainComponent {
     } else {
       this.active = false;
     }
+  }
+  
+  removeFragment(){
+    this.activeRoute = null;
+    this.change.markForCheck();
   }
 
   getDate() {
