@@ -4,26 +4,28 @@
         <span>Профил</span>
     </h2>
 
-    <div class="card">
-        <div class="code-box">
-            <div class="code" [innerHTML]="img | safeHTML">
-
+    <div class="flex-box">
+        <div class="card">
+            <div class="code-box">
+                <div class="code" [innerHTML]="img | safeHTML">
+    
+                </div>
+            </div>
+            <div class="card-info">
+                <img loading="lazy" decoding="async" width="125" height="30" class="contain" src="/assets/images/logo-banner.png" alt="logo" />
+                <div class="card-number">
+                    <h3>
+                        Номер на карта
+                    </h3>
+                    <p>
+                        {{ token }}
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="card-info">
-            <img loading="lazy" decoding="async" width="125" height="30" class="contain" src="/assets/images/logo-banner.png" alt="logo" />
-            <div class="card-number">
-                <h3>
-                    Номер на карта
-                </h3>
-                <p>
-                    {{ token }}
-                </p>
-            </div>
-        </div>
+    
+        <button matRipple class="primary-btn exit" (click)="exit()">Изход</button>
     </div>
-
-    <button matRipple class="primary-btn exit" (click)="exit()">Изход</button>
 
 </div>
 <contacts-component></contacts-component>

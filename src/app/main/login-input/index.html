@@ -1,0 +1,22 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field color="primary">
+            <input #inputBillOfLanding matInput placeholder="Номер на карта" formControlName="text" autocomplete="off">
+            <button class="image-button" aria-label="Clear" (click)="onClear()" matRipple type="button" matSuffix>
+                <img decoding="async" loading="lazy" class="flex contain" src="/assets/images/close.svg" width="32px" height="32px"/>
+            </button>
+        </mat-form-field>
+        <button mat-raised-button type="submit">Потвърждаване</button>
+    </form>
+
+    <ng-container *ngIf="submited">
+        <div id="valid" *ngIf="active else notActive">
+            Картата е активна
+        </div>
+        <ng-template #notActive>
+            <div id="invalid">
+                Невалидна карта
+            </div>
+        </ng-template>
+    </ng-container>
+</div>

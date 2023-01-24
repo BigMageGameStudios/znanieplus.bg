@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot } from '@ang
 import { map } from 'rxjs';
 import { IObjectKeys } from '../helpers/interfaces';
 import { LOCAL_STORAGE } from '../modules/local-storage';
+import { WINDOW } from '../modules/window';
 import { MapProvider } from '../providers';
 import { MainComponent } from './component';
 import { CardProvider } from './providers';
@@ -41,8 +42,15 @@ export const MODULE_ROUTES: Route[] = [
         },
       },
       {
-        path: 'login',
-        loadChildren: () => import('./login/index').then(m => m.LoginModule),
+        path: 'login-scan',
+        loadChildren: () => import('./login-scan/index').then(m => m.LoginModule),
+        data: {
+          preload: true
+        },
+      },
+      {
+        path: 'login-input',
+        loadChildren: () => import('./login-input/index').then(m => m.LoginModule),
         data: {
           preload: true
         },
@@ -53,12 +61,13 @@ export const MODULE_ROUTES: Route[] = [
         canActivate: [(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
           const localStorage = inject(LOCAL_STORAGE);
           const cardrovider = inject(CardProvider);
+          const window = inject(WINDOW);
           const router = inject(Router);
 
           const token = localStorage.getItem(MapProvider.USER);
 
           if(!token){
-            router.navigateByUrl('/login');
+            router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');
             return false;
           }
 
@@ -66,7 +75,7 @@ export const MODULE_ROUTES: Route[] = [
             if(result.active){
               return true;
             }
-            router.navigateByUrl('/login');
+            router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');
             return false;
           }));
         }],

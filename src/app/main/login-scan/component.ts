@@ -7,7 +7,7 @@ import { MapProvider, SEOProvider } from 'src/app/providers';
 import { CardProvider } from '../providers';
 
 @Component({
-  selector: 'login-page',
+  selector: 'login-scan-page',
   templateUrl: 'index.html',
   styleUrls: ['style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

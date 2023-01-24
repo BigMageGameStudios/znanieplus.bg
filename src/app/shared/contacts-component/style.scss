@@ -31,13 +31,19 @@ div.gray {
                 margin: 0;
             }
 
-            p {
+            p, a {
                 font-size: 14px;
                 margin: 0;
 
                 &.margin {
                     margin: 10px 0;
                 }
+            }
+
+            a{
+                text-decoration: none;
+                display: block;
+                color: black;
             }
 
             label {

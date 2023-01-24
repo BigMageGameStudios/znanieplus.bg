@@ -1,0 +1,43 @@
+.container {
+    min-height: 100%;
+}
+
+mat-form-field {
+    width: 300px;
+}
+
+#valid {
+    color: green;
+    font-size: 22px;
+    font-weight: 800;
+    text-align: center;
+}
+
+#invalid {
+    color: red;
+    font-size: 22px;
+    font-weight: 800;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    margin-top: 25px;
+    button[type=submit]{
+        width: 300px;
+    }
+
+}
+
+button.image-button {
+    margin-right: 4px;
+}
+
+@media (max-width: 600px) {
+    form{
+        align-items: center;
+    }
+}

@@ -52,45 +52,44 @@ div.container {
         }
     }
 
-    div.places {
-        padding-top: 60px;
-        justify-content: space-between;
-        display: none;
+    // div.places {
+    //     padding-top: 60px;
+    //     justify-content: space-between;
 
-        div {
-            position: relative;
-            align-items: center;
+    //     div {
+    //         position: relative;
+    //         align-items: center;
 
 
-            &.sale {
-                left: 10px;
-            }
+    //         &.sale {
+    //             left: 10px;
+    //         }
 
-            img {
-                padding: 20px;
-                border: solid 4px $yellow;
-            }
+    //         img {
+    //             padding: 20px;
+    //             border: solid 4px $yellow;
+    //         }
 
-            div.description {
-                max-width: 320px;
-                background-color: $yellow;
-                padding: 10px;
-                padding: 18px;
-                position: relative;
-                top: -20px;
-                left: -10px;
+    //         div.description {
+    //             max-width: 320px;
+    //             background-color: $yellow;
+    //             padding: 10px;
+    //             padding: 18px;
+    //             position: relative;
+    //             top: -20px;
+    //             left: -10px;
 
-                h4 {
-                    margin: 0;
-                }
+    //             h4 {
+    //                 margin: 0;
+    //             }
 
-                p {
-                    font-size: 14px;
-                    margin: 2px 0;
-                }
-            }
-        }
-    }
+    //             p {
+    //                 font-size: 14px;
+    //                 margin: 2px 0;
+    //             }
+    //         }
+    //     }
+    // }
 
     div.company {
         margin: 80px 0;
