@@ -1,6 +1,12 @@
-import { Route } from '@angular/router';
+import { inject } from '@angular/core';
+import { ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot } from '@angular/router';
+import { map } from 'rxjs';
+import { IObjectKeys } from '../helpers/interfaces';
+import { LOCAL_STORAGE } from '../modules/local-storage';
+import { MapProvider } from '../providers';
 import { MainComponent } from './component';
-import { HomeResolver, PlaceResolver } from './resolvers';
+import { CardProvider } from './providers';
+import { HomeResolver, PartnerResolver } from './resolvers';
 
 export const MODULE_ROUTES: Route[] = [
   {
@@ -18,10 +24,10 @@ export const MODULE_ROUTES: Route[] = [
         },
       },
       {
-        path: 'place/:key',
-        loadChildren: () => import('./place/index').then(m => m.PlaceModule),
+        path: 'partner/:key',
+        loadChildren: () => import('./partner/index').then(m => m.PartnerModule),
         resolve: {
-          item: PlaceResolver
+          item: PartnerResolver
         },
         data: {
           preload: true
@@ -30,6 +36,40 @@ export const MODULE_ROUTES: Route[] = [
       {
         path: 'scan',
         loadChildren: () => import('./scan/index').then(m => m.ScanModule),
+        data: {
+          preload: true
+        },
+      },
+      {
+        path: 'login',
+        loadChildren: () => import('./login/index').then(m => m.LoginModule),
+        data: {
+          preload: true
+        },
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('./profile/index').then(m => m.ProfileModule),
+        canActivate: [(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+          const localStorage = inject(LOCAL_STORAGE);
+          const cardrovider = inject(CardProvider);
+          const router = inject(Router);
+
+          const token = localStorage.getItem(MapProvider.USER);
+
+          if(!token){
+            router.navigateByUrl('/login');
+            return false;
+          }
+
+          return cardrovider.get(token).pipe(map((result: IObjectKeys) => {
+            if(result.active){
+              return true;
+            }
+            router.navigateByUrl('/login');
+            return false;
+          }));
+        }],
         data: {
           preload: true
         },

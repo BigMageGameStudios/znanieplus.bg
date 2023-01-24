@@ -1,7 +1,7 @@
-import { PlaceProvider } from './PlaceProvider';
+import { PartnerProvider } from './PartnerProvider';
 import { CardProvider } from './CardProvider';
 
 export {
-    PlaceProvider,
+    PartnerProvider,
     CardProvider
 }

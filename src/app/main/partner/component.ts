@@ -8,13 +8,13 @@ import { SEOProvider } from 'src/app/providers';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
-  selector: 'place-page',
+  selector: 'partner-page',
   templateUrl: 'index.html',
   styleUrls: ['style.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class PlaceComponent {
+export class PartnerComponent {
 
   item: any;
   api_url = Environment.api_url;
@@ -34,7 +34,7 @@ export class PlaceComponent {
       ogType: 'article',
       ogDescription: item.address,
       ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
-      canonicalURL: `/place/${item.id}`
+      canonicalURL: `/partner/${item.id}`
     });
   }
 

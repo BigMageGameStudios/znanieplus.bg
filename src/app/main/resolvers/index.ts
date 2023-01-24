@@ -1,7 +1,7 @@
 import { HomeResolver } from './HomeResolver';
-import { PlaceResolver } from './PlaceResolver';
+import { PartnerResolver } from './PartnerResolver';
 
 export {
     HomeResolver,
-    PlaceResolver
+    PartnerResolver
 }

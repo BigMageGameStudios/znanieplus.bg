@@ -1,22 +1,27 @@
 <mat-drawer-container autosize>
-  <mat-drawer #drawer mode="over">
+  <mat-drawer #drawer mode="push">
     <div class="icon">
       <img loading="lazy" decoding="async" width="125" height="30" class="contain" src="/assets/images/logo-banner.png" alt="logo" />
     </div>
     <ul>
-      <li>
-        <a routerLink="/scan"  routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
-          Провери карта
-        </a>
-      </li>
       <li>
         <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'home'" fragment="home" (click)="drawer.toggle()">
           Начало
         </a>
       </li>
       <li>
-        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'places'" fragment="places" (click)="drawer.toggle()">
-          Обекти
+        <a routerLink="/scan"  routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
+          Провери карта
+        </a>
+      </li>
+      <li>
+        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'partners'" fragment="partners" (click)="drawer.toggle()">
+          Партньори
+        </a>
+      </li>
+      <li>
+        <a routerLink="/profile"  routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
+          Профил
         </a>
       </li>
       <li>
@@ -38,9 +43,10 @@
             <img loading="lazy" decoding="async" src="/assets/images/logo-banner.png" alt="logo" />
           </a>
           <div class="navigation flex">
-            <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()"><span>Провери карта</span></a>
             <a routerLink="/" fragment="home" routerLinkActive="activated" [class.active]="activeRoute == 'home'"><span>Начало</span></a>
-            <a routerLink="/" fragment="places" routerLinkActive="activated" [class.active]="activeRoute == 'places'"><span>Обекти</span></a>
+            <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()"><span>Провери карта</span></a>
+            <a routerLink="/" fragment="partners" routerLinkActive="activated" [class.active]="activeRoute == 'partners'"><span>Партньори</span></a>
+            <a routerLink="/profile" routerLinkActive="active activated"><span>Профил</span></a>
             <a routerLink="/" fragment="about-us"  routerLinkActive="activated"[class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
             <a routerLink="/" fragment="contacts" routerLinkActive="activated" [class.active]="activeRoute == 'contacts'"><span>Контакти</span></a>
           </div>
@@ -72,8 +78,8 @@
                 </a>
               </li>
               <li>
-                <a routerLink="/" fragment="places">
-                  Обекти
+                <a routerLink="/" fragment="partners">
+                  Партньори
                 </a>
               </li>
               <li>
@@ -84,17 +90,6 @@
               <li>
                 <a routerLink="/" fragment="contacts">
                   Контакти
-                </a>
-              </li>
-              <li>
-                <a routerLink="/card" (click)="removeFragment()">
-                  Провери карта
-                </a>
-              </li>
-
-              <li>
-                <a routerLink="/scan" (click)="removeFragment()">
-                  Провери карта с мобилно устройство
                 </a>
               </li>
             </ul>

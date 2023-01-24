@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { PlaceProvider } from '../providers';
+import { PartnerProvider } from '../providers';
 import { MainResolversModule } from './module';
 
 @Injectable({ providedIn: MainResolversModule })
@@ -9,13 +9,13 @@ import { MainResolversModule } from './module';
 export class HomeResolver implements Resolve<any> {
 
   constructor(
-    private PlaceProvider: PlaceProvider) { }
+    private PartnerProvider: PartnerProvider) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
-    return this.PlaceProvider.get({
+    return this.PartnerProvider.get({
       page: 1
     })
   }

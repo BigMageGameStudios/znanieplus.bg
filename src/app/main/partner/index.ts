@@ -5,18 +5,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { PlaceComponent } from './component';
+import { PartnerComponent } from './component';
 import { ContactsModule } from 'src/app/shared/contacts-component';
 import { GalleryModule } from 'src/app/shared/gallery-component';
 import { GalleryDialogModule } from 'src/app/shared/gallery-dialog';
 
 @NgModule({
     declarations: [
-     PlaceComponent,
+     PartnerComponent,
     ],
     imports: [
         CommonModule,
-        RouterModule.forChild([{ path: '', component: PlaceComponent }]),
+        RouterModule.forChild([{ path: '', component: PartnerComponent }]),
         MatButtonModule,
         MatRippleModule,
         MatDialogModule,
@@ -26,4 +26,4 @@ import { GalleryDialogModule } from 'src/app/shared/gallery-dialog';
     ]
 })
 
-export class PlaceModule { }
+export class PartnerModule { }
