@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ErrorHandler, NgModule, ɵɵinject } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule, ɵɵinject } from '@angular/core';
 import { Router, RouterModule, UrlSerializer } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DOCUMENT, ViewportScroller } from '@angular/common';
@@ -11,6 +11,7 @@ import { PreloadStrategy } from './modules/preload-strategy';
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './app.routes';
 import { ErrorIntercept } from './helpers/error.interceptor';
 import { CustomViewportScroller } from './modules/custom-viewport-scroller';
+import { UserProvider } from './providers';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,15 @@ import { CustomViewportScroller } from './modules/custom-viewport-scroller';
       multi: true
     },
     {
+      provide: APP_INITIALIZER,
+      useFactory: init_app,
+      deps: [
+        Router,
+        UserProvider
+      ],
+      multi: true
+    },
+    {
       provide: ViewportScroller,
       useFactory: () => new CustomViewportScroller(ɵɵinject(DOCUMENT), window, ɵɵinject(ErrorHandler), ɵɵinject(Router))
     },
@@ -50,3 +60,16 @@ export class AppModule { }
 export function malFormedURI(error: URIError, urlSerializer: UrlSerializer, url: string) {
   return urlSerializer.parse('/')
 };
+
+export function init_app(
+  router: Router,
+  userProvider: UserProvider,
+) {
+  return async () => {
+    try{
+      userProvider.init();
+    }catch(error){
+      router.navigate(['/error']);
+    }
+  }
+}

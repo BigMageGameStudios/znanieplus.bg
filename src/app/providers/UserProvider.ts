@@ -19,7 +19,7 @@ export class UserProvider {
 
         if (isPlatformServer(this.platformId)) {
             const c = this.req.cookie;
-            this.cookies.language = c ? this.req.cookie.language || 'EN' : 'EN';
+            this.cookies.user = this.req?.cookie?.user;
         }
 
         if (isPlatformBrowser(this.platformId)) {
