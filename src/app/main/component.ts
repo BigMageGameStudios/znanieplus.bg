@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, HostListener, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { UserProvider } from '../providers';
 
 @Component({
   selector: 'main-page',
@@ -12,19 +13,15 @@ export class MainComponent {
 
   active = false;
   activeRoute = 'home';
-  url = '/';
 
   constructor(
-    private Router: Router,
     private change: ChangeDetectorRef,
+    public userProvider: UserProvider,
     private ActivatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     this.ActivatedRoute.fragment.subscribe((data) => {
-      if (this.url == this.Router.url) {
-        return this.activeRoute = 'home';
-      }
       this.activeRoute = data;
       this.change.markForCheck();
     });

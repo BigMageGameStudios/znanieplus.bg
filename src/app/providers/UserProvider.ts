@@ -1,6 +1,5 @@
 import { Injectable, Inject, PLATFORM_ID, Optional } from '@angular/core';
-import { isPlatformServer, isPlatformBrowser } from '@angular/common';
-import { IObjectKeys } from '../helpers/interfaces';
+import { isPlatformServer, isPlatformBrowser, DOCUMENT } from '@angular/common';
 
 @Injectable({
     providedIn: 'root'
@@ -8,9 +7,13 @@ import { IObjectKeys } from '../helpers/interfaces';
 
 export class UserProvider {
 
-    private cookies: IObjectKeys = {};
+    static readonly key = 'user';
+    readonly time = 365 * 2 * 24 * 60 * 60 * 1000;
+
+    private cookies = new Map();
 
     constructor(
+        @Inject(DOCUMENT) private document: Document,
         @Inject(PLATFORM_ID) private platformId: Object,
         @Optional() @Inject('REQUEST') private req: any,
     ) { }
@@ -18,12 +21,11 @@ export class UserProvider {
     init() {
 
         if (isPlatformServer(this.platformId)) {
-            const c = this.req.cookie;
-            this.cookies.user = this.req?.cookie?.user;
+            this.cookies.set(UserProvider, this.req?.cookie?.user);
         }
 
         if (isPlatformBrowser(this.platformId)) {
-            const cookies = document.cookie;
+            const cookies = this.document.cookie;
             this.parseCookie(cookies);
         }
 
@@ -31,28 +33,47 @@ export class UserProvider {
 
     private parseCookie(cookies: string) {
         if (cookies) {
-
             cookies = cookies.replace(/ /g, '');
 
             cookies.split(';').forEach((e) => {
                 let item = e.split('=');
-                this.cookies[item[0]] = item[1];
+                this.cookies.set(item[0], item[1]);
             });
 
         }
     }
 
-    private setCookie({ key, value }) {
+    exit() {
+        this.deleteCookie(UserProvider.key);
+    }
 
-        this.cookies[key] = value;
+    login(value: string) {
+        this.setCookie({ key: UserProvider.key, value });
+    }
+
+    isLogedIn(){
+        return this.cookies.get(UserProvider.key)!;
+    }
+    
+
+    setCookie({ key, value }) {
+
+        this.cookies.set(key, value);
 
         if (isPlatformBrowser(this.platformId)) {
-            const expire = new Date(Date.now() + 365 * 2 * 24 * 60 * 60 * 1000);
-            document.cookie = `${key}=${value}; expires=${expire}; path=/`;
+            const expire = new Date(Date.now() + this.time);
+            this.document.cookie = `${key}=${value}; expires=${expire}; path=/`;
+        }
+    }
+
+    deleteCookie(key: string) {
+        if (isPlatformBrowser(this.platformId)) {
+            this.document.cookie = `${key}=; expires=${new Date(0)}; path=/`;
+            this.cookies.delete(key);
         }
     }
 
     get(key: string) {
-        return this.cookies[key];
+        return this.cookies.get(key);
     }
 }

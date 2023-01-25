@@ -2,9 +2,8 @@ import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot } from '@angular/router';
 import { map } from 'rxjs';
 import { IObjectKeys } from '../helpers/interfaces';
-import { LOCAL_STORAGE } from '../modules/local-storage';
 import { WINDOW } from '../modules/window';
-import { MapProvider } from '../providers';
+import { UserProvider } from '../providers';
 import { MainComponent } from './component';
 import { CardProvider } from './providers';
 import { HomeResolver, PartnerResolver } from './resolvers';
@@ -59,12 +58,12 @@ export const MODULE_ROUTES: Route[] = [
         path: 'profile',
         loadChildren: () => import('./profile/index').then(m => m.ProfileModule),
         canActivate: [(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-          const localStorage = inject(LOCAL_STORAGE);
+          const userProvider = inject(UserProvider);
           const cardrovider = inject(CardProvider);
           const window = inject(WINDOW);
           const router = inject(Router);
 
-          const token = localStorage.getItem(MapProvider.USER);
+          const token = userProvider.get(UserProvider.key);
 
           if(!token){
             router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');

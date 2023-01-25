@@ -2,8 +2,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, ChangeDetectorRef, Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
-import { LOCAL_STORAGE } from 'src/app/modules/local-storage';
-import { MapProvider, SEOProvider } from 'src/app/providers';
+import { IObjectKeys } from 'src/app/helpers/interfaces';
+import { SEOProvider, UserProvider } from 'src/app/providers';
 import { CardProvider } from '../providers';
 
 @Component({
@@ -31,7 +31,7 @@ export class LoginPage implements OnInit, OnDestroy {
     private card: CardProvider,
     private SEOProvider: SEOProvider,
     private change: ChangeDetectorRef,
-    @Inject(LOCAL_STORAGE) private localStorage: Storage,
+    private userProvider: UserProvider,
     @Inject(PLATFORM_ID) private platform: Object
   ) {
     this.SEOProvider.set({
@@ -80,7 +80,7 @@ export class LoginPage implements OnInit, OnDestroy {
         formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
       } as any);
 
-      const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+      const qrCodeSuccessCallback = (decodedText: string, decodedResult: IObjectKeys) => {
         if (this.canScan && decodedText) {
           this.active = false;
           this.submited = false;
@@ -94,7 +94,7 @@ export class LoginPage implements OnInit, OnDestroy {
         }
       };
 
-      const qrCodeErrorCallback = (decodedText, decodedResult) => { };
+      const qrCodeErrorCallback = () => { };
 
       const config = { fps: 20, qrbox: { width: 250, height: 180 }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13] };
 
@@ -108,12 +108,12 @@ export class LoginPage implements OnInit, OnDestroy {
 
   }
 
-  onSubmit(code) {
+  onSubmit(code: string) {
     if (code?.length > 0) {
       this.card.get(code).subscribe((data: any) => {
         if (data.active) {
           this.active = true;
-          this.localStorage.setItem(MapProvider.USER, code);
+          this.userProvider.login(code);
           this.router.navigateByUrl('/profile');
         }
         this.submited = true;

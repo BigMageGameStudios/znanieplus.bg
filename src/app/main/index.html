@@ -1,36 +1,35 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="push">
     <div class="icon">
-      <img loading="lazy" decoding="async" width="125" height="30" class="contain" src="/assets/images/logo-banner.png" alt="logo" />
+      <img loading="lazy" decoding="async" width="125" height="30" class="contain" src="/assets/images/logo-banner.png"
+        alt="logo" />
     </div>
     <ul>
       <li>
-        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'home'" fragment="home" (click)="drawer.toggle()">
-          Начало
-        </a>
-      </li>
-      <li>
-        <a routerLink="/scan"  routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
-          Провери карта
-        </a>
-      </li>
-      <li>
-        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'partners'" fragment="partners" (click)="drawer.toggle()">
+        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'partners'" fragment="partners"
+          (click)="drawer.toggle()">
           Партньори
         </a>
       </li>
       <li>
-        <a routerLink="/profile"  routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
-          Профил
+        <a routerLink="/scan" routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
+          Провери карта
         </a>
       </li>
       <li>
-        <a routerLink="/" routerLinkActive="activated" fragment="about-us" [class.active]="activeRoute == 'about-us'" (click)="drawer.toggle()">
+        <a routerLink="/" routerLinkActive="activated" fragment="about-us" [class.active]="activeRoute == 'about-us'"
+          (click)="drawer.toggle()">
           За нас</a>
       </li>
       <li>
-        <a routerLink="/" routerLinkActive="activated" fragment="contacts" [class.active]="activeRoute == 'contacts'" (click)="drawer.toggle()">
+        <a routerLink="/" routerLinkActive="activated" fragment="contacts" [class.active]="activeRoute == 'contacts'"
+          (click)="drawer.toggle()">
           Контакти
+        </a>
+      </li>
+      <li>
+        <a routerLink="/profile" routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
+          {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
         </a>
       </li>
     </ul>
@@ -43,12 +42,20 @@
             <img loading="lazy" decoding="async" src="/assets/images/logo-banner.png" alt="logo" />
           </a>
           <div class="navigation flex">
-            <a routerLink="/" fragment="home" routerLinkActive="activated" [class.active]="activeRoute == 'home'"><span>Начало</span></a>
-            <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()"><span>Провери карта</span></a>
-            <a routerLink="/" fragment="partners" routerLinkActive="activated" [class.active]="activeRoute == 'partners'"><span>Партньори</span></a>
-            <a routerLink="/profile" routerLinkActive="active activated"><span>Профил</span></a>
-            <a routerLink="/" fragment="about-us"  routerLinkActive="activated"[class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
-            <a routerLink="/" fragment="contacts" routerLinkActive="activated" [class.active]="activeRoute == 'contacts'"><span>Контакти</span></a>
+            <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()"><span>Провери
+                карта</span></a>
+            <a routerLink="/" fragment="partners" routerLinkActive="activated"
+              [class.active]="activeRoute == 'partners'"><span>Партньори</span></a>
+            <a routerLink="/" fragment="about-us" routerLinkActive="activated"
+              [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
+            <a routerLink="/" fragment="contacts" routerLinkActive="activated"
+              [class.active]="activeRoute == 'contacts'"><span>Контакти</span></a>
+            <a routerLink="/profile" routerLinkActive="active activated">
+              <span>
+                {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
+
+              </span>
+            </a>
           </div>
         </div>
       </mat-toolbar-row>
@@ -56,8 +63,9 @@
         <button mat-icon-button (click)="drawer.toggle()" aria-label="drawer">
           <img loading="lazy" decoding="async" src="/assets/images/drawer.svg" alt="logo" />
         </button>
-        <a class="flex" routerLink="/" fragment="home" >
-          <img loading="lazy" decoding="async" width="125" height="22" class="title" src="/assets/images/logo-banner.png" alt="logo" />
+        <a class="flex" routerLink="/" fragment="home">
+          <img loading="lazy" decoding="async" width="125" height="22" class="title"
+            src="/assets/images/logo-banner.png" alt="logo" />
         </a>
       </mat-toolbar-row>
     </mat-toolbar>
@@ -67,7 +75,8 @@
     <div class="footer">
       <div class="container information flex">
         <div class="logo flex">
-          <img loading="lazy" decoding="async" class="contain" src="/assets/images/logo-banner.png" width="210px" height="130px" alt="logo"/>
+          <img loading="lazy" decoding="async" class="contain" src="/assets/images/logo-banner.png" width="210px"
+            height="130px" alt="logo" />
         </div>
         <div class="navigation flex">
           <div class="bordered flex">
@@ -104,17 +113,17 @@
             <div class="navigation flex">
               <div class="bordered flex">
                 <ul>
-                <li>
-                  <a routerLink="/cookies">
-                    Използване на бисквитки 
-                  </a>
-                </li>
+                  <li>
+                    <a routerLink="/cookies">
+                      Използване на бисквитки
+                    </a>
+                  </li>
 
-                <li>
-                  <a routerLink="/privacy">
-                    Политика за поверителност
-                  </a>
-                </li>
+                  <li>
+                    <a routerLink="/privacy">
+                      Политика за поверителност
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -1,8 +1,7 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ElementRef, HostListener, ChangeDetectorRef, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LOCAL_STORAGE } from 'src/app/modules/local-storage';
-import { MapProvider, SEOProvider } from 'src/app/providers';
+import { SEOProvider, UserProvider } from 'src/app/providers';
 import { CardProvider } from '../providers';
 
 @Component({
@@ -30,7 +29,7 @@ export class LoginComponent {
     private card: CardProvider,
     private SEOProvider: SEOProvider,
     private change: ChangeDetectorRef,
-    @Inject(LOCAL_STORAGE) private localStorage: Storage,
+    private userProvider: UserProvider,
   ) {
     this.SEOProvider.set({
       title: 'Знание плюс | Сканиране',
@@ -42,12 +41,12 @@ export class LoginComponent {
       ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
       canonicalURL: '/card'
     });
-   }
+  }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
 
-    if(this.toClean){
+    if (this.toClean) {
       const control: any = this.form.get('text')!;
       control.setValue('');
       this.toClean = false;
@@ -83,19 +82,19 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    if(this.form.valid){
+    if (this.form.valid) {
 
       const value = this.form.value.text;
       const element: any = document.activeElement;
       element.blur();
-  
+
       this.active = false;
       this.submited = false;
-  
+
       this.card.get(value).subscribe((data: any) => {
-        if(data.active){
+        if (data.active) {
           this.active = true;
-          this.localStorage.setItem(MapProvider.USER, value);
+          this.userProvider.login(value);
           this.router.navigateByUrl('/profile');
         }
         this.submited = true;
