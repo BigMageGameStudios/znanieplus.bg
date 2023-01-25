@@ -1,6 +1,8 @@
-import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { generateBarCode } from 'src/app/helpers/barCodeGenerator';
+import { IObjectKeys } from 'src/app/helpers/interfaces';
+import { trackByIndex } from 'src/app/helpers/track';
 import { SEOProvider, UserProvider } from 'src/app/providers';
 
 @Component({
@@ -15,10 +17,38 @@ export class ProfileComponent {
   img: string;
   token: string;
 
+  folders: any[] = [
+    {
+      name: 'Photos',
+      updated: new Date('1/1/16'),
+    },
+    {
+      name: 'Recipes',
+      updated: new Date('1/17/16'),
+    },
+    {
+      name: 'Work',
+      updated: new Date('1/28/16'),
+    },
+  ];
+  notes: any[] = [
+    {
+      name: 'Vacation Itinerary',
+      updated: new Date('2/20/16'),
+    },
+    {
+      name: 'Kitchen Remodel',
+      updated: new Date('1/18/16'),
+    },
+  ];
+
+  codes: IObjectKeys[];
+
   constructor(
     private router: Router,
     private SEOProvider: SEOProvider,
-    private userProvider: UserProvider
+    private userProvider: UserProvider,
+    private activatedRoute: ActivatedRoute
   ) {
     this.SEOProvider.set({
       title: 'Знание плюс | Профил',
@@ -30,13 +60,17 @@ export class ProfileComponent {
       ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
       canonicalURL: '/profile'
     });
-    this.token = this.userProvider.get(UserProvider.key);
-    this.img = generateBarCode(this.token, 16, 90);
+    this.token = this.userProvider.getCode();
+    this.img = generateBarCode(this.token, 14, 90);
+    this.codes = this.activatedRoute.snapshot.data.codes;
+    console.log(this.codes)
   }
 
   exit (){
     this.userProvider.exit();
     this.router.navigateByUrl('/');
   }
+
+  trackByIndex = trackByIndex;
 
 }

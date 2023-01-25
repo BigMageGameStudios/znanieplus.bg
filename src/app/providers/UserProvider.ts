@@ -55,8 +55,11 @@ export class UserProvider {
         return this.cookies.get(UserProvider.key)!;
     }
     
+    getCode(){
+        return this.cookies.get(UserProvider.key);
+    }
 
-    setCookie({ key, value }) {
+    private setCookie({ key, value }) {
 
         this.cookies.set(key, value);
 
@@ -66,14 +69,11 @@ export class UserProvider {
         }
     }
 
-    deleteCookie(key: string) {
+    private deleteCookie(key: string) {
         if (isPlatformBrowser(this.platformId)) {
             this.document.cookie = `${key}=; expires=${new Date(0)}; path=/`;
             this.cookies.delete(key);
         }
     }
 
-    get(key: string) {
-        return this.cookies.get(key);
-    }
 }

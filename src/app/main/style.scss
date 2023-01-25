@@ -159,6 +159,14 @@ div.footer {
 
                     }
 
+                    a.card-desktop{
+                        display: inline-block;
+                    }
+
+                    a.card-mobile{
+                        display: none;
+                    }
+
                     a {
                         font-size: 16px;
                         margin: 10px 5px;
@@ -327,6 +335,14 @@ mat-drawer-container {
 
         div.rights {
             padding: 0 5px;
+        }
+
+        a.card-desktop{
+            display: none !important;
+        }
+
+        a.card-mobile{
+            display: inline !important;
         }
     }
 }

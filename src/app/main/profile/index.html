@@ -4,28 +4,55 @@
         <span>Профил</span>
     </h2>
 
-    <div class="flex-box">
-        <div class="card">
-            <div class="code-box">
-                <div class="code" [innerHTML]="img | safeHTML">
-    
+    <div class="flex-container">
+
+        <div class="flex-box">
+            <div class="card">
+                <div class="code-box">
+                    <div class="code" [innerHTML]="img | safeHTML">
+
+                    </div>
+                </div>
+                <div class="card-info">
+                    <img loading="lazy" decoding="async" width="125" height="30" class="contain"
+                        src="/assets/images/logo-banner.png" alt="logo" />
+                    <div class="card-number">
+                        <h3>
+                            Номер на карта
+                        </h3>
+                        <p>
+                            {{ token }}
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="card-info">
-                <img loading="lazy" decoding="async" width="125" height="30" class="contain" src="/assets/images/logo-banner.png" alt="logo" />
-                <div class="card-number">
-                    <h3>
-                        Номер на карта
-                    </h3>
-                    <p>
-                        {{ token }}
-                    </p>
-                </div>
-            </div>
+
+            <button matRipple class="primary-btn exit" (click)="exit()">Изход</button>
         </div>
-    
-        <button matRipple class="primary-btn exit" (click)="exit()">Изход</button>
+
+        <mat-list>
+            <div mat-subheader class="list-header">
+                <h4>
+                    <span>
+                        Промоционални кодове
+                    </span>
+                </h4>
+            </div>
+            <mat-list-item *ngFor="let code of codes; trackBy: trackByIndex">
+                <mat-icon matListItemIcon>
+                    <img loading="lazy" decoding="async" width="48" height="48" class="contain"
+                        src="/assets/images/promo.png" alt="logo" />
+                </mat-icon>
+                <div matListItemTitle>{{ code.name }}</div>
+                <div matListItemLine>
+                    <a class="link" [href]="code.website" target="_blank">{{ code.website }}</a>
+                </div>
+            </mat-list-item>
+        </mat-list>
+
     </div>
+
+
 
 </div>
 <contacts-component></contacts-component>

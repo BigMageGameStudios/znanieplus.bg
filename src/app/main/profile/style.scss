@@ -3,11 +3,47 @@ div.container {
     max-width: 1200px;
     margin: 12px auto 12px;
 
-    &.card-container{
+    &.card-container {
 
-        div.flex-box{
-            max-width: 400px;
+        div.flex-container {
+            display: flex;
+            mat-list{
+                margin-left: 82px;
+                div.list-header{
+                    h4{
+                        position: relative;
+                        color: black;
+                        font-size: 18px;
+                        margin: 0 15px;
+                        padding: 0 5px;
+                        text-decoration: none;
+                        cursor: pointer;
+                        outline: none;
+                        font-weight: 500;
+                        display: inline-block;
+                        &::before{
+                            content: " ";
+                            background-color: #ffd145;
+                            width: 70%;
+                            min-width: calc(100% - 15px);
+                            height: 10px;
+                            position: absolute;
+                            bottom: 5px;
+                            left: 0;
+                        }
+                        span{
+                            position: relative;
+                        }
+                    }
+                }
+            }
         }
+
+        div.flex-box {
+            max-width: 400px;
+            width: 100%;
+        }
+
         div.card {
             margin: 18px 0;
             display: flex;
@@ -17,21 +53,21 @@ div.container {
             border-radius: 12px;
             border: solid 2px #606060;
             justify-content: space-between;
-        
+
             div.code-box {
                 display: flex;
                 justify-content: center;
             }
-        
+
             div.card-info {
                 display: flex;
                 justify-content: space-between;
-        
+
                 img {
                     align-self: flex-end;
                     margin-bottom: 10px;
                 }
-        
+
                 div.card-number {
                     h3 {
                         margin: 5px 0;
@@ -39,7 +75,7 @@ div.container {
                         font-weight: 400;
                         text-align: center;
                     }
-        
+
                     p {
                         margin: 5px 0;
                         font-size: 16px;
@@ -48,7 +84,7 @@ div.container {
                 }
             }
         }
-        
+
         button.exit {
             width: 100%;
             text-transform: uppercase;
@@ -58,6 +94,9 @@ div.container {
     }
 }
 
+.mat-mdc-list-item-icon {
+    color: rgba(0, 0, 0, 0.54);
+}
 
 @media (max-width: 800px) {
     div.container {

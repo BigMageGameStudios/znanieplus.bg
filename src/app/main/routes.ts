@@ -63,7 +63,7 @@ export const MODULE_ROUTES: Route[] = [
           const window = inject(WINDOW);
           const router = inject(Router);
 
-          const token = userProvider.get(UserProvider.key);
+          const token = userProvider.getCode();
 
           if(!token){
             router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');
