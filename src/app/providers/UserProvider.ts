@@ -21,7 +21,9 @@ export class UserProvider {
     init() {
 
         if (isPlatformServer(this.platformId)) {
-            this.cookies.set(UserProvider, this.req?.cookie?.user);
+            for(const key in this.req?.cookie){
+                this.cookies.set(key, this.req?.cookie[key]);
+            }
         }
 
         if (isPlatformBrowser(this.platformId)) {
