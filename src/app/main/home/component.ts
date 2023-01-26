@@ -19,7 +19,6 @@ export class HomeComponent {
   ) {
     const items = this.ActivatedRoute.snapshot.data.result.data.data;
     this.items = items;
-    console.log(items)
     this.SEOProvider.set({
       title: 'Знание плюс',
       description: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
