@@ -5,13 +5,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 
 import { ScrollerComponent } from './component';
+import { DragModule } from 'src/app/directives/drag';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     MatButtonModule,
-    MatRippleModule
+    MatRippleModule,
+    DragModule
   ],
   declarations: [
     ScrollerComponent

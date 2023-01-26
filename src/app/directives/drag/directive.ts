@@ -5,7 +5,7 @@ import { WINDOW } from 'src/app/modules/window';
     selector: '[drag]'
 })
 
-export class DragDirective {
+export class DragDirective{
 
     target!: EventTarget | null;
 
@@ -14,13 +14,26 @@ export class DragDirective {
     x = 0;
     left = 0;
     drag = false
-    listener = false
     move = false;
 
     constructor(
-        private element: ElementRef,
+        private element: ElementRef<HTMLDivElement>,
         @Inject(WINDOW) private window: Window,
     ) { }
+
+    disableHref(){
+        const linkElements = this.element.nativeElement.querySelectorAll('a');
+        linkElements.forEach((item) => {
+            item.classList.add('disable-link')
+        });
+    }
+
+    enableHref(){
+        const linkElements = this.element.nativeElement.querySelectorAll('a');
+        linkElements.forEach((item) => {
+            item.classList.remove('disable-link')
+        });
+    }
 
     @HostListener('mousedown', ['$event']) mousedown(event: MouseEvent) {
         event.preventDefault();
@@ -36,8 +49,8 @@ export class DragDirective {
         event.preventDefault();
         event.stopPropagation();
         this.drag = false;
-        this.listener = false;
         this.move = false;
+        this.enableHref();
         return false
     }
 
@@ -50,7 +63,7 @@ export class DragDirective {
             }
             if (this.move) {
                 this.element.nativeElement.scrollLeft = this.left - event.pageX + this.x;
-                this.setListener();
+                this.disableHref();
             }
         }
         return false
@@ -60,22 +73,11 @@ export class DragDirective {
         event.preventDefault();
         event.stopPropagation();
         this.drag = false;
-        this.listener = false;
         this.move = false;
         return false
 
     }
 
-    setListener() {
-        if (!this.listener) {
-            this.listener = true;
-            this.window.addEventListener('click', captureClick, { capture: true, passive: true })
-        }
-    }
 
 }
 
-function captureClick(event: MouseEvent) {
-    event.stopPropagation();
-    this.window.removeEventListener('click', captureClick, true);
-}

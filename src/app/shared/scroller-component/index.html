@@ -1,5 +1,5 @@
 <div class="box">
-    <div class="list" #list>
+    <div class="list" #list drag>
         <div *ngFor="let item of data; trackBy:track" class="item">
             <a [routerLink]="'/partner/'+item.id" aria-label="Виж">
                 <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + item.logo" width="100%" height="250px" alt="partner" />

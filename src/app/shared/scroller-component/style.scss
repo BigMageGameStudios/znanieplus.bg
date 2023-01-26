@@ -26,6 +26,11 @@ div.box {
                 border-radius: 2px;
             }
 
+            img, a {
+                user-select: none;
+                -webkit-user-drag: none;
+            }
+
             div.information {
                 width: 220px;
                 left: 20px;
@@ -119,6 +124,10 @@ div.box {
 
     div.next {
         right: -50px !important;
+    }
+
+    div.list{
+        overflow-x: auto !important;
     }
 }
 

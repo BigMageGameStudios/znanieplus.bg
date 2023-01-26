@@ -46,7 +46,7 @@ export class ScrollerComponent {
   setStep() {
     const element = this.list.nativeElement;
     if (element.clientWidth < 500) {
-      return this.step = element.clientWidth - 50;
+      return this.step = element.clientWidth;
     }
     this.step = element.clientWidth;
   }
