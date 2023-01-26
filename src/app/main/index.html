@@ -6,14 +6,14 @@
     </div>
     <ul>
       <li>
-        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'partners'" fragment="partners"
-          (click)="drawer.toggle()">
-          Партньори
+        <a routerLink="/scan" routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
+          Провери карта
         </a>
       </li>
       <li>
-        <a routerLink="/scan" routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
-          Провери карта
+        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'partners'" fragment="partners"
+          (click)="drawer.toggle()">
+          Партньори
         </a>
       </li>
       <li>
