@@ -118,6 +118,12 @@ img.cover{
     color: #506ee1;
 }
 
+mat-snack-bar-container.znp{
+    button{
+        color: #ffd145 !important;
+    }
+}
+
 @media (max-width: 750px) {
     div.container {
         width: 100vw !important;

@@ -1,26 +1,50 @@
-.close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: pointer;
+:host {
+    display: block;
+    max-width: 350px;
+    min-width: 300px;
+    padding: 20px;
 }
 
 .header {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+
     h3 {
+        font-weight: 500;
+        font-size: 20px;
+        color: black;
         margin: 0;
     }
 }
 
 .content {
-    margin-left: 5px;
-    margin-right: 5px;
+    font-size: 15px;
+    font-family: "Sora";
+    font-weight: 400;
+    color: black;
+    white-space: pre-line;
 }
 
 .footer {
     margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 button.left {
     margin-right: 5px;
+}
+
+button {
+    text-transform: uppercase;
+    font-size: 13px;
+    padding: 8px 12px;
+    min-width: 60px;
+    border-radius: 4px;
+}
+
+@media (max-width: 550px) {
+    :host {
+        max-width: 300px !important;
+        min-width: 100% !important;
+    }
 }

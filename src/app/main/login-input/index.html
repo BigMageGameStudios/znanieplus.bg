@@ -1,4 +1,15 @@
 <div class="container">
+    <div>
+        <h2 class="title">
+            <span>Вход</span>
+        </h2>
+        <h4>
+            Въведи баркода на твоята карта ЗНАНИЕ+.
+        </h4>
+        <h5>
+            За тази цел просто сканирай или изпиши баркода от гърба ѝ.
+        </h5>
+    </div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field color="primary">
             <input #inputBillOfLanding matInput placeholder="Номер на карта" formControlName="text" autocomplete="off">
@@ -7,16 +18,14 @@
             </button>
         </mat-form-field>
         <button mat-raised-button type="submit">Потвърждаване</button>
+        <p>
+            Ако имаш каквито и да било въпроси, не се колебай да се свържеш с нас.
+        </p>
+        <ng-container *ngIf="submited">
+                <div id="invalid" *ngIf="!active">
+                    Невалидна карта
+                </div>
+        </ng-container>
     </form>
 
-    <ng-container *ngIf="submited">
-        <div id="valid" *ngIf="active else notActive">
-            Картата е активна
-        </div>
-        <ng-template #notActive>
-            <div id="invalid">
-                Невалидна карта
-            </div>
-        </ng-template>
-    </ng-container>
 </div>

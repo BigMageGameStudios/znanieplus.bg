@@ -36,6 +36,23 @@ div.container {
                         }
                     }
                 }
+                span.promo{
+                    font-weight: 600;
+                    color: #f3bd1a;
+                }
+                div.code{
+                    display: flex;
+                    margin: 8px 0;
+                    align-items: center;
+                    justify-content: space-between;
+                    &::before{
+                        display: none;
+                    }
+                    button{
+                        padding: 4px 8px;
+                        border-radius: 4px;
+                    }
+                }
             }
         }
 
@@ -90,6 +107,12 @@ div.container {
             text-transform: uppercase;
             padding: 12px 0;
             border-radius: 8px;
+            &.desktop{
+                display: block;
+            }
+            &.mobile{
+                display: none;
+            }
         }
     }
 }
@@ -98,8 +121,38 @@ div.container {
     color: rgba(0, 0, 0, 0.54);
 }
 
+@media (max-width: 1000px) {
+    button.exit {
+        &.desktop{
+            display: none !important;
+        }
+        &.mobile{
+            display: block !important;
+        }
+    }
+    div.flex-container{
+        flex-direction: column;
+        max-width: 400px;
+        mat-list{
+            margin-left: 0 !important;
+            div.mat-mdc-subheader{
+                margin-left: 0px !important;
+            }
+            div.mat-mdc-list-item-title{
+                font-size: 15px !important;
+            }
+            mat-list-item.mat-mdc-list-item{
+                padding: 0 !important;
+            }
+            h4{
+                margin-left: 0px !important;
+            }
+        }
+    }
+}
 @media (max-width: 800px) {
     div.container {
         margin: 12px 0 !important;
+  
     }
 }

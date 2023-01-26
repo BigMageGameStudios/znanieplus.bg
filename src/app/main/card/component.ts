@@ -43,6 +43,10 @@ export class CardComponent {
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
 
+    if(event.ctrlKey){
+      return true
+    }
+
     if(this.toClean){
       const control: any = this.form.get('text')!;
       control.setValue('');

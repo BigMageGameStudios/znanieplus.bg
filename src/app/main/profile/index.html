@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <button matRipple class="primary-btn exit" (click)="exit()">Изход</button>
+            <button matRipple class="primary-btn exit desktop" (click)="exit()">Изход</button>
         </div>
 
         <mat-list>
@@ -43,12 +43,20 @@
                     <img loading="lazy" decoding="async" width="48" height="48" class="contain"
                         src="/assets/images/promo.png" alt="logo" />
                 </mat-icon>
-                <div matListItemTitle>{{ code.name }}</div>
+                <div matListItemTitle>{{ code.name }} <span class="promo">{{ code.promo }}%</span></div>
                 <div matListItemLine>
                     <a class="link" [href]="code.website" target="_blank">{{ code.website }}</a>
                 </div>
+                <div matListItemLine class="code">
+                    <span>
+                        Код: {{ code.parsedCode }}
+                    </span>
+                    <button matRipple class="primary-btn" (click)="copy(code.parsedCode)">Копирай</button>
+                </div>
             </mat-list-item>
         </mat-list>
+
+        <button matRipple class="primary-btn exit mobile" (click)="exit()">Изход</button>
 
     </div>
 

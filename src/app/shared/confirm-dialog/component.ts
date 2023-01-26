@@ -1,21 +1,30 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { IObjectKeys } from 'src/app/helpers/interfaces';
 
 @Component({
-  selector: 'confirm-new-dialog',
+  selector: 'confirm-dialog',
   templateUrl: './index.html',
-  styleUrls: ['./style.scss']
+  styleUrls: ['./style.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ConfirmDialog {
 
   constructor(
     private MatDialogRef: MatDialogRef<ConfirmDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data: IObjectKeys
+  ) {
+  }
 
-  onSubmit(bool: boolean) {
-    this.MatDialogRef.close(bool);
+  handler(index: number) {
+    if (this.data.buttons && this.data.buttons instanceof Array) {
+      const button = this.data.buttons[index];
+      if (button.handler instanceof Function) {
+        button.handler();
+      }
+    }
+    this.MatDialogRef.close({ action: false })
   }
 
 }

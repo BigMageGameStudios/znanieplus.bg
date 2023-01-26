@@ -1,16 +1,25 @@
 .container {
-    min-height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 mat-form-field {
     width: 300px;
 }
 
-#valid {
-    color: green;
-    font-size: 22px;
-    font-weight: 800;
-    text-align: center;
+h4{
+    margin-bottom: 0;
+}
+
+h5{
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+p{
+    font-size: 13px;
 }
 
 #invalid {
@@ -18,14 +27,16 @@ mat-form-field {
     font-size: 22px;
     font-weight: 800;
     text-align: center;
+    margin: 20px 0;
 }
 
 form {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 10px;
-    margin-top: 25px;
+    align-self: flex-start;
+    margin-bottom: 18px;
+    margin-top: 18px;
     button[type=submit]{
         width: 300px;
     }
