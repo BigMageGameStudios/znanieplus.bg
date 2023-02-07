@@ -12,16 +12,75 @@
             <h2 class="title">
                 <span> {{item.name}}</span>
             </h2>
-            <div>
-                {{item.description}}
+            <div [innerHTML]="item.description | safeHTML">
             </div>
         </div>
     </div>
-    <h4 class="ad-type">
-       
-    </h4>
+
     <div class="information flex">
         <div class="characters">
+            <h3>
+                Отстъпка: {{ item.promo}}%
+            </h3>
+            <div class="flex">
+                <div [innerHTML]="item.promo_description | safeHTML"> </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="information flex" *ngIf="item.activities.length > 0">
+        <div class="characters">
+            <h3>
+                Дейности:
+            </h3>
+            <div class="flex" *ngFor="let activity of item.activities">
+                <div>
+                    {{activity.name}}
+                </div>
+                <div>
+                    <b>{{activity.promotion}}%</b> {{activity.deskription}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="information flex" *ngIf="item.week">
+        <div class="characters">
+            <h3>
+                Работно време:
+            </h3>
+            <div class="flex">
+                <div>
+                    Работни дни:
+                </div>
+                <div>
+                    {{item.week}}
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    Събота:
+                </div>
+                <div>
+                    {{item.sat}}
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    Неделя:
+                </div>
+                <div>
+                    {{item.sun}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="information flex">
+        <div class="characters">
+            <h3>
+                Контакти:
+            </h3>
             <div class="flex">
                 <div>
                     Адрес:
@@ -35,7 +94,7 @@
                     Уебсайт:
                 </div>
                 <div>
-                    {{item.website}}
+                   <a href="{{item.website}}" target="_blank">{{item.website}}</a>
                 </div>
             </div>
             <div class="flex">
@@ -43,7 +102,7 @@
                     Електронна поща:
                 </div>
                 <div>
-                    {{item.mail}}
+                    <a href="mailto:{{item.mail}}">{{item.mail}}</a>  
                 </div>
             </div>
             <div class="flex">
@@ -53,14 +112,6 @@
                 <div>
                     {{item.phone}}
                 </div>
-            </div>
-        </div>
-        <div class="date">
-            <div>
-                <h3>
-                    Отстъпка:
-                </h3>
-                <p>{{ item.promo}} %</p>
             </div>
         </div>
     </div>

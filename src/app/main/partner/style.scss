@@ -232,6 +232,7 @@ div.container {
             div.flex {
                 justify-content: space-between;
                 padding-right: 5px;
+                
 
                 div:first-child {
                     flex: unset !important;
@@ -240,6 +241,7 @@ div.container {
                 div:nth-child(2) {
                     flex: unset !important;
                     text-align: right;
+                    max-width: 250px;
                 }
             }
         }

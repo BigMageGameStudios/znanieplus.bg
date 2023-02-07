@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="title flex">
+        <h2 class="title">
+            <span>Наем</span>
+        </h2>
+        <mat-form-field>
+            <mat-label>Сортирай по</mat-label>
+            <mat-select [(ngModel)]="sort" (selectionChange)="onSort()">
+                <mat-option *ngFor="let item of sortTypes | keyvalue" [value]="item.value.id">
+                    {{item.value.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="list flex">
+        <partner-component *ngFor="let partner of partners; trackBy:track" [partner]="partner">
+
+        </partner-component>
+        <h3 class="error" *ngIf="partners.length == 0">
+            Няма намерени резултати, моля опитайте по-късно !
+        </h3>
+    </div>
+    <div class="right">
+        <a mat-button (click)="onLoadMore()" routerLink="/rent" [queryParams]="{page: page}" *ngIf="!loaded" aria-label="load more">
+            Зaреди още...
+        </a>
+    </div>
+</div>
+<contacts-component></contacts-component>

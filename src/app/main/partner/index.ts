@@ -9,6 +9,7 @@ import { PartnerComponent } from './component';
 import { ContactsModule } from 'src/app/shared/contacts-component';
 import { GalleryModule } from 'src/app/shared/gallery-component';
 import { GalleryDialogModule } from 'src/app/shared/gallery-dialog';
+import { SafeHTMLModule } from 'src/app/pipes/safe-html';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { GalleryDialogModule } from 'src/app/shared/gallery-dialog';
         MatDialogModule,
         ContactsModule,
         GalleryModule,
+        SafeHTMLModule,
         GalleryDialogModule
     ]
 })

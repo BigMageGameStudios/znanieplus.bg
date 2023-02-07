@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { ApiProvider } from 'src/app/providers';
 import { MainProvidersModule } from './module';
+import { Sort } from 'src/globals';
 
 @Injectable({
     providedIn: MainProvidersModule
@@ -12,6 +13,8 @@ import { MainProvidersModule } from './module';
 export class PartnerProvider {
 
     private mpath = 'places';
+    private fpath = 'filtered'
+    private ppath = 'place_data';
 
     constructor(
         private ApiProvider: ApiProvider
@@ -30,8 +33,20 @@ export class PartnerProvider {
             }));
     }
 
+    getList({ skip = 0, limit = 20, type = Sort.price.id, sort = null }) {
+        console.log(`${this.fpath}/${skip}/${limit}/${type}`)
+        return this.ApiProvider.get(`${this.fpath}/${skip}/${limit}/${type}`)
+            .pipe(map((result: any) => {
+                if (result.errors) {
+                    return [];
+                }
+                return result.data.data;
+            }));
+    }
+
+
     getByKey(key) {
-        return this.ApiProvider.get(`${this.mpath}/${key}`)
+        return this.ApiProvider.get(`${this.ppath}/${key}`)
             .pipe(map((data: any) => {
                 if (data.errors) {
                     return null;

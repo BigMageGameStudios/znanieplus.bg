@@ -1,11 +1,12 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot } from '@angular/router';
 import { map } from 'rxjs';
+import { PartnerTypes } from 'src/globals';
 import { IObjectKeys } from '../helpers/interfaces';
 import { WINDOW } from '../modules/window';
 import { UserProvider } from '../providers';
 import { MainComponent } from './component';
-import { CardProvider } from './providers';
+import { CardProvider, PartnerProvider } from './providers';
 import { HomeResolver, PartnerResolver } from './resolvers';
 
 export const MODULE_ROUTES: Route[] = [
@@ -28,6 +29,26 @@ export const MODULE_ROUTES: Route[] = [
         loadChildren: () => import('./partner/index').then(m => m.PartnerModule),
         resolve: {
           item: PartnerResolver
+        },
+        data: {
+          preload: true
+        },
+      },
+      {
+        path: 'partners',
+        loadChildren: () => import('./partners/index').then(m => m.PartnersModule),
+        resolve: {
+          partners: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+            const { page = 1 } = route.queryParams;
+            const partnerProvider = inject(PartnerProvider);
+
+            return partnerProvider.getList({
+              skip: 0,
+              limit: Number(page) * 10,
+              type: PartnerTypes.sale.id
+            });
+        
+          }
         },
         data: {
           preload: true
@@ -65,13 +86,13 @@ export const MODULE_ROUTES: Route[] = [
 
           const token = userProvider.getCode();
 
-          if(!token){
+          if (!token) {
             router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');
             return false;
           }
 
           return cardrovider.get(token).pipe(map((result: IObjectKeys) => {
-            if(result.active){
+            if (result.active) {
               return true;
             }
             router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');
