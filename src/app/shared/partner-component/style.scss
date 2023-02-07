@@ -73,6 +73,12 @@ div.item {
                 }
             }
         }
+
+        img.cover {
+            object-fit: scale-down !important;
+        }
+        
+    
     }
 
 }

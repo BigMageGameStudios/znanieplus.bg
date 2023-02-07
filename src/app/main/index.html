@@ -11,7 +11,7 @@
         </a>
       </li>
       <li>
-        <a routerLink="/" routerLinkActive="activated" [class.active]="activeRoute == 'partners'" fragment="partners"
+        <a routerLink="/partners" routerLinkActive="activated" [class.active]="activeRoute == 'partners'"
           (click)="drawer.toggle()">
           Партньори
         </a>
@@ -44,7 +44,7 @@
           <div class="navigation flex">
             <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()"><span>Провери
                 карта</span></a>
-            <a routerLink="/" fragment="partners" routerLinkActive="activated"
+            <a routerLink="/partners" routerLinkActive="activated"
               [class.active]="activeRoute == 'partners'"><span>Партньори</span></a>
             <a routerLink="/" fragment="about-us" routerLinkActive="activated"
               [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
@@ -97,7 +97,7 @@
                 </a>
               </li>
               <li>
-                <a routerLink="/" fragment="partners">
+                <a routerLink="/partners">
                   Партньори
                 </a>
               </li>
