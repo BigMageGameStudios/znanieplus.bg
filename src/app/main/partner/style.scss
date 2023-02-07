@@ -149,10 +149,7 @@ div.container {
             &:first-child {
                 flex: 3;
                 padding-right: 80px;
-
-                div {
-                    white-space: pre-line;
-                }
+             
             }
 
             &:nth-child(2) {
