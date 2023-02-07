@@ -1,16 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { APP_INITIALIZER, ErrorHandler, NgModule, ɵɵinject } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { Router, RouterModule, UrlSerializer } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DOCUMENT, ViewportScroller } from '@angular/common';
 
 import { TransferHttpCacheModule } from './modules/transfer-http';
 import { PreloadStrategy } from './modules/preload-strategy';
 
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './app.routes';
 import { ErrorIntercept } from './helpers/error.interceptor';
-import { CustomViewportScroller } from './modules/custom-viewport-scroller';
 import { UserProvider } from './providers';
 
 @NgModule({
@@ -26,6 +24,9 @@ import { UserProvider } from './providers';
       malformedUriErrorHandler: malFormedURI,
       preloadingStrategy: PreloadStrategy,
       anchorScrolling: 'enabled',
+      scrollOffset: () => {
+        return [0, 84]
+      },
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
     HttpClientModule
@@ -44,10 +45,6 @@ import { UserProvider } from './providers';
         UserProvider
       ],
       multi: true
-    },
-    {
-      provide: ViewportScroller,
-      useFactory: () => new CustomViewportScroller(ɵɵinject(DOCUMENT), window, ɵɵinject(ErrorHandler), ɵɵinject(Router))
     },
   ],
   exports: [

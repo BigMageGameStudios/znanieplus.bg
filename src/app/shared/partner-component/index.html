@@ -1,22 +1,18 @@
 <div class="item">
-    <a [routerLink]="'/partner/'+partner.key" aria-label="Отвори">
-        <!-- <lazy-image-component class="flex" objectFit="cover" [src]="api_url+'/min_uploads/images/' + partner.photos[partner.cover].name"   width="100%" height="100%">
-        </lazy-image-component> -->
+    <a [routerLink]="'/partner/'+partner.id" aria-label="Виж">
+        <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + partner.logo" width="100%" height="250px" alt="partner" />
     </a>
     <div class="information flex">
         <div>
-            Цена
+            Отстъпка
             <span class="block">
-                <!-- {{partner.price | number:'1.0-0'}} {{ partner.getCurrency().name }} -->
+                {{partner.promo | number:'1.0-0'}}%
             </span>
         </div>
-        <div>
-            <h4>
-                {{partner.type}}
-            </h4>
-            <h4>
-                {{partner.address}}, {{partner.city}}
-            </h4>
+        <div >
+            <h3>
+                {{partner.name}}
+            </h3>
         </div>
     </div>
 </div>

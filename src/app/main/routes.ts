@@ -1,7 +1,6 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot } from '@angular/router';
-import { map } from 'rxjs';
-import { PartnerTypes } from 'src/globals';
+import { forkJoin, map } from 'rxjs';
 import { IObjectKeys } from '../helpers/interfaces';
 import { WINDOW } from '../modules/window';
 import { UserProvider } from '../providers';
@@ -38,16 +37,22 @@ export const MODULE_ROUTES: Route[] = [
         path: 'partners',
         loadChildren: () => import('./partners/index').then(m => m.PartnersModule),
         resolve: {
-          partners: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+          data: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
             const { page = 1 } = route.queryParams;
             const partnerProvider = inject(PartnerProvider);
 
-            return partnerProvider.getList({
-              skip: 0,
-              limit: Number(page) * 10,
-              type: PartnerTypes.sale.id
-            });
-        
+            return forkJoin([
+              partnerProvider.getList({
+                skip: 0,
+                limit: Number(page) * 12
+              }),
+              partnerProvider.getTypes()
+            ]).pipe(map(([partners, types]) => {
+              return {
+                partners,
+                types
+              }
+            }))
           }
         },
         data: {

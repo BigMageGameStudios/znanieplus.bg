@@ -113,9 +113,7 @@ export class CustomViewportScroller implements ViewportScroller {
     }
 
     parseAnchorScroll(element: Element) {
-        return setTimeout(() => {
-            this.scrollToElement(element);
-        }, 50);
+        this.scrollToElement(element);
     }
     /**
      * Disables automatic scroll restoration provided by the browser.

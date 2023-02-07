@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PartnerProvider } from '../providers';
-import { Sort, PartnerTypes } from 'src/globals';
 import { SEOProvider } from 'src/app/providers';
 import { IObjectKeys } from 'src/app/helpers/interfaces';
 
@@ -19,8 +18,8 @@ export class PartnersComponent {
   skip = 10;
   limit = 10;
   loaded = false;
-  sortTypes = Sort;
-  sort = Sort.price.id
+  filters = [];
+  filter = this.filters[0]
   page = 1;
 
   constructor(
@@ -30,12 +29,19 @@ export class PartnersComponent {
     private Router: Router,
     private SEOProvider: SEOProvider
   ) {
-    const { partners = []} = ActivatedRoute.snapshot.data;
+    const { partners = [], types = []} = ActivatedRoute.snapshot.data.data;
     const { page = 1 } = ActivatedRoute.snapshot.queryParams;
 
     this.partners = partners;
     this.page = Number(page) + 1;
     this.skip = Number(page) * this.limit;
+    this.filters = types;
+
+    this.filters.unshift({
+      id: null,
+      type: 'Всички партньори'
+    })
+
     if (partners.length < this.limit) {
       this.loaded = true;
     }
@@ -59,7 +65,7 @@ export class PartnersComponent {
 
   onSort() {
     this.skip = 0;
-    this.limit = 10;
+    this.limit = 12;
     this.page = 1;
     this.onLoadMore(true);
     this.Router.navigate(['/partners'], {
@@ -74,22 +80,21 @@ export class PartnersComponent {
       this.PartnerProvider.getList({
         skip: this.skip,
         limit: this.limit,
-        type: PartnerTypes.rent.id,
-        sort: this.sort
-      }).subscribe((result: any) => {
+        type: this.filter
+      }).subscribe((data) => {
 
         this.page++;
         this.skip += this.limit;
 
         if (reset) {
-          this.partners = result.data.data;
+          this.partners = data;
           this.loaded = false;
         } else {
-          const arr = [...this.partners, ...result.data.data];
+          const arr = [...this.partners, ...data];
           this.partners = arr;
         }
 
-        if (result.data.data.length < this.limit) {
+        if (data.length < this.limit) {
           this.loaded = true;
         }
 

@@ -24,29 +24,3 @@ export const QRCodeType = {
     action: `/tracing`
   },
 }
-
-export const Sort = {
-  date: {
-    name: 'Дата',
-    key: 'date',
-    id: 1
-  },
-  price: {
-    name: 'Цена',
-    key: 'price',
-    id: 2
-  }
-};
-
-export const PartnerTypes = {
-  sale: {
-    name: 'Продажба',
-    key: 'sale',
-    id: 1
-  },
-  rent: {
-    name: 'Наем',
-    key: 'rent',
-    id: 2
-  }
-}
