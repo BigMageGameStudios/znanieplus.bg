@@ -1,5 +1,41 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="desktop" [class.scroll]="active">
+    <div class="container flex">
+      <a class="flex logo" routerLink="/" fragment="home">
+        <img loading="lazy" decoding="async" src="/assets/images/logo-banner.png" alt="logo" />
+      </a>
+      <div class="navigation flex">
+        <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()"><span>Провери
+            карта</span></a>
+        <a routerLink="/partners" routerLinkActive="activated"
+          [class.active]="activeRoute == 'partners'"><span>Партньори</span></a>
+        <a routerLink="/" fragment="about-us" routerLinkActive="activated"
+          [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
+        <a routerLink="/" fragment="contacts" routerLinkActive="activated"
+          [class.active]="activeRoute == 'contacts'"><span>Контакти</span></a>
+        <a routerLink="/profile" routerLinkActive="active activated">
+          <span>
+            {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
+
+          </span>
+        </a>
+      </div>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="mobile">
+    <button mat-icon-button (click)="drawer.toggle()" aria-label="drawer">
+      <img loading="lazy" decoding="async" src="/assets/images/drawer.svg" alt="logo" />
+    </button>
+    <a class="flex" routerLink="/" fragment="home">
+      <img loading="lazy" decoding="async" width="125" height="22" class="title"
+        src="/assets/images/logo-banner.png" alt="logo" />
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <mat-drawer-container autosize>
-  <mat-drawer #drawer mode="push">
+  <mat-drawer #drawer mode="over">
     <div class="icon">
       <img loading="lazy" decoding="async" width="125" height="30" class="contain" src="/assets/images/logo-banner.png"
         alt="logo" />
@@ -35,40 +71,6 @@
     </ul>
   </mat-drawer>
   <mat-drawer-content>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row class="desktop" [class.scroll]="active">
-        <div class="container flex">
-          <a class="flex logo" routerLink="/" fragment="home">
-            <img loading="lazy" decoding="async" src="/assets/images/logo-banner.png" alt="logo" />
-          </a>
-          <div class="navigation flex">
-            <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()"><span>Провери
-                карта</span></a>
-            <a routerLink="/partners" routerLinkActive="activated"
-              [class.active]="activeRoute == 'partners'"><span>Партньори</span></a>
-            <a routerLink="/" fragment="about-us" routerLinkActive="activated"
-              [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
-            <a routerLink="/" fragment="contacts" routerLinkActive="activated"
-              [class.active]="activeRoute == 'contacts'"><span>Контакти</span></a>
-            <a routerLink="/profile" routerLinkActive="active activated">
-              <span>
-                {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
-
-              </span>
-            </a>
-          </div>
-        </div>
-      </mat-toolbar-row>
-      <mat-toolbar-row class="mobile">
-        <button mat-icon-button (click)="drawer.toggle()" aria-label="drawer">
-          <img loading="lazy" decoding="async" src="/assets/images/drawer.svg" alt="logo" />
-        </button>
-        <a class="flex" routerLink="/" fragment="home">
-          <img loading="lazy" decoding="async" width="125" height="22" class="title"
-            src="/assets/images/logo-banner.png" alt="logo" />
-        </a>
-      </mat-toolbar-row>
-    </mat-toolbar>
     <div class="router" role="main" [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>
