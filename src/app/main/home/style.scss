@@ -1,7 +1,6 @@
 @import '../../../../stylesheets/variables';
 
 div.container {
-
     div.banner {
         height: 55vh;
         max-height: 555px;
@@ -51,45 +50,6 @@ div.container {
             }
         }
     }
-
-    // div.places {
-    //     padding-top: 60px;
-    //     justify-content: space-between;
-
-    //     div {
-    //         position: relative;
-    //         align-items: center;
-
-
-    //         &.sale {
-    //             left: 10px;
-    //         }
-
-    //         img {
-    //             padding: 20px;
-    //             border: solid 4px $yellow;
-    //         }
-
-    //         div.description {
-    //             max-width: 320px;
-    //             background-color: $yellow;
-    //             padding: 10px;
-    //             padding: 18px;
-    //             position: relative;
-    //             top: -20px;
-    //             left: -10px;
-
-    //             h4 {
-    //                 margin: 0;
-    //             }
-
-    //             p {
-    //                 font-size: 14px;
-    //                 margin: 2px 0;
-    //             }
-    //         }
-    //     }
-    // }
 
     div.company {
         margin: 80px 0;
@@ -283,98 +243,6 @@ div.info {
         }
     }
 }
-
-// div.prices {
-//     display: none;
-//     padding: 0 25px 25px;
-//     position: relative;
-//     width: 100%;
-
-//     &::after {
-//         content: "";
-//         background: $yellow;
-//         height: 350px;
-//         left: 0;
-//         position: absolute;
-//         top: 0;
-//         width: 100%;
-//         z-index: 1;
-//     }
-
-//     .container {
-//         margin: 0 auto;
-//         padding: 50px 0 0;
-//         max-width: 1200px;
-//         width: 100%;
-
-//         .pricing-table {
-//             box-shadow: 0 2px 2px rgb(0 0 0 / 20%), 0 1px 0 rgb(0 0 0 / 2%);
-//             flex-direction: row;
-//         }
-
-//         .panel {
-//             background-color: #fff;
-//             border-radius: 10px;
-//             padding: 15px 25px;
-//             position: relative;
-//             width: 100%;
-//             z-index: 4;
-
-//             .pricing-plan {
-//                 border-bottom: none;
-//                 border-right: 1px solid #e1f1ff;
-//                 flex-basis: 100%;
-//                 padding: 25px 50px;
-//                 flex-direction: column;
-//                 align-items: center;
-
-//                 &:last-child {
-//                     border-right: none;
-//                 }
-//             }
-
-//             .pricing-plan:last-child {
-//                 border-bottom: none;
-//             }
-
-//             .pricing-header {
-//                 color: #888;
-//                 font-weight: 600;
-//                 letter-spacing: 1px;
-//             }
-
-//             .pricing-features {
-//                 color: #016ff9;
-//                 font-weight: 600;
-//                 letter-spacing: 1px;
-//                 margin: 50px 0 25px;
-//             }
-
-//             .pricing-features-item {
-//                 border-top: 1px solid #e1f1ff;
-//                 font-size: 12px;
-//                 line-height: 1.5;
-//                 padding: 15px 0;
-//             }
-
-//             .pricing-features-item:last-child {
-//                 border-bottom: 1px solid #e1f1ff;
-//             }
-
-//             .pricing-price {
-//                 color: #016ff9;
-//                 display: block;
-//                 font-size: 24px;
-//                 font-weight: 700;
-//             }
-//         }
-
-//         .pricing-table * {
-//             text-align: center;
-//             text-transform: uppercase;
-//         }
-//     }
-// }
 
 mat-accordion {
     flex: 1.8;

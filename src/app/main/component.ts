@@ -1,23 +1,27 @@
-import { Component, ChangeDetectionStrategy, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, HostListener, ChangeDetectorRef, AfterViewInit, Inject, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { WINDOW } from '../modules/window';
 import { UserProvider } from '../providers';
+import { fadeAnimation } from '../helpers/animations';
 
 @Component({
   selector: 'main-page',
   styleUrls: ['style.scss'],
+  animations: [fadeAnimation],
   templateUrl: 'index.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class MainComponent {
+export class MainComponent implements AfterViewInit, OnDestroy {
 
   active = false;
   activeRoute = 'home';
 
   constructor(
-    private change: ChangeDetectorRef,
     public userProvider: UserProvider,
+    private change: ChangeDetectorRef,
     private ActivatedRoute: ActivatedRoute,
+    @Inject(WINDOW) private window: Window
   ) { }
 
   ngOnInit() {
@@ -27,16 +31,36 @@ export class MainComponent {
     });
   }
 
-  @HostListener("window:scroll", ['$event']) onWindowScroll(event) {
-    const height = window.pageYOffset;
-    if (height > 100) {
+  ngAfterViewInit(): void {
+    this.window.addEventListener('scroll', this.scroll, true);
+  }
+
+  ngOnDestroy(): void {
+    this.window.removeEventListener('scroll', this.scroll);
+  }
+
+  scroll = () => {
+    const height = this.window.scrollY;
+
+    if (height > this.getHeight() && !this.active) {
       this.active = true;
-    } else {
+      this.change.markForCheck();
+    }
+
+    if (height <= this.getHeight() && this.active) {
       this.active = false;
+      this.change.markForCheck();
     }
   }
-  
-  removeFragment(){
+
+  getHeight() {
+    if (this.window.screen.width < 800) {
+      return 64;
+    }
+    return 84;
+  }
+
+  removeFragment() {
     this.activeRoute = null;
     this.change.markForCheck();
   }

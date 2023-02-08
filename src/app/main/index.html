@@ -69,8 +69,8 @@
         </a>
       </mat-toolbar-row>
     </mat-toolbar>
-    <div class="router">
-      <router-outlet></router-outlet>
+    <div class="router" role="main" [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
+      <router-outlet #outlet="outlet"></router-outlet>
     </div>
     <div class="footer">
       <div class="container information flex">
