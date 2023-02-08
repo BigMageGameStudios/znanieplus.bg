@@ -1,18 +1,19 @@
 <div class="item">
     <a [routerLink]="'/partner/'+partner.id" aria-label="Виж">
-        <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + partner.logo" width="100%" height="250px" alt="partner" />
+        <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + partner.logo"
+            width="100%" height="250px" alt="partner" />
+        <div class="information flex">
+            <div>
+                Отстъпка
+                <span class="block">
+                    {{partner.promo | number:'1.0-0'}}%
+                </span>
+            </div>
+            <div>
+                <h3>
+                    {{partner.name}}
+                </h3>
+            </div>
+        </div>
     </a>
-    <div class="information flex">
-        <div>
-            Отстъпка
-            <span class="block">
-                {{partner.promo | number:'1.0-0'}}%
-            </span>
-        </div>
-        <div >
-            <h3>
-                {{partner.name}}
-            </h3>
-        </div>
-    </div>
 </div>

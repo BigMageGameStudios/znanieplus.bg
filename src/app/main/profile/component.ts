@@ -38,7 +38,7 @@ export class ProfileComponent {
     private activatedRoute: ActivatedRoute
   ) {
     this.SEOProvider.set({
-      title: 'Знание плюс | Профил',
+      title: 'ЗНАНИЕ+ | Профил',
       description: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
       keywords: 'знание,карта,отстъпка,култура,социална придобивка',
       ogUrl: 'https://www.znanieplus.bg',

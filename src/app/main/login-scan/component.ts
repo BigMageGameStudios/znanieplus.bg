@@ -35,7 +35,7 @@ export class LoginPage implements OnInit, OnDestroy {
     @Inject(PLATFORM_ID) private platform: Object
   ) {
     this.SEOProvider.set({
-      title: 'Знание плюс | Вход',
+      title: 'ЗНАНИЕ+ | Вход',
       description: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
       keywords: 'знание,карта,отстъпка,култура,социална придобивка',
       ogUrl: 'https://www.znanieplus.bg',

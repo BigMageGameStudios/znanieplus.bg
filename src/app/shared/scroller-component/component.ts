@@ -45,9 +45,6 @@ export class ScrollerComponent {
 
   setStep() {
     const element = this.list.nativeElement;
-    if (element.clientWidth < 500) {
-      return this.step = element.clientWidth;
-    }
     this.step = element.clientWidth;
   }
 
@@ -66,14 +63,14 @@ export class ScrollerComponent {
             if (Math.ceil(element.scrollLeft + element.clientWidth) >= element.scrollWidth || element.scrollLeft > distance) {
               return clearInterval(interval);
             }
-            element.scrollLeft += 9;
+            element.scrollLeft += 16;
             break;
           }
           case (this.actions.prev): {
             if (element.scrollLeft <= 0 || element.scrollLeft < distance) {
               return clearInterval(interval);
             }
-            element.scrollLeft -= 9;
+            element.scrollLeft -= 16;
             break;
           }
         }

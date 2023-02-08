@@ -27,7 +27,7 @@ export class PartnerComponent {
     const { item } = ActivatedRoute.snapshot.data;
     this.item = item;
     this.SEOProvider.set({
-      title: `Знание плюс | ${item.name}`,
+      title: `ЗНАНИЕ+ | ${item.name}`,
       description: item.address,
       keywords: 'знание,карта,отстъпка,култура,социална придобивка',
       ogUrl: 'https://www.znanieplus.bg',

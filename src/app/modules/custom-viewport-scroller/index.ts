@@ -63,15 +63,6 @@ export class CustomViewportScroller implements ViewportScroller {
             // of movement to show users that we scrolled them after page load. In a
             // real implementation of ViewportScroller, we should get rid of this but
             // it suits my current needs.
-            const { width = 0, height = 0 } = scrollEl.getBoundingClientRect();
-            const pseudoScroll = this.document.getElementById('pseudodoscroll');
-
-            if (pseudoScroll) {
-                pseudoScroll.style.width = `${position[0] + width}px`;
-                pseudoScroll.style.height = `${position[1] + height}px`;
-                pseudoScroll.style.maxWidth = `100%`;
-            }
-
             this.window.scrollTo({
                 left: position[0],
                 top: position[1],
@@ -132,16 +123,8 @@ export class CustomViewportScroller implements ViewportScroller {
         const [x, y] = this.offset();
 
         const rect = el.getBoundingClientRect();
-        const { width = 0, height = 0 } = rect;
         const left = rect.left + this.window.pageXOffset;
         const top = rect.top + this.window.pageYOffset;
-
-        const pseudoScroll = this.document.getElementById('pseudodoscroll');
-
-        if (pseudoScroll) {
-            pseudoScroll.style.width = `${left + width}px`;
-            pseudoScroll.style.height = `${top + height}px`;
-        }
 
         this.window.scrollTo({
             left: left - x,

@@ -1,31 +1,26 @@
-import {
-    trigger,
-    animate,
-    transition,
-    style,
-    query,
-  } from '@angular/animations';
-  
-  export const fadeAnimation = trigger('fadeAnimation', [
-    transition('* => *', [
-      query(':enter', [style({ opacity: 0})], {
-        optional: true,
-      }),
-      query(
-        ':leave',
-        [
-          style({ opacity: 0 }),
-          animate(300, style({ opacity: 0 })),
-        ],
-        { optional: true }
-      ),
-      query(
-        ':enter',
-        [
-          style({ opacity: 0 }),
-          animate(300, style({ opacity: 1 })),
-        ],
-        { optional: true }
-      ),
-    ]),
-  ]);
+import { trigger, animate, transition, style, query } from '@angular/animations';
+
+export const fadeAnimation =
+
+    trigger('fadeAnimation', [
+
+        transition( '* => *', [
+
+            query(':enter', 
+                [
+                    style({ opacity: 0 })
+                ], 
+                { optional: true }
+            ),
+            
+            query(':enter', 
+                [
+                    style({ opacity: 0 }),
+                    animate(250, style({ opacity: 1 }))
+                ], 
+                { optional: true }
+            )
+
+        ])
+
+    ]);

@@ -3,7 +3,7 @@
         <h2 class="title">
             <span>Нашите партньори</span>
         </h2>
-        <mat-form-field>
+        <mat-form-field color="accent">
             <mat-label>Филтрирай по</mat-label>
             <mat-select [(ngModel)]="filter" (selectionChange)="onSort()">
                 <mat-option *ngFor="let item of filters | keyvalue" [value]="item.value.id">

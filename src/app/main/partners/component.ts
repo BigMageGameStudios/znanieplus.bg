@@ -47,7 +47,7 @@ export class PartnersComponent {
     }
 
     this.SEOProvider.set({
-      title: `Знание плюс | Обекти`,
+      title: `ЗНАНИЕ+ | Обекти`,
       description: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
       keywords: 'знание,карта,отстъпка,култура,социална придобивка',
       ogUrl: 'https://www.znanieplus.bg',
@@ -59,8 +59,8 @@ export class PartnersComponent {
 
   }
 
-  track(index, apartment) {
-    return apartment.key;
+  track(index, item) {
+    return item.key;
   }
 
   onSort() {
