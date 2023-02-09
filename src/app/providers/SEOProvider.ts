@@ -6,7 +6,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { WINDOW } from '../modules/window';
 import { IObjectKeys } from '../helpers/interfaces';
-import { Environment } from 'src/globals/config';
 
 @Injectable({
     providedIn: 'root'
@@ -26,14 +25,14 @@ export class SEOProvider {
     descriptionRegEx = new RegExp('<[^>]*>', 'g');
     googleID = 'G-P0YK5C7N5R';
     pixelId = `977265799913171`;
-    url = Environment.client_url;
+    url = this.window.location.origin;
 
     constructor(
         private Meta: Meta,
         private Title: Title,
         private Router: Router,
         @Inject(DOCUMENT) private document: Document,
-        @Inject(WINDOW) private window: IObjectKeys,
+        @Inject(WINDOW) private window: Window,
         @Inject(PLATFORM_ID) private platformId: Object,
     ) {
 
