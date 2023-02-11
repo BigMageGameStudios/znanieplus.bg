@@ -1,9 +1,12 @@
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { isPlatformBrowser } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, ChangeDetectorRef, Inject, PLATFORM_ID } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
 import { IObjectKeys } from 'src/app/helpers/interfaces';
 import { SEOProvider, UserProvider } from 'src/app/providers';
+import { ConfirmDialog } from 'src/app/shared/confirm-dialog';
 import { CardProvider } from '../providers';
 
 @Component({
@@ -29,6 +32,7 @@ export class LoginPage implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private card: CardProvider,
+    private dialog: MatDialog,
     private SEOProvider: SEOProvider,
     private change: ChangeDetectorRef,
     private userProvider: UserProvider,
@@ -48,6 +52,7 @@ export class LoginPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platform)) {
+      this.showDialog();
       this.start();
     }
   }
@@ -143,5 +148,21 @@ export class LoginPage implements OnInit, OnDestroy {
       clearTimeout(this.timeOutReset);
     }
   }
+
+  showDialog() {
+    this.dialog.open(ConfirmDialog, {
+      scrollStrategy: new NoopScrollStrategy(),
+      data: {
+        title: 'Внимание',
+        message: 'Всеки притежател на валидна карта ЗНАНИЕ+ има свой потребителски профил. За да влезеш в него, просто сканирай баркода от гърба на картата!',
+        buttons: [
+          {
+            label: 'Добре',
+          }
+        ]
+      }
+    });
+  }
+
 
 }

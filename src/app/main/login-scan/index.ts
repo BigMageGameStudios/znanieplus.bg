@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { LoginPage } from './component';
+import { ConfirmDialogModule } from 'src/app/shared/confirm-dialog';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LoginPage } from './component';
       path: '',
       component: LoginPage
     }]),
-    MatDialogModule
+    MatDialogModule,
+    ConfirmDialogModule
   ]
 })
 

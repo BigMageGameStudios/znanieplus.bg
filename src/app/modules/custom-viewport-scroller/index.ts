@@ -13,7 +13,6 @@ export class CustomViewportScroller implements ViewportScroller {
         }
         return [0, 84];
     };
-
     constructor(
         private document: Document,
         private window: Window & typeof globalThis,
@@ -55,14 +54,22 @@ export class CustomViewportScroller implements ViewportScroller {
      */
     scrollToPosition(position: [number, number]): void {
         const scrollEl = this.document.documentElement;
-        const disable = !this.router.getCurrentNavigation()?.extras?.state?.disableScroll;
-
+        const disable = !this.window?.history.state?.disableScroll;
         if (this.supportScrollRestoration() && scrollEl && disable) {
             // Total hack but waiting for content/images to load to give us a 
             // better chance of hitting our scroll target. It also gives the UI a bit
             // of movement to show users that we scrolled them after page load. In a
             // real implementation of ViewportScroller, we should get rid of this but
             // it suits my current needs.
+            const { width = 0, height = 0 } = scrollEl.getBoundingClientRect();
+            const pseudoScroll = this.document.getElementById('pseudodoscroll');
+
+            if (pseudoScroll) {
+                pseudoScroll.style.width = `${position[0] + width}px`;
+                pseudoScroll.style.height = `${position[1] + height}px`;
+                pseudoScroll.style.maxWidth = `100%`;
+            }
+
             this.window.scrollTo({
                 left: position[0],
                 top: position[1],
@@ -78,6 +85,7 @@ export class CustomViewportScroller implements ViewportScroller {
     scrollToAnchor(anchor: string): void {
 
         const disable = !this.router.getCurrentNavigation()?.extras?.state?.disableScroll;
+
         if (this.supportScrollRestoration() && disable) {
             // Escape anything passed to `querySelector` as it can throw errors and stop the application
             // from working if invalid values are passed.
@@ -88,6 +96,7 @@ export class CustomViewportScroller implements ViewportScroller {
             }
             try {
                 const elSelectedById = this.document.querySelector(`#${anchor}`);
+
                 if (elSelectedById) {
                     this.parseAnchorScroll(elSelectedById);
                     return;
@@ -104,7 +113,7 @@ export class CustomViewportScroller implements ViewportScroller {
     }
 
     parseAnchorScroll(element: Element) {
-        this.scrollToElement(element);
+            this.scrollToElement(element);
     }
     /**
      * Disables automatic scroll restoration provided by the browser.
@@ -121,10 +130,17 @@ export class CustomViewportScroller implements ViewportScroller {
 
     private scrollToElement(el: Element): void {
         const [x, y] = this.offset();
-
         const rect = el.getBoundingClientRect();
+        const { width = 0, height = 0 } = rect;
         const left = rect.left + this.window.pageXOffset;
         const top = rect.top + this.window.pageYOffset;
+
+        const pseudoScroll = this.document.getElementById('pseudodoscroll');
+
+        if (pseudoScroll) {
+            pseudoScroll.style.width = `${left + width}px`;
+            pseudoScroll.style.height = `${top + height}px`;
+        }
 
         this.window.scrollTo({
             left: left - x,
