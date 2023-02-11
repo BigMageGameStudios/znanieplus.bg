@@ -8,8 +8,7 @@
       <div class="navigation flex">
         <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()"><span>Провери
             карта</span></a>
-        <a routerLink="/partners" routerLinkActive="activated"
-          [class.active]="activeRoute == 'partners'"><span>Партньори</span></a>
+        <a routerLink="/partners" routerLinkActive="active activated" (click)="removeFragment()"><span>Партньори</span></a>
         <a routerLink="/" fragment="about-us" routerLinkActive="activated"
           [class.active]="activeRoute == 'about-us'"><span>За нас</span></a>
         <a routerLink="/" fragment="contacts" routerLinkActive="activated"
@@ -47,8 +46,7 @@
         </a>
       </li>
       <li>
-        <a routerLink="/partners" routerLinkActive="activated" [class.active]="activeRoute == 'partners'"
-          (click)="drawer.toggle()">
+        <a routerLink="/partners" routerLinkActive="active activated" (click)="drawer.toggle();removeFragment()">
           Партньори
         </a>
       </li>

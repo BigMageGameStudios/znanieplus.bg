@@ -1,7 +1,10 @@
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { validateEmail } from 'src/app/helpers/emailValidator';
 import { MailProvider } from 'src/app/providers/MailProvider';
+import { ConfirmDialog } from '../confirm-dialog';
 
 @Component({
   selector: 'contacts-component',
@@ -37,6 +40,7 @@ export class ContactsComponent {
   loading = false;
 
   constructor(
+    private dialog: MatDialog,
     private change: ChangeDetectorRef,
     private mailProvider: MailProvider
   ) { }
@@ -46,6 +50,7 @@ export class ContactsComponent {
     this.change.markForCheck();
     if(this.form.valid){
       this.loading = true;
+      this.showDialog();
       this.change.markForCheck();
       this.mailProvider.post(this.form.value).subscribe((data) => {
 
@@ -58,6 +63,21 @@ export class ContactsComponent {
         this.change.markForCheck();
       });
     }
+  }
+
+  showDialog() {
+    this.dialog.open(ConfirmDialog, {
+      scrollStrategy: new NoopScrollStrategy(),
+      data: {
+        title: 'Внимание',
+        message: 'Съобщението е изпратено успешно!',
+        buttons: [
+          {
+            label: 'Добре',
+          }
+        ]
+      }
+    });
   }
 
 }

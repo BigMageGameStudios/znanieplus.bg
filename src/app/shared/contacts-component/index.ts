@@ -6,6 +6,8 @@ import { ContactsComponent } from './component';
 import { MatButtonModule } from '@angular/material/button';
 import { MailProvider } from 'src/app/providers/MailProvider';
 import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogModule } from '../confirm-dialog';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { MatRippleModule } from '@angular/material/core';
     FormsModule, 
     ReactiveFormsModule,
     MatButtonModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDialogModule,
+    ConfirmDialogModule
   ],
   providers: [
     MailProvider
