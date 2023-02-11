@@ -153,8 +153,7 @@ export class LoginPage implements OnInit, OnDestroy {
     this.dialog.open(ConfirmDialog, {
       scrollStrategy: new NoopScrollStrategy(),
       data: {
-        title: 'Внимание',
-        message: 'Всеки притежател на валидна карта ЗНАНИЕ+ има свой потребителски профил. За да влезеш в него, просто сканирай баркода от гърба на картата!',
+        message: 'Всеки притежател на валидна карта ЗНАНИЕ+ има свой потребителски профил. За да влезеш в него, просто сканирай баркода от гърба на картата.',
         buttons: [
           {
             label: 'Добре',
