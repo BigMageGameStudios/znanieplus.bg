@@ -85,6 +85,7 @@ export class LoginPage implements OnInit, OnDestroy {
         formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
       } as any);
 
+
       const qrCodeSuccessCallback = (decodedText: string, decodedResult: IObjectKeys) => {
         if (this.canScan && decodedText) {
           this.active = false;
@@ -101,10 +102,14 @@ export class LoginPage implements OnInit, OnDestroy {
 
       const qrCodeErrorCallback = () => { };
 
-      const config = { fps: 20, qrbox: { width: 250, height: 180 }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13] };
+      const config = { fps: 10, qrbox: { width: 250, height: 180 }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13] };
 
       try {
         await this.scanner.start({ facingMode: "environment" }, config, qrCodeSuccessCallback, qrCodeErrorCallback);
+        this.scanner.applyVideoConstraints({
+          width: 1920,
+          height: 1080,
+        })
       } catch (error) {
         console.warn(error)
       }
