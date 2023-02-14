@@ -85,6 +85,7 @@ export class LoginPage implements OnInit, OnDestroy {
         formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
       } as any);
 
+      const device = await this.getDevices();
 
       const qrCodeSuccessCallback = (decodedText: string, decodedResult: IObjectKeys) => {
         if (this.canScan && decodedText) {
@@ -102,14 +103,18 @@ export class LoginPage implements OnInit, OnDestroy {
 
       const qrCodeErrorCallback = () => { };
 
-      const config = { fps: 10, qrbox: { width: 250, height: 180 }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13] };
+      const config = {
+        fps: 10, qrbox: { width: 250, height: 180 }, videoConstraints: {
+          advanced: [{
+            width: 1080,
+            aspectRatio: 1.3333,
+            facingMode: 'environment'
+          }],
+        }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
+      };
 
       try {
-        await this.scanner.start({ facingMode: "environment" }, config, qrCodeSuccessCallback, qrCodeErrorCallback);
-        this.scanner.applyVideoConstraints({
-          width: 1920,
-          height: 1080,
-        })
+        await this.scanner.start(device.deviceId, config, qrCodeSuccessCallback, qrCodeErrorCallback);
       } catch (error) {
         console.warn(error)
       }
@@ -144,7 +149,7 @@ export class LoginPage implements OnInit, OnDestroy {
         this.code = '';
         this.change.markForCheck()
       }, this.timeOutResetValue);
-      
+
     }
   }
 
@@ -168,5 +173,26 @@ export class LoginPage implements OnInit, OnDestroy {
     });
   }
 
+  async getDevices() {
+
+    return navigator.mediaDevices.getUserMedia({
+      audio: false,
+      video: true
+    }).then((stream) => {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+      return navigator.mediaDevices.enumerateDevices();
+    }).then((devices) => {
+      const filter = devices.filter((device) => {
+        const label = device.label.toLowerCase();
+        const pattern = /rear|back|environment/ig;
+        return device.kind == 'videoinput' && pattern.test(label);
+      });
+      const device = filter.pop();
+      return device;
+    });
+
+  }
 
 }
