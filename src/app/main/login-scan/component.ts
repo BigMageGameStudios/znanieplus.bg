@@ -1,6 +1,6 @@
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { isPlatformBrowser } from '@angular/common';
-import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, ChangeDetectorRef, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, ChangeDetectorRef, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
@@ -29,6 +29,17 @@ export class LoginPage implements OnInit, OnDestroy {
   timeout = 1000;
   timeOutResetValue = 5000;
 
+  stream: MediaStream;
+  canvasElement: HTMLCanvasElement;
+  videoElement: HTMLVideoElement;
+  canvasContext: CanvasRenderingContext2D;
+  @ViewChild('video', { static: true }) video: ElementRef;
+  @ViewChild('canvas', { static: true }) canvas: ElementRef;
+
+  canStream = false;
+  streamError = false;
+  isDestroyed = false
+
   constructor(
     private router: Router,
     private card: CardProvider,
@@ -52,19 +63,67 @@ export class LoginPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platform)) {
-      this.showDialog();
-      this.start();
+      this.videoElement = this.video.nativeElement;
+      this.canvasElement = this.canvas.nativeElement;
+      this.canvasContext = this.canvasElement.getContext('2d', { alpha: false });
+      this.canvasContext.imageSmoothingEnabled = false;
+      this.videoElement.addEventListener('play', this.onPlay.bind(this));
+
+      this.getDevices().then((device) => {
+        return this.startScan(device);
+      }).catch((e) => {
+        switch (e.name) {
+          case ('NotFoundError'): {
+            this.dialog.open(ConfirmDialog, {
+              data: {
+                title: 'alert',
+                message: 'alert',
+                buttons: [
+                  {
+                    label: 'ok',
+                  }
+                ]
+              }
+            });
+            break;
+          }
+          default: {
+            this.dialog.open(ConfirmDialog, {
+              data: {
+                title: 'alert',
+                message: 'camera-permissions',
+                buttons: [
+                  {
+                    label: 'ok'
+                  }
+                ]
+              }
+            });
+            break;
+          }
+        }
+        this.streamError = true;
+        this.change.markForCheck();
+      });
     }
   }
 
+
+  // ngOnInit() {
+  //   if (isPlatformBrowser(this.platform)) {
+  //     this.showDialog();
+  //     this.start();
+  //   }
+  // }
+
   ngOnDestroy(): void {
-    if (isPlatformBrowser(this.platform)) {
-      this.stop();
-      if (this.timeOut) {
-        clearTimeout(this.timeOut);
-      }
-      this.resetTimeOutClear();
-    }
+    // if (isPlatformBrowser(this.platform)) {
+    //   this.stop();
+    //   if (this.timeOut) {
+    //     clearTimeout(this.timeOut);
+    //   }
+    //   this.resetTimeOutClear();
+    // }
   }
 
   async stop() {
@@ -77,87 +136,87 @@ export class LoginPage implements OnInit, OnDestroy {
     }
   }
 
-  async start() {
+  // async start() {
 
-    if (isPlatformBrowser(this.platform)) {
+  //   if (isPlatformBrowser(this.platform)) {
 
-      this.scanner = new Html5Qrcode("reader", {
-        formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
-      } as any);
+  //     this.scanner = new Html5Qrcode("reader", {
+  //       formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
+  //     } as any);
 
-      const device = await this.getDevices();
+  //     const device = await this.getDevices();
 
-      const qrCodeSuccessCallback = (decodedText: string, decodedResult: IObjectKeys) => {
-        if (this.canScan && decodedText) {
-          this.active = false;
-          this.submited = false;
-          this.canScan = false;
-          this.code = decodedText;
-          this.change.markForCheck();
-          this.onSubmit(decodedText);
-          this.timeOut = setTimeout(() => {
-            this.canScan = true;
-          }, this.timeout);
-        }
-      };
+  //     const qrCodeSuccessCallback = (decodedText: string, decodedResult: IObjectKeys) => {
+  //       if (this.canScan && decodedText) {
+  //         this.active = false;
+  //         this.submited = false;
+  //         this.canScan = false;
+  //         this.code = decodedText;
+  //         this.change.markForCheck();
+  //         this.onSubmit(decodedText);
+  //         this.timeOut = setTimeout(() => {
+  //           this.canScan = true;
+  //         }, this.timeout);
+  //       }
+  //     };
 
-      const qrCodeErrorCallback = () => { };
+  //     const qrCodeErrorCallback = () => { };
 
-      const config = {
-        fps: 10, qrbox: { width: 250, height: 180 }, videoConstraints: {
-          advanced: [{
-            width: 1080,
-            aspectRatio: 1.3333,
-            facingMode: 'environment'
-          }],
-        }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
-      };
+  //     const config = {
+  //       fps: 10, qrbox: { width: 250, height: 180 }, videoConstraints: {
+  //         advanced: [{
+  //           width: 1080,
+  //           aspectRatio: 1.3333,
+  //           facingMode: 'environment'
+  //         }],
+  //       }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
+  //     };
 
-      try {
-        await this.scanner.start(device.deviceId, config, qrCodeSuccessCallback, qrCodeErrorCallback);
-      } catch (error) {
-        console.warn(error)
-      }
+  //     try {
+  //       await this.scanner.start(device.deviceId, config, qrCodeSuccessCallback, qrCodeErrorCallback);
+  //     } catch (error) {
+  //       console.warn(error)
+  //     }
 
-    }
+  //   }
 
-  }
+  // }
 
   onSubmit(code: string) {
-    if (code?.length > 0) {
-      this.card.get(code).subscribe((data: any) => {
-        if (data.active) {
-          this.active = true;
-          this.userProvider.login(code);
-          this.router.navigateByUrl('/profile');
-        }
-        this.submited = true;
-        this.reset();
-        this.change.markForCheck();
-      });
-    }
+    // if (code?.length > 0) {
+    //   this.card.get(code).subscribe((data: any) => {
+    //     if (data.active) {
+    //       this.active = true;
+    //       this.userProvider.login(code);
+    //       this.router.navigateByUrl('/profile');
+    //     }
+    //     this.submited = true;
+    //     this.reset();
+    //     this.change.markForCheck();
+    //   });
+    // }
   }
 
-  reset() {
-    if (isPlatformBrowser(this.platform)) {
+  // reset() {
+  //   if (isPlatformBrowser(this.platform)) {
 
-      this.resetTimeOutClear();
-      this.timeOutReset = setTimeout(() => {
-        this.active = false;
-        this.submited = false;
-        this.canScan = true;
-        this.code = '';
-        this.change.markForCheck()
-      }, this.timeOutResetValue);
+  //     this.resetTimeOutClear();
+  //     this.timeOutReset = setTimeout(() => {
+  //       this.active = false;
+  //       this.submited = false;
+  //       this.canScan = true;
+  //       this.code = '';
+  //       this.change.markForCheck()
+  //     }, this.timeOutResetValue);
 
-    }
-  }
+  //   }
+  // }
 
-  resetTimeOutClear() {
-    if (this.timeOutReset) {
-      clearTimeout(this.timeOutReset);
-    }
-  }
+  // resetTimeOutClear() {
+  //   if (this.timeOutReset) {
+  //     clearTimeout(this.timeOutReset);
+  //   }
+  // }
 
   showDialog() {
     this.dialog.open(ConfirmDialog, {
@@ -193,6 +252,85 @@ export class LoginPage implements OnInit, OnDestroy {
       return device;
     });
 
+  }
+
+  onPlay() {
+    requestAnimationFrame(this.scan.bind(this));
+  }
+
+  async startScan(device) {
+    const constraints: { [key: string]: any } = {
+      audio: false,
+      video: {
+        width: 1080,
+        aspectRatio: 1.3333,
+        facingMode: 'environment'
+      }
+    };
+
+    if (device) {
+      constraints.video.deviceId = device.deviceId;
+    }
+
+    return navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+      if (!this.isDestroyed) {
+        this.videoElement.srcObject = stream;
+        this.stream = stream;
+        this.canStream = true;
+        this.change.markForCheck();
+      } else {
+        stream.getTracks().forEach(track => track.stop());
+      }
+
+    });
+
+  }
+
+  scan() {
+
+    this.canvasElement.height = this.videoElement.videoHeight;
+    this.canvasElement.width = this.videoElement.videoWidth;
+
+    const { width, height } = this.canvasElement;
+
+    if (width == 0 || height == 0) {
+      return requestAnimationFrame(this.scan.bind(this));
+    }
+
+    const imageData = this.crop({
+      width, height
+    });
+
+
+    // const code = jsQR(imageData.data, imageData.width, imageData.height, {
+    //   inversionAttempts: 'dontInvert'
+    // });
+
+    // if (code) {
+    //   return this.action(code.data);
+    // }
+
+    requestAnimationFrame(this.scan.bind(this));
+
+  }
+
+  crop({ width, height }) {
+    const sizeW = 0.35 * width;
+    const sizeH = 0.25 * height;
+    this.canvasElement.width = sizeW;
+    this.canvasElement.height = sizeH;
+
+    const left = width * 0.325;
+    const top = 0.375 * height;
+
+    this.canvasContext.drawImage(this.videoElement, left, top, sizeW, sizeH, 0, 0, sizeW, sizeH);
+
+    return this.canvasContext.getImageData(
+      0,
+      0,
+      sizeW,
+      sizeH
+    );
   }
 
 }

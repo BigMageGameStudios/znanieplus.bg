@@ -6,8 +6,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { DrawerModule } from '../shared/drawer-component';
+import { ToolbarModule } from '../shared/toolbar-component';
 
 import { MODULE_ROUTES, MODULE_COMPONENTS } from './routes';
 import { MainProvidersModule } from './providers/module';
@@ -20,12 +20,12 @@ import { MainResolversModule } from './resolvers/module';
   imports: [
     CommonModule,
     RouterModule.forChild(MODULE_ROUTES),
-    MatToolbarModule,
+    ToolbarModule,
     MatButtonModule,
     MatMenuModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatSidenavModule,
+    DrawerModule,
     MatDialogModule,
     MainProvidersModule,
     MainResolversModule

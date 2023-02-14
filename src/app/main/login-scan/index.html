@@ -1,4 +1,4 @@
-<ng-container *ngIf="submited">
+<!-- <ng-container *ngIf="submited">
     <div id="valid" *ngIf="active else notActive">
         Картата „{{ code }}“ е активна
     </div>
@@ -9,4 +9,25 @@
     </ng-template>
 </ng-container>
 
-<div id="reader"></div>
+<div id="reader"></div> -->
+
+<div class="flex box">
+    <div class="video-container relative" [hidden]="!canStream">
+        <video #video autoplay muted playsinline></video>
+        <ng-container *ngIf="canStream">
+            <div class="border">
+
+            </div>
+            <div class="blur">
+
+            </div>
+            <div class="message">
+                message
+            </div>
+        </ng-container>
+    </div>
+    <div *ngIf="streamError" class="instructions">
+        error
+    </div>
+</div>
+<canvas #canvas hidden></canvas>
