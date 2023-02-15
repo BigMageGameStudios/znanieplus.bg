@@ -18,6 +18,7 @@ export class ScanPage implements OnInit, OnDestroy {
   timeOutReset
 
   code = '';
+  name = '';
   canScan = true;
   active = false;
   submited = false;
@@ -77,6 +78,7 @@ export class ScanPage implements OnInit, OnDestroy {
       } as any);
 
       const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+        console.log(decodedText)
         if (this.canScan && decodedText) {
           this.active = false;
           this.submited = false;
@@ -90,7 +92,7 @@ export class ScanPage implements OnInit, OnDestroy {
         }
       };
 
-      const qrCodeErrorCallback = (decodedText, decodedResult) => { };
+      const qrCodeErrorCallback = (decodedText, decodedResult) => {console.log(decodedResult) };
 
       const config = { fps: 20, qrbox: { width: 250, height: 180 }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13] };
 
@@ -106,9 +108,11 @@ export class ScanPage implements OnInit, OnDestroy {
 
   onSubmit(code) {
     if (code?.length > 0) {
+      this.name = '';
       this.card.get(code).subscribe((data: any) => {
         if (data.active) {
           this.active = true;
+          this.name = `${data.first_name} ${data.last_name}`
         }
         this.submited = true;
         this.reset();

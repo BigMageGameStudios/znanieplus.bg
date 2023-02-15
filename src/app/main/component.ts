@@ -17,26 +17,6 @@ export class MainComponent implements AfterViewInit, OnDestroy {
   active = false;
   activeRoute = 'home';
 
-  navigation = [
-    {
-      name: "this.translations['navigation']",
-      children: [
-        {
-          name: "this.translations['orders']",
-          link: '/admin/panel/orders',
-          image: './assets/tracking.svg',
-          type: 'link'
-        },
-        {
-          name: "this.translations['categories']",
-          link: '/admin/panel/categories',
-          image: './assets/categories.svg',
-          type: 'link'
-        }
-      ]
-    }
-  ]
-
   constructor(
     public userProvider: UserProvider,
     private change: ChangeDetectorRef,

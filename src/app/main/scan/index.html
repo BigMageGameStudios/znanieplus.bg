@@ -1,6 +1,7 @@
 <ng-container *ngIf="submited">
     <div id="valid" *ngIf="active else notActive">
-        Картата „{{ code }}“ е активна
+        Статус: Активна карта<br>
+        Притежател: {{ name }}
     </div>
     <ng-template #notActive>
         <div id="invalid">

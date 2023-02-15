@@ -16,6 +16,7 @@ export class CardComponent {
     text: new FormControl('', [Validators.required])
   });
 
+  name = '';
   active = false;
   toClean = false;
   submited = false;
@@ -95,6 +96,7 @@ export class CardComponent {
       this.card.get(value).subscribe((data: any) => {
         if(data.active){
           this.active = true;
+          this.name = `${data.first_name} ${data.last_name}`
         }
         this.submited = true;
         this.toClean = true;
