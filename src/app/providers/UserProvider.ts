@@ -1,5 +1,5 @@
-import { Injectable, Inject, PLATFORM_ID, Optional } from '@angular/core';
-import { isPlatformServer, isPlatformBrowser, DOCUMENT } from '@angular/common';
+import { Injectable, Inject } from '@angular/core';
+import { LOCAL_STORAGE } from '../modules/local-storage';
 
 @Injectable({
     providedIn: 'root'
@@ -10,83 +10,44 @@ export class UserProvider {
     static readonly key = 'user';
     static readonly policy = 'policy';
 
-    readonly time = 365 * 2 * 24 * 60 * 60 * 1000;
-
-    private cookies = new Map();
-
     constructor(
-        @Inject(DOCUMENT) private document: Document,
-        @Inject(PLATFORM_ID) private platformId: Object,
-        @Optional() @Inject('REQUEST') private req: any,
+        @Inject(LOCAL_STORAGE) private localStorage: Storage,
     ) { }
 
-    init() {
-
-        if (isPlatformServer(this.platformId)) {
-            for(const key in this.req?.cookie){
-                this.cookies.set(key, this.req?.cookie[key]);
-            }
-        }
-
-        if (isPlatformBrowser(this.platformId)) {
-            const cookies = this.document.cookie;
-            this.parseCookie(cookies);
-        }
-
-    }
-
-    private parseCookie(cookies: string) {
-        if (cookies) {
-            cookies = cookies.replace(/ /g, '');
-
-            cookies.split(';').forEach((e) => {
-                let item = e.split('=');
-                this.cookies.set(item[0], item[1]);
-            });
-
-        }
-    }
+    init() { }
 
     exit() {
         this.deleteCookie(UserProvider.key);
     }
 
     login(value: string) {
-        this.setCookie({ key: UserProvider.key, value });
+        this.setData({ key: UserProvider.key, value });
     }
 
-    acceptPolicy(){
-        this.setCookie({ key: UserProvider.policy, value: true });
+    acceptPolicy() {
+        this.setData({ key: UserProvider.policy, value: true });
 
     }
 
-    isLogedIn(){
-        return this.cookies.get(UserProvider.key)!;
-    }
-    
-    getCode(){
-        return this.cookies.get(UserProvider.key);
+    isLogedIn() {
+        return this.localStorage.getItem(UserProvider.key)!;
     }
 
-    getPolicy(){
-        return this.cookies.get(UserProvider.policy);
+    getCode() {
+        return this.localStorage.getItem(UserProvider.key);
     }
 
-    private setCookie({ key, value }) {
+    getPolicy() {
+        return this.localStorage.getItem(UserProvider.policy);
+    }
 
-        this.cookies.set(key, value);
-
-        if (isPlatformBrowser(this.platformId)) {
-            const expire = new Date(Date.now() + this.time);
-            this.document.cookie = `${key}=${value}; expires=${expire}; path=/`;
-        }
+    private setData({ key, value }) {
+        this.localStorage.setItem(key, value);
     }
 
     private deleteCookie(key: string) {
-        if (isPlatformBrowser(this.platformId)) {
-            this.document.cookie = `${key}=; expires=${new Date(0)}; path=/`;
-            this.cookies.delete(key);
-        }
+        this.localStorage.removeItem(key);
+
     }
 
 }
