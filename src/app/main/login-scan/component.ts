@@ -28,6 +28,14 @@ export class LoginPage implements OnInit, OnDestroy {
   videoElement: HTMLVideoElement;
   canvasContext: CanvasRenderingContext2D;
 
+  timeOut;
+  time = 3000;
+
+  submitTimeOut;
+  canSubmit = true;
+  submitTime = 1000;
+
+
   @ViewChild('video', { static: true }) video: ElementRef;
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
@@ -35,8 +43,6 @@ export class LoginPage implements OnInit, OnDestroy {
   streamError = false;
   isDestroyed = false
   loading = false;
-  timeOut;
-  time = 3000;
 
   formats = [BarcodeFormat.EAN_13];
   scanner: BrowserCodeReader;
@@ -136,33 +142,6 @@ export class LoginPage implements OnInit, OnDestroy {
         this.stream.getTracks().forEach(track => track.stop());
       }
     }
-  }
-
-  onSubmit(code: string) {
-    if (code?.length > 0 && !this.loading) {
-      this.loading = true;
-      this.card.get(code).subscribe((data: any) => {
-        this.loading = false;
-        this.clear();
-        this.timeOut = setTimeout(() => {
-          this.active = false;
-          this.submited = false;
-          this.code = '';
-          this.change.markForCheck();
-        }, this.time);
-        if (data.active) {
-          this.active = true;
-          this.userProvider.login(code);
-          this.router.navigateByUrl('/profile');
-        }
-        this.submited = true;
-        this.change.markForCheck();
-      });
-    }
-  }
-
-  clear() {
-    clearTimeout(this.timeOut);
   }
 
   showDialog() {
@@ -274,6 +253,52 @@ export class LoginPage implements OnInit, OnDestroy {
     const top = 0.35 * height;
 
     this.canvasContext.drawImage(this.videoElement, left, top, sizeW, sizeH, 0, 0, sizeW, sizeH);
+  }
+
+
+  onSubmit(code: string) {
+    if (code?.length > 0 && !this.loading && this.canSubmit) {
+      this.loading = true;
+      this.submited = false;
+      this.reset();
+      this.resetVars();
+      this.card.get(code).subscribe((data: any) => {
+        this.loading = false;
+        this.canSubmit = false;
+
+        if (data.active) {
+          this.active = true;
+          this.userProvider.login(code);
+          this.router.navigateByUrl('/profile');
+        }
+
+        this.submited = true;
+        this.change.markForCheck();
+      });
+    }
+  }
+
+  clear() {
+    clearTimeout(this.timeOut);
+    clearTimeout(this.submitTimeOut);
+  }
+
+  reset() {
+    this.clear();
+    this.timeOut = setTimeout(() => {
+      this.submited = false;
+      this.resetVars();
+    }, this.time);
+
+    this.submitTimeOut = setTimeout(() => {
+      this.canSubmit = true;
+    }, this.submitTime);
+  }
+
+  resetVars(){
+    this.active = false;
+    this.code = '';
+    this.change.markForCheck();
   }
 
 }
