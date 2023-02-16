@@ -1,6 +1,6 @@
 <toolbar-component [drawer]="drawer"></toolbar-component>
-<div class="router member flex">
-  <drawer-component #drawer [navigation]="navigation">
+<div class="router member flex" role="main" [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
+  <drawer-component #drawer>
   </drawer-component>
-  <router-outlet></router-outlet>
+  <router-outlet #outlet="outlet"></router-outlet>
 </div>

@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { PrivacyComponent } from './component';
 import { ContactsModule } from 'src/app/shared/contacts-component';
+import { FooterModule } from 'src/app/shared/footer-component';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,8 @@ import { ContactsModule } from 'src/app/shared/contacts-component';
     imports: [
         CommonModule,
         RouterModule.forChild([{ path: '', component: PrivacyComponent }]),
-        ContactsModule
+        ContactsModule,
+        FooterModule
     ]
 })
 

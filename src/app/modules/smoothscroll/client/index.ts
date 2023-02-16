@@ -4,7 +4,7 @@ if (!("scrollBehavior" in document.documentElement.style)) {
         if (polyfill) {
             polyfill();
         }
-    }).catch((e) => {
-        console.log(e);
+    }).catch((err) => {
+        console.log(err);
     });
 }

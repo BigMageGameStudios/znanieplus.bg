@@ -10,6 +10,7 @@ import { ContactsModule } from 'src/app/shared/contacts-component';
 import { GalleryModule } from 'src/app/shared/gallery-component';
 import { GalleryDialogModule } from 'src/app/shared/gallery-dialog';
 import { SafeHTMLModule } from 'src/app/pipes/safe-html';
+import { FooterModule } from 'src/app/shared/footer-component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { SafeHTMLModule } from 'src/app/pipes/safe-html';
         ContactsModule,
         GalleryModule,
         SafeHTMLModule,
-        GalleryDialogModule
+        GalleryDialogModule,
+        FooterModule
     ]
 })
 

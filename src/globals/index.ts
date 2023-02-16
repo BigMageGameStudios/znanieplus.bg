@@ -1,6 +1,6 @@
 export { Environment } from './config'
 export const EMAIL_PROVIDER = 'https://prime-code.com/api/1/mail/send/znanieplus'
-
+export const MOBILE_WIDTH = 800;
 
 export const FileTypes = {
   image: {

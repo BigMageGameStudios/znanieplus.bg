@@ -1,7 +1,9 @@
-import { Component, ChangeDetectorRef, Inject, PLATFORM_ID, ElementRef, HostListener, Input, ChangeDetectionStrategy, Output, EventEmitter, ViewChild } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-
+import { isPlatformBrowser } from '@angular/common';
+import { Component, ChangeDetectorRef, ElementRef, HostListener, ChangeDetectionStrategy, Output, EventEmitter, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { IObjectKeys } from 'src/app/helpers/interfaces';
+import { UserProvider } from 'src/app/providers';
 
 @Component({
   selector: 'drawer-component',
@@ -22,31 +24,37 @@ export class DrawerComponent {
   }
 
   active = false;
+
+  activeFragment = false;
+  activeRoute = 'home';
+  subscription!: Subscription;
+
   @Output('toggle') toogleEvent = new EventEmitter();
-
-  @Input('navigation') navigation!: {
-    name: string,
-    hidden?: boolean,
-    children: {
-      name: string,
-      link?: string,
-      image: string,
-      type: string,
-      key?: string,
-      active?: boolean,
-      click?: Function,
-      queryParamsHandling?: 'merge' | 'preserve' | '' | undefined,
-    }[]
-  }[];
-
   @ViewChild('container', { static: true }) container!: ElementRef;
 
   constructor(
-    private change: ChangeDetectorRef,
     private elementRef: ElementRef,
-    @Inject(DOCUMENT) private document: IObjectKeys,
-    @Inject(PLATFORM_ID) private platform: number,
+    private change: ChangeDetectorRef,
+    private activated: ActivatedRoute,
+    public userProvider: UserProvider,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.activated.fragment.subscribe((data) => {
+        this.activeRoute = data;
+        this.change.markForCheck();
+      });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
 
   toggle(event?: Event) {
     if (event) {
@@ -77,6 +85,11 @@ export class DrawerComponent {
   }
 
   refresh(){
+    this.change.markForCheck();
+  }
+
+  removeFragment() {
+    this.activeRoute = null;
     this.change.markForCheck();
   }
   

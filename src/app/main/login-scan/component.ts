@@ -3,11 +3,11 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy, ChangeDetectorRef, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
-import { IObjectKeys } from 'src/app/helpers/interfaces';
 import { SEOProvider, UserProvider } from 'src/app/providers';
 import { ConfirmDialog } from 'src/app/shared/confirm-dialog';
 import { CardProvider } from '../providers';
+import { BrowserCodeReader } from '@zxing/browser';
+import { BarcodeFormat, DecodeHintType, MultiFormatReader } from '@zxing/library';
 
 @Component({
   selector: 'login-scan-page',
@@ -18,27 +18,28 @@ import { CardProvider } from '../providers';
 
 export class LoginPage implements OnInit, OnDestroy {
 
-  scanner: Html5Qrcode;
-  timeOut: any;
-  timeOutReset
-
   code = '';
-  canScan = true;
+
   active = false;
   submited = false;
-  timeout = 1000;
-  timeOutResetValue = 5000;
 
   stream: MediaStream;
   canvasElement: HTMLCanvasElement;
   videoElement: HTMLVideoElement;
   canvasContext: CanvasRenderingContext2D;
+
   @ViewChild('video', { static: true }) video: ElementRef;
   @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
   canStream = false;
   streamError = false;
   isDestroyed = false
+  loading = false;
+  timeOut;
+  time = 3000;
+
+  formats = [BarcodeFormat.EAN_13];
+  scanner: BrowserCodeReader;
 
   constructor(
     private router: Router,
@@ -59,15 +60,25 @@ export class LoginPage implements OnInit, OnDestroy {
       ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
       canonicalURL: '/login'
     });
+    if (isPlatformBrowser(this.platform)) {
+      const hints = new Map();
+      const reader = new MultiFormatReader();
+
+      hints.set(DecodeHintType.TRY_HARDER, true);
+      hints.set(DecodeHintType.POSSIBLE_FORMATS, this.formats);
+
+      this.scanner = new BrowserCodeReader(reader, hints)
+    }
   }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platform)) {
       this.videoElement = this.video.nativeElement;
       this.canvasElement = this.canvas.nativeElement;
-      this.canvasContext = this.canvasElement.getContext('2d', { alpha: false });
+      this.canvasContext = this.canvasElement.getContext('2d', { alpha: false, willReadFrequently: true });
       this.canvasContext.imageSmoothingEnabled = false;
       this.videoElement.addEventListener('play', this.onPlay.bind(this));
+      this.showDialog();
 
       this.getDevices().then((device) => {
         return this.startScan(device);
@@ -76,29 +87,31 @@ export class LoginPage implements OnInit, OnDestroy {
           case ('NotFoundError'): {
             this.dialog.open(ConfirmDialog, {
               data: {
-                title: 'alert',
-                message: 'alert',
+                title: 'Внимание',
+                message: 'Не е открита камера на използваното устройство.',
                 buttons: [
                   {
-                    label: 'ok',
+                    label: 'Добре',
                   }
                 ]
               }
             });
+            this.router.navigateByUrl('/')
             break;
           }
           default: {
             this.dialog.open(ConfirmDialog, {
               data: {
-                title: 'alert',
-                message: 'camera-permissions',
+                title: 'Внимание',
+                message: 'Моля, разрешете правата за използване на камерата на устройството и презаредете страницата.',
                 buttons: [
                   {
-                    label: 'ok'
+                    label: 'Добре'
                   }
                 ]
               }
             });
+            this.router.navigateByUrl('/')
             break;
           }
         }
@@ -108,115 +121,49 @@ export class LoginPage implements OnInit, OnDestroy {
     }
   }
 
-
-  // ngOnInit() {
-  //   if (isPlatformBrowser(this.platform)) {
-  //     this.showDialog();
-  //     this.start();
-  //   }
-  // }
-
-  ngOnDestroy(): void {
-    // if (isPlatformBrowser(this.platform)) {
-    //   this.stop();
-    //   if (this.timeOut) {
-    //     clearTimeout(this.timeOut);
-    //   }
-    //   this.resetTimeOutClear();
-    // }
+  ngOnDestroy() {
+    if (this.videoElement) {
+      this.videoElement.removeEventListener('play', this.onPlay);
+    }
+    this.clear();
+    this.stopStream();
+    this.isDestroyed = true;
   }
 
-  async stop() {
+  async stopStream() {
     if (isPlatformBrowser(this.platform)) {
-      try {
-        await this.scanner.stop();
-      } catch (error) {
-        console.warn(error);
+      if (this.stream) {
+        this.stream.getTracks().forEach(track => track.stop());
       }
     }
   }
 
-  // async start() {
-
-  //   if (isPlatformBrowser(this.platform)) {
-
-  //     this.scanner = new Html5Qrcode("reader", {
-  //       formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
-  //     } as any);
-
-  //     const device = await this.getDevices();
-
-  //     const qrCodeSuccessCallback = (decodedText: string, decodedResult: IObjectKeys) => {
-  //       if (this.canScan && decodedText) {
-  //         this.active = false;
-  //         this.submited = false;
-  //         this.canScan = false;
-  //         this.code = decodedText;
-  //         this.change.markForCheck();
-  //         this.onSubmit(decodedText);
-  //         this.timeOut = setTimeout(() => {
-  //           this.canScan = true;
-  //         }, this.timeout);
-  //       }
-  //     };
-
-  //     const qrCodeErrorCallback = () => { };
-
-  //     const config = {
-  //       fps: 10, qrbox: { width: 250, height: 180 }, videoConstraints: {
-  //         advanced: [{
-  //           width: 1080,
-  //           aspectRatio: 1.3333,
-  //           facingMode: 'environment'
-  //         }],
-  //       }, formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13]
-  //     };
-
-  //     try {
-  //       await this.scanner.start(device.deviceId, config, qrCodeSuccessCallback, qrCodeErrorCallback);
-  //     } catch (error) {
-  //       console.warn(error)
-  //     }
-
-  //   }
-
-  // }
-
   onSubmit(code: string) {
-    // if (code?.length > 0) {
-    //   this.card.get(code).subscribe((data: any) => {
-    //     if (data.active) {
-    //       this.active = true;
-    //       this.userProvider.login(code);
-    //       this.router.navigateByUrl('/profile');
-    //     }
-    //     this.submited = true;
-    //     this.reset();
-    //     this.change.markForCheck();
-    //   });
-    // }
+    if (code?.length > 0 && !this.loading) {
+      this.loading = true;
+      this.card.get(code).subscribe((data: any) => {
+        this.loading = false;
+        this.clear();
+        this.timeOut = setTimeout(() => {
+          this.active = false;
+          this.submited = false;
+          this.code = '';
+          this.change.markForCheck();
+        }, this.time);
+        if (data.active) {
+          this.active = true;
+          this.userProvider.login(code);
+          this.router.navigateByUrl('/profile');
+        }
+        this.submited = true;
+        this.change.markForCheck();
+      });
+    }
   }
 
-  // reset() {
-  //   if (isPlatformBrowser(this.platform)) {
-
-  //     this.resetTimeOutClear();
-  //     this.timeOutReset = setTimeout(() => {
-  //       this.active = false;
-  //       this.submited = false;
-  //       this.canScan = true;
-  //       this.code = '';
-  //       this.change.markForCheck()
-  //     }, this.timeOutResetValue);
-
-  //   }
-  // }
-
-  // resetTimeOutClear() {
-  //   if (this.timeOutReset) {
-  //     clearTimeout(this.timeOutReset);
-  //   }
-  // }
+  clear() {
+    clearTimeout(this.timeOut);
+  }
 
   showDialog() {
     this.dialog.open(ConfirmDialog, {
@@ -294,43 +241,39 @@ export class LoginPage implements OnInit, OnDestroy {
     const { width, height } = this.canvasElement;
 
     if (width == 0 || height == 0) {
-      return requestAnimationFrame(this.scan.bind(this));
+      return setTimeout(this.scan.bind(this), 16);
     }
 
-    const imageData = this.crop({
+    this.crop({
       width, height
     });
 
+    try {
 
-    // const code = jsQR(imageData.data, imageData.width, imageData.height, {
-    //   inversionAttempts: 'dontInvert'
-    // });
 
-    // if (code) {
-    //   return this.action(code.data);
-    // }
+      const data = this.scanner.decodeFromCanvas(this.canvas.nativeElement);
+      const code = data.getText();
+      this.code = code;
+      this.onSubmit(code);
 
-    requestAnimationFrame(this.scan.bind(this));
+    } catch (error) {
+      // console.log(error)
+    }
+
+    setTimeout(this.scan.bind(this), 16);
 
   }
 
   crop({ width, height }) {
-    const sizeW = 0.35 * width;
-    const sizeH = 0.25 * height;
+    const sizeW = 0.45 * width;
+    const sizeH = 0.20 * height;
     this.canvasElement.width = sizeW;
     this.canvasElement.height = sizeH;
 
-    const left = width * 0.325;
-    const top = 0.375 * height;
+    const left = width * 0.275;
+    const top = 0.35 * height;
 
     this.canvasContext.drawImage(this.videoElement, left, top, sizeW, sizeH, 0, 0, sizeW, sizeH);
-
-    return this.canvasContext.getImageData(
-      0,
-      0,
-      sizeW,
-      sizeH
-    );
   }
 
 }

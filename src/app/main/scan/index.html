@@ -1,12 +1,35 @@
-<ng-container *ngIf="submited">
-    <div id="valid" *ngIf="active else notActive">
-        Картата „{{ code }}“ е активна
-    </div>
-    <ng-template #notActive>
-        <div id="invalid">
-            Картата „{{ code }}“ е неактивна
-        </div>
-    </ng-template>
-</ng-container>
+<div class="flex box">
+    <div class="video-container relative" [hidden]="!canStream">
+        <video #video autoplay muted playsinline></video>
+        <ng-container *ngIf="canStream">
+            <div class="border">
 
-<div id="reader"></div>
+            </div>
+            <div class="blur">
+
+            </div>
+            <div class="message">
+                <ng-container *ngIf="submited else notScannedTempalte">
+                    <div id="valid" *ngIf="active else notActive">
+                        Статус: Активна карта<br>
+                        Притежател: {{ name }}
+                    </div>
+                    <ng-template #notActive>
+                        <div id="invalid">
+                            Статус: Неактивна карта
+                        </div>
+                    </ng-template>
+                </ng-container>
+                <ng-template #notScannedTempalte>
+                    <div class="info">
+                        Сканирай бар кода на картата като го фокусираш в жълтия прозорец на екрана
+                    </div>
+                </ng-template>
+            </div>
+        </ng-container>
+    </div>
+    <div *ngIf="streamError" class="instructions">
+
+    </div>
+</div>
+<canvas #canvas hidden></canvas>

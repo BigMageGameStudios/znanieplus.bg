@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { ScanPage } from './component';
+import { FooterModule } from 'src/app/shared/footer-component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ScanPage } from './component';
       path: '',
       component: ScanPage
     }]),
-    MatDialogModule
+    MatDialogModule,
+    FooterModule
   ]
 })
 

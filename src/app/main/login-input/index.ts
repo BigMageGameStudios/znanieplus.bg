@@ -7,6 +7,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { LoginComponent } from './component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { FooterModule } from 'src/app/shared/footer-component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { MatInputModule } from '@angular/material/input';
         MatRippleModule,
         FormsModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+        FooterModule
     ]
 })
 

@@ -5,6 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { LoginPage } from './component';
 import { ConfirmDialogModule } from 'src/app/shared/confirm-dialog';
+import { FooterModule } from 'src/app/shared/footer-component';
 
 @NgModule({
   declarations: [

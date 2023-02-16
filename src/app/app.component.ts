@@ -1,8 +1,6 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Inject, PLATFORM_ID } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { WINDOW } from './modules/window';
+import { UserProvider } from './providers';
 
 @Component({
   selector: 'app-root',
@@ -15,27 +13,17 @@ import { WINDOW } from './modules/window';
 export class AppComponent {
 
   subscription!: Subscription;
+  cookiePolicy = !this.userProvider.getPolicy();
 
   constructor(
-    private SwUpdate: SwUpdate,
-    @Inject(WINDOW) private window: Window,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    private change: ChangeDetectorRef,
+    private userProvider: UserProvider
   ) { }
 
-  ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId) && this.SwUpdate.isEnabled) {
-
-      this.subscription = this.SwUpdate.versionUpdates.subscribe((event) => {
-        switch (event.type) {
-          case ('VERSION_READY'): {
-            this.window.location.reload();
-            break;
-          }
-        }
-
-      });
-
-    }
+  accept() {
+    this.cookiePolicy = false;
+    this.userProvider.acceptPolicy();
+    this.change.markForCheck();
   }
 
 }

@@ -1,11 +1,13 @@
-import { Component, Input, ChangeDetectorRef, ViewChild, ElementRef, HostListener, Output, EventEmitter, ChangeDetectionStrategy, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, ChangeDetectionStrategy, OnInit, OnDestroy, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { DrawerComponent } from 'src/app/shared/drawer-component';
 import { MapProvider, UserProvider } from 'src/app/providers';
 import { IObjectKeys } from 'src/app/helpers/interfaces';
 import { Subscription } from 'rxjs';
+import { WINDOW } from 'src/app/modules/window';
+import { MOBILE_WIDTH } from 'src/globals';
 
 @Component({
   selector: 'toolbar-component',
@@ -19,42 +21,70 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
 
   active = false;
+  activeScroll = false;
+  activeRoute = 'home';
   user = this.mapProvider.get(MapProvider.USER);
 
-  @Input('menus') menus!: IObjectKeys[];
-
   @Input('drawer') drawer!: DrawerComponent;
-  @Output('onSelect') onSelect = new EventEmitter();
 
-  @ViewChild('menu', { static: true }) menu!: ElementRef;
-
+  @ViewChild('toolbar', { static: true }) toolbar: ElementRef<HTMLElement>;
   translations: { [key: string]: string | Function | any } = this.activated.snapshot.data.translations;
 
   constructor(
-    private router: Router,
     private mapProvider: MapProvider,
     private activated: ActivatedRoute,
     private change: ChangeDetectorRef,
-    private userProvider: UserProvider,
+    public userProvider: UserProvider,
+    @Inject(WINDOW) private window: Window,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
-
-  get email() {
-    return 'email';
-  }
+  ) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.subscription = this.drawer.toogleEvent.subscribe(() => {
         this.change.markForCheck();
       });
+      this.activated.fragment.subscribe((data) => {
+        this.activeRoute = data;
+        this.change.markForCheck();
+      });
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.window.addEventListener('scroll', this.scroll, true);
   }
 
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+    this.window.removeEventListener('scroll', this.scroll);
+  }
+
+  scroll = () => {
+    if (this.window.innerWidth > MOBILE_WIDTH) {
+      const height = this.window.scrollY;
+
+      if (height > this.getHeight() && !this.activeScroll) {
+        this.activeScroll = true;
+        this.toolbar.nativeElement.classList.add('scroll');
+        this.change.markForCheck();
+      }
+
+      if (height <= this.getHeight() && this.activeScroll) {
+        this.activeScroll = false;
+        this.toolbar.nativeElement.classList.remove('scroll');
+        this.change.markForCheck();
+      }
+    }
+  }
+
+  getHeight() {
+    if (this.window.screen.width < MOBILE_WIDTH) {
+      return 64;
+    }
+    return 84;
   }
 
   toggleMenu(event?: Event) {
@@ -74,23 +104,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.drawer.toggle(event);
   }
 
-  logout() {
-    // this.userProvider.logout();
-    this.router.navigateByUrl('/');
-    this.toggleMenu();
-  }
-
-  @HostListener('document:click', ['$event.target'])
-  public onClick(targetElement: MouseEvent) {
-
-    const clickedInside = this.menu.nativeElement.contains(targetElement);
-    if (!clickedInside && this.active) {
-      this.toggleMenu();
-    }
-
-  }
-
-  refresh(){
+  removeFragment() {
+    this.activeRoute = null;
     this.change.markForCheck();
   }
 

@@ -6,12 +6,12 @@ export const fadeAnimation =
 
         transition( '* => *', [
 
-            query(':enter', 
-                [
-                    style({ opacity: 0 })
-                ], 
-                { optional: true }
-            ),
+            // query(':enter', 
+            //     [
+            //         style({ opacity: 0 })
+            //     ], 
+            //     { optional: true }
+            // ),
             
             query(':enter', 
                 [

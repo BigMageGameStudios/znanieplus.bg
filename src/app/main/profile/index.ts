@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { ConfirmDialogModule } from '../../shared/confirm-dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FooterModule } from 'src/app/shared/footer-component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         ConfirmDialogModule,
         MatDialogModule,
         ClipboardModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        FooterModule
     ]
 })
 

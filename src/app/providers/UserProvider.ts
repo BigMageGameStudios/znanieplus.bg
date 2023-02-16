@@ -8,6 +8,8 @@ import { isPlatformServer, isPlatformBrowser, DOCUMENT } from '@angular/common';
 export class UserProvider {
 
     static readonly key = 'user';
+    static readonly policy = 'policy';
+
     readonly time = 365 * 2 * 24 * 60 * 60 * 1000;
 
     private cookies = new Map();
@@ -53,12 +55,21 @@ export class UserProvider {
         this.setCookie({ key: UserProvider.key, value });
     }
 
+    acceptPolicy(){
+        this.setCookie({ key: UserProvider.policy, value: true });
+
+    }
+
     isLogedIn(){
         return this.cookies.get(UserProvider.key)!;
     }
     
     getCode(){
         return this.cookies.get(UserProvider.key);
+    }
+
+    getPolicy(){
+        return this.cookies.get(UserProvider.policy);
     }
 
     private setCookie({ key, value }) {

@@ -1,0 +1,115 @@
+@import '../../../../stylesheets/variables';
+
+div.footer {
+    background-color: $footer_background;
+    color: white;
+
+    div.container {
+        &.information {
+            padding: 50px 0;
+            justify-content: space-around;
+
+            div.logo {
+                align-items: center;
+                flex: 1;
+            }
+
+            div.navigation {
+                flex: 1;
+
+                div {
+                    flex-direction: column;
+                    flex: 1;
+
+                    &.bordered {
+                        ul {
+                            margin: 0;
+                            padding: 0;
+
+                            li {
+                                list-style: none;
+                                margin: 12px 5px;
+
+                                a {
+                                    border-bottom: solid 2px $yellow_border;
+                                    margin: 0 !important;
+                                }
+                            }
+                        }
+
+                    }
+
+                    a.card-desktop {
+                        display: inline-block;
+                    }
+
+                    a.card-mobile {
+                        display: none;
+                    }
+
+                    a {
+                        font-size: 16px;
+                        margin: 10px 5px;
+                        color: white;
+                        text-decoration: none;
+
+                        img {
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    div.rights {
+        border-top: solid 1px rgba(255, 255, 255, 0.30);
+        background-color: $rights_background;
+
+        h4 {
+            font-weight: 200;
+            margin: 0;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
+}
+
+
+@media (max-width: 800px) {
+    div.footer {
+
+        div.logo {
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        div.information,
+        div.navigation {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        div.navigation {
+            width: 100% !important;
+        }
+
+        div.rights {
+            padding: 0 5px;
+        }
+
+        a.card-desktop {
+            display: none !important;
+        }
+
+        a.card-mobile {
+            display: inline !important;
+        }
+    }
+}

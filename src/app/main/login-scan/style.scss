@@ -1,26 +1,21 @@
-// :host{
-//     position: relative;
-// }
+div#valid,
+div#invalid {
+    padding: 9px;
+    border-radius: 12px;
+    white-space: pre;
+    display: inline-flex;
+    color: white;
+}
 
-// div#valid, div#invalid{
-//     position: absolute;
-//     z-index: 1;
-//     padding: 9px;
-//     border-radius: 12px;
-//     top: 24px;
-//     left: 50%;
-//     transform: translateX(-50%);
-//     white-space: pre;
-//     color: white;
-// }
+div#invalid {
+    background: #af0909;
+    color: white;
+}
 
-// div#invalid{
-//     background: #af0909;
-// }
-
-// div#valid{
-//     background: #035603;
-// }
+div#valid {
+    background: #035603;
+    color: white;
+}
 
 :host {
     flex: 1;
@@ -29,6 +24,7 @@
 
 div.box {
     flex: 1;
+    overflow: hidden;
 
     div.video-container {
         height: 100%;
@@ -36,12 +32,12 @@ div.box {
 
         div.border {
             position: absolute;
-            height: 25%;
-            width: 35%;
-            border: dashed 3px #e23e57;
+            height: 20%;
+            width: 45%;
+            border: dashed 3px #ffd145;
             z-index: 2;
-            left: calc(50% - 17.5%);
-            top: calc(50% - 12.5%);
+            left: calc(50% - 22.5%);
+            top: calc(50% - 15%);
         }
 
         div.blur {
@@ -53,11 +49,11 @@ div.box {
 
             &::after {
                 content: " ";
-                height: 25%;
-                width: 35%;
+                height: 20%;
+                width: 45%;
                 display: block;
-                left: calc(50% - 17.5%);
-                top: calc(50% - 12.5%);
+                left: calc(50% - 22.5%);
+                top: calc(50% - 15%);
                 position: absolute;
                 box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.3);
             }
@@ -66,12 +62,18 @@ div.box {
         div.message {
             position: absolute;
             top: 0;
-            margin: 35px 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 35px 0;
             font-size: 12px;
-            color: #e23e57;
+            color: #ffd145;
             font-weight: bold;
             text-align: center;
             width: calc(100% - 30px);
+
+            div.info {
+                white-space: pre-line;
+            }
         }
 
         video {
@@ -85,24 +87,6 @@ div.box {
     div.instructions {
         width: 100%;
         padding: 25px;
-        h3 {
-            color: #e23e57;
-            margin: 5px 0;
-            font-weight: 600;
-        }
-        p {
-            margin: 5px 0;
-            color: #312d2d;
-            font-size: 14px;
-        }
-        div.items {
-            flex-direction: column;
-            lazy-image-component {
-                display: block;
-                height: 500px;
-                margin-bottom: 10px;
-            }
-        }
     }
 }
 

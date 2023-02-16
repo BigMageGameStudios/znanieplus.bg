@@ -23,14 +23,16 @@
         </p>
         <ng-container *ngIf="submited">
             <div id="valid" *ngIf="active else notActive">
-                Картата е активна
+                Статус: Активна карта<br>
+                Притежател: {{ name }}
             </div>
             <ng-template #notActive>
                 <div id="invalid">
-                    Невалидна карта
+                    Статус: Неактивна карта
                 </div>
             </ng-template>
         </ng-container>
     </form>
 
 </div>
+<footer-component></footer-component>

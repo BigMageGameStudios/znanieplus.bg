@@ -1,9 +1,18 @@
-.inner{
+.inner {
     margin-left: 20px;
 }
 
+div.container {
+    margin-bottom: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: #506ee1;
+}
+
 @media screen and (max-width: 600px) {
-    .container{
+    .container {
         padding: 10px;
     }
-}    
+}

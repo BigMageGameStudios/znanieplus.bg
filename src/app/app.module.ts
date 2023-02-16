@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { APP_INITIALIZER, ErrorHandler, NgModule, ɵɵinject } from '@angular/core';
 import { Router, RouterModule, UrlSerializer } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -27,7 +26,6 @@ import { UserProvider } from './providers';
       preloadingStrategy: PreloadStrategy,
       anchorScrolling: 'enabled',
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
     HttpClientModule
   ],
   providers: [

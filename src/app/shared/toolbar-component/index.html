@@ -1,33 +1,47 @@
 <mat-toolbar [class.small]="!drawer.active">
-    <mat-toolbar-row class="flex">
-        <button class="image-button toggle" (click)="toggleDrawer($event)" matRipple>
-            <lazy-image-component src="./assets/drawer.svg" width="18px"
-                height="18px">
-            </lazy-image-component>
-            <!-- <ng-template #defaultImage>
-                <lazy-image-component [src]="drawer.active ? './assets/dedent.svg' : './assets/indent.svg'" width="18px"
-                    height="18px">
-                </lazy-image-component>
-            </ng-template> -->
-        </button>
-        <div class="flex">
-            <button class="image-button flex toggle user" (click)="toggleMenu($event)">
-                <span>
-                    {{ email }}
-                    <b class="caret"></b>
-                </span>
-                <lazy-image-component src="./assets/user.svg" width="32px" height="32px" matRipple>
+    <mat-toolbar-row #toolbar class="flex">
+        <div class="mobile">
+            <button class="image-button toggle" (click)="toggleDrawer($event)" matRipple>
+                <lazy-image-component src="./assets/images/drawer.svg" width="22px" height="22px">
                 </lazy-image-component>
             </button>
+            <a class="flex" routerLink="/" fragment="home">
+                <img loading="lazy" decoding="async" width="125" height="22" class="title"
+                    src="/assets/images/logo-banner.png" alt="logo" />
+            </a>
+        </div>
+
+        <div class="container">
+            <a class="flex logo" routerLink="/" fragment="home">
+                <img loading="lazy" decoding="async" src="/assets/images/logo-banner.png" alt="logo" />
+            </a>
+            <div class="navigation flex">
+                <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()">
+                    <span>
+                        Провери карта
+                    </span>
+                </a>
+                <a routerLink="/partners" routerLinkActive="active activated"
+                    (click)="removeFragment()"><span>Партньори</span></a>
+
+                <a routerLink="/" fragment="about-us" routerLinkActive="activated"
+                    [class.active]="activeRoute == 'about-us'">
+                    <span>
+                        За нас
+                    </span>
+                </a>
+
+                <a routerLink="/" fragment="contacts" routerLinkActive="activated"
+                    [class.active]="activeRoute == 'contacts'">
+                    <span>Контакти</span>
+                </a>
+
+                <a routerLink="/profile" routerLinkActive="active activated">
+                    <span>
+                        {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
+                    </span>
+                </a>
+            </div>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
-
-<div #menu class="menu" [class.active]="active">
-    <a *ngFor="let m of menus" (click)="toggleMenu()" [routerLink]="m.link">
-        {{ m.name }}
-    </a>
-    <button class="image-button logout" (click)="logout()">
-        <!-- {{ translations['logout'] }} -->
-    </button>
-</div>
