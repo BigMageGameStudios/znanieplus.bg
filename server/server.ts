@@ -13,6 +13,7 @@ import { StaticFiles } from './staticFiles';
 import { SSL, Environment } from './config';
 import { Request, Response } from './types';
 import { AppServerModule, renderModule } from '../src/main.server';
+import { UserAgent } from "./useragent";
 
 const indexHtml = readFileSync(join(process.cwd(), '/dist/application-client/index.html'), 'utf-8').toString();
 
@@ -49,7 +50,14 @@ export class HttpServer {
 
     private requestHandler(req: any, res: any): Promise<any> {
 
-        return Promise
+        const agent = req.headers['user-agent'];
+        const allowedBots = UserAgent.find((item: { pattern: string }) => {
+            const c = new RegExp(item.pattern, 'i');
+            return c.test(agent);
+        });
+
+        if(allowedBots){
+            return Promise
             .all([
                 this.parseUrl(req.url),
                 this.parseCookies(req)
@@ -73,6 +81,9 @@ export class HttpServer {
             .catch((error) => {
                 return this.render(req, res);
             });
+        }
+
+        return res.end(indexHtml);
     }
 
     private noCache(res: Response) {

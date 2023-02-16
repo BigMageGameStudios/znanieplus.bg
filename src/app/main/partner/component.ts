@@ -6,6 +6,7 @@ import { Environment } from 'src/globals';
 import { GalleryDialog } from 'src/app/shared/gallery-dialog';
 import { SEOProvider } from 'src/app/providers';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'partner-page',
@@ -18,13 +19,21 @@ export class PartnerComponent {
 
   item: any;
   api_url = Environment.api_url;
+  locationUrl!: SafeUrl;
+  gmapsUrl = (lat: number, lon: number) => `https://maps.google.com/maps?q=${lat},${lon}&hl=bg&output=embed`;
 
   constructor(
-    ActivatedRoute: ActivatedRoute,
     private MatDialog: MatDialog,
+    ActivatedRoute: ActivatedRoute,
+    private sanitizer: DomSanitizer,
     private SEOProvider: SEOProvider
   ) {
     const { item } = ActivatedRoute.snapshot.data;
+
+    if(item.latitude && item.longitude){
+      this.locationUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.gmapsUrl(item.latitude, item.longitude));
+    }
+
     this.item = item;
     this.SEOProvider.set({
       title: `ЗНАНИЕ+ | ${item.name}`,

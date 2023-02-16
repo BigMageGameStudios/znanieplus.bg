@@ -5,7 +5,6 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { ToolbarComponent } from './component';
-import { LazyImageModule } from 'src/app/shared/lazy-image-component';
 import { DrawerModule } from 'src/app/shared/drawer-component';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { DrawerModule } from 'src/app/shared/drawer-component';
     RouterModule,
     MatRippleModule,
     MatToolbarModule,
-    LazyImageModule,
     DrawerModule
   ],
   declarations: [

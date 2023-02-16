@@ -94,15 +94,15 @@
                     Уебсайт:
                 </div>
                 <div>
-                   <a href="{{item.website}}" target="_blank">{{item.website}}</a>
+                    <a href="{{item.website}}" target="_blank">{{item.website}}</a>
                 </div>
             </div>
-            <div class="flex">
+            <div class="flex" *ngIf="item.mail?.length > 0">
                 <div>
                     Електронна поща:
                 </div>
                 <div>
-                    <a href="mailto:{{item.mail}}">{{item.mail}}</a>  
+                    <a href="mailto:{{item.mail}}">{{item.mail}}</a>
                 </div>
             </div>
             <div class="flex">
@@ -110,11 +110,16 @@
                     Телефон:
                 </div>
                 <div>
-                    {{item.phone}}
+                    <a href="tel:{{item.phone}}">{{item.phone}}</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <iframe *ngIf="locationUrl" id="gmap_canvas"
+        [src]="locationUrl" frameborder="0" scrolling="no"
+        marginheight="0" marginwidth="0">
+    </iframe>
 </div>
 <contacts-component></contacts-component>
 <footer-component></footer-component>
