@@ -20,7 +20,7 @@
     <div class="information flex">
         <div class="characters">
             <h3>
-                Отстъпка: {{ item.promo}}%
+                Отстъпка: {{ item.promo}}{{item.promo_type}}
             </h3>
             <div class="flex">
                 <div [innerHTML]="item.promo_description | safeHTML"> </div>
@@ -31,14 +31,14 @@
     <div class="information flex" *ngIf="item.activities.length > 0">
         <div class="characters">
             <h3>
-                Дейности:
+                Допълнителни уточнения:
             </h3>
             <div class="flex" *ngFor="let activity of item.activities">
                 <div>
                     {{activity.name}}
                 </div>
                 <div>
-                    <b>{{activity.promotion}}%</b> {{activity.deskription}}
+                    <b>{{activity.promotion}}{{activity.promo_type}}</b> {{activity.deskription}}
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
             </h3>
             <div class="flex">
                 <div>
-                    Работни дни:
+                    Делнични дни:
                 </div>
                 <div>
                     {{item.week}}
