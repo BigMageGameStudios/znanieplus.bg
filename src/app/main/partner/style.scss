@@ -8,17 +8,18 @@ div.container {
 
     div.banner {
         height: 50vh;
-        max-height: 670px;
-        overflow: hidden;
+        max-height: 700px;
+        // overflow: hidden;
         position: relative;
         padding-top: 20px;
         cursor: pointer;
+        margin-bottom: 80px;
 
         div.frame {
-            height: 80%;
+            height: 100%;
             width: calc(100% - 180px);
             position: absolute;
-            top: 45px;
+            top: 60px;
             border-right: solid 18px $yellow;
             border-bottom: solid 18px $yellow;
             z-index: 3;
@@ -235,11 +236,14 @@ div.container {
 
     div.banner{
         height: 32vh !important;
+        margin-bottom: 40px !important;
+        max-height: 200px !important;
     }
 
     div.frame {
         width: 92% !important;
-        height: 80% !important;
+        height: 90% !important;
+        top: 20px !important;
 
         &::before{
             width: 26px !important;
@@ -315,7 +319,7 @@ div.container {
 @media (max-width: 600px){
     div.frame{
         width: 92% !important;
-        height: 60% !important;
+        height: 75% !important;
         right: 25px !important;
     }
 }
