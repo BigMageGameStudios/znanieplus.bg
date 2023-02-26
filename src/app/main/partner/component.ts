@@ -38,7 +38,7 @@ export class PartnerComponent {
     this.SEOProvider.set({
       title: `ЗНАНИЕ+ | ${item.name}`,
       description: item.address,
-      keywords: 'знание,карта,отстъпка,култура,социална придобивка',
+      keywords: 'знание,карта,отстъпка,култура,социална придобивка,znanieplus,знание плюс,знаниеплюс,znanie plus,znanie+,знание+',
       ogUrl: 'https://www.znanieplus.bg',
       ogType: 'article',
       ogDescription: item.address,

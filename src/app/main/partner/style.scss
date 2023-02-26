@@ -24,6 +24,7 @@ div.container {
             border-bottom: solid 18px $yellow;
             z-index: 3;
             right: 95px;
+            max-height: 440px;
 
             h4 {
                 writing-mode: tb-rl;
@@ -236,7 +237,7 @@ div.container {
 
     div.banner{
         height: 32vh !important;
-        margin-bottom: 40px !important;
+        margin-bottom: 20px !important;
         max-height: 200px !important;
     }
 

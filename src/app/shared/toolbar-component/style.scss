@@ -24,13 +24,19 @@ mat-toolbar {
     }
 
     mat-toolbar-row {
-        div.mobile{
+        div.mobile {
             display: none;
             align-items: center;
-            a{
-                margin-left: 12px;
+            width: 100%;
+
+            a {
+                display: flex;
+                width: 100%;
+                margin-right: 30.25px;
+                justify-content: center;
             }
         }
+
         div.container {
             display: flex;
             justify-content: space-between;
@@ -114,7 +120,7 @@ mat-toolbar {
             display: none !important;
         }
 
-        div.mobile{
+        div.mobile {
             display: flex !important;
         }
     }
