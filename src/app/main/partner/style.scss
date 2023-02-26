@@ -1,5 +1,11 @@
 @import '../../../../stylesheets/variables';
 
+h2.title{
+    &::before{
+        width: calc(100% - 8px );
+    }
+}
+
 div.container {
 
     h4.ad-type {
@@ -9,7 +15,6 @@ div.container {
     div.banner {
         height: 50vh;
         max-height: 700px;
-        // overflow: hidden;
         position: relative;
         padding-top: 20px;
         cursor: pointer;
