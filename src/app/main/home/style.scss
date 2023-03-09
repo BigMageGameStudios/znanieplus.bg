@@ -9,6 +9,7 @@ div.container {
         display: flex;
         justify-content: center;
         padding-top: 15px;
+        min-height: 480px;
 
         img {
             height: 100%;
@@ -340,6 +341,7 @@ mat-expansion-panel {
 @media (max-width: 970px) {
     div.banner {
         max-height: 420px !important;
+        min-height: auto !important;
 
         img {
             height: 90% !important;
