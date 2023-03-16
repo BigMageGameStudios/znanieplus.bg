@@ -1,59 +1,15 @@
 @import '../../../../stylesheets/variables';
 
+video {
+    object-fit: cover;
+    max-width: 100%;
+    max-height: calc(100vh - 84px);
+}
+
 div.container {
-    div.banner {
-        height: 55vh;
-        max-height: 555px;
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        padding-top: 15px;
-        min-height: 480px;
-
-        img {
-            height: 100%;
-            width: calc(100% - 180px);
-            margin-left: 35px;
-            margin-top: 15px;
-        }
-
-        div.frame {
-            height: 85%;
-            width: calc(100% - 200px);
-            position: absolute;
-            left: 80px;
-            top: 25px;
-            border-left: solid 18px $yellow;
-            border-bottom: solid 18px $yellow;
-            z-index: 3;
-
-            h4 {
-                writing-mode: tb-rl;
-                transform: rotate(180deg);
-                position: absolute;
-                left: -28px;
-                margin: 0;
-                top: 5px;
-                font-weight: 100;
-                text-transform: uppercase;
-                font-size: 14px;
-                cursor: default;
-            }
-
-            &::before {
-                content: "";
-                position: absolute;
-                height: 18px;
-                width: 12px;
-                background: $yellow;
-                z-index: 1;
-            }
-        }
-    }
 
     div.company {
-        margin: 80px 0;
+        margin: 40px 0;
 
         div {
             &:first-child {
@@ -63,7 +19,7 @@ div.container {
             &:nth-child(2) {
                 flex: 1.5;
                 padding-left: 20px;
-                padding-top: 10px;
+                padding-top: 40px;
 
                 h2 {
                     left: -80px;
@@ -80,10 +36,15 @@ div.container {
                 height: 249px;
             }
         }
+
+        p.title {
+            font-weight: 600;
+            font-size: 18px;
+        }
     }
 
     div.list-places {
-        margin: 60px 0;
+        margin: 0 0 40px 0;
 
         h2 {
             left: 100px;
@@ -93,14 +54,14 @@ div.container {
             text-align: center;
 
             a {
-                font-size: 16px;
+                font-size: 20px;
                 font-weight: 600;
                 cursor: pointer;
                 color: black;
                 text-decoration: none;
 
                 &::before {
-                    height: 6px !important;
+                    height: 10px !important;
                 }
             }
         }
@@ -108,11 +69,10 @@ div.container {
 
     div.office {
         position: relative;
-        padding-top: 60px;
 
         img {
             width: 100%;
-            height: 731px;
+            height: 1100px;
         }
 
         h1 {
@@ -183,7 +143,7 @@ div.block {
 
 div.info {
     max-width: 1200px;
-    margin: 80px auto 50px;
+    margin: 40px auto 0;
 
     h3 {
         margin: 20px 0;
@@ -287,49 +247,19 @@ mat-expansion-panel {
     }
 }
 
-@media (max-width: 1140px) {
-    div.banner {
-        img {
-            width: calc(100% - 100px) !important;
-        }
-    }
-}
-
 @media (max-width: 1100px) {
-    div.banner {
-        img {
-            height: 85% !important;
-        }
-    }
-
     div.frame {
         height: 70% !important;
     }
-
-    div.company {
-        margin-top: 0px !important;
-    }
 }
 
 @media (max-width: 1100px) {
-    div.banner {
-        img {
-            height: 85% !important;
-        }
-    }
-
     div.frame {
         height: 70% !important;
     }
 }
 
 @media (max-width: 1000px) {
-    div.banner {
-        div.frame {
-            height: 70% !important;
-        }
-    }
-
     div.office {
         h1 {
             font-size: 24px !important;
@@ -339,33 +269,12 @@ mat-expansion-panel {
 }
 
 @media (max-width: 970px) {
-    div.banner {
-        max-height: 420px !important;
-        min-height: auto !important;
-
-        img {
-            height: 90% !important;
-        }
-    }
-
     div.frame {
         height: 70% !important;
     }
 }
 
 @media (max-width: 800px) {
-    div.banner {
-        height: 45vh !important;
-
-        div.frame {
-            left: 40px !important;
-            width: calc(100% - 170px) !important;
-        }
-
-        img {
-            margin-left: 0px !important;
-        }
-    }
 
     #about-cover {
         display: none;
@@ -391,6 +300,11 @@ mat-expansion-panel {
 
     div.company {
         flex-direction: column;
+        margin: 40px 20px !important;
+
+        p{
+            text-align: center;
+        }
 
         div {
             img {
@@ -424,12 +338,16 @@ mat-expansion-panel {
             margin-bottom: 30px;
         }
     }
+
+    video {
+        object-fit: fill;
+        max-height: calc(100vh - 56px - var(--vh));
+        height: calc(100vh - 56px);
+    }
+
 }
 
 @media (max-width: 600px) {
-    div.banner{
-        height: 40vh !important;
-    }
     div.office {
         h1 {
             font-size: 18px !important;
@@ -439,34 +357,13 @@ mat-expansion-panel {
 }
 
 @media (max-width: 500px) {
-    div.banner {
-        height: 27vh !important;
-
-        img {
-            width: calc(100% - 60px) !important;
-        }
-
-        div.frame {
-            left: 20px !important;
-            width: 100% !important;
-        }
-    }
-
     div.places {
         padding-left: 10px !important;
     }
 
     div.office {
         img {
-            height: 230px !important;
-        }
-    }
-}
-
-@media (max-width: 400px) {
-    div.banner{
-        div.frame {
-            height: 75% !important;
+            height: 390px !important;
         }
     }
 }

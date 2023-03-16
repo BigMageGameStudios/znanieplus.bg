@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { WINDOW } from 'src/app/modules/window';
 import { SEOProvider } from 'src/app/providers';
 
 @Component({
@@ -12,10 +13,12 @@ import { SEOProvider } from 'src/app/providers';
 export class HomeComponent {
 
   items: any[];
+  videoUrl = `/assets/video/banner-desktop.mp4`;
 
   constructor(
+    private SEOProvider: SEOProvider,
     private ActivatedRoute: ActivatedRoute,
-    private SEOProvider: SEOProvider
+    @Inject(WINDOW) private window: Window,
   ) {
     const items = this.ActivatedRoute.snapshot.data.result.data.data;
     this.items = items;
@@ -29,6 +32,11 @@ export class HomeComponent {
       ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
       canonicalURL: '/'
     });
+
+    if (this.window.screen.width < 800) {
+      this.videoUrl = `/assets/video/banner-mobile.mp4`
+    }
   }
+
 
 }

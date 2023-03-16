@@ -1,35 +1,47 @@
-<div class="container" id="home">
-    <div class="banner">
-        <img class="cover" loading="lazy" decoding="async" src="/assets/images/banner.jpg" width="100%" height="100%"
-            alt="cover" />
-        <div class="frame">
-            <h4>
-                ЗНАНИЕ ПЛЮС
-            </h4>
-        </div>
-    </div>
+<video
+    autoplay
+    [muted]="true"
+    loop
+    id="home"
+>
+    <source
+        [src]="videoUrl"
+        type="video/mp4"
+    >
+</video>
+<div
+    class="container"
+>
 
-    <div class="company flex" id="about-us">
-        <div>
-            <img loading="lazy" decoding="async" id="about-cover" class="flex contain" src="/assets/images/about-us.jpg"
-                width="100%" height="100%" alt="about-us">
-        </div>
+    <div
+        class="company flex"
+        id="about-us"
+    >
         <div>
             <h2 class="title">
                 <span>Какво е ЗНАНИЕ +</span>
             </h2>
             <p>
-                ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне
-                културното обогатяване
-                на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.
+                ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да
+                подпомогне културното обогатяване на своите служители чрез фиксиран абонамент на разумна
+                цена.
             </p>
             <p>
-                Всеки притежател на карта ЗНАНИЕ+ получава отстъпки при посещение на десетки партньорски
-                обекти, сред които театри, музеи, кина,
-                библиотеки, книжарници, центрове за групови творчески занимания и обучения.
+                Абонаментите на ЗНАНИЕ+ се предлагат ексклузивно на българските работодатели. Те са една
+                истински добра възможност за всеки желаещ да надгради своите „меки умения“, да развие
+                талантите си и да обогати своя личен и професионален живот чрез активно взаимодействие с
+                културната и образователна среда.
             </p>
             <p>
-                Абонатите на услугата получават отстъпки и при пазаруване в партньорски онлайн магазини.
+                Притежателите на картата получават отстъпки и при пазаруване в партньорски онлайн магазини.
+            </p>
+            <p class="title">
+                <span>
+                    Мисията на компанията е да постигне
+                    синергия между бизнеса и културния
+                    сектор, като създаде конкурентна услуга,
+                    полезна за всяка една от страните.
+                </span>
             </p>
         </div>
     </div>
@@ -46,8 +58,15 @@
     <div class="list flex">
         <div class="item flex">
             <button class="image-button relative">
-                <img src="/assets/images/take.png" width="128px" height="128px" class="contain" loading="lazy"
-                    decoding="async" alt="card" />
+                <img
+                    src="/assets/images/take.png"
+                    width="128px"
+                    height="128px"
+                    class="contain"
+                    loading="lazy"
+                    decoding="async"
+                    alt="card"
+                />
                 <span class="flex">
                     1.
                 </span>
@@ -62,8 +81,15 @@
         </div>
         <div class="item flex">
             <button class="image-button relative">
-                <img src="/assets/images/know.png" width="128px" height="128px" class="contain" loading="lazy"
-                    decoding="async" alt="know" />
+                <img
+                    src="/assets/images/know.png"
+                    width="128px"
+                    height="128px"
+                    class="contain"
+                    loading="lazy"
+                    decoding="async"
+                    alt="know"
+                />
                 <span class="flex">
                     2.
                 </span>
@@ -80,8 +106,15 @@
     <div class="list flex">
         <div class="item flex">
             <button class="image-button relative">
-                <img src="/assets/images/visit.png" width="128px" height="128px" class="contain" loading="lazy"
-                    decoding="async" alt="visit" />
+                <img
+                    src="/assets/images/visit.png"
+                    width="128px"
+                    height="128px"
+                    class="contain"
+                    loading="lazy"
+                    decoding="async"
+                    alt="visit"
+                />
                 <span class="flex">
                     3.
                 </span>
@@ -96,8 +129,15 @@
         </div>
         <div class="item flex">
             <button class="image-button relative">
-                <img src="/assets/images/share.png" width="128px" height="128px" class="contain" loading="lazy"
-                    decoding="async" alt="share" />
+                <img
+                    src="/assets/images/share.png"
+                    width="128px"
+                    height="128px"
+                    class="contain"
+                    loading="lazy"
+                    decoding="async"
+                    alt="share"
+                />
                 <span class="flex">
                     4.
                 </span>
@@ -113,14 +153,20 @@
     </div>
 </div>
 
-<div class="container" id="partners">
+<div
+    class="container"
+    id="partners"
+>
     <div class="list-places">
         <h2 class="title">
             <span>Партньори</span>
         </h2>
         <scroller-component [data]="items"></scroller-component>
         <div class="view-all">
-            <a class="title" routerLink="/partners">
+            <a
+                class="title"
+                routerLink="/partners"
+            >
                 <span>Виж всички</span>
             </a>
         </div>
@@ -129,8 +175,15 @@
 
 <div class="container faq">
     <div class="office">
-        <img class="flex contain" src="/assets/images/card.jpg" width="100%" height="auto" loading="lazy"
-            decoding="async" alt="card" />
+        <img
+            class="flex contain"
+            src="/assets/images/Znanie+_Banner_05.jpg"
+            width="100%"
+            height="auto"
+            loading="lazy"
+            decoding="async"
+            alt="card"
+        />
     </div>
     <h2 class="title">
         <span>Често задавани въпроси</span>
@@ -140,8 +193,15 @@
         <div class="accordion flex">
 
             <div class="flex image">
-                <img class="flex contain" src="/assets/images/faq1.png" width="64px" height="64px" loading="lazy"
-                    decoding="async" alt="faq" />
+                <img
+                    class="flex contain"
+                    src="/assets/images/faq1.png"
+                    width="64px"
+                    height="64px"
+                    loading="lazy"
+                    decoding="async"
+                    alt="faq"
+                />
                 <h3>Обща информация</h3>
             </div>
 
@@ -205,8 +265,15 @@
         <div class="accordion flex">
 
             <div class="flex image">
-                <img class="flex contain" src="/assets/images/faq4.png" width="64px" height="64px" loading="lazy"
-                    decoding="async" alt="faq4" />
+                <img
+                    class="flex contain"
+                    src="/assets/images/faq4.png"
+                    width="64px"
+                    height="64px"
+                    loading="lazy"
+                    decoding="async"
+                    alt="faq4"
+                />
                 <h3>Информация за бизнеса</h3>
             </div>
 
@@ -294,8 +361,15 @@
         <div class="accordion flex">
 
             <div class="flex image">
-                <img class="flex contain" src="/assets/images/faq2.png" width="64px" height="64px" loading="lazy"
-                    decoding="async" alt="faq2" />
+                <img
+                    class="flex contain"
+                    src="/assets/images/faq2.png"
+                    width="64px"
+                    height="64px"
+                    loading="lazy"
+                    decoding="async"
+                    alt="faq2"
+                />
                 <h3>Информация за ползватели</h3>
             </div>
 
@@ -329,7 +403,10 @@
                     <ng-template matExpansionPanelContent>
                         <div class="description">
                             <br>
-                            <a class="link" routerLink="/partners"><b>Тук</b></a> можеш да намериш списък с всички обекти,
+                            <a
+                                class="link"
+                                routerLink="/partners"
+                            ><b>Тук</b></a> можеш да намериш списък с всички обекти,
                             които екипът ни актуализира
                             ежеседмично. Всеки партньор има своя индивидуална страница, в която ще
                             откриеш отстъпка и условия за прилагането ѝ.
@@ -360,8 +437,15 @@
         <div class="accordion flex">
 
             <div class="flex image">
-                <img class="flex contain" src="/assets/images/faq3.png" width="64px" height="64px" loading="lazy"
-                    decoding="async" alt="faq3.png" />
+                <img
+                    class="flex contain"
+                    src="/assets/images/faq3.png"
+                    width="64px"
+                    height="64px"
+                    loading="lazy"
+                    decoding="async"
+                    alt="faq3.png"
+                />
                 <h3>Информация за обекти</h3>
             </div>
 

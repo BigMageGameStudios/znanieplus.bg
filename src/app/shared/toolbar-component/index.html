@@ -1,5 +1,5 @@
-<mat-toolbar [class.small]="!drawer.active">
-    <mat-toolbar-row #toolbar class="flex">
+<div class="toolbar" [class.small]="!drawer.active">
+    <div class="toolbar-row flex" #toolbar>
         <div class="mobile">
             <button class="image-button toggle" (click)="toggleDrawer($event)" matRipple>
                 <img loading="lazy" decoding="async" src="./assets/images/drawer.svg" width="22px" height="22px" />
@@ -42,5 +42,5 @@
                 </a>
             </div>
         </div>
-    </mat-toolbar-row>
-</mat-toolbar>
+    </div>
+</div>

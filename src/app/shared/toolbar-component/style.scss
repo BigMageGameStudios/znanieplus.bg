@@ -1,6 +1,6 @@
 @import '../../../../stylesheets/variables';
 
-mat-toolbar {
+div.toolbar {
     top: 0;
     z-index: 5;
     position: fixed;
@@ -11,7 +11,7 @@ mat-toolbar {
         transform: translateX(240px);
     }
 
-    mat-toolbar-row {
+    div.toolbar-row {
         transition: ease-in-out 200ms;
         height: 84px;
 
@@ -23,11 +23,12 @@ mat-toolbar {
         }
     }
 
-    mat-toolbar-row {
+    div.toolbar-row {
         div.mobile {
             display: none;
             align-items: center;
             width: 100%;
+            height: 56px;
 
             a {
                 display: flex;
@@ -69,6 +70,7 @@ mat-toolbar {
                     text-decoration: none;
                     cursor: pointer;
                     outline: none;
+                    white-space: pre;
 
                     span {
                         position: relative;
@@ -80,7 +82,7 @@ mat-toolbar {
                             background-color: $yellow;
                             width: 70%;
                             min-width: calc(100% - 15px);
-                            height: 10px;
+                            height: 7px;
                             position: absolute;
                             bottom: 5px;
                             left: 0;
@@ -102,7 +104,7 @@ mat-toolbar {
 
     button {
         &.toggle {
-            padding: 5px;
+            padding: 5px 5px 5px 20px;
             display: none;
         }
     }
@@ -110,7 +112,7 @@ mat-toolbar {
 
 @media (max-width: 800px) {
 
-    mat-toolbar-row {
+    div.toolbar {
         height: 56px !important;
         -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.10);
         -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.10);
