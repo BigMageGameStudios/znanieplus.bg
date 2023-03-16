@@ -341,7 +341,7 @@ mat-expansion-panel {
 
     video {
         object-fit: fill;
-        max-height: calc(100vh - 56px - var(--vh));
+        max-height: calc(var(--vh, 1vh) * 100 - 56px);
         height: calc(100vh - 56px);
     }
 
