@@ -163,6 +163,10 @@ div.cookies.flex {
     }
 }
 
+div.flex-center{
+    justify-content: center;
+}
+
 @media (max-width: 800px) {
     div.cookies {
         flex-direction: column;
