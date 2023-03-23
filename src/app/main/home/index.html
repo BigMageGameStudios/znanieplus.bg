@@ -1,10 +1,10 @@
 <video
-    preload="auto"
     playsinline
-    loop
+    preload="auto"
+    [loop]="true"
+    [muted]="true"
+    [autoplay]="true"
     id="home"
-    oncanplay="this.play()"
-    onloadedmetadata="this.muted=true"
 >
     <source
         src="{{videoUrl}}.mp4"
