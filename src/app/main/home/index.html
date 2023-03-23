@@ -1,21 +1,20 @@
-<div id="home">
-    <video
-        preload="auto"
-        playsinline
-        loop
-        oncanplay="this.play()"
-        onloadedmetadata="this.muted=true"
+<video
+    preload="auto"
+    playsinline
+    loop
+    id="home"
+    oncanplay="this.play()"
+    onloadedmetadata="this.muted=true"
+>
+    <source
+        src="{{videoUrl}}.mp4"
+        type="video/mp4"
     >
-        <source
-            src="{{videoUrl}}.mp4"
-            type="video/mp4"
-        >
-        <source
-            src="{{videoUrl}}.webm"
-            type="video/webm"
-        />
-    </video>
-</div>
+    <source
+        src="{{videoUrl}}.webm"
+        type="video/webm"
+    />
+</video>
 <div class="container">
 
     <div
