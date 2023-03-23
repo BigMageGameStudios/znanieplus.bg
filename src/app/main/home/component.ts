@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, ChangeDetectionStrategy, Inject, ViewChild, ElementRef, PLATFORM_ID } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WINDOW } from 'src/app/modules/window';
 import { SEOProvider } from 'src/app/providers';
@@ -15,13 +14,11 @@ export class HomeComponent {
 
   items: any[];
   videoUrl = `/assets/video/banner-desktop.mp4`;
-  @ViewChild('video', { static: true }) video: ElementRef<HTMLVideoElement>;
 
   constructor(
     private SEOProvider: SEOProvider,
     private ActivatedRoute: ActivatedRoute,
     @Inject(WINDOW) private window: Window,
-    @Inject(PLATFORM_ID) private platform: Object
   ) {
     const items = this.ActivatedRoute.snapshot.data.result.data.data;
     this.items = items;
@@ -38,12 +35,6 @@ export class HomeComponent {
 
     if (this.window.screen.width < 800) {
       this.videoUrl = `/assets/video/banner-mobile.mp4`
-    }
-  }
-
-  ngOnInit() {
-    if (isPlatformBrowser(this.platform)) {
-      this.video.nativeElement.play().catch((e) => console.warn(e));
     }
   }
 
