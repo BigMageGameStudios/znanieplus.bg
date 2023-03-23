@@ -1,7 +1,7 @@
 <video
-    [autoplay]="true"
     [loop]="true"
-    [muted]="true"
+    oncanplay="this.play()"
+    onloadedmetadata="this.muted=true"
     playsinline
     id="home"
 >
