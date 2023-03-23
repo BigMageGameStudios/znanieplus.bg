@@ -1,15 +1,17 @@
-<video
-    [loop]="true"
-    oncanplay="this.play()"
-    onloadedmetadata="this.muted=true"
-    playsinline
-    id="home"
->
-    <source
-        [src]="videoUrl"
-        type="video/mp4"
+<div id="home">
+    <video
+        preload="auto"
+        playsinline
+        loop
+        oncanplay="this.play()"
+        onloadedmetadata="this.muted=true"
     >
-</video>
+        <source
+            [src]="videoUrl"
+            type="video/mp4"
+        >
+    </video>
+</div>
 <div class="container">
 
     <div
