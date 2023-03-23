@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Inject, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WINDOW } from 'src/app/modules/window';
 import { SEOProvider } from 'src/app/providers';
@@ -13,7 +13,8 @@ import { SEOProvider } from 'src/app/providers';
 export class HomeComponent {
 
   items: any[];
-  videoUrl = this.window.screen.width < 800 ? '/assets/video/banner-mobile' : `/assets/video/banner-desktop`;
+  videoUrl = this.window.screen.width < 800 ? '/assets/video/banner-mobile.mp4' : `/assets/video/banner-desktop.mp4`;
+  @ViewChild('video', { static: true }) video: ElementRef<HTMLVideoElement>;
 
   constructor(
     private SEOProvider: SEOProvider,
@@ -35,5 +36,14 @@ export class HomeComponent {
 
   }
 
+  ngOnInit() {
+    this.video.nativeElement.muted = true;
+    this.video.nativeElement.loop = true;
+    this.video.nativeElement.playsInline = true;
+    this.video.nativeElement.controls = false;
+    this.video.nativeElement.preload = 'none';
+    this.video.nativeElement.src = this.videoUrl;
+    this.video.nativeElement.play().catch((e) => console.log(e));
+  }
 
 }
