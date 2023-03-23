@@ -37,6 +37,12 @@
                             Контакти
                         </a>
                     </li>
+                    <li>
+                        <a routerLink="/profile">
+                            {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
+
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="flex">

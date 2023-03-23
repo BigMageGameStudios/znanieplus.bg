@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { UserProvider } from 'src/app/providers';
 
 @Component({
   selector: 'footer-component',
@@ -8,6 +9,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 
 export class FooterComponent {
+
+  constructor(public userProvider: UserProvider) { }
 
   getDate() {
     const date = new Date();
