@@ -137,6 +137,15 @@ div.block {
     background: $yellow;
 }
 
+div.info-text {
+    height: auto;
+    div.container{
+        margin: 25px auto;
+        font-size: 24px;
+        font-weight: 500;
+    }
+}
+
 div.info {
     max-width: 1200px;
     margin: 40px auto 0;
@@ -298,7 +307,7 @@ mat-expansion-panel {
         flex-direction: column;
         margin: 40px 20px !important;
 
-        p{
+        p {
             text-align: center;
         }
 
@@ -339,6 +348,14 @@ mat-expansion-panel {
         object-fit: fill;
         max-height: calc(var(--vh, 1vh) * 100 - 56px);
         height: calc(100vh - 56px);
+    }
+
+    div.info-text {
+        div.container{
+            font-size: 18px !important;
+            text-align: center;
+            padding: 0 15px;
+        }
     }
 
 }
