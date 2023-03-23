@@ -13,7 +13,7 @@ import { SEOProvider } from 'src/app/providers';
 export class HomeComponent {
 
   items: any[];
-  videoUrl = `/assets/video/banner-desktop.mp4`;
+  videoUrl = this.window.screen.width < 800 ? '/assets/video/banner-mobile' : `/assets/video/banner-desktop`;
 
   constructor(
     private SEOProvider: SEOProvider,
@@ -33,9 +33,6 @@ export class HomeComponent {
       canonicalURL: '/'
     });
 
-    if (this.window.screen.width < 800) {
-      this.videoUrl = `/assets/video/banner-mobile.mp4`
-    }
   }
 
 
