@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,7 +7,6 @@ import { GalleryDialog } from 'src/app/shared/gallery-dialog';
 import { SEOProvider } from 'src/app/providers';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'partner-page',
@@ -28,7 +27,6 @@ export class PartnerComponent {
     ActivatedRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private SEOProvider: SEOProvider,
-    @Inject(PLATFORM_ID) private platform: Object
   ) {
     const { item } = ActivatedRoute.snapshot.data;
 
@@ -36,12 +34,8 @@ export class PartnerComponent {
       this.locationUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.gmapsUrl(item.latitude, item.longitude));
     }
 
-    let description = item.description;
-
-    if (isPlatformServer(this.platform)) {
-      const regex = /(&nbsp;|&ndash;|<([^>]+)>)/ig
-      description = item.description.replace(regex, "");
-    }
+    const regex = /(&nbsp;|&ndash;|&bdquo;|&ldquo;|&rdquo;|<([^>]+)>)/ig
+    const description = item.description.replace(regex, "");
 
     this.item = item;
     this.SEOProvider.set({
