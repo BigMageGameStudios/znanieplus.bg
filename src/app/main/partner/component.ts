@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,6 +7,7 @@ import { GalleryDialog } from 'src/app/shared/gallery-dialog';
 import { SEOProvider } from 'src/app/providers';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'partner-page',
@@ -26,12 +27,20 @@ export class PartnerComponent {
     private MatDialog: MatDialog,
     ActivatedRoute: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private SEOProvider: SEOProvider
+    private SEOProvider: SEOProvider,
+    @Inject(PLATFORM_ID) private platform: Object
   ) {
     const { item } = ActivatedRoute.snapshot.data;
 
-    if(item.latitude && item.longitude){
+    if (item.latitude && item.longitude) {
       this.locationUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.gmapsUrl(item.latitude, item.longitude));
+    }
+
+    let description = item.description;
+
+    if (isPlatformServer(this.platform)) {
+      const regex = /(&nbsp;|&ndash;|<([^>]+)>)/ig
+      description = item.description.replace(regex, "");
     }
 
     this.item = item;
@@ -41,7 +50,7 @@ export class PartnerComponent {
       keywords: 'знание,карта,отстъпка,култура,социална придобивка,znanieplus,знание плюс,знаниеплюс,znanie plus,znanie+,знание+',
       ogUrl: `https://www.znanieplus.bg/partner/${item.id}`,
       ogType: 'article',
-      ogDescription: item.address,
+      ogDescription: description,
       ogImage: `${Environment.api_url}/storage/${item.photo}`,
       canonicalURL: `/partner/${item.id}`
     });
