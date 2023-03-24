@@ -39,13 +39,13 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.video.nativeElement.muted = true;
+    this.video.nativeElement.loop = true;
+    this.video.nativeElement.playsInline = true;
+    this.video.nativeElement.controls = false;
+    this.video.nativeElement.preload = 'none';
+    this.video.nativeElement.src = this.videoUrl;
     if(isPlatformBrowser(this.platform)){
-      this.video.nativeElement.muted = true;
-      this.video.nativeElement.loop = true;
-      this.video.nativeElement.playsInline = true;
-      this.video.nativeElement.controls = false;
-      this.video.nativeElement.preload = 'none';
-      this.video.nativeElement.src = this.videoUrl;
       this.video.nativeElement.play().catch((e) => console.log(e));
     }
   }

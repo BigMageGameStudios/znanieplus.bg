@@ -42,7 +42,7 @@ export class PartnerComponent {
       ogUrl: `https://www.znanieplus.bg/partner/${item.id}`,
       ogType: 'article',
       ogDescription: item.address,
-      ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
+      ogImage: `${Environment.api_url}/storage/${item.photo}`,
       canonicalURL: `/partner/${item.id}`
     });
   }
