@@ -287,5 +287,21 @@ export const UserAgent = [
     {
         "pattern": "Viber",
         "url": "https://www.viber.com/"
+    },
+    {
+        "pattern": "FacebookBot",
+        "url": "https://developers.facebook.com/docs/sharing/bot"
+    },
+    {
+        "pattern": "LinkedInBot",
+        "url": "https://explore.whatismybrowser.com/useragents/explore/software_name/linkedin-bot/"
+    },
+    {
+        "pattern": "Slackbot-LinkExpanding",
+        "url": "https://api.slack.com/robots"
+    },
+    {
+        "pattern": "Telegram",
+        "url": "https://github.com/TelegramMessenger/Telegram-iOS/issues/736"
     }
 ]
