@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy, Inject, ViewChild, ElementRef } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, ChangeDetectionStrategy, Inject, ViewChild, ElementRef, OnInit, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WINDOW } from 'src/app/modules/window';
 import { SEOProvider } from 'src/app/providers';
@@ -10,16 +11,17 @@ import { SEOProvider } from 'src/app/providers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
   items: any[];
-  videoUrl = this.window.screen.width < 800 ? '/assets/video/banner-mobile.mp4' : `/assets/video/banner-desktop.mp4`;
+  videoUrl = this.window?.screen?.width < 800 ? '/assets/video/banner-mobile.mp4' : `/assets/video/banner-desktop.mp4`;
   @ViewChild('video', { static: true }) video: ElementRef<HTMLVideoElement>;
 
   constructor(
     private SEOProvider: SEOProvider,
     private ActivatedRoute: ActivatedRoute,
     @Inject(WINDOW) private window: Window,
+    @Inject(PLATFORM_ID) private platform: Object
   ) {
     const items = this.ActivatedRoute.snapshot.data.result.data.data;
     this.items = items;
@@ -37,13 +39,15 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.video.nativeElement.muted = true;
-    this.video.nativeElement.loop = true;
-    this.video.nativeElement.playsInline = true;
-    this.video.nativeElement.controls = false;
-    this.video.nativeElement.preload = 'none';
-    this.video.nativeElement.src = this.videoUrl;
-    this.video.nativeElement.play().catch((e) => console.log(e));
+    if(isPlatformBrowser(this.platform)){
+      this.video.nativeElement.muted = true;
+      this.video.nativeElement.loop = true;
+      this.video.nativeElement.playsInline = true;
+      this.video.nativeElement.controls = false;
+      this.video.nativeElement.preload = 'none';
+      this.video.nativeElement.src = this.videoUrl;
+      this.video.nativeElement.play().catch((e) => console.log(e));
+    }
   }
 
 }

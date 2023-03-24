@@ -303,5 +303,9 @@ export const UserAgent = [
     {
         "pattern": "Telegram",
         "url": "https://github.com/TelegramMessenger/Telegram-iOS/issues/736"
+    },
+    {
+        "pattern": "Chrome",
+        "url": "https://www.whatismybrowser.com/guides/the-latest-user-agent/chrome"
     }
 ]
