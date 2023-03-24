@@ -39,7 +39,7 @@ export class PartnerComponent {
       title: `ЗНАНИЕ+ | ${item.name}`,
       description: item.address,
       keywords: 'знание,карта,отстъпка,култура,социална придобивка,znanieplus,знание плюс,знаниеплюс,znanie plus,znanie+,знание+',
-      ogUrl: 'https://www.znanieplus.bg',
+      ogUrl: `https://www.znanieplus.bg/partner/${item.id}`,
       ogType: 'article',
       ogDescription: item.address,
       ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
