@@ -7,7 +7,9 @@ div.container {
         font-weight: 800;
         font-style: italic;
     }
-
+    .introm{
+        display: none;
+    }
     img {
         width:220px;
         height: 220px;
@@ -23,7 +25,7 @@ div.container {
             &:nth-child(2) {
                 flex: 1.5;
                 padding-left: 20px;
-                padding-top: 40px;
+                padding-top: 20px;
 
                 h2 {
                     left: -80px;
@@ -73,6 +75,18 @@ div.block {
 @media (max-width: 970px){
     div.container {
         padding: 12px;
+        
+        div.heading{
+            display: grid;
+            margin-bottom: 10px;
+        }  
+        .intro{
+            display: none;
+        }
+
+        .introm{
+            display: flex !important;
+        }
     }
 
     img {
@@ -91,6 +105,17 @@ div.block {
 @media (max-width: 370px){
     div.container {
         padding: 12px;
+
+        div.heading{
+            display: grid;
+            margin-bottom: 10px;
+        }   
+        .intro{
+            display: none;
+        } 
+        .introm{
+            display: flex !important;
+        }
     }
 
     img {
