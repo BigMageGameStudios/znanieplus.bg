@@ -87,3 +87,21 @@ div.block {
     }   
     
 }
+
+@media (max-width: 370px){
+    div.container {
+        padding: 12px;
+    }
+
+    img {
+        width:150px !important;
+        height: 150px !important;
+        margin-right: 5px;
+    }
+
+    .mediabody{
+        margin-top: 20px;
+        width: 255px !important;
+    }   
+    
+}
