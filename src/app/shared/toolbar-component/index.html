@@ -23,8 +23,8 @@
                 <a routerLink="/partners" routerLinkActive="active activated"
                     (click)="removeFragment()"><span>Партньори</span></a>
 
-                <a routerLink="/" fragment="about-us" routerLinkActive="activated"
-                    [class.active]="activeRoute == 'about-us'">
+                <a routerLink="/about" (click)="removeFragment()" routerLinkActive="active activated">
+
                     <span>
                         За нас
                     </span>

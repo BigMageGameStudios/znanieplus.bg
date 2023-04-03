@@ -24,6 +24,13 @@ export const MODULE_ROUTES: Route[] = [
         },
       },
       {
+        path: 'about',
+        loadChildren: () => import('./about/index').then(m => m.AboutModule),
+        data: {
+          preload: true
+        },
+      },
+      {
         path: 'partner/:key',
         loadChildren: () => import('./partner/index').then(m => m.PartnerModule),
         resolve: {

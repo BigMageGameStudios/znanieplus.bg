@@ -1,0 +1,89 @@
+@import '../../../../stylesheets/variables';
+
+div.container {
+    div.heading{
+        padding-left: 0px !important;
+        font-size: 18px;
+        font-weight: 800;
+        font-style: italic;
+    }
+
+    img {
+        width:220px;
+        height: 220px;
+    }
+    div.about-us {
+        margin: 40px 0;
+
+        div {
+            &:first-child {
+                flex: 1;
+            }
+
+            &:nth-child(2) {
+                flex: 1.5;
+                padding-left: 20px;
+                padding-top: 40px;
+
+                h2 {
+                    left: -80px;
+                }
+
+                p {
+                    margin: 10px 0;
+                    font-size: 14px;
+                }
+            }
+
+      
+        }
+
+        p.title {
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
+
+    .media{
+        margin-top: 25px;
+    }
+
+    .mediabody{
+        margin-top: 20px;
+        width: 300px;
+
+        .date{
+            color: #484848;
+        }
+
+        a{
+            text-decoration: none;
+            font-family: "Muller";
+            color: #000;
+        }
+    }
+}
+
+div.block {
+    height: 60px;
+    width: 100%;
+    background: $yellow;
+}
+
+@media (max-width: 970px){
+    div.container {
+        padding: 12px;
+    }
+
+    img {
+        width:170px !important;
+        height: 170px !important;
+        margin-right: 5px;
+    }
+
+    .mediabody{
+        margin-top: 20px;
+        width: 255px !important;
+    }   
+    
+}
