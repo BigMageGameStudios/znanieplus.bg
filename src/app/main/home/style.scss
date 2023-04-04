@@ -139,11 +139,10 @@ div.block {
 
 div.info-text {
     height: auto;
-    div.container{
-        margin: 25px auto;
-        font-size: 24px;
-        font-weight: 500;
-    }
+    padding: 5px;
+    font-size: 24px;
+    font-weight: 500;
+
 }
 
 div.info {
@@ -354,7 +353,7 @@ mat-expansion-panel {
         div.container{
             font-size: 20px !important;
             text-align: center;
-            padding: 0 15px;
+            padding:  5px;
         }
     }
 
