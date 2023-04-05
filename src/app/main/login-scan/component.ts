@@ -8,6 +8,7 @@ import { ConfirmDialog } from 'src/app/shared/confirm-dialog';
 import { CardProvider } from '../providers';
 import { BrowserCodeReader } from '@zxing/browser';
 import { BarcodeFormat, DecodeHintType, MultiFormatReader } from '@zxing/library';
+import { WINDOW } from 'src/app/modules/window';
 
 @Component({
   selector: 'login-scan-page',
@@ -54,6 +55,7 @@ export class LoginPage implements OnInit, OnDestroy {
     private SEOProvider: SEOProvider,
     private change: ChangeDetectorRef,
     private userProvider: UserProvider,
+    @Inject(WINDOW) private window: Window,
     @Inject(PLATFORM_ID) private platform: Object
   ) {
     this.SEOProvider.set({
@@ -63,14 +65,13 @@ export class LoginPage implements OnInit, OnDestroy {
       ogUrl: 'https://www.znanieplus.bg/login',
       ogType: 'article',
       ogDescription: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
-      ogImage: 'https://www.znanieplus.bg/assets/images/FB_Znanie+_2000x2000_01.jpg',
+      ogImage: 'https://www.znanieplus.bg/assets/images/FB_Znanie+_2000x2000_09.jpg',
       canonicalURL: '/login'
     });
     if (isPlatformBrowser(this.platform)) {
       const hints = new Map();
       const reader = new MultiFormatReader();
 
-      hints.set(DecodeHintType.TRY_HARDER, true);
       hints.set(DecodeHintType.POSSIBLE_FORMATS, this.formats);
 
       this.scanner = new BrowserCodeReader(reader, hints)
@@ -185,11 +186,12 @@ export class LoginPage implements OnInit, OnDestroy {
   }
 
   async startScan(device) {
+    const aspectRatio = (this.window.innerHeight - 56) / this.window.innerWidth;
     const constraints: { [key: string]: any } = {
       audio: false,
       video: {
         width: 1080,
-        aspectRatio: 1.3333,
+        aspectRatio: aspectRatio,
         facingMode: 'environment'
       }
     };
@@ -214,21 +216,14 @@ export class LoginPage implements OnInit, OnDestroy {
 
   scan() {
 
-    this.canvasElement.height = this.videoElement.videoHeight;
-    this.canvasElement.width = this.videoElement.videoWidth;
-
-    const { width, height } = this.canvasElement;
-
-    if (width == 0 || height == 0) {
-      return setTimeout(this.scan.bind(this), 16);
-    }
+    const width = this.videoElement.videoWidth;
+    const height = this.videoElement.videoHeight;
 
     this.crop({
       width, height
     });
 
     try {
-
 
       const data = this.scanner.decodeFromCanvas(this.canvas.nativeElement);
       const code = data.getText();
@@ -239,13 +234,13 @@ export class LoginPage implements OnInit, OnDestroy {
       // console.log(error)
     }
 
-    setTimeout(this.scan.bind(this), 16);
+    setTimeout(this.scan.bind(this), 100);
 
   }
 
   crop({ width, height }) {
     const sizeW = 0.45 * width;
-    const sizeH = 0.20 * height;
+    const sizeH = 0.15 * height;
     this.canvasElement.width = sizeW;
     this.canvasElement.height = sizeH;
 

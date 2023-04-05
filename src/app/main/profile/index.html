@@ -1,7 +1,7 @@
 <div class="container card-container">
 
     <h2 class="title">
-        <span>Профил</span>
+        <span>ДИГИТАЛНА КАРТА</span>
     </h2>
 
     <div class="flex-container">
@@ -9,13 +9,23 @@
         <div class="flex-box">
             <div class="card">
                 <div class="code-box">
-                    <div class="code" [innerHTML]="img | safeHTML">
+                    <div
+                        class="code"
+                        [innerHTML]="img | safeHTML"
+                    >
 
                     </div>
                 </div>
                 <div class="card-info">
-                    <img loading="lazy" decoding="async" width="125" height="30" class="contain"
-                        src="/assets/images/logo-banner.png" alt="logo" />
+                    <img
+                        loading="lazy"
+                        decoding="async"
+                        width="125"
+                        height="30"
+                        class="contain"
+                        src="/assets/images/logo-banner.png"
+                        alt="logo"
+                    />
                     <div class="card-number">
                         <h3>
                             Номер на карта
@@ -23,49 +33,101 @@
                         <p>
                             {{ token }}
                         </p>
+                        <p>
+                            {{ user.first_name }} {{ user.last_name }}
+                        </p>
                     </div>
                 </div>
             </div>
 
         </div>
-        <h2 class="title">
+        <h2 class="title free">
             <span>
                 Продукт на месеца
             </span>
         </h2>
+
         <div class="free">
-                <a href="https://kupinauka.com/product/naukata-xx-vek" target="_blank"><img src="/assets/images/naukacover.png"></a>
-                Безплатен продукт осигурен от <a class="link" href="https://kupinauka.com/" target="_blank">kupinauka.com</a>
-                <a class="download" href="/assets/downloads/scncxxc.pdf" download>изтегли безплатно</a>
+            <a
+                href="https://kupinauka.com/product/naukata-xx-vek"
+                target="_blank"
+            ><img src="/assets/images/naukacover.png"></a>
+            <div class="text">
+                Безплатна е-книга, осигурена от <a
+                    class="link"
+                    href="https://kupinauka.com/"
+                    target="_blank"
+                >kupinauka.com</a>
+            </div>
+            <a
+                class="download"
+                href="/assets/downloads/scncxxc.pdf"
+                download
+            >изтегли безплатно</a>
         </div>
-      
+
         <mat-list>
-            <div mat-subheader class="list-header">
+            <div
+                mat-subheader
+                class="list-header"
+            >
                 <h4>
                     <span>
                         Промоционални кодове
                     </span>
                 </h4>
             </div>
-            <mat-list-item *ngFor="let code of codes; trackBy: trackByIndex">
+            <div class="relative margin">
+                <input
+                    type="text"
+                    placeholder="Търси"
+                    autocomplete="nope"
+                    [(ngModel)]="ngModel"
+                    aria-labelledby="name"
+                    (ngModelChange)="onChange()"
+                />
+            </div>
+            <mat-list-item *ngFor="let code of filtered; trackBy: trackByIndex">
                 <mat-icon matListItemIcon>
-                    <img loading="lazy" decoding="async" width="48" height="48" class="contain"
-                        src="/assets/images/promo.svg" alt="logo" />
+                    <img
+                        loading="lazy"
+                        decoding="async"
+                        width="48"
+                        height="48"
+                        class="contain"
+                        src="/assets/images/promo.svg"
+                        alt="logo"
+                    />
                 </mat-icon>
                 <div matListItemTitle>{{ code.name }} <span class="promo">{{ code.promo }}%</span></div>
                 <div matListItemLine>
-                    <a class="link" [href]="code.website" target="_blank">{{ code.website }}</a>
+                    <a
+                        class="link"
+                        [href]="code.website"
+                        target="_blank"
+                    >{{ code.website }}</a>
                 </div>
-                <div matListItemLine class="code">
+                <div
+                    matListItemLine
+                    class="code"
+                >
                     <span>
                         Код: {{ code.parsedCode }}
                     </span>
-                    <button matRipple class="primary-btn" (click)="copy(code.parsedCode)">Копирай</button>
+                    <button
+                        matRipple
+                        class="primary-btn"
+                        (click)="copy(code.parsedCode)"
+                    >Копирай</button>
                 </div>
             </mat-list-item>
         </mat-list>
 
-        <button matRipple class="primary-btn exit" (click)="exit()">Изход</button>
+        <button
+            matRipple
+            class="primary-btn exit"
+            (click)="exit()"
+        >Изход</button>
 
     </div>
 

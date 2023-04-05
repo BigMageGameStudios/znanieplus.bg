@@ -1,6 +1,14 @@
 <div class="flex box">
-    <div class="video-container relative" [hidden]="!canStream">
-        <video #video autoplay muted playsinline></video>
+    <div
+        class="video-container relative"
+        [hidden]="!canStream"
+    >
+        <video
+            #video
+            autoplay
+            muted
+            playsinline
+        ></video>
         <ng-container *ngIf="canStream">
             <div class="border">
 
@@ -10,7 +18,10 @@
             </div>
             <div class="message">
                 <ng-container *ngIf="submited else notScannedTempalte">
-                    <div id="valid" *ngIf="active else notActive">
+                    <div
+                        id="valid"
+                        *ngIf="active else notActive"
+                    >
                         Статус: Активна карта
                     </div>
                     <ng-template #notActive>
@@ -25,8 +36,14 @@
             </div>
         </ng-container>
     </div>
-    <div *ngIf="streamError" class="instructions">
+    <div
+        *ngIf="streamError"
+        class="instructions"
+    >
 
     </div>
 </div>
-<canvas #canvas hidden></canvas>
+<canvas
+    #canvas
+    hidden
+></canvas>

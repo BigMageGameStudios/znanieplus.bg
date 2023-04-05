@@ -1,5 +1,5 @@
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { generateBarCode } from 'src/app/helpers/barCodeGenerator';
@@ -27,6 +27,13 @@ export class ProfileComponent {
   }
 
   codes: IObjectKeys[];
+  filtered: IObjectKeys[];
+  ngModel = '';
+  user: {
+    actuve: number,
+    first_name: string,
+    last_name: string
+  };
 
   constructor(
     private router: Router,
@@ -34,8 +41,9 @@ export class ProfileComponent {
     private clipboard: Clipboard,
     private snackBar: MatSnackBar,
     private SEOProvider: SEOProvider,
+    private change: ChangeDetectorRef,
     private userProvider: UserProvider,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) {
     this.SEOProvider.set({
       title: 'ЗНАНИЕ+ | Профил',
@@ -44,19 +52,22 @@ export class ProfileComponent {
       ogUrl: 'https://www.znanieplus.bg/profile',
       ogType: 'article',
       ogDescription: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
-      ogImage: 'https://www.znanieplus.bg/assets/images/FB_Znanie+_2000x2000_01.jpg',
+      ogImage: 'https://www.znanieplus.bg/assets/images/FB_Znanie+_2000x2000_09.jpg',
       canonicalURL: '/profile'
     });
+    const [codes, user] = this.activatedRoute.snapshot.data.result;
+    this.user = user;
     this.token = this.userProvider.getCode();
     this.img = generateBarCode(this.token, 14, 90);
-    this.codes = this.activatedRoute.snapshot.data.codes.map((item) => {
-      if(item.code.toLowerCase() == this.codesTypes.ZNP.toLowerCase()){
+    this.codes = codes.map((item) => {
+      if (item.code.toLowerCase() == this.codesTypes.ZNP.toLowerCase()) {
         item.parsedCode = `${this.codesTypes.ZNP}${Number(this.token).toString(36)}`
-      }else{
+      } else {
         item.parsedCode = item.code;
       }
       return item;
-   });
+    });
+    this.filtered = [...this.codes];
   }
 
   exit() {
@@ -82,12 +93,27 @@ export class ProfileComponent {
   }
 
 
-  copy(text: string){
+  copy(text: string) {
     this.clipboard.copy(text);
     this.snackBar.open('Промоционалният код е копиран', 'Добре', {
       duration: 3000,
       panelClass: 'znp'
     })
+  }
+
+  onChange(){
+    if(this.ngModel.length > 0){
+      const text = this.ngModel.toLowerCase();
+      this.filtered = this.codes.filter((c) => {
+        if (c.website.toLowerCase().includes(text) || c.name.toLowerCase().includes(text)) {
+          return true;
+        }
+        return false;
+      });
+    }else{
+      this.filtered = [...this.codes];
+    }
+    this.change.markForCheck();
   }
 
   trackByIndex = trackByIndex;

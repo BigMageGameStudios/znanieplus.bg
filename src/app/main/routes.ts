@@ -1,11 +1,8 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Route, RouterStateSnapshot } from '@angular/router';
 import { forkJoin, map } from 'rxjs';
-import { IObjectKeys } from '../helpers/interfaces';
-import { WINDOW } from '../modules/window';
-import { UserProvider } from '../providers';
 import { MainComponent } from './component';
-import { CardProvider, PartnerProvider } from './providers';
+import { PartnerProvider } from './providers';
 import { HomeResolver, PartnerResolver } from './resolvers';
 
 export const MODULE_ROUTES: Route[] = [
@@ -90,27 +87,6 @@ export const MODULE_ROUTES: Route[] = [
       {
         path: 'profile',
         loadChildren: () => import('./profile/index').then(m => m.ProfileModule),
-        canActivate: [(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-          const userProvider = inject(UserProvider);
-          const cardrovider = inject(CardProvider);
-          const window = inject(WINDOW);
-          const router = inject(Router);
-
-          const token = userProvider.getCode();
-
-          if (!token) {
-            router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');
-            return false;
-          }
-
-          return cardrovider.get(token).pipe(map((result: IObjectKeys) => {
-            if (result.active) {
-              return true;
-            }
-            router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');
-            return false;
-          }));
-        }],
         data: {
           preload: true
         },

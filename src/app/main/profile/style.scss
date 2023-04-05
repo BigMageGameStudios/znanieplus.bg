@@ -1,3 +1,5 @@
+@import '../../../../stylesheets/variables';
+
 div.container {
     padding: 12px 24px;
     max-width: 1200px;
@@ -16,8 +18,15 @@ div.container {
         color: #000;
     }
 
-    .free{
+    div.free{
         margin: 15px 0;
+        div.text{
+            margin: 8px 0;
+        }
+    }
+
+    h2.free{
+            align-self: flex-start;
     }
 
     &.card-container {
@@ -151,6 +160,41 @@ div.container {
             border-radius: 8px;
             display: block;
         }
+    }
+}
+
+input {
+    width: 100%;
+    font-size: 14px;
+    background-color: transparent;
+    padding: 0px 15px 0 15px;
+    height: 42px;
+    color: #5a5a5a;
+    border: solid 3px $yellow;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-bottom: 15px;
+
+    &::placeholder {
+        color: #5a5a5a;
+        opacity: 0.6;
+        font-size: 14px;
+    }
+
+    &:-ms-input-placeholder {
+        color: #5a5a5a;
+        opacity: 0.6;
+        font-size: 14px;
+    }
+
+    &::-ms-input-placeholder {
+        color: #5a5a5a;
+        opacity: 0.6;
+        font-size: 14px;
+    }
+
+    &:focus {
+        outline: none;
     }
 }
 
