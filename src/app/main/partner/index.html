@@ -46,7 +46,10 @@
 
     <div class="information flex" *ngIf="item.week">
         <div class="characters">
-            <h3>
+            <h3  *ngIf="item.id == 56">
+                Работно време на Билетната каса:
+            </h3>
+            <h3 *ngIf="item.id != 56">
                 Работно време:
             </h3>
             <div class="flex">

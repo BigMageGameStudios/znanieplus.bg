@@ -21,8 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/" fragment="about-us" (click)="toggle()" routerLinkActive="activated"
-                        [class.active]="activeRoute == 'about-us'">
+                    <a routerLink="/about" (click)="toggle();removeFragment()" routerLinkActive="active activated">
                         <span>
                             За нас
                         </span>
