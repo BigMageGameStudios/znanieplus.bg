@@ -61,7 +61,7 @@ export class ScanPage implements OnInit, OnDestroy {
       ogUrl: 'https://www.znanieplus.bg/scan',
       ogType: 'article',
       ogDescription: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
-      ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
+      ogImage: 'https://www.znanieplus.bg/assets/images/FB_Znanie+_2000x2000_01.jpg',
       canonicalURL: '/scan'
     });
     if (isPlatformBrowser(this.platform)) {
