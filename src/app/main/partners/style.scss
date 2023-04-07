@@ -38,9 +38,11 @@ div.information {
 
     div.characters {
         flex: 4;
+        padding: 12px 8px;
 
         div {
             margin-bottom: 5px;
+            align-items: center;
 
             div:first-child {
                 flex: 1;
@@ -70,6 +72,7 @@ div.plus-one {
     margin-right: 21px;
     position: relative;
     display: flex;
+    flex: unset !important;
 
     span {
         font-size: 12px;
@@ -129,5 +132,9 @@ div.plus-one {
 
     div.flex {
         display: block;
+    }
+
+    div.align-center{
+        display: flex !important;
     }
 }

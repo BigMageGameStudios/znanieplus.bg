@@ -5,72 +5,62 @@
         </h2>
         <mat-form-field color="accent">
             <mat-label>Филтрирай по</mat-label>
-            <mat-select [(ngModel)]="filter"
-                        (selectionChange)="onSort()">
-                <mat-option *ngFor="let item of filters | keyvalue"
-                            [value]="item.value.id">
+            <mat-select
+                [(ngModel)]="filter"
+                (selectionChange)="onSort()"
+            >
+                <mat-option
+                    *ngFor="let item of filters | keyvalue"
+                    [value]="item.value.id"
+                >
                     {{item.value.type}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div class="list flex">
-        <partner-component *ngFor="let partner of partners; trackBy:track"
-                           [partner]="partner">
+        <partner-component
+            *ngFor="let partner of partners; trackBy:track"
+            [partner]="partner"
+        >
 
         </partner-component>
-        <h3 class="error"
-            *ngIf="partners.length == 0">
+        <h3
+            class="error"
+            *ngIf="partners.length == 0"
+        >
             Няма намерени резултати, моля опитайте по-късно !
         </h3>
     </div>
     <div class="right">
-        <a mat-button
-           (click)="onLoadMore()"
-           routerLink="/partners"
-           [queryParams]="{page: page}"
-           *ngIf="!loaded"
-           aria-label="load more">
+        <a
+            mat-button
+            (click)="onLoadMore()"
+            routerLink="/partners"
+            [queryParams]="{page: page}"
+            *ngIf="!loaded"
+            aria-label="load more"
+        >
             Зaреди още...
         </a>
     </div>
-    <h2 class="title">
-        <span>Информация</span>
-    </h2>
     <div class="information flex">
         <div class="characters">
-            <h3 class="flex">
-                <div
-                class="plus-one"
-            >
-                <img
-                    loading="lazy"
-                    decoding="async"
-                    src="/assets/images/4521868331556258219.svg"
-                    width="30px"
-                    height="30px"
-                    alt="partner"
-                />
-                <span>
-                    +1
-                </span>
-            </div>Сподели карта ЗНАНИЕ+
-            </h3>
-            <div class="flex">
-                Този обект предоставя същата отстъпка, от която се ползва притежателят на картата, и на един негов
-                придружител. Придружителят не се посочва предварително и може да бъде различен при всяко отделно
-                посещение или закупуване на стоки.
-            </div>
-        </div>
-    </div>
-    <div class="information flex">
-        <div class="characters">
-            <div class="flex">
-                Спечелихме доверието на редица организации, предлагащи услуги и стоки в сферата на културата и
-                образованието.
-                Тяхното участие в партньорската ни мрежа е доказателство, че дейността на ЗНАНИЕ+ е не просто атрактивна
-                за
-                работодателите, но е възможност за всеки един обект да привлече нови посетители. Партньорите, при които
+            <div class="flex align-center">
+                <div class="plus-one">
+                    <img
+                        loading="lazy"
+                        decoding="async"
+                        src="/assets/images/4521868331556258219.svg"
+                        width="30px"
+                        height="30px"
+                        alt="partner"
+                    />
+                    <span>
+                        +1
+                    </span>
+                </div>
+                Партньорите, при които
                 отстъпката важи и за придружител, са отбелязани със специален символ.
             </div>
         </div>
