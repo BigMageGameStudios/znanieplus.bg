@@ -6,11 +6,20 @@ div.container {
         margin-bottom: 12px;
     }
 
-    div.heading {
+    div.heading, div.headingm {
         padding-left: 0px !important;
         font-size: 18px;
         font-weight: 800;
         font-style: italic;
+    }
+
+    div.headingm{
+        display: none;
+    }
+
+    div.headingm{
+        flex-direction: column;
+        margin-top: 18px;
     }
 
     .introm {
@@ -162,6 +171,14 @@ div.block {
 
     div.image {
         margin: 8px auto;
+    }
+
+    div.heading{
+        display: none !important;
+    }
+
+    div.headingm{
+        display: flex !important;
     }
 
 }
