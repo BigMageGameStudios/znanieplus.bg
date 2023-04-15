@@ -44,6 +44,8 @@ div.gray {
                 text-decoration: none;
                 display: block;
                 color: black;
+                font-size: 13px;
+                white-space: nowrap;
             }
 
             label {
@@ -126,6 +128,14 @@ div.gray {
                 }
             }
 
+            .agreed {
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+                margin-bottom: 36px;
+            }
+
+
             button{
                 max-width: 300px;
                 width: 100%;
@@ -137,6 +147,10 @@ div.gray {
         form.submitted{
             input.error,textarea.error{
                 border-color: #dd2c00;
+            }
+
+            label.error{
+                color:#dd2c00;
             }
         }
     }

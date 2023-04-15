@@ -28,6 +28,9 @@ export class ContactsComponent {
     phone: new FormControl('', [
       Validators.pattern("^((\\+359)|(359)|(00359)|0)?((89)|(98)|(88)|87)[0-9]{7}$")
     ]),
+    agreed: new FormControl('', [
+      Validators.requiredTrue
+    ]),
     message: new FormControl('', [
       Validators.required,
       Validators.maxLength(500),

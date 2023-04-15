@@ -32,13 +32,18 @@
                             <label for="message">Съобщение</label>
                             <textarea  [class.error]="form.get('message').invalid" placeholder="Съобщение *" rows="5" autocomplete="nope" formControlName="message"></textarea>
                         </div>
+                        <div class="relative margin">
+                            <input type="checkbox" class="agreed" formControlName="agreed" />
+                            <label [class.error]="form.get('agreed').invalid">Съгласен съм с <a href="/terms" target="_blank">Общите условия за ползване</a> и съм запознат с 
+                                <a href="/terms" target="_blank">Декларацията и уведомлението за поверителност</a>.</label>
+                        </div>
                         <button matRipple class="primary-btn" type="submit" [disabled]="loading">Потвърди</button>
                     </div>
 
                     <div class="contact">
                         <h3>Офис</h3>
                         <a class="margin" href="https://goo.gl/maps/pynfes6VAATmc6HE8" target="_blank">
-                            гр. София, ул. Бойчо Войвода 7
+                            гр. София, бул. Черни връх 47А
                         </a>
                         <a href="tel:+359898564849">
                             +359 898 564 849
