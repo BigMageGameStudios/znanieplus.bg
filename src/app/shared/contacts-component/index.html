@@ -15,27 +15,27 @@
                 <div class="form flex">
                     <div class="right">
                         <div class="relative margin">
-                            <label for="name">Име</label>
+                            <label class="input" for="name">Име</label>
                             <input [class.error]="form.get('name').invalid" type="text" placeholder="Име *" autocomplete="nope" formControlName="name" aria-labelledby="name" />
                         </div>
                         <div class="relative margin">
-                            <label for="email">Имейл адрес</label>
+                            <label class="input" for="email">Имейл адрес</label>
                             <input [class.error]="form.get('email').invalid" type="email" placeholder="Имейл адрес *" autocomplete="nope" formControlName="email" />
                         </div>
                     </div>
                     <div>
                         <div class="relative margin">
-                            <label for="phone">Телефон за връзка</label>
+                            <label class="input" for="phone">Телефон за връзка</label>
                             <input [class.error]="form.get('phone').invalid" type="tel" placeholder="Телефон за връзка" autocomplete="nope" formControlName="phone" />
                         </div>
                         <div class="relative margin">
-                            <label for="message">Съобщение</label>
+                            <label class="input" for="message">Съобщение</label>
                             <textarea  [class.error]="form.get('message').invalid" placeholder="Съобщение *" rows="5" autocomplete="nope" formControlName="message"></textarea>
                         </div>
-                        <div class="relative margin">
-                            <input type="checkbox" class="agreed" formControlName="agreed" />
-                            <label [class.error]="form.get('agreed').invalid">Съгласен съм с обработката на личната ми информация в съответствие с
-                                <a href="/terms" target="_blank">Декларацията и уведомлението за поверителност.</a></label>
+                        <div class="relative flex checkbox">
+                            <input id="checkbox" type="checkbox" class="agreed" formControlName="agreed" />
+                            <label class="checkbox" for="checkbox" [class.error]="form.get('agreed').invalid">Съгласен съм с обработката на личната ми информация в съответствие с
+                                <a class="link" href="/terms" target="_blank">Декларацията и уведомлението за поверителност.</a></label>
                         </div>
                         <button matRipple class="primary-btn" type="submit" [disabled]="loading">Потвърди</button>
                     </div>
