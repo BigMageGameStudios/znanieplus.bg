@@ -88,7 +88,9 @@ div.container {
         margin-top: 20px;
         width: 100%;
         max-width: 300px;
+        min-width: 200px;
         padding-top: 0px !important;
+        flex: 1 0 21%;
 
         .padding {
             padding: 45px;
@@ -111,6 +113,10 @@ div.container {
             text-decoration: none;
             font-family: "Muller";
             color: #000;
+        }
+        h2 {
+            width: 220px;
+            font-size: 18px;
         }
     }
 }

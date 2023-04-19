@@ -6,7 +6,7 @@ div.gray {
 
     div.contacts {
         padding-top: 60px;
-        
+
         p.intro {
             font-size: 16px;
             padding: 10px;
@@ -19,7 +19,7 @@ div.gray {
                 flex: 1;
             }
 
-            div.margin{
+            div.margin {
                 margin-top: 18px;
             }
 
@@ -31,7 +31,8 @@ div.gray {
                 margin: 0;
             }
 
-            p, a {
+            p,
+            a {
                 font-size: 14px;
                 margin: 0;
 
@@ -40,17 +41,25 @@ div.gray {
                 }
             }
 
-            a{
-                text-decoration: none;
-                display: block;
-                color: black;
+            a {
+
+                font-size: 13px;
             }
 
-            label {
+            label.checkbox {
+                color: black;
+                font-size: 14px;
+            }
+
+            label.input {
                 position: absolute;
                 color: black;
                 top: -18px;
                 font-size: 14px;
+            }
+
+            div.checkbox {
+                margin-bottom: 12px;
             }
 
             textarea {
@@ -64,7 +73,7 @@ div.gray {
                 border: solid 3px $yellow;
                 box-sizing: border-box;
                 border-radius: 2px;
-                margin-bottom: 15px;
+                margin-bottom: 12px;
                 resize: none;
 
                 &::placeholder {
@@ -101,7 +110,7 @@ div.gray {
                 border: solid 3px $yellow;
                 box-sizing: border-box;
                 border-radius: 2px;
-                margin-bottom: 15px;
+                margin-bottom: 12px;
 
                 &::placeholder {
                     color: #5a5a5a;
@@ -126,7 +135,16 @@ div.gray {
                 }
             }
 
-            button{
+            .agreed {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                margin-bottom: 25px;
+                margin-top: -2px;
+            }
+
+
+            button {
                 max-width: 300px;
                 width: 100%;
                 text-transform: uppercase;
@@ -134,9 +152,16 @@ div.gray {
                 border-radius: 4px;
             }
         }
-        form.submitted{
-            input.error,textarea.error{
+
+        form.submitted {
+
+            input.error,
+            textarea.error {
                 border-color: #dd2c00;
+            }
+
+            label.error {
+                color: #dd2c00;
             }
         }
     }
@@ -183,8 +208,8 @@ div.gray {
                 text-align: center;
             }
 
-            button{
-                max-width: unset !important ;
+            button {
+                max-width: unset !important;
             }
         }
     }
