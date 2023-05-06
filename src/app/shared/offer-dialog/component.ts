@@ -16,7 +16,11 @@ import { ConfirmDialog } from '../confirm-dialog';
 export class OfferDialog {
 
   form = new FormGroup({
-    name: new FormControl('', [
+    username: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(255),
+    ]),
+    companyname: new FormControl('', [
       Validators.required,
       Validators.maxLength(255),
     ]),
@@ -27,7 +31,9 @@ export class OfferDialog {
     ]),
     phone: new FormControl('', [
       Validators.pattern("^((\\+359)|(359)|(00359)|0)?((89)|(98)|(88)|87)[0-9]{7}$"),
-      Validators.required
+    ]),
+    agreed: new FormControl('', [
+      Validators.requiredTrue
     ]),
     message: new FormControl('', [
       Validators.required,
@@ -48,17 +54,31 @@ export class OfferDialog {
     private mailProvider: MailProvider
   ) { }
 
-  onSubmit() { 
+  onSubmit() {
     this.submitted = true;
     this.change.markForCheck();
 
-    if(this.form.valid){
+    if (this.form.valid) {
       this.loading = true;
       this.showDialog();
       this.change.markForCheck();
-      this.mailProvider.post(this.form.value).subscribe((data) => {
+      const {
+        username,
+        companyname,
+        email,
+        phone,
+        message
+      } = this.form.value;
 
-        if(data?.result){
+
+      this.mailProvider.post({
+        name: `${username}, ${companyname}`,
+        email,
+        phone,
+        message
+      }).subscribe((data) => {
+
+        if (data?.result) {
           this.submitted = false;
           this.formDirective.resetForm();
         }

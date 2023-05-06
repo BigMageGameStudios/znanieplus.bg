@@ -3,13 +3,13 @@
 div.gray {
     background-color: #f3f3f3;
     padding: 24px;
+    max-width: 760px;
 
     div.contacts {
 
         p.intro {
             font-size: 16px;
             padding: 10px;
-            max-width: 720px;
         }
 
         div.form {
@@ -68,7 +68,7 @@ div.gray {
                 font-size: 14px;
                 background-color: transparent;
                 padding: 5px 15px 0 15px;
-                height: 100px;
+                height: 115px;
                 color: #5a5a5a;
                 border: solid 3px $yellow;
                 box-sizing: border-box;

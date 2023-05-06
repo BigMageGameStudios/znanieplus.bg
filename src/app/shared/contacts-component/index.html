@@ -1,7 +1,12 @@
 <div class="gray">
     <div class="container">
         <div class="contacts">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" [class.submitted]="submitted" #formDirective="ngForm">
+            <form
+                [formGroup]="form"
+                (ngSubmit)="onSubmit()"
+                [class.submitted]="submitted"
+                #formDirective="ngForm"
+            >
                 <div class="center">
                     <h2 class="title">
                         <span>Свържи се с нас</span>
@@ -15,40 +20,105 @@
                 <div class="form flex">
                     <div class="right">
                         <div class="relative margin">
-                            <label class="input" for="name">Име</label>
-                            <input [class.error]="form.get('name').invalid" type="text" placeholder="Име *" autocomplete="nope" formControlName="name" aria-labelledby="name" />
+                            <label
+                                class="input"
+                                for="name"
+                            >Име*</label>
+                            <input
+                                [class.error]="form.get('name').invalid"
+                                type="text"
+                                placeholder="Име и фамилия"
+                                autocomplete="nope"
+                                formControlName="name"
+                                aria-labelledby="name"
+                            />
                         </div>
                         <div class="relative margin">
-                            <label class="input" for="email">Имейл адрес</label>
-                            <input [class.error]="form.get('email').invalid" type="email" placeholder="Имейл адрес *" autocomplete="nope" formControlName="email" />
+                            <label
+                                class="input"
+                                for="email"
+                            >Имейл*</label>
+                            <input
+                                [class.error]="form.get('email').invalid"
+                                type="email"
+                                placeholder="Имейл адрес"
+                                autocomplete="nope"
+                                formControlName="email"
+                            />
                         </div>
                     </div>
                     <div>
                         <div class="relative margin">
-                            <label class="input" for="phone">Телефон за връзка</label>
-                            <input [class.error]="form.get('phone').invalid" type="tel" placeholder="Телефон за връзка" autocomplete="nope" formControlName="phone" />
+                            <label
+                                class="input"
+                                for="phone"
+                            >Телефон</label>
+                            <input
+                                [class.error]="form.get('phone').invalid"
+                                type="tel"
+                                placeholder="Телефонен номер"
+                                autocomplete="nope"
+                                formControlName="phone"
+                            />
                         </div>
                         <div class="relative margin">
-                            <label class="input" for="message">Съобщение</label>
-                            <textarea  [class.error]="form.get('message').invalid" placeholder="Съобщение *" rows="5" autocomplete="nope" formControlName="message"></textarea>
+                            <label
+                                class="input"
+                                for="message"
+                            >Съобщение*</label>
+                            <textarea
+                                [class.error]="form.get('message').invalid"
+                                placeholder="Съобщение"
+                                rows="5"
+                                autocomplete="nope"
+                                formControlName="message"
+                            ></textarea>
                         </div>
                         <div class="relative flex checkbox">
-                            <input id="checkbox" type="checkbox" class="agreed" formControlName="agreed" />
-                            <label class="checkbox" for="checkbox" [class.error]="form.get('agreed').invalid">Съгласен съм с обработката на личната ми информация в съответствие с
-                                <a class="link" href="/terms" target="_blank">Декларацията и уведомлението за поверителност.</a></label>
+                            <input
+                                id="checkbox"
+                                type="checkbox"
+                                class="agreed"
+                                formControlName="agreed"
+                            />
+                            <label
+                                class="checkbox"
+                                for="checkbox"
+                                [class.error]="form.get('agreed').invalid"
+                            >Съгласен съм с обработката на личната ми информация в съответствие с
+                                <a
+                                    class="link"
+                                    href="/terms"
+                                    target="_blank"
+                                >Декларацията и уведомлението за поверителност.</a></label>
                         </div>
-                        <button matRipple class="primary-btn" type="submit" [disabled]="loading">Потвърди</button>
+                        <button
+                            matRipple
+                            class="primary-btn"
+                            type="submit"
+                            [disabled]="loading"
+                        >Потвърди</button>
                     </div>
 
                     <div class="contact">
                         <h3>Офис</h3>
-                        <a class="margin link block" href="https://goo.gl/maps/ojcXABXav2gtCD9B9" target="_blank">
+                        <a
+                            class="margin link block"
+                            href="https://goo.gl/maps/ojcXABXav2gtCD9B9"
+                            target="_blank"
+                        >
                             гр. София, бул. Черни връх 47А
                         </a>
-                        <a class="link block" href="tel:+359898564849">
+                        <a
+                            class="link block"
+                            href="tel:+359898564849"
+                        >
                             +359 898 564 849
                         </a>
-                        <a class="margin link block" href="mailto:office@znanieplus.bg">
+                        <a
+                            class="margin link block"
+                            href="mailto:office@znanieplus.bg"
+                        >
                             office@znanieplus.bg
                         </a>
                     </div>

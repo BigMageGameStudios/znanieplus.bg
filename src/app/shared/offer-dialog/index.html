@@ -11,8 +11,8 @@
                     <span>Поискай оферта</span>
                 </h2>
                 <p class="intro">
-                    Поискай от нас индивидуална оферта, кандидатствай за одобрение в партньорската ни
-                    мрежа или просто сподели какво мислиш за ЗНАНИЕ+
+                    Абонаментите на ЗНАНИЕ+ се предлагат ексклузивно на българските работодатели. Изпрати ни запитване и
+                    ще получиш оферта до 24 часа.
                 </p>
 
             </div>
@@ -21,26 +21,40 @@
                     <div class="relative margin">
                         <label
                             class="input"
-                            for="name"
-                        >Име на фирма</label>
+                            for="username"
+                        >Име*</label>
                         <input
-                            [class.error]="form.get('name').invalid"
+                            [class.error]="form.get('username').invalid"
                             type="text"
-                            placeholder="Име на фирма *"
+                            placeholder="Име и фамилия"
                             autocomplete="nope"
-                            formControlName="name"
-                            aria-labelledby="name"
+                            formControlName="username"
+                            aria-labelledby="username"
+                        />
+                    </div>
+                    <div class="relative margin">
+                        <label
+                            class="input"
+                            for="companyname"
+                        >Компания*</label>
+                        <input
+                            [class.error]="form.get('companyname').invalid"
+                            type="text"
+                            placeholder="Име на фирма"
+                            autocomplete="nope"
+                            formControlName="companyname"
+                            aria-labelledby="companyname"
                         />
                     </div>
                     <div class="relative margin">
                         <label
                             class="input"
                             for="email"
-                        >Имейл адрес</label>
+                        >Имейл*</label>
                         <input
                             [class.error]="form.get('email').invalid"
                             type="email"
-                            placeholder="Имейл адрес *"
+                            placeholder="Имейл адрес"
                             autocomplete="nope"
                             formControlName="email"
                         />
@@ -51,11 +65,11 @@
                         <label
                             class="input"
                             for="phone"
-                        >Телефон за връзка</label>
+                        >Телефон</label>
                         <input
                             [class.error]="form.get('phone').invalid"
                             type="tel"
-                            placeholder="Телефон за връзка *"
+                            placeholder="Телефонен номер"
                             autocomplete="nope"
                             formControlName="phone"
                         />
@@ -64,14 +78,32 @@
                         <label
                             class="input"
                             for="message"
-                        >Съобщение</label>
+                        >Съобщение*</label>
                         <textarea
                             [class.error]="form.get('message').invalid"
-                            placeholder="Съобщение *"
+                            placeholder="Съобщение"
                             rows="5"
                             autocomplete="nope"
                             formControlName="message"
                         ></textarea>
+                    </div>
+                    <div class="relative flex checkbox">
+                        <input
+                            id="checkbox-offer"
+                            type="checkbox"
+                            class="agreed"
+                            formControlName="agreed"
+                        />
+                        <label
+                            class="checkbox"
+                            for="checkbox-offer"
+                            [class.error]="form.get('agreed').invalid"
+                        >Съгласен съм с обработката на личната ми информация в съответствие с
+                            <a
+                                class="link"
+                                href="/terms"
+                                target="_blank"
+                            >Декларацията и уведомлението за поверителност.</a></label>
                     </div>
                     <button
                         matRipple
