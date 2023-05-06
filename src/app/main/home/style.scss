@@ -2,6 +2,7 @@
 
 video {
     object-fit: cover;
+    object-fit: cover;
     max-width: 100%;
     max-height: calc(100vh - 84px);
 }
@@ -345,16 +346,15 @@ mat-expansion-panel {
     }
 
     video {
-        object-fit: fill;
         max-height: calc(var(--vh, 1vh) * 100 - 56px);
         height: calc(100vh - 56px);
     }
 
     div.info-text {
-            font-size: 20px !important;
-            width: 112%;
-            margin-left: -6%;
-            display: block;
+        font-size: 20px !important;
+        width: 112%;
+        margin-left: -6%;
+        display: block;
     }
 
 }
