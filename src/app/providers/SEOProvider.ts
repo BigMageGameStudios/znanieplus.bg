@@ -1,4 +1,4 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { Meta, Title, } from '@angular/platform-browser';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
@@ -18,6 +18,14 @@ export class SEOProvider {
     ldjson: HTMLElement | null;
     itemscope: HTMLElement | null;
 
+    private Meta = inject(Meta);
+    private Title = inject(Title);
+    private Router = inject(Router);
+    
+    private document: Document = inject(DOCUMENT);;
+    private window: Window = inject(WINDOW);
+    private platformId: Object = inject(PLATFORM_ID);
+
     fbqLoaded = false;
     enabled = true;
 
@@ -27,14 +35,7 @@ export class SEOProvider {
     pixelId = `977265799913171`;
     url = this.window.location.origin;
 
-    constructor(
-        private Meta: Meta,
-        private Title: Title,
-        private Router: Router,
-        @Inject(DOCUMENT) private document: Document,
-        @Inject(WINDOW) private window: Window,
-        @Inject(PLATFORM_ID) private platformId: Object,
-    ) {
+    constructor() {
 
         this.noscript = this.document.getElementById('facebook_pixel');
         this.canonicalURL = this.document.querySelector("link[rel='canonical']");
@@ -43,7 +44,7 @@ export class SEOProvider {
 
         this.setNoScript();
 
-        if ((isPlatformBrowser(platformId) && environment.production && this.enabled)) {
+        if ((isPlatformBrowser(this.platformId) && environment.production && this.enabled)) {
 
             const isBot = (navigator && navigator.userAgent) ? /bot|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex|Lighthouse/i.test(navigator.userAgent) : true;
             if (!isBot) {

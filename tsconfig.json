@@ -19,8 +19,7 @@
     "lib": [
       "es2018",
       "dom"
-    ],
-    "useDefineForClassFields": false
+    ]
   },
   "angularCompilerOptions": {
     "preserveWhitespaces": false,

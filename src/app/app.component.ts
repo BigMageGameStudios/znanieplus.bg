@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, ChangeDetectorRef, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserProvider } from './providers';
 
@@ -12,13 +12,13 @@ import { UserProvider } from './providers';
 
 export class AppComponent {
 
+  change = inject(ChangeDetectorRef)
+  userProvider = inject(UserProvider)
+
   subscription!: Subscription;
   cookiePolicy = !this.userProvider.getPolicy();
 
-  constructor(
-    private change: ChangeDetectorRef,
-    private userProvider: UserProvider
-  ) { }
+  constructor() { }
 
   accept() {
     this.cookiePolicy = false;

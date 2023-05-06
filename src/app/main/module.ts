@@ -12,6 +12,8 @@ import { ToolbarModule } from '../shared/toolbar-component';
 import { MODULE_ROUTES, MODULE_COMPONENTS } from './routes';
 import { MainProvidersModule } from './providers/module';
 import { MainResolversModule } from './resolvers/module';
+import { MatRippleModule } from '@angular/material/core';
+import { OfferDialogModule } from '../shared/offer-dialog';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { MainResolversModule } from './resolvers/module';
     DrawerModule,
     MatDialogModule,
     MainProvidersModule,
-    MainResolversModule
+    MainResolversModule,
+    MatRippleModule,
+    OfferDialogModule
   ]
 })
 

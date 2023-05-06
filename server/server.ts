@@ -50,14 +50,7 @@ export class HttpServer {
 
     private requestHandler(req: any, res: any): Promise<any> {
 
-        const agent = req.headers['user-agent'];
-        const allowedBots = UserAgent.find((item: { pattern: string }) => {
-            const c = new RegExp(item.pattern, 'i');
-            return c.test(agent);
-        });
-
-        if(allowedBots){
-            return Promise
+        return Promise
             .all([
                 this.parseUrl(req.url),
                 this.parseCookies(req)
@@ -81,9 +74,7 @@ export class HttpServer {
             .catch((error) => {
                 return this.render(req, res);
             });
-        }
 
-        return res.end(indexHtml);
     }
 
     private noCache(res: Response) {
@@ -93,27 +84,39 @@ export class HttpServer {
         res.setHeader('ETag', 'off');
     }
 
-    private render(req: Request, res: Response): void {
-        renderModule(AppServerModule, {
-            url: req.url,
-            document: indexHtml,
-            extraProviders: [
-                {
-                    provide: 'REQUEST',
-                    useValue: req
-                }
-            ]
-        }).then((html) => {
-            return this.compression(req, res, html);
-        }).then((view) => {
-            this.noCache(res);
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(view);
-        }).catch((error) => {
-            console.log(error);
-            this.noCache(res);
-            return res.end(indexHtml);
+    private render(req: Request, res: Response) {
+
+        const agent = req.headers['user-agent'];
+        const allowedBots = UserAgent.find((item: { pattern: string }) => {
+            const c = new RegExp(item.pattern, 'i');
+            return c.test(agent);
         });
+
+        if (allowedBots) {
+            return renderModule(AppServerModule, {
+                url: req.url,
+                document: indexHtml,
+                extraProviders: [
+                    {
+                        provide: 'REQUEST',
+                        useValue: req
+                    }
+                ]
+            }).then((html) => {
+                return this.compression(req, res, html);
+            }).then((view) => {
+                this.noCache(res);
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(view);
+            }).catch((error) => {
+                this.noCache(res);
+                return res.end(indexHtml);
+            });
+        }
+
+        return res.end(indexHtml);
+
+
     }
 
     private parseUrl(url: string): Promise<{ url: string, query: ParsedUrlQuery, parsedUrl: string }> {

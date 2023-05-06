@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef, ChangeDetectionStrategy, OnInit, OnDestroy, Inject, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, ChangeDetectionStrategy, OnInit, OnDestroy, Inject, PLATFORM_ID, ViewChild, ElementRef, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,6 +20,14 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   subscription!: Subscription;
 
+  private mapProvider = inject(MapProvider);
+  private activated = inject(ActivatedRoute);
+  private change = inject(ChangeDetectorRef);
+  public userProvider = inject(UserProvider);
+
+  private window: Window = inject(WINDOW);
+  private platformId: Object = inject(PLATFORM_ID);
+
   active = false;
   activeScroll = false;
   activeRoute = 'home';
@@ -30,14 +38,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   @ViewChild('toolbar', { static: true }) toolbar: ElementRef<HTMLElement>;
   translations: { [key: string]: string | Function | any } = this.activated.snapshot.data.translations;
 
-  constructor(
-    private mapProvider: MapProvider,
-    private activated: ActivatedRoute,
-    private change: ChangeDetectorRef,
-    public userProvider: UserProvider,
-    @Inject(WINDOW) private window: Window,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) { }
+  constructor() { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {

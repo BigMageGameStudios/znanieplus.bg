@@ -1,11 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { provideClientHydration } from '@angular/platform-browser';
 import { APP_INITIALIZER, ErrorHandler, NgModule, ɵɵinject } from '@angular/core';
-import { Router, RouterModule, UrlSerializer } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Router, RouterModule, provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { DOCUMENT, ViewportScroller } from '@angular/common';
-
-import { TransferHttpCacheModule } from './modules/transfer-http';
-import { PreloadStrategy } from './modules/preload-strategy';
 
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './app.routes';
 import { ErrorIntercept } from './helpers/error.interceptor';
@@ -16,20 +13,17 @@ import { UserProvider } from './providers';
   declarations: [
     MODULE_COMPONENTS
   ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'project' }),
-    TransferHttpCacheModule,
-    RouterModule.forRoot(MODULE_ROUTES, {
-      initialNavigation: 'enabledBlocking',
-      scrollPositionRestoration: 'enabled',
-      malformedUriErrorHandler: malFormedURI,
-      preloadingStrategy: PreloadStrategy,
-      anchorScrolling: 'enabled',
-    }),
-    HttpClientModule
-  ],
   providers: [
-    { 
+    provideRouter(MODULE_ROUTES,
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled'
+      }),
+      withEnabledBlockingInitialNavigation(),
+    ),
+    provideClientHydration(),
+    provideHttpClient(),
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorIntercept,
       multi: true
@@ -55,18 +49,14 @@ import { UserProvider } from './providers';
 
 export class AppModule { }
 
-export function malFormedURI(error: URIError, urlSerializer: UrlSerializer, url: string) {
-  return urlSerializer.parse('/')
-};
-
 export function init_app(
   router: Router,
   userProvider: UserProvider,
 ) {
   return async () => {
-    try{
+    try {
       userProvider.init();
-    }catch(error){
+    } catch (error) {
       router.navigate(['/error']);
     }
   }

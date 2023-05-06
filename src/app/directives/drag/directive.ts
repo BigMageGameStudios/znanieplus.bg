@@ -1,5 +1,4 @@
 import { Directive, HostListener, ElementRef, Inject } from '@angular/core';
-import { WINDOW } from 'src/app/modules/window';
 
 @Directive({
     selector: '[drag]'
@@ -17,8 +16,7 @@ export class DragDirective{
     move = false;
 
     constructor(
-        private element: ElementRef<HTMLDivElement>,
-        @Inject(WINDOW) private window: Window,
+        private element: ElementRef<HTMLDivElement>
     ) { }
 
     disableHref(){

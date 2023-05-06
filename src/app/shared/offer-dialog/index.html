@@ -1,0 +1,86 @@
+<div class="gray">
+    <div class="contacts">
+        <form
+            [formGroup]="form"
+            (ngSubmit)="onSubmit()"
+            [class.submitted]="submitted"
+            #formDirective="ngForm"
+        >
+            <div class="center">
+                <h2 class="title">
+                    <span>Поискай оферта</span>
+                </h2>
+                <p class="intro">
+                    Поискай от нас индивидуална оферта, кандидатствай за одобрение в партньорската ни
+                    мрежа или просто сподели какво мислиш за ЗНАНИЕ+
+                </p>
+
+            </div>
+            <div class="form flex">
+                <div class="right">
+                    <div class="relative margin">
+                        <label
+                            class="input"
+                            for="name"
+                        >Име на фирма</label>
+                        <input
+                            [class.error]="form.get('name').invalid"
+                            type="text"
+                            placeholder="Име на фирма *"
+                            autocomplete="nope"
+                            formControlName="name"
+                            aria-labelledby="name"
+                        />
+                    </div>
+                    <div class="relative margin">
+                        <label
+                            class="input"
+                            for="email"
+                        >Имейл адрес</label>
+                        <input
+                            [class.error]="form.get('email').invalid"
+                            type="email"
+                            placeholder="Имейл адрес *"
+                            autocomplete="nope"
+                            formControlName="email"
+                        />
+                    </div>
+                </div>
+                <div>
+                    <div class="relative margin">
+                        <label
+                            class="input"
+                            for="phone"
+                        >Телефон за връзка</label>
+                        <input
+                            [class.error]="form.get('phone').invalid"
+                            type="tel"
+                            placeholder="Телефон за връзка *"
+                            autocomplete="nope"
+                            formControlName="phone"
+                        />
+                    </div>
+                    <div class="relative margin">
+                        <label
+                            class="input"
+                            for="message"
+                        >Съобщение</label>
+                        <textarea
+                            [class.error]="form.get('message').invalid"
+                            placeholder="Съобщение *"
+                            rows="5"
+                            autocomplete="nope"
+                            formControlName="message"
+                        ></textarea>
+                    </div>
+                    <button
+                        matRipple
+                        class="primary-btn"
+                        type="submit"
+                        [disabled]="loading"
+                    >Потвърди</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

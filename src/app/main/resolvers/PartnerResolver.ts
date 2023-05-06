@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PartnerProvider } from '../providers';
 import { MainResolversModule } from './module';
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: MainResolversModule })
 
-export class PartnerResolver implements Resolve<any> {
+export class PartnerResolver  {
 
   constructor(
     private PartnerProvider: PartnerProvider,

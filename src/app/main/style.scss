@@ -11,6 +11,21 @@ div.router.member {
     }
 }
 
+a.offer{
+    cursor: pointer;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    padding: 8px;
+    background-color: #ffd145;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    img{
+        object-fit: contain;
+    }
+}
+
 @media (max-width: 800px) {
     div.router.member {
         > router-outlet + * {

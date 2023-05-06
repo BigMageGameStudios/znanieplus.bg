@@ -1,0 +1,211 @@
+@import '../../../../stylesheets/variables';
+
+div.gray {
+    background-color: #f3f3f3;
+    padding: 24px;
+
+    div.contacts {
+
+        p.intro {
+            font-size: 16px;
+            padding: 10px;
+            max-width: 720px;
+        }
+
+        div.form {
+            margin-top: 40px;
+
+            div {
+                flex: 1;
+            }
+
+            div.margin {
+                margin-top: 18px;
+            }
+
+            div.right {
+                padding-right: 20px;
+            }
+
+            h3 {
+                margin: 0;
+            }
+
+            p,
+            a {
+                font-size: 14px;
+                margin: 0;
+
+                &.margin {
+                    margin: 10px 0;
+                }
+            }
+
+            a {
+
+                font-size: 13px;
+            }
+
+            label.checkbox {
+                color: black;
+                font-size: 14px;
+            }
+
+            label.input {
+                position: absolute;
+                color: black;
+                top: -18px;
+                font-size: 14px;
+            }
+
+            div.checkbox {
+                margin-bottom: 12px;
+            }
+
+            textarea {
+                max-width: 300px;
+                width: 100%;
+                font-size: 14px;
+                background-color: transparent;
+                padding: 5px 15px 0 15px;
+                height: 100px;
+                color: #5a5a5a;
+                border: solid 3px $yellow;
+                box-sizing: border-box;
+                border-radius: 2px;
+                margin-bottom: 12px;
+                resize: none;
+
+                &::placeholder {
+                    color: #5a5a5a;
+                    opacity: 0.6;
+                    font-size: 14px;
+                }
+
+                &:-ms-input-placeholder {
+                    color: #5a5a5a;
+                    opacity: 0.6;
+                    font-size: 14px;
+                }
+
+                &::-ms-input-placeholder {
+                    color: #5a5a5a;
+                    opacity: 0.6;
+                    font-size: 14px;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            input {
+                max-width: 300px;
+                width: 100%;
+                font-size: 14px;
+                background-color: transparent;
+                padding: 0px 15px 0 15px;
+                height: 42px;
+                color: #5a5a5a;
+                border: solid 3px $yellow;
+                box-sizing: border-box;
+                border-radius: 2px;
+                margin-bottom: 12px;
+
+                &::placeholder {
+                    color: #5a5a5a;
+                    opacity: 0.6;
+                    font-size: 14px;
+                }
+
+                &:-ms-input-placeholder {
+                    color: #5a5a5a;
+                    opacity: 0.6;
+                    font-size: 14px;
+                }
+
+                &::-ms-input-placeholder {
+                    color: #5a5a5a;
+                    opacity: 0.6;
+                    font-size: 14px;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .agreed {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                margin-bottom: 25px;
+                margin-top: -2px;
+            }
+
+
+            button {
+                max-width: 300px;
+                width: 100%;
+                text-transform: uppercase;
+                padding: 12px 0;
+                border-radius: 4px;
+            }
+        }
+
+        form.submitted {
+
+            input.error,
+            textarea.error {
+                border-color: #dd2c00;
+            }
+
+            label.error {
+                color: #dd2c00;
+            }
+        }
+    }
+}
+
+@media (max-width: 970px) {
+    div.contacts {
+
+        input,
+        textarea {
+            max-width: 270px !important;
+        }
+    }
+}
+
+@media (max-width: 870px) {
+    div.contacts {
+
+        input,
+        textarea {
+            max-width: 230px !important;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    div.contacts {
+
+        div.form {
+            flex-direction: column;
+            padding: 0 10px;
+
+            div.right {
+                padding: 0 !important;
+            }
+
+            input,
+            textarea {
+                max-width: 100% !important;
+            }
+
+            button {
+                max-width: unset !important;
+            }
+        }
+    }
+}

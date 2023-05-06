@@ -1,6 +1,27 @@
 <toolbar-component [drawer]="drawer"></toolbar-component>
-<div class="router member flex" role="main" [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
+<div
+  class="router member flex"
+  role="main"
+  [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''"
+>
   <drawer-component #drawer>
   </drawer-component>
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
+<a
+  class="image-button offer"
+  matRipple
+  [routerLink]="[]"
+  [relativeTo]="activatedRoute"
+  [state]="{ disableScroll: true }"
+  [queryParams]="{ dialog: dialogs.offer }"
+>
+  <img
+    loading="lazy"
+    decoding="async"
+    src="/assets/images/offernew.svg"
+    width="68px"
+    height="68px"
+    alt="partner"
+  />
+</a>

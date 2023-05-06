@@ -22,6 +22,8 @@ export class ProfileComponent {
   img: string;
   token: string;
 
+  showItem: IObjectKeys;
+
   codesTypes = {
     ZNP: 'ZNP'
   }
@@ -113,6 +115,11 @@ export class ProfileComponent {
     }else{
       this.filtered = [...this.codes];
     }
+    this.change.markForCheck();
+  }
+
+  onShow(item: IObjectKeys){
+    this.showItem = item;
     this.change.markForCheck();
   }
 

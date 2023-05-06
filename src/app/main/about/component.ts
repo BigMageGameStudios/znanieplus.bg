@@ -1,7 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, ChangeDetectionStrategy, Inject, ViewChild, ElementRef, OnInit, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { WINDOW } from 'src/app/modules/window';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SEOProvider } from 'src/app/providers';
 
 @Component({
@@ -11,15 +8,12 @@ import { SEOProvider } from 'src/app/providers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class AboutComponent implements OnInit{
+export class AboutComponent{
 
   items: any[];
 
   constructor(
-    private SEOProvider: SEOProvider,
-    private ActivatedRoute: ActivatedRoute,
-    @Inject(WINDOW) private window: Window,
-    @Inject(PLATFORM_ID) private platform: Object
+    private SEOProvider: SEOProvider
   ) {
     this.SEOProvider.set({
       title: 'ЗНАНИЕ+',
@@ -31,10 +25,6 @@ export class AboutComponent implements OnInit{
       ogImage: 'https://www.znanieplus.bg/assets/images/logo.png',
       canonicalURL: '/'
     });
-
-  }
-
-  ngOnInit() {
 
   }
 

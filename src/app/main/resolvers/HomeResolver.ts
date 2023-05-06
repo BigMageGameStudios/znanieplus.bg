@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PartnerProvider } from '../providers';
 import { MainResolversModule } from './module';
 
 @Injectable({ providedIn: MainResolversModule })
 
-export class HomeResolver implements Resolve<any> {
+export class HomeResolver  {
 
   constructor(
     private PartnerProvider: PartnerProvider) { }

@@ -111,14 +111,25 @@
                     matListItemLine
                     class="code"
                 >
-                    <span>
+                    <span *ngIf="code == showItem else promoCodeTemplate">
                         Код: {{ code.parsedCode }}
                     </span>
+                    <ng-template #promoCodeTemplate>
+                        <button
+                            matRipple
+                            class="primary-btn show"
+                            (click)="onShow(code)"
+                        >
+                            Покажи
+                        </button>
+                    </ng-template>
                     <button
                         matRipple
                         class="primary-btn"
                         (click)="copy(code.parsedCode)"
-                    >Копирай</button>
+                    >
+                        Копирай
+                    </button>
                 </div>
             </mat-list-item>
         </mat-list>
