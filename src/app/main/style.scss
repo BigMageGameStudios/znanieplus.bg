@@ -2,7 +2,8 @@
 
 div.router.member {
     flex: 1;
-    > router-outlet + * {
+
+    >router-outlet+* {
         flex: 1;
         padding: 84px 0 0 0;
         display: flex;
@@ -11,26 +12,47 @@ div.router.member {
     }
 }
 
-a.offer{
+a.offer {
     cursor: pointer;
     position: fixed;
-    bottom: 25px;
+    bottom: -80px;
     right: 25px;
     padding: 8px;
     background-color: #ffd145;
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    img{
+    animation: offer-animation 800ms ease forwards;
+
+    img {
         object-fit: contain;
     }
 }
 
 @media (max-width: 800px) {
     div.router.member {
-        > router-outlet + * {
+        >router-outlet+* {
             padding: 56px 0 0 0 !important;
             overflow-x: auto;
         }
+    }
+
+    a.offer {
+        width: 68px;
+        height: 68px;
+    }
+}
+
+@keyframes offer-animation {
+    0% {
+        bottom: -80px
+    }
+
+    50% {
+        bottom: 50px;
+    }
+
+    100% {
+        bottom: 25px;
     }
 }

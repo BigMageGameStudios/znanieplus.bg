@@ -3,7 +3,6 @@ import { fadeAnimation } from '../helpers/animations';
 import { MatDialog } from '@angular/material/dialog';
 import { OfferDialog } from '../shared/offer-dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'main-page',
@@ -38,13 +37,10 @@ export class MainComponent {
         break;
       }
     }
-
   }
 
   openDialog() {
-    this.dialog.open(OfferDialog, {
-      scrollStrategy: new NoopScrollStrategy(),
-    }).afterClosed().subscribe(() => {
+    this.dialog.open(OfferDialog).afterClosed().subscribe(() => {
       this.router.navigate([], {
         state: {
           disableScroll: true
