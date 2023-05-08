@@ -5,6 +5,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { validateEmail } from 'src/app/helpers/emailValidator';
 import { MailProvider } from 'src/app/providers/MailProvider';
 import { ConfirmDialog } from '../confirm-dialog';
+import { ApiProvider } from 'src/app/providers';
+
 
 @Component({
   selector: 'offer-dialog-component',
@@ -51,7 +53,9 @@ export class OfferDialog {
   constructor(
     private dialog: MatDialog,
     private change: ChangeDetectorRef,
-    private mailProvider: MailProvider
+    private mailProvider: MailProvider,
+    private apiProvider: ApiProvider
+
   ) { }
 
   onSubmit() {
@@ -86,6 +90,14 @@ export class OfferDialog {
         this.loading = false;
         this.change.markForCheck();
       });
+
+      this.apiProvider.post('proposal', {
+        name: `${username}`,
+        company: `${companyname}`,
+        email,
+        phone,
+        text: `${message}`
+      }).subscribe((data) => {});
     }
   }
 

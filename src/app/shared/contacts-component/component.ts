@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { validateEmail } from 'src/app/helpers/emailValidator';
 import { MailProvider } from 'src/app/providers/MailProvider';
 import { ConfirmDialog } from '../confirm-dialog';
+import { ApiProvider } from 'src/app/providers';
 
 @Component({
   selector: 'contacts-component',
@@ -45,7 +46,8 @@ export class ContactsComponent {
   constructor(
     private dialog: MatDialog,
     private change: ChangeDetectorRef,
-    private mailProvider: MailProvider
+    private mailProvider: MailProvider, 
+    private apiProvider: ApiProvider
   ) { }
 
   onSubmit() { 
@@ -65,6 +67,14 @@ export class ContactsComponent {
         this.loading = false;
         this.change.markForCheck();
       });
+
+      this.apiProvider.post('contacts-message', {
+        name: this.form.value.name,
+        email: this.form.value.email,
+        phone: this.form.value.phone,
+        text: this.form.value.message
+      }).subscribe((data) => {});
+    
     }
   }
 
