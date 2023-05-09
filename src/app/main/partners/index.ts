@@ -9,6 +9,8 @@ import { PartnerModule } from 'src/app/shared/partner-component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { FooterModule } from 'src/app/shared/footer-component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -20,10 +22,10 @@ import { FooterModule } from 'src/app/shared/footer-component';
     FormsModule,
     MatSelectModule,
     MatButtonModule,
-
     ContactsModule,
     PartnerModule,
-    FooterModule
+    FooterModule,
+    MatCheckboxModule
   ]
 })
 

@@ -11,6 +11,7 @@ import { IObjectKeys } from 'src/app/helpers/interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
+
 export class PartnersComponent {
 
   partners: IObjectKeys[] = [];
@@ -18,6 +19,7 @@ export class PartnersComponent {
   skip = 10;
   limit = 100;
   loaded = false;
+  online = false;
   filters = [];
   filter = this.filters[0]
   page = 1;
@@ -27,8 +29,9 @@ export class PartnersComponent {
     private PartnerProvider: PartnerProvider,
     private ChangeDetectorRef: ChangeDetectorRef,
     private Router: Router,
-    private SEOProvider: SEOProvider
+    private SEOProvider: SEOProvider,
   ) {
+    console.log(ActivatedRoute.snapshot.data.data)
     const { partners = [], types = []} = ActivatedRoute.snapshot.data.data;
     const { page = 1 } = ActivatedRoute.snapshot.queryParams;
 
@@ -80,7 +83,8 @@ export class PartnersComponent {
       this.PartnerProvider.getList({
         skip: this.skip,
         limit: this.limit,
-        type: this.filter
+        type: this.filter,
+        online: this.online
       }).subscribe((data) => {
 
         this.page++;

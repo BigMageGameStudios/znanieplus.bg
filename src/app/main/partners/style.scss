@@ -27,6 +27,10 @@ div.container {
             max-width: 275px;
         }
     }
+
+    #online{
+        margin-left: 350px;
+    }
 }
 
 div.information {
@@ -98,6 +102,9 @@ div.plus-one {
     partner-component {
         width: calc(100% * (1/3) - 10px) !important;
     }
+    #online{
+        margin-left: -10px !important;
+    }
 }
 
 @media (max-width: 900px) {
@@ -105,6 +112,9 @@ div.plus-one {
         partner-component {
             width: calc(100% * (1/2) - 10px) !important;
         }
+    }
+    #online{
+        margin-left: -10px !important;
     }
 
 }
@@ -136,5 +146,9 @@ div.plus-one {
 
     div.align-center{
         display: flex !important;
+    }
+    
+    #online{
+        margin-left: -10px !important;
     }
 }

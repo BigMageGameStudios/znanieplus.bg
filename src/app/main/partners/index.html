@@ -3,6 +3,9 @@
         <h2 class="title">
             <span>Нашите партньори</span>
         </h2>
+        <mat-checkbox id="online" [(ngModel)]="online" (change)="onSort()">
+            Онлайн обекти
+        </mat-checkbox>
         <mat-form-field color="accent">
             <mat-label>Филтрирай по</mat-label>
             <mat-select
