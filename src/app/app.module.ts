@@ -1,6 +1,6 @@
 import { provideClientHydration } from '@angular/platform-browser';
 import { APP_INITIALIZER, ErrorHandler, NgModule, ɵɵinject } from '@angular/core';
-import { Router, RouterModule, provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
+import { Router, RouterModule, provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling, withComponentInputBinding } from '@angular/router';
 import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { DOCUMENT, ViewportScroller } from '@angular/common';
 
@@ -19,6 +19,7 @@ import { UserProvider } from './providers';
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled'
       }),
+      withComponentInputBinding(),
       withEnabledBlockingInitialNavigation(),
     ),
     provideClientHydration(),

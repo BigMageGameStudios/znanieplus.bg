@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, ChangeDetectionStrategy, Inject, ViewChild, ElementRef, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Inject, ViewChild, ElementRef, OnInit, PLATFORM_ID, inject, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WINDOW } from 'src/app/modules/window';
 import { SEOProvider } from 'src/app/providers';
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit{
   private ActivatedRoute= inject(ActivatedRoute);
   private window: Window = inject(WINDOW);
   private platform: Object = inject(PLATFORM_ID);
+  @Input() media: any;
 
   items: any[];
   videoUrl = this.window?.screen?.width < 800 ? '/assets/video/banner-mobile.mp4' : `/assets/video/banner-desktop.mp4`;

@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Route, RouterStateSnapshot } from '@angular/router';
 import { forkJoin, map } from 'rxjs';
 import { MainComponent } from './component';
-import { PartnerProvider } from './providers';
+import { NewsProvider, PartnerProvider } from './providers';
 import { HomeResolver, PartnerResolver } from './resolvers';
 
 export const MODULE_ROUTES: Route[] = [
@@ -14,7 +14,8 @@ export const MODULE_ROUTES: Route[] = [
         path: '',
         loadChildren: () => import('./home/index').then(m => m.HomeModule),
         resolve: {
-          result: HomeResolver
+          result: HomeResolver,
+          media: () => inject(NewsProvider).getMedia()
         },
         data: {
           preload: true

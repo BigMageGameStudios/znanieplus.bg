@@ -6,18 +6,19 @@ div.container {
         margin-bottom: 12px;
     }
 
-    div.heading, div.headingm {
+    div.heading,
+    div.headingm {
         padding-left: 0px !important;
         font-size: 18px;
         font-weight: 800;
         font-style: italic;
     }
 
-    div.headingm{
+    div.headingm {
         display: none;
     }
 
-    div.headingm{
+    div.headingm {
         flex-direction: column;
         margin-top: 18px;
     }
@@ -44,6 +45,20 @@ div.container {
         img {
             width: 100%;
             height: 100%;
+        }
+    }
+
+    div.image.news {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 5px;
+
+        img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
         }
     }
 
@@ -114,6 +129,7 @@ div.container {
             font-family: "Muller";
             color: #000;
         }
+
         h2 {
             width: 220px;
             font-size: 18px;
@@ -162,6 +178,13 @@ div.block {
     .mediabody {
         margin-top: 20px;
         width: 255px !important;
+        span.date{
+            text-align: right;
+        }
+        h2{
+            width: unset !important;
+            text-align: center;
+        }
     }
 
 }
@@ -179,11 +202,11 @@ div.block {
         margin: 8px auto;
     }
 
-    div.heading{
+    div.heading {
         display: none !important;
     }
 
-    div.headingm{
+    div.headingm {
         display: flex !important;
     }
 

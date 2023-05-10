@@ -9,6 +9,7 @@ import { HomeComponent } from './component';
 import { ScrollerModule } from '../../shared/scroller-component';
 import { ContactsModule } from 'src/app/shared/contacts-component';
 import { FooterModule } from 'src/app/shared/footer-component';
+import { MediaScrollerModule } from 'src/app/shared/media-scroller-component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FooterModule } from 'src/app/shared/footer-component';
     ScrollerModule,
     ContactsModule,
     MatExpansionModule,
+    MediaScrollerModule,
     FooterModule
   ]
 })

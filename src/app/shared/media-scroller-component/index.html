@@ -1,0 +1,69 @@
+<div class="box">
+    <div
+        class="list"
+        #list
+        drag
+    >
+        <div
+            *ngFor="let item of data; trackBy:track"
+            class="item"
+        >
+            <a
+                class="relative"
+                [href]="item.url"
+                target="_blank"
+                aria-label="Виж"
+            >
+                <img
+                    class="flex cover"
+                    loading="lazy"
+                    decoding="async"
+                    [src]="api_url + '/storage/' + item.logo"
+                    width="100%"
+                    height="250px"
+                    alt="partner"
+                />
+            </a>
+        </div>
+    </div>
+
+    <div
+        class="prev"
+        (click)="prev()"
+    >
+        <button
+            class="image-button"
+            matRipple
+        >
+            <img
+                class="flex contain"
+                src="/assets/images/arrow-left.svg"
+                width="32"
+                height="32"
+                loading="lazy"
+                decoding="async"
+                alt="card"
+            />
+        </button>
+    </div>
+
+    <div
+        class="next"
+        (click)="next()"
+    >
+        <button
+            class="image-button"
+            matRipple
+        >
+            <img
+                class="flex contain"
+                src="/assets/images/arrow-right.svg"
+                width="32"
+                height="32"
+                loading="lazy"
+                decoding="async"
+                alt="card"
+            />
+        </button>
+    </div>
+</div>

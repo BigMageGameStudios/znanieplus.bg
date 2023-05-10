@@ -1,5 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { track } from 'src/app/helpers/track';
 import { SEOProvider } from 'src/app/providers';
+import { Environment } from 'src/globals';
 
 @Component({
   selector: 'about-page',
@@ -10,11 +12,14 @@ import { SEOProvider } from 'src/app/providers';
 
 export class AboutComponent{
 
-  items: any[];
+  api_url = Environment.api_url;
+  track = track;
+  @Input('news') news?: any[];
 
   constructor(
     private SEOProvider: SEOProvider
   ) {
+
     this.SEOProvider.set({
       title: 'ЗНАНИЕ+',
       description: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
@@ -27,5 +32,11 @@ export class AboutComponent{
     });
 
   }
+
+  ngOnInit(){
+    console.log(this.news)
+
+  }
+
 
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatRippleModule } from '@angular/material/core';
@@ -9,6 +9,7 @@ import { AboutComponent } from './component';
 import { ScrollerModule } from '../../shared/scroller-component';
 import { ContactsModule } from 'src/app/shared/contacts-component';
 import { FooterModule } from 'src/app/shared/footer-component';
+import { NewsProvider } from '../providers';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,10 @@ import { FooterModule } from 'src/app/shared/footer-component';
     RouterModule.forChild([
       {
         path: '',
-        component: AboutComponent
+        component: AboutComponent,
+        resolve: {
+          news: () => inject(NewsProvider).get()
+        },
       }
     ]),
     MatRippleModule,
