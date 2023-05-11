@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit{
   @Input() media: any;
 
   items: any[];
-  videoUrl = this.window?.screen?.width < 800 ? '/assets/video/banner-mobile.mp4' : `/assets/video/banner-desktop.mp4`;
+  videoUrl = this.window?.screen?.width < 800 ? '/assets/video/banner-mobile-v2.mp4' : `/assets/video/banner-desktop-v2.mp4`;
   @ViewChild('video', { static: true }) video: ElementRef<HTMLVideoElement>;
 
   constructor(
