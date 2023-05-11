@@ -2,7 +2,6 @@
 
 video {
     object-fit: cover;
-    object-fit: cover;
     max-width: 100%;
     max-height: calc(100vh - 84px);
 }
@@ -132,7 +131,7 @@ div.container {
 
 }
 
-h2.media{
+h2.media {
     margin: 18px 0;
 }
 
@@ -281,6 +280,10 @@ mat-expansion-panel {
 @media (max-width: 970px) {
     div.frame {
         height: 70% !important;
+    }
+
+    video {
+        object-fit: unset !important;
     }
 }
 
