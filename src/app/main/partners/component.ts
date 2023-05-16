@@ -31,7 +31,7 @@ export class PartnersComponent {
     private Router: Router,
     private SEOProvider: SEOProvider,
   ) {
-    console.log(ActivatedRoute.snapshot.data.data)
+
     const { partners = [], types = []} = ActivatedRoute.snapshot.data.data;
     const { page = 1 } = ActivatedRoute.snapshot.queryParams;
 

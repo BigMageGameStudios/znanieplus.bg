@@ -1,6 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, InjectionToken } from '@angular/core';
 
+declare global {
+    interface Window {
+        fbq: Function
+    }
+}
+
 export const WINDOW = new InjectionToken<Window & typeof globalThis>(
     'An abstraction over global window object',
     {

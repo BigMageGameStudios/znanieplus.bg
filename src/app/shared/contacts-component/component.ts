@@ -1,11 +1,12 @@
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, inject, } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { validateEmail } from 'src/app/helpers/emailValidator';
 import { MailProvider } from 'src/app/providers/MailProvider';
 import { ConfirmDialog } from '../confirm-dialog';
 import { ApiProvider } from 'src/app/providers';
+import { WINDOW } from 'src/app/modules/window';
 
 @Component({
   selector: 'contacts-component',
@@ -43,6 +44,8 @@ export class ContactsComponent {
   submitted = false;
   loading = false;
 
+  window: Window = inject(WINDOW);
+
   constructor(
     private dialog: MatDialog,
     private change: ChangeDetectorRef,
@@ -57,6 +60,9 @@ export class ContactsComponent {
       this.loading = true;
       this.showDialog();
       this.change.markForCheck();
+      this.window?.fbq('track', 'Lead');
+
+
       this.mailProvider.post(this.form.value).subscribe((data) => {
 
         if(data?.result){

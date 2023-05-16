@@ -33,10 +33,4 @@ export class AboutComponent{
 
   }
 
-  ngOnInit(){
-    console.log(this.news)
-
-  }
-
-
 }

@@ -6,6 +6,7 @@ import { validateEmail } from 'src/app/helpers/emailValidator';
 import { MailProvider } from 'src/app/providers/MailProvider';
 import { ConfirmDialog } from '../confirm-dialog';
 import { ApiProvider } from 'src/app/providers';
+import { WINDOW } from 'src/app/modules/window';
 
 
 @Component({
@@ -49,6 +50,7 @@ export class OfferDialog {
   loading = false;
 
   ref = inject(MatDialogRef<OfferDialog>);
+  window: Window = inject(WINDOW);
 
   constructor(
     private dialog: MatDialog,
@@ -73,7 +75,7 @@ export class OfferDialog {
         phone,
         message
       } = this.form.value;
-
+      this.window?.fbq('track', 'Lead');
 
       this.mailProvider.post({
         name: `${username}, ${companyname}`,
