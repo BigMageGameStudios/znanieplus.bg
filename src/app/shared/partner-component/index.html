@@ -12,7 +12,7 @@
             height="250px"
             alt="partner"
         />
-        <div class="information flex">
+        <div class="information flex" [class.online] = "partner.online == 1">
             <div>
                 Отстъпка
                 <span class="block">

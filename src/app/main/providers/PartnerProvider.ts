@@ -15,6 +15,7 @@ export class PartnerProvider {
     private fpath = 'filtered'
     private ppath = 'place_data';
     private place_types = 'place_types';
+    private cities = 'get_cities';
 
     constructor(
         private ApiProvider: ApiProvider
@@ -33,8 +34,8 @@ export class PartnerProvider {
             }));
     }
 
-    getList({ skip = 0, limit = 12, type = null, online = null }) {
-        return this.ApiProvider.get(`${this.fpath}/${skip}/${limit}/${type}/${online}`)
+    getList({ skip = 0, limit = 12, type = null, online = null, city = null }) {
+        return this.ApiProvider.get(`${this.fpath}/${skip}/${limit}/${type}/${online}/${city}`)
             .pipe(map((result: any) => {
                 if (result.errors) {
                     return [];
@@ -45,6 +46,16 @@ export class PartnerProvider {
 
     getTypes() {
         return this.ApiProvider.get(`${this.place_types}`)
+            .pipe(map((result: any) => {
+                if (result.errors) {
+                    return [];
+                }
+                return result.data;
+            }));
+    }
+
+    getCities() {
+        return this.ApiProvider.get(`${this.cities}`)
             .pipe(map((result: any) => {
                 if (result.errors) {
                     return [];

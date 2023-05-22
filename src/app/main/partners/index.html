@@ -3,9 +3,23 @@
         <h2 class="title">
             <span>Нашите партньори</span>
         </h2>
-        <mat-checkbox id="online" [(ngModel)]="online" (change)="onSort()">
+        <mat-checkbox id="onlinecheck" [(ngModel)]="online" (change)="onSort()">
             Онлайн обекти
         </mat-checkbox>
+        <mat-form-field color="accent">
+            <mat-label>град</mat-label>
+            <mat-select
+                [(ngModel)]="city"
+                (selectionChange)="onSort()"
+            >
+                <mat-option
+                    *ngFor="let item of cities | keyvalue"
+                    [value]="item.value.id"
+                >
+                    {{item.value.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <mat-form-field color="accent">
             <mat-label>Филтрирай по</mat-label>
             <mat-select
@@ -20,6 +34,11 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+    </div>
+    <div>
+       <p><span class="legend"></span>физически обект</p> 
+       <p><span class="legend online"></span>онлайн обект</p> 
+       
     </div>
     <div class="list flex">
         <partner-component

@@ -28,8 +28,22 @@ div.container {
         }
     }
 
-    #online{
+    #onlinecheck{
         margin-left: 350px;
+    }
+
+    .legend{
+        width: 20px; 
+        height: 20px; 
+        background-color: #ffd145; 
+        display: inline-block; 
+        border-radius:20px; 
+        margin-bottom: -5px; 
+        margin-right:5px;
+    }
+
+    .online{
+        background-color: #b3d4fc;
     }
 }
 

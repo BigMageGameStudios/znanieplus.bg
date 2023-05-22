@@ -51,11 +51,13 @@ export const MODULE_ROUTES: Route[] = [
                 skip: 0,
                 limit: Number(page) * 12
               }),
-              partnerProvider.getTypes()
-            ]).pipe(map(([partners, types]) => {
+              partnerProvider.getTypes(),
+              partnerProvider.getCities()
+            ]).pipe(map(([partners, types, cities]) => {
               return {
                 partners,
-                types
+                types, 
+                cities
               }
             }))
           }
