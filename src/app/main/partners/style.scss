@@ -116,8 +116,11 @@ div.plus-one {
     partner-component {
         width: calc(100% * (1/3) - 10px) !important;
     }
-    #online{
+    #onlinecheck{
         margin-left: -10px !important;
+    }
+    .legend{
+        margin-left: 10px;
     }
 }
 
@@ -127,8 +130,11 @@ div.plus-one {
             width: calc(100% * (1/2) - 10px) !important;
         }
     }
-    #online{
+    #onlinecheck{
         margin-left: -10px !important;
+    }
+    .legend{
+        margin-left: 10px;
     }
 
 }
@@ -162,7 +168,10 @@ div.plus-one {
         display: flex !important;
     }
     
-    #online{
+    #onlinecheck{
         margin-left: -10px !important;
+    }
+    .legend{
+        margin-left: 10px;
     }
 }
