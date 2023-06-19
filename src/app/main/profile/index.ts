@@ -37,7 +37,7 @@ import { FormsModule } from '@angular/forms';
                     const token = userProvider.getCode();
 
                     if (!token) {
-                        router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');
+                        router.navigateByUrl('/login-input');
                         return false;
                     }
 

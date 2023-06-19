@@ -7,13 +7,20 @@
             Всеки притежател на валидна карта ЗНАНИЕ+ има свой потребителски профил
         </h4>
         <h5>
-            За да влезеш в него, просто сканирай или изпиши тук баркода от гърба на картата.
+            За да влезеш в него, просто въведи емайл и баркода от гърба на картата.
         </h5>
     </div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field color="primary">
-            <input #inputBillOfLanding matInput placeholder="Номер на карта" formControlName="text" autocomplete="off">
-            <button class="image-button" aria-label="Clear" (click)="onClear()" matRipple type="button" matSuffix>
+            <input #inputBillOfLanding matInput placeholder="Емейл" formControlName="email" autocomplete="off">
+            <button class="image-button" aria-label="Clear" (click)="clearMail()" matRipple type="button" matSuffix>
+                <img decoding="async" loading="lazy" class="flex contain" src="/assets/images/close.svg" width="32px" height="32px"/>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field color="primary">
+            <input #inputBillOfLanding matInput placeholder="Номер на карта" formControlName="card" autocomplete="off">
+            <button class="image-button" aria-label="Clear" (click)="clearCard()" matRipple type="button" matSuffix>
                 <img decoding="async" loading="lazy" class="flex contain" src="/assets/images/close.svg" width="32px" height="32px"/>
             </button>
         </mat-form-field>
@@ -23,7 +30,7 @@
         </p>
         <ng-container *ngIf="submited">
                 <div id="invalid" *ngIf="!active">
-                    Невалидна карта
+                    Грешен емайл или невалидна карта
                 </div>
         </ng-container>
     </form>

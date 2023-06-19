@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SEOProvider, UserProvider } from 'src/app/providers';
 import { CardProvider } from '../providers';
+import { validateEmail } from 'src/app/helpers/emailValidator';
+
 
 @Component({
   selector: 'login-input-page',
@@ -14,7 +16,12 @@ import { CardProvider } from '../providers';
 export class LoginComponent {
 
   form = new FormGroup({
-    text: new FormControl('', [Validators.required])
+    email: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(255),
+      validateEmail
+    ]),
+    card: new FormControl('', [Validators.required])
   });
 
   active = false;
@@ -43,7 +50,6 @@ export class LoginComponent {
     });
   }
 
-  @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
 
     if(event.ctrlKey){
@@ -60,7 +66,7 @@ export class LoginComponent {
       return true;
     }
 
-    const c = this.form.get('text');
+    const c = this.form.get('card');
 
     switch (event.key) {
       case ('Enter'): {
@@ -87,18 +93,20 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.form.valid) {
-
-      const value = this.form.value.text;
+      const card = this.form.value.card;
+      const email = this.form.value.email;
       const element: any = document.activeElement;
       element.blur();
 
       this.active = false;
       this.submited = false;
 
-      this.card.get(value).subscribe((data: any) => {
+      this.card.login(card, email).subscribe((data: any) => {
+        console.log(data)
         if (data.active) {
+          console.log(2)
           this.active = true;
-          this.userProvider.login(value);
+          this.userProvider.login(card);
           this.router.navigateByUrl('/profile');
         }
         this.submited = true;
@@ -110,10 +118,13 @@ export class LoginComponent {
 
   }
 
-  onClear() {
-    this.form.setValue({
-      text: ''
-    });
+  clearMail() {
+    this.form.get('email').setValue('');
+  }
+
+  clearCard() {
+    this.form.get('card').setValue('');
+
   }
 
 }
