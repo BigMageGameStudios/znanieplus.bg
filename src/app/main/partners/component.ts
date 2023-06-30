@@ -27,7 +27,7 @@ export class PartnersComponent {
   page = 1;
 
   constructor(
-    ActivatedRoute: ActivatedRoute,
+    private ActivatedRoute: ActivatedRoute,
     private PartnerProvider: PartnerProvider,
     private ChangeDetectorRef: ChangeDetectorRef,
     private Router: Router,
@@ -79,7 +79,12 @@ export class PartnersComponent {
     this.limit = 40;
     this.page = 1;
     this.onLoadMore(true);
-    this.Router.navigate(['/partners'], {
+    this.Router.navigate([], {
+      state: {
+        disableScroll: true
+      },
+      replaceUrl: true,
+      relativeTo: this.ActivatedRoute,
       queryParams: {
         page: 1,
       }

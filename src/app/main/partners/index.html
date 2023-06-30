@@ -60,6 +60,7 @@
             (click)="onLoadMore()"
             routerLink="/partners"
             [queryParams]="{page: page}"
+            [state]="{disableScroll: true}"
             *ngIf="!loaded"
             aria-label="load more"
         >

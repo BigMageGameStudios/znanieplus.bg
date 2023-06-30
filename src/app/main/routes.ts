@@ -49,7 +49,7 @@ export const MODULE_ROUTES: Route[] = [
             return forkJoin([
               partnerProvider.getList({
                 skip: 0,
-                limit: Number(page) * 12
+                limit: Number(page) * 40
               }),
               partnerProvider.getTypes(),
               partnerProvider.getCities()
