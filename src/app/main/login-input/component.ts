@@ -102,9 +102,7 @@ export class LoginComponent {
       this.submited = false;
 
       this.card.login(card, email).subscribe((data: any) => {
-        console.log(data)
         if (data.active) {
-          console.log(2)
           this.active = true;
           this.userProvider.login(card);
           this.router.navigateByUrl('/profile');
