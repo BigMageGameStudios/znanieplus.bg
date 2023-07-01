@@ -34,7 +34,7 @@ export class PartnerProvider {
             }));
     }
 
-    getList({ skip = 0, limit = 20, type = null, online = null, city = null }) {
+    getList({ skip = 0, limit = 40, type = null, online = null, city = null }) {
         return this.ApiProvider.get(`${this.fpath}/${skip}/${limit}/${type}/${online}/${city}`)
             .pipe(map((result: any) => {
                 if (result.errors) {

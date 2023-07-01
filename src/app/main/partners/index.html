@@ -3,67 +3,53 @@
         <h2 class="title">
             <span>Нашите партньори</span>
         </h2>
-        <mat-checkbox id="onlinecheck" [(ngModel)]="online" (change)="onSort()">
+        <mat-checkbox id="onlinecheck"
+                      [(ngModel)]="online"
+                      (change)="onSort()">
             Онлайн обекти
         </mat-checkbox>
         <mat-form-field color="accent">
             <mat-label>град</mat-label>
-            <mat-select
-                [(ngModel)]="city"
-                (selectionChange)="onSort()"
-            >
-                <mat-option
-                    *ngFor="let item of cities | keyvalue"
-                    [value]="item.value.id"
-                >
+            <mat-select [(ngModel)]="city"
+                        (selectionChange)="onSort()">
+                <mat-option *ngFor="let item of cities | keyvalue"
+                            [value]="item.value.id">
                     {{item.value.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field color="accent">
             <mat-label>Филтрирай по</mat-label>
-            <mat-select
-                [(ngModel)]="filter"
-                (selectionChange)="onSort()"
-            >
-                <mat-option
-                    *ngFor="let item of filters | keyvalue"
-                    [value]="item.value.id"
-                >
+            <mat-select [(ngModel)]="filter"
+                        (selectionChange)="onSort()">
+                <mat-option *ngFor="let item of filters | keyvalue"
+                            [value]="item.value.id">
                     {{item.value.type}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div>
-       <p><span class="legend"></span>физически обект</p> 
-       <p><span class="legend online"></span>онлайн обект</p> 
-       
+        <p><span class="legend"></span>физически обект</p>
+        <p><span class="legend online"></span>онлайн обект</p>
+
     </div>
     <div class="list flex">
-        <partner-component
-            *ngFor="let partner of partners; trackBy:track"
-            [partner]="partner"
-        >
+        <partner-component *ngFor="let partner of partners; trackBy:track"
+                           [partner]="partner">
 
         </partner-component>
-        <h3
-            class="error"
-            *ngIf="partners.length == 0"
-        >
+        <h3 class="error"
+            *ngIf="partners.length == 0">
             Няма намерени резултати, моля опитайте по-късно !
         </h3>
     </div>
     <div class="right">
-        <a  class="load-more"
-            mat-button
-            (click)="onLoadMore()"
-            routerLink="/partners"
-            [queryParams]="{page: page}"
-            [state]="{disableScroll: true}"
-            *ngIf="!loaded"
-            aria-label="load more"
-        >
+        <a class="load-more"
+           mat-button
+           (click)="onLoadMore()"
+           *ngIf="!loaded"
+           aria-label="load more">
             Зареди още...
         </a>
     </div>
@@ -71,14 +57,12 @@
         <div class="characters">
             <div class="flex align-center">
                 <div class="plus-one">
-                    <img
-                        loading="lazy"
-                        decoding="async"
-                        src="/assets/images/4521868331556258219.svg"
-                        width="30px"
-                        height="30px"
-                        alt="partner"
-                    />
+                    <img loading="lazy"
+                         decoding="async"
+                         src="/assets/images/4521868331556258219.svg"
+                         width="30px"
+                         height="30px"
+                         alt="partner" />
                     <span>
                         +1
                     </span>

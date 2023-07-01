@@ -11,7 +11,6 @@ import { IObjectKeys } from 'src/app/helpers/interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-
 export class PartnersComponent {
 
   partners: IObjectKeys[] = [];
@@ -93,6 +92,16 @@ export class PartnersComponent {
 
   onLoadMore(reset?) {
     if (!this.loaded || reset) {
+      this.Router.navigate([], {
+        state: {
+          disableScroll: true
+        },
+        replaceUrl: true,
+        relativeTo: this.ActivatedRoute,
+        queryParams: {
+          page: this.page,
+        }
+      });
       this.PartnerProvider.getList({
         skip: this.skip,
         limit: this.limit,
@@ -100,7 +109,6 @@ export class PartnersComponent {
         online: this.online,
         city: this.city
       }).subscribe((data) => {
-
         this.page++;
         this.skip += this.limit;
 
