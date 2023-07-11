@@ -17,7 +17,7 @@ export class PartnersComponent {
   partners: IObjectKeys[] = [];
 
   skip = 0;
-  limit = 40;
+  limit = 300;
   loaded = false;
   online = false;
   filters = [];
@@ -76,7 +76,7 @@ export class PartnersComponent {
 
   onSort() {
     this.skip = 0;
-    this.limit = 40;
+    this.limit = 300;
     this.page = 1;
     this.onLoadMore(true);
     this.Router.navigate([], {
