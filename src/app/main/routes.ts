@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Route, RouterStateSnapshot } from '@angular/router';
 import { forkJoin, map } from 'rxjs';
 import { MainComponent } from './component';
-import { NewsProvider, PartnerProvider } from './providers';
+import { CompanyProvider, NewsProvider, PartnerProvider } from './providers';
 import { HomeResolver, PartnerResolver } from './resolvers';
 
 export const MODULE_ROUTES: Route[] = [
@@ -58,6 +58,27 @@ export const MODULE_ROUTES: Route[] = [
                 partners,
                 types, 
                 cities
+              }
+            }))
+          }
+        },
+        data: {
+          preload: true
+        },
+      },
+      {
+        path: 'companies',
+        loadChildren: () => import('./companies/index').then(m => m.CompaniesModule),
+        resolve: {
+          data: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+            const { page = 1 } = route.queryParams;
+            const companyProvider = inject(CompanyProvider);
+
+            return forkJoin([
+              companyProvider.getList()
+            ]).pipe(map(([companies]) => {
+              return {
+                companies
               }
             }))
           }

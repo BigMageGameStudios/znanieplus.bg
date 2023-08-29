@@ -21,6 +21,13 @@
                     </a>
                 </li>
                 <li>
+                    <a routerLink="/companies" routerLinkActive="active activated" (click)="toggle();removeFragment()">
+                        <span>
+                            Компании
+                        </span>
+                    </a>
+                </li>
+                <li>
                     <a routerLink="/about" (click)="toggle();removeFragment()" routerLinkActive="active activated">
                         <span>
                             За нас
