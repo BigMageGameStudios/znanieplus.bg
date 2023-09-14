@@ -20,13 +20,18 @@ export class HomeComponent implements OnInit{
   @Input() media: any;
 
   items: any[];
+  companies: any[];
+
   videoUrl = this.window?.screen?.width < 800 ? '/assets/video/banner-mobile-v2.mp4' : `/assets/video/banner-desktop-v2.mp4`;
   @ViewChild('video', { static: true }) video: ElementRef<HTMLVideoElement>;
 
   constructor(
  
   ) {
-    const items = this.ActivatedRoute.snapshot.data.result.data.data;
+    const [partners, companies] = this.ActivatedRoute.snapshot.data.result;
+    console.log(companies )
+    this.companies = companies;
+    const items = partners.data.data;
     this.items = items;
     this.SEOProvider.set({
       title: 'ЗНАНИЕ+',
