@@ -31,6 +31,7 @@ export class DrawerComponent {
 
   @Output('toggle') toogleEvent = new EventEmitter();
   @ViewChild('container', { static: true }) container!: ElementRef;
+  @ViewChild('fixed', { static: true }) fixed!: ElementRef;
 
   constructor(
     private elementRef: ElementRef,
@@ -44,7 +45,7 @@ export class DrawerComponent {
     if (isPlatformBrowser(this.platformId)) {
       this.activated.fragment.subscribe((data) => {
         this.activeRoute = data;
-        this.change.markForCheck();
+        this.change.detectChanges();
       });
     }
   }
@@ -64,11 +65,16 @@ export class DrawerComponent {
     this.active = !this.active;
     if (this.active) {
       this.elementRef.nativeElement.classList.add('active');
+      this.container.nativeElement.classList.remove('closed');
+      this.fixed.nativeElement.classList.add('active');
     } else {
       this.elementRef.nativeElement.classList.remove('active')
+      this.container.nativeElement.classList.add('closed');
+      this.fixed.nativeElement.classList.remove('active');
+
     }
     this.toogleEvent.emit();
-    this.change.markForCheck();
+    this.change.detectChanges();
   }
 
   handler(child: IObjectKeys){
@@ -85,12 +91,12 @@ export class DrawerComponent {
   }
 
   refresh(){
-    this.change.markForCheck();
+    this.change.detectChanges();
   }
 
   removeFragment() {
     this.activeRoute = null;
-    this.change.markForCheck();
+    this.change.detectChanges();
   }
   
   track(index: number, item: IObjectKeys) {

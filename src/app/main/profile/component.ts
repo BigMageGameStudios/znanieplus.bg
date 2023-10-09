@@ -9,6 +9,7 @@ import { SEOProvider, UserProvider } from 'src/app/providers';
 import { ConfirmDialog } from 'src/app/shared/confirm-dialog';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Environment } from 'src/globals';
 
 @Component({
   selector: 'profile-page',
@@ -23,6 +24,7 @@ export class ProfileComponent {
   token: string;
 
   showItem: IObjectKeys;
+  client_url = Environment.client_url;
 
   codesTypes = {
     ZNP: 'ZNP'

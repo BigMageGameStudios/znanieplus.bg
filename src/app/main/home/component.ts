@@ -1,8 +1,8 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, ChangeDetectionStrategy, Inject, ViewChild, ElementRef, OnInit, PLATFORM_ID, inject, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WINDOW } from 'src/app/modules/window';
 import { SEOProvider } from 'src/app/providers';
+import { Environment } from 'src/globals';
 
 @Component({
   selector: 'home-page',
@@ -11,25 +11,20 @@ import { SEOProvider } from 'src/app/providers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class HomeComponent implements OnInit{
+export class HomeComponent{
 
   private SEOProvider= inject(SEOProvider);
   private ActivatedRoute= inject(ActivatedRoute);
   private window: Window = inject(WINDOW);
-  private platform: Object = inject(PLATFORM_ID);
   @Input() media: any;
+  client_url = Environment.client_url;
 
   items: any[];
   companies: any[];
+  isMobile = this.window?.screen?.width < 800;
 
-  videoUrl = this.window?.screen?.width < 800 ? '/assets/video/banner-mobile-v2.mp4' : `/assets/video/banner-desktop-v2.mp4`;
-  @ViewChild('video', { static: true }) video: ElementRef<HTMLVideoElement>;
-
-  constructor(
- 
-  ) {
+  constructor() {
     const [partners, companies] = this.ActivatedRoute.snapshot.data.result;
-    console.log(companies )
     this.companies = companies;
     const items = partners.data.data;
     this.items = items;
@@ -44,18 +39,6 @@ export class HomeComponent implements OnInit{
       canonicalURL: '/'
     });
 
-  }
-
-  ngOnInit() {
-    this.video.nativeElement.muted = true;
-    this.video.nativeElement.loop = true;
-    this.video.nativeElement.playsInline = true;
-    this.video.nativeElement.controls = false;
-    this.video.nativeElement.preload = 'none';
-    this.video.nativeElement.src = this.videoUrl;
-    if(isPlatformBrowser(this.platform)){
-      this.video.nativeElement.play().catch((e) => console.log(e));
-    }
   }
 
 }

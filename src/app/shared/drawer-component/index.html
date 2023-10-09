@@ -1,4 +1,4 @@
-<div class="drawer" #container [class.closed]="!active">
+<div class="drawer closed" #container>
     <div class="content small-scroll">
         <a class="image-button logo flex" routerLink="/" fragment="home"  (click)="toggle()">
             <img loading="lazy" decoding="async" width="125" height="22" class="title"
@@ -7,7 +7,7 @@
         <div class="navigation flex">
             <ul>
                 <li>
-                    <a routerLink="/scan" routerLinkActive="active activated" (click)="toggle();removeFragment()">
+                    <a routerLink="/card" routerLinkActive="active activated" (click)="toggle();removeFragment()">
                         <span>
                             Провери карта
                         </span>
@@ -54,6 +54,6 @@
     </div>
 </div>
 
-<div class="fixed-container" [class.active]="active">
+<div class="fixed-container" #fixed>
 
 </div>

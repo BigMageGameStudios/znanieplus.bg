@@ -43,11 +43,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.subscription = this.drawer.toogleEvent.subscribe(() => {
-        this.change.markForCheck();
+        this.change.detectChanges();
       });
       this.activated.fragment.subscribe((data) => {
         this.activeRoute = data;
-        this.change.markForCheck();
+        this.change.detectChanges();
       });
     }
   }
@@ -70,13 +70,13 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       if (height > this.getHeight() && !this.activeScroll) {
         this.activeScroll = true;
         this.toolbar.nativeElement.classList.add('scroll');
-        this.change.markForCheck();
+        this.change.detectChanges();
       }
 
       if (height <= this.getHeight() && this.activeScroll) {
         this.activeScroll = false;
         this.toolbar.nativeElement.classList.remove('scroll');
-        this.change.markForCheck();
+        this.change.detectChanges();
       }
     }
   }
@@ -95,7 +95,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     }
     this.active = !this.active;
 
-    this.change.markForCheck();
+    this.change.detectChanges();
   }
 
   toggleDrawer(event: Event) {
@@ -107,7 +107,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   removeFragment() {
     this.activeRoute = null;
-    this.change.markForCheck();
+    this.change.detectChanges();
   }
 
   trackByKey(index: number, item: IObjectKeys) {

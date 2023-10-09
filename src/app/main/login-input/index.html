@@ -10,28 +10,78 @@
             За да влезеш в него, просто въведи email и баркода от гърба на картата.
         </h5>
     </div>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+    >
         <mat-form-field color="primary">
-            <input #inputBillOfLanding matInput placeholder="Email" formControlName="email" autocomplete="off">
-            <button class="image-button" aria-label="Clear" (click)="clearMail()" matRipple type="button" matSuffix>
-                <img decoding="async" loading="lazy" class="flex contain" src="/assets/images/close.svg" width="32px" height="32px"/>
+            <input
+                #inputBillOfLanding
+                matInput
+                placeholder="Email"
+                formControlName="email"
+                autocomplete="off"
+                type="email"
+            >
+            <button
+                class="image-button"
+                aria-label="Clear"
+                (click)="clearMail()"
+                matRipple
+                type="button"
+                matSuffix
+            >
+                <img
+                    decoding="async"
+                    loading="lazy"
+                    class="flex contain"
+                    src="/assets/images/close.svg"
+                    width="32px"
+                    height="32px"
+                />
             </button>
         </mat-form-field>
 
         <mat-form-field color="primary">
-            <input #inputBillOfLanding matInput placeholder="Номер на карта" formControlName="card" autocomplete="off">
-            <button class="image-button" aria-label="Clear" (click)="clearCard()" matRipple type="button" matSuffix>
-                <img decoding="async" loading="lazy" class="flex contain" src="/assets/images/close.svg" width="32px" height="32px"/>
+            <input
+                #inputBillOfLanding
+                matInput
+                placeholder="Номер на карта"
+                formControlName="card"
+                autocomplete="off"
+            >
+            <button
+                class="image-button"
+                aria-label="Clear"
+                (click)="clearCard()"
+                matRipple
+                type="button"
+                matSuffix
+            >
+                <img
+                    decoding="async"
+                    loading="lazy"
+                    class="flex contain"
+                    src="/assets/images/close.svg"
+                    width="32px"
+                    height="32px"
+                />
             </button>
         </mat-form-field>
-        <button mat-raised-button type="submit">Потвърждаване</button>
+        <button
+            mat-raised-button
+            type="submit"
+        >Потвърждаване</button>
         <p>
             Ако имаш каквито и да било въпроси, не се колебай да се свържеш с нас.
         </p>
         <ng-container *ngIf="submited">
-                <div id="invalid" *ngIf="!active">
-                    Грешен email или невалидна карта
-                </div>
+            <div
+                id="invalid"
+                *ngIf="!active"
+            >
+                Грешен email или невалидна карта
+            </div>
         </ng-container>
     </form>
 

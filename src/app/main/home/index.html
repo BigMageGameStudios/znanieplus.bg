@@ -1,7 +1,20 @@
 <video
-    #video
     id="home"
+    muted
+    loop
+    playsInline
+    [controls]="false"
+    autoplay
+    [poster]="isMobile ? client_url + '/assets/video/caover-mobile.png' : client_url + '/assets/video/cover-desktop.png'" 
 >
+    <source
+        [src]="isMobile ? client_url + '/assets/video/banner-mobile-v2.mp4' : client_url + '/assets/video/banner-desktop-v2.mp4'"
+        type="video/mp4"
+    />
+    <source
+        [src]="isMobile ? client_url + '/assets/video/banner-mobile-v2.webm' : client_url + '/assets/video/banner-desktop-v2.webm'"
+        type="video/webm"
+    />
 </video>
 <div class="container">
 
