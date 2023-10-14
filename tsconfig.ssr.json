@@ -16,7 +16,8 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts",
-    "src/**/*.worker.ts"
+    "src/**/*.worker.ts",
+    "src/**/*.capacitor.ts"
   ],
   "files": [
     "src/main.server.ts",
