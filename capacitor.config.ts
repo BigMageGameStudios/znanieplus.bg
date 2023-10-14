@@ -4,7 +4,6 @@ const config: CapacitorConfig = {
   appId: 'bg.znanieplus.app',
   appName: 'Знание плюс',
   webDir: 'dist/capacitor',
-  bundledWebRuntime: false,
   server: {
     androidScheme: 'https',
     hostname: "znanaieplus"
