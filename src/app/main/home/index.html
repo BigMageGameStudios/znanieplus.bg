@@ -1,8 +1,8 @@
 <video
     id="home"
-    muted
-    loop
-    playsInline
+    [muted]="true"
+    [loop]="true"
+    [playsInline]="true"
     [autoplay]="true"
     [controls]="false"
     [poster]="isMobile ? client_url + '/assets/video/caover-mobile.png' : client_url + '/assets/video/cover-desktop.png'" 
