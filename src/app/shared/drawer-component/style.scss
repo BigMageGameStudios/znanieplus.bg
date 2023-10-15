@@ -13,6 +13,7 @@ div.drawer {
     background: white;
     display: none;
     width: 0;
+    padding-top: env(safe-area-inset-top);
 
     div.content {
         padding: 0;

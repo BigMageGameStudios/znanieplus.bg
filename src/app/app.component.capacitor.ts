@@ -5,6 +5,7 @@ import { WINDOW } from './modules/window';
 import { App } from '@capacitor/app';
 import { Location } from '@angular/common';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
   styleUrls: ['../../stylesheets/application.scss']
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   change = inject(ChangeDetectorRef)
   userProvider = inject(UserProvider)
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit{
     private location: Location,
     @Inject(WINDOW) private window: Window,
   ) {
+    this.setStatusBar();
     App.addListener('backButton', (event) => {
       if (event.canGoBack) {
         return this.location.back();
@@ -34,7 +36,23 @@ export class AppComponent implements OnInit{
     })
   }
 
-  ngOnInit(){
+  async setStatusBar() {
+    try {
+      Promise.all([
+        StatusBar.setStyle({ style: Style.Light }),
+        StatusBar.setBackgroundColor({
+          color: 'white'
+        }),
+        StatusBar.show()
+      ]);
+
+    } catch (e) {
+      console.error(e);
+    }
+
+  }
+
+  ngOnInit() {
     SplashScreen.hide();
   }
 
