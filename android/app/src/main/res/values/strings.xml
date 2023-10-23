@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Знание плюс</string>
-    <string name="title_activity_main">Знание плюс</string>
+    <string name="app_name">Знание+</string>
+    <string name="title_activity_main">Знание+</string>
     <string name="package_name">bg.znanieplus.app</string>
     <string name="custom_url_scheme">bg.znanieplus.app</string>
 </resources>
