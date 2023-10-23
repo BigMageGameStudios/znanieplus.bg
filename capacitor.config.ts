@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'bg.znanieplus.app',
-  appName: 'Знание плюс',
+  appName: 'Знание+',
   webDir: 'dist/capacitor',
   server: {
     androidScheme: 'https',
