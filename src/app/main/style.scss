@@ -5,10 +5,12 @@ div.router.member {
 
     >router-outlet+* {
         flex: 1;
-        padding: calc(env(safe-area-inset-top) + 84px) 0 0 0;
+        padding: + 84px 0 0 0;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        margin-top: env(safe-area-inset-top);
+
     }
 }
 
