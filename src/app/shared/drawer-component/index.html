@@ -20,6 +20,13 @@
                         </span>
                     </a>
                 </li>
+                <li *ngIf="userProvider.isLogedIn()">
+                    <a  routerLink="/petrol" routerLinkActive="active activated" (click)="toggle();removeFragment()">
+                        <span>
+                            Петрол
+                        </span>
+                    </a>
+                </li>
                 <li>
                     <a routerLink="/companies" routerLinkActive="active activated" (click)="toggle();removeFragment()">
                         <span>

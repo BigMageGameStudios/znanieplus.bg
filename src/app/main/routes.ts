@@ -130,6 +130,13 @@ export const MODULE_ROUTES: Route[] = [
         },
       },
       {
+        path: 'petrol',
+        loadChildren: () => import('./petrol/index').then(m => m.PetrolModule),
+        data: {
+          preload: true
+        },
+      },
+      {
         path: 'privacy',
         loadChildren: () => import('./privacy/index').then(m => m.PrivacyModule),
         data: {

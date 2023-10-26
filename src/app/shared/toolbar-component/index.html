@@ -23,6 +23,10 @@
                 <a routerLink="/partners" routerLinkActive="active activated"
                     (click)="removeFragment()"><span>Партньори</span></a>
 
+                    <a routerLink="/petrol" routerLinkActive="active activated"
+                    *ngIf="userProvider.isLogedIn()"
+                    (click)="removeFragment()"><span>Петрол</span></a>    
+
                     <a routerLink="/companies" routerLinkActive="active activated"
                     (click)="removeFragment()"><span>Компании</span></a>    
 
