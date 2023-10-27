@@ -36,7 +36,7 @@
                             Партньори
                         </a>
                     </li>
-                    <li>
+                    <li *ngIf="userProvider.isLogedIn()">
                         <a routerLink="/petrol">
                             Петрол
                         </a>
