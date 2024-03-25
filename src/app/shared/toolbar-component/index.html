@@ -30,13 +30,6 @@
                     <a routerLink="/companies" routerLinkActive="active activated"
                     (click)="removeFragment()"><span>Компании</span></a>    
 
-                <a routerLink="/about" (click)="removeFragment()" routerLinkActive="active activated">
-
-                    <span>
-                        За нас
-                    </span>
-                </a>
-
                 <a routerLink="/" fragment="contacts" routerLinkActive="activated"
                     [class.active]="activeRoute == 'contacts'">
                     <span>Контакти</span>

@@ -35,13 +35,6 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/about" (click)="toggle();removeFragment()" routerLinkActive="active activated">
-                        <span>
-                            За нас
-                        </span>
-                    </a>
-                </li>
-                <li>
                     <a routerLink="/" fragment="contacts" (click)="toggle()" routerLinkActive="activated"
                         [class.active]="activeRoute == 'contacts'">
                         <span>
