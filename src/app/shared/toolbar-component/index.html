@@ -15,7 +15,7 @@
                 <img loading="lazy" decoding="async" src="/assets/images/logo-banner.png" alt="logo" />
             </a>
             <div class="navigation flex">
-                <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()">
+                <a routerLink="/card" routerLinkActive="active activated" (click)="removeFragment()" *ngIf="userProvider.user()?.isAdmin">
                     <span>
                         Провери карта
                     </span>

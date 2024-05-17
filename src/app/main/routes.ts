@@ -1,9 +1,10 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, Route, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot } from '@angular/router';
 import { forkJoin, map } from 'rxjs';
 import { MainComponent } from './component';
 import { CompanyProvider, NewsProvider, PartnerProvider } from './providers';
 import { HomeResolver, PartnerResolver } from './resolvers';
+import { UserProvider } from '../providers';
 
 export const MODULE_ROUTES: Route[] = [
   {
@@ -121,6 +122,18 @@ export const MODULE_ROUTES: Route[] = [
         data: {
           preload: true
         },
+        canActivate: [
+          () => {
+            const userProvider = inject(UserProvider);
+            const router = inject(Router);
+            if(userProvider.user()?.isAdmin){
+              return true;
+            }
+
+            router.navigateByUrl("/");
+            return false;
+          }
+        ]
       },
       {
         path: 'cookies',

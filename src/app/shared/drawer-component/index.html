@@ -20,7 +20,7 @@
                         </span>
                     </a>
                 </li>
-                <li>
+                <li  *ngIf="userProvider.user()?.isAdmin">
                     <a routerLink="/card" routerLinkActive="active activated" (click)="toggle();removeFragment()">
                         <span>
                             Провери карта

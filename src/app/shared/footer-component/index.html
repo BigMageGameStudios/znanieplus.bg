@@ -17,12 +17,12 @@
             <div class="bordered flex">
                 <ul>
                     <li>
-                        <a routerLink="/card" class="card-desktop">
+                        <a routerLink="/card" class="card-desktop" *ngIf="userProvider.user()?.isAdmin">
                             Провери карта
                         </a>
                     </li>
                     <li>
-                        <a routerLink="/card" class="card-mobile">
+                        <a routerLink="/card" class="card-mobile" *ngIf="userProvider.user()?.isAdmin">
                             Провери карта
                         </a>
                     </li>
