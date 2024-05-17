@@ -31,7 +31,7 @@ export class SEOProvider {
 
     pixelQueue: IObjectKeys[] = [];
     descriptionRegEx = new RegExp('<[^>]*>', 'g');
-    googleID = 'G-P0YK5C7N5R';
+    googleID = 'G-SNE8MFMDVW';
     pixelId = `977265799913171`;
     url = this.window.location.origin;
 

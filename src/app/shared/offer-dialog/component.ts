@@ -33,6 +33,7 @@ export class OfferDialog {
       validateEmail,
     ]),
     phone: new FormControl('', [
+      Validators.required,
       Validators.pattern("^((\\+359)|(359)|(00359)|0)?((89)|(98)|(88)|87)[0-9]{7}$"),
     ]),
     agreed: new FormControl('', [

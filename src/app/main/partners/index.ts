@@ -8,6 +8,7 @@ import { ContactsModule } from 'src/app/shared/contacts-component';
 import { PartnerModule } from 'src/app/shared/partner-component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { FooterModule } from 'src/app/shared/footer-component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
@@ -22,6 +23,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FormsModule,
     MatSelectModule,
     MatButtonModule,
+    MatInputModule,
     ContactsModule,
     PartnerModule,
     FooterModule,

@@ -28,6 +28,15 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <mat-form-field color="accent"
+   >
+            <input
+            matInput
+            [(ngModel)]="filterText"
+            placeholder="търси:"
+            (keyup)="onFilter()"
+            >
+        </mat-form-field>
     </div>
     <div>
         <p><span class="legend"></span>физически обект</p>
@@ -35,7 +44,7 @@
 
     </div>
     <div class="list flex">
-        <partner-component *ngFor="let partner of partners; trackBy:track"
+        <partner-component *ngFor="let partner of filtered; trackBy:track"
                            [partner]="partner">
 
         </partner-component>

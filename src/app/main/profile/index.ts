@@ -47,7 +47,7 @@ import { FormsModule } from '@angular/forms';
                             if (result.active) {
                               return result;
                             }
-                            router.navigateByUrl(window.innerWidth <= 830 ? '/login-scan' : '/login-input');
+                            router.navigateByUrl('/login-input');
                             return false;
                           }))
                     ]);

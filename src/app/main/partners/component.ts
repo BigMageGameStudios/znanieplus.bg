@@ -24,6 +24,8 @@ export class PartnersComponent {
   cities = [];
   city = this.cities[0];
   page = 1;
+  filterText = "";
+  filtered: IObjectKeys[] = [];
 
   constructor(
     private ActivatedRoute: ActivatedRoute,
@@ -35,12 +37,12 @@ export class PartnersComponent {
 
     const { partners = [], types = [], cities = []} = ActivatedRoute.snapshot.data.data;
     const { page = 1 } = ActivatedRoute.snapshot.queryParams;
-
     this.partners = partners;
     this.page = Number(page) + 1;
     this.skip = Number(page) * this.limit;
     this.filters = types;
     this.cities = cities;
+    this.filtered = partners;
 
     this.filters.unshift({
       id: null,
@@ -71,6 +73,17 @@ export class PartnersComponent {
 
   track(index, item) {
     return item.key;
+  }
+
+  onFilter(){
+    this.filtered = this.partners.filter((item) => {
+      const name = item.name.toLowerCase();
+      if(name.includes(this.filterText.toLocaleLowerCase())){
+        return true;
+      }
+      return false;
+    });
+    this.ChangeDetectorRef.markForCheck();
   }
 
   onSort() {
@@ -114,10 +127,12 @@ export class PartnersComponent {
 
         if (reset) {
           this.partners = data;
+          this.filtered = data;
           this.loaded = false;
         } else {
           const arr = [...this.partners, ...data];
           this.partners = arr;
+          this.filtered = arr;
         }
 
         if (data.length < this.limit) {

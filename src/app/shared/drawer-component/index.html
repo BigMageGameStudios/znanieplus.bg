@@ -7,6 +7,20 @@
         <div class="navigation flex">
             <ul>
                 <li>
+                    <a routerLink="/profile" routerLinkActive="active activated" (click)="toggle();removeFragment()">
+                        <span>
+                            {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/profile" routerLinkActive="active activated" (click)="toggle();removeFragment()">
+                        <span>
+                            Дигитална карта
+                        </span>
+                    </a>
+                </li>
+                <li>
                     <a routerLink="/card" routerLinkActive="active activated" (click)="toggle();removeFragment()">
                         <span>
                             Провери карта
@@ -39,13 +53,6 @@
                         [class.active]="activeRoute == 'contacts'">
                         <span>
                             Контакти
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/profile" routerLinkActive="active activated" (click)="toggle();removeFragment()">
-                        <span>
-                            {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
                         </span>
                     </a>
                 </li>
