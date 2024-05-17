@@ -1,9 +1,9 @@
 PODS:
-  - Capacitor (5.4.2):
+  - Capacitor (5.5.0):
     - CapacitorCordova
   - CapacitorApp (5.0.6):
     - Capacitor
-  - CapacitorCordova (5.4.2)
+  - CapacitorCordova (5.5.0)
   - CapacitorSplashScreen (5.0.6):
     - Capacitor
   - CapacitorStatusBar (5.0.6):
@@ -29,12 +29,12 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/status-bar"
 
 SPEC CHECKSUMS:
-  Capacitor: 8a9db42d105f55843cd8ed2a3cb54e2b78e7f102
+  Capacitor: 57890b363df14d5d2d5d8461aa23e886cb34da2a
   CapacitorApp: 024e1b1bea5f883d79f6330d309bc441c88ad04a
-  CapacitorCordova: cfcc06b698481da655415985eeb2b8da363f8451
+  CapacitorCordova: 3d3908a3d208a11a75f9df3b18c4405c4de76e1d
   CapacitorSplashScreen: 5fa2ab5e46cf5cc530cf16a51c80c7a986579ccd
   CapacitorStatusBar: 565c0a1ebd79bb40d797606a8992b4a105885309
 
 PODFILE CHECKSUM: 7f862924c2fe1eda3f3c02caa25bb5f2fe51e2df
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.15.2
