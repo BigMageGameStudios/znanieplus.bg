@@ -1,518 +1,564 @@
 <video
-    id="home"
-    [muted]="true"
-    [loop]="true"
-    [playsInline]="true"
-    [autoplay]="true"
-    [controls]="false"
-    [poster]="isMobile ? client_url + '/assets/video/caover-mobile.png' : client_url + '/assets/video/cover-desktop.png'" 
+  id="home"
+  [muted]="true"
+  [loop]="true"
+  [playsInline]="true"
+  [autoplay]="true"
+  [controls]="false"
+  [poster]="isMobile ? client_url + '/assets/video/caover-mobile.png' : client_url + '/assets/video/cover-desktop.png'"
 >
-    <source
-        [src]="isMobile ? client_url + '/assets/video/banner-mobile-v2.mp4' : client_url + '/assets/video/banner-desktop-v2.mp4'"
-        type="video/mp4"
-    />
-    <source
-        [src]="isMobile ? client_url + '/assets/video/banner-mobile-v2.webm' : client_url + '/assets/video/banner-desktop-v2.webm'"
-        type="video/webm"
-    />
+  <source
+    [src]="isMobile ? client_url + '/assets/video/banner-mobile-v2.mp4' : client_url + '/assets/video/banner-desktop-v2.mp4'"
+    type="video/mp4"
+  />
+  <source
+    [src]="isMobile ? client_url + '/assets/video/banner-mobile-v2.webm' : client_url + '/assets/video/banner-desktop-v2.webm'"
+    type="video/webm"
+  />
 </video>
 <div class="container">
 
-    <div
-        class="company flex"
-        id="about-us"
-    >
+  <div
+    class="company flex"
+    id="about-us"
+  >
+    <div class="flex">
+
+      <div class="flex-1">
+        <h2 class="title font">
+          <span class="duotone-text">Какво е<br/> <span>ЗНАНИЕ +?</span></span>
+        </h2>
+      </div>
+
+      <div class="flex-1">
+        <p class="p-text">
+          Представяме ви първата социална придобивка в България с <b>фокус върху знанието, културата и изкуствата.</b>
+        </p>
+      </div>
+
+
+      <!--            <div class="flex flex-center">-->
+      <!--                <h2 class="title">-->
+      <!--                    <span>Какво е ЗНАНИЕ +</span>-->
+      <!--                </h2>-->
+      <!--            </div>-->
+      <!--            <p>-->
+      <!--                Представяме ви първата социална придобивка в България с фокус върху знанието, културата и изкуствата.-->
+      <!--            </p>-->
+      <!--            <p>-->
+      <!--                Всеки притежател на карта ЗНАНИЕ+ получава отстъпки при посещения на избрани партньорски обекти.-->
+      <!--                Сред тях са някои от най-популярните театри, музеи, галерии, книжарници, чуждоезикови школи,-->
+      <!--                академии за професионално и личностно обучение, както и центрове за творчески занимания.-->
+      <!--            </p>-->
+      <!--            <p>-->
+      <!--                Абонаментите на ЗНАНИЕ+ се предлагат ексклузивно на българските работодатели. Те са една истински-->
+      <!--                добра възможност за всеки желаещ да надгради своите „меки умения“, да развие талантите си и да-->
+      <!--                обогати своя личен и професионален живот чрез активно взаимодействие с културната и образователна среда.-->
+      <!--            </p>-->
+      <!--            <p>-->
+      <!--                Притежателите на картата получават отстъпки и при пазаруване в партньорски онлайн магазини.-->
+      <!--            </p>-->
+    </div>
+
+  </div>
+</div>
+<div class="section yellow-bg font">
+  <div class="container container-row">
+    <div class="flex-1 flex-col">
+      <p>
+        Всеки притежател на карта ЗНАНИЕ+ получава отстъпки при посещения на избрани партньорски обекти. Сред тях са
+        някои от най-популярните
+      </p>
+      <div class="ul-holder flex flex-row">
         <div>
-            <div class="flex flex-center">
-                <h2 class="title">
-                    <span>Какво е ЗНАНИЕ +</span>
-                </h2>
-            </div>
-            <p>
-                Представяме ви първата социална придобивка в България с фокус върху знанието, културата и изкуствата.
-            </p>
-            <p>
-                Всеки притежател на карта ЗНАНИЕ+ получава отстъпки при посещения на избрани партньорски обекти.
-                Сред тях са някои от най-популярните театри, музеи, галерии, книжарници, чуждоезикови школи,
-                академии за професионално и личностно обучение, както и центрове за творчески занимания.
-            </p>
-            <p>
-                Абонаментите на ЗНАНИЕ+ се предлагат ексклузивно на българските работодатели. Те са една истински
-                добра възможност за всеки желаещ да надгради своите „меки умения“, да развие талантите си и да
-                обогати своя личен и професионален живот чрез активно взаимодействие с културната и образователна среда.
-            </p>
-            <p>
-                Притежателите на картата получават отстъпки и при пазаруване в партньорски онлайн магазини.
-            </p>
+          <ul>
+            <li class="list-item">Театри</li>
+            <li class="list-item">Музеи</li>
+            <li class="list-item">Галерии</li>
+            <li class="list-item">Книжарници</li>
+          </ul>
         </div>
+        <div>
+          <ul>
+            <li class="list-item">Чуждоезикови школи</li>
+            <li class="list-item">Академии за професионално и личностно развитие</li>
+            <li class="list-item">Центрове за творчески занимания</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
+
+    <div class="flex-1">
+      <p>
+        Абонаментите на ЗНАНИЕ+ се предлагат ексклузивно на българските работодатели. Те са една истински добра
+        възможност за всеки желаещ да надгради своите „меки умения“, да развие талантите си и да обогати своя личен и
+        професионален живот чрез активно взаимодействие с културната и образователна среда.<br/><br/>Притежателите на
+        картата
+        получават отстъпки и при пазаруване в партньорски онлайн магазини.
+      </p>
+    </div>
+  </div>
 </div>
 
-<div class="info center">
-    <h2 class="title">
-        <span>Как работи</span>
-    </h2>
-    <div class="list flex">
-        <div class="item flex">
-            <button class="image-button relative">
-                <img
-                    src="/assets/images/take.png"
-                    width="128px"
-                    height="128px"
-                    class="contain"
-                    loading="lazy"
-                    decoding="async"
-                    alt="card"
-                />
-                <span class="flex">
-                    1.
-                </span>
-            </button>
-            <h3>
-                ВЗЕМИ
-            </h3>
-            <p>
-                Попитай своя работодател – това е единственият начин да станеш притежател на карта ЗНАНИЕ+ и да
-                се възползваш от ексклузивни предложения
-            </p>
-        </div>
-        <div class="item flex">
-            <button class="image-button relative">
-                <img
-                    src="/assets/images/know.png"
-                    width="128px"
-                    height="128px"
-                    class="contain"
-                    loading="lazy"
-                    decoding="async"
-                    alt="know"
-                />
-                <span class="flex">
-                    2.
-                </span>
-            </button>
-            <h3>
-                ОПОЗНАЙ
-            </h3>
-            <p>
-                В сайта ни ще откриеш пълния списък с включени десетки културни, образователни и развлекателни обекти,
-                част от партньорската мрежа на ЗНАНИЕ+
-            </p>
-        </div>
+<div class="container">
+  <div class="info center section flex-col how-it-works">
+    <div class="flex flex-center">
+      <h2 class="title font">
+        <span class="duotone-text small">Как <span>работи</span></span>
+      </h2>
     </div>
-    <div class="list flex">
+    <div>
+      <div class="list flex">
         <div class="item flex">
-            <button class="image-button relative">
-                <img
-                    src="/assets/images/visit.png"
-                    width="128px"
-                    height="128px"
-                    class="contain"
-                    loading="lazy"
-                    decoding="async"
-                    alt="visit"
-                />
-                <span class="flex">
-                    3.
-                </span>
-            </button>
-            <h3>
-                ПОСЕТИ
-            </h3>
-            <p>
-                Кино, театър, музей? С твоята абонаментна карта получаваш отстъпки при посещения на избрани обекти,
-                ежедневно и без ограничение
-            </p>
+          <button class="image-button relative">
+            <img
+              src="/assets/images/take.png"
+              width="128px"
+              height="128px"
+              class="contain"
+              loading="lazy"
+              decoding="async"
+              alt="card"
+            />
+          </button>
+          <h3>
+            1. ВЗЕМИ
+          </h3>
+          <p>
+            Попитай своя работодател – това е единственият начин да станеш притежател на карта ЗНАНИЕ+ и да
+            се възползваш от ексклузивни предложения
+          </p>
         </div>
         <div class="item flex">
-            <button class="image-button relative">
-                <img
-                    src="/assets/images/share.png"
-                    width="128px"
-                    height="128px"
-                    class="contain"
-                    loading="lazy"
-                    decoding="async"
-                    alt="share"
-                />
-                <span class="flex">
-                    4.
-                </span>
-            </button>
-            <h3>
-                СПОДЕЛИ
-            </h3>
-            <p>
-                В избрани обекти от партньорската ни мрежа твоята карта важи и за придружител. Придружителят не се
-                посочва предварително и може да бъде различен
-            </p>
+          <button class="image-button relative">
+            <img
+              src="/assets/images/know.png"
+              width="128px"
+              height="128px"
+              class="contain"
+              loading="lazy"
+              decoding="async"
+              alt="know"
+            />
+          </button>
+          <h3>
+            2. ОПОЗНАЙ
+          </h3>
+          <p>
+            В сайта ни ще откриеш пълния списък с включени десетки културни, образователни и развлекателни обекти,
+            част от партньорската мрежа на ЗНАНИЕ+
+          </p>
         </div>
+      </div>
+      <div class="list flex">
+        <div class="item flex">
+          <button class="image-button relative">
+            <img
+              src="/assets/images/visit.png"
+              width="128px"
+              height="128px"
+              class="contain"
+              loading="lazy"
+              decoding="async"
+              alt="visit"
+            />
+          </button>
+          <h3>
+            3. ПОСЕТИ
+          </h3>
+          <p>
+            Кино, театър, музей? С твоята абонаментна карта получаваш отстъпки при посещения на избрани обекти,
+            ежедневно и без ограничение
+          </p>
+        </div>
+        <div class="item flex">
+          <button class="image-button relative">
+            <img
+              src="/assets/images/share.png"
+              width="128px"
+              height="128px"
+              class="contain"
+              loading="lazy"
+              decoding="async"
+              alt="share"
+            />
+          </button>
+          <h3>
+            4. СПОДЕЛИ
+          </h3>
+          <p>
+            В избрани обекти от партньорската ни мрежа твоята карта важи и за придружител. Придружителят не се
+            посочва предварително и може да бъде различен
+          </p>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<div
+  <div
     class="container"
     id="partners"
->
+  >
     <div class="list-places">
-        <div class="flex flex-center">
-            <h2 class="title">
-                <span>Партньори</span>
-            </h2>
-        </div>
-        <scroller-component [data]="items"></scroller-component>
-        <div class="view-all">
-            <a
-                class="title"
-                routerLink="/partners"
-            >
-                <span>Виж всички</span>
-            </a>
-        </div>
+      <div class="flex flex-center">
+        <h2 class="title">
+          <span>Партньори</span>
+        </h2>
+      </div>
+      <scroller-component [data]="items"></scroller-component>
+      <div class="view-all">
+        <a
+          class="title"
+          routerLink="/partners"
+        >
+          <span>Виж всички</span>
+        </a>
+      </div>
     </div>
-</div>
+  </div>
 
-<div
+  <div
     class="container"
     id="companies"
->
+  >
     <div class="list-places">
-        <div class="flex flex-center">
-            <h2 class="title">
-                <span>Компании</span>
-            </h2>
-        </div>
-        <scroller-component [data]="companies"></scroller-component>
-        <div class="view-all">
-            <a
-                class="title"
-                routerLink="/companies"
-            >
-                <span>Виж всички</span>
-            </a>
-        </div>
+      <div class="flex flex-center">
+        <h2 class="title">
+          <span>Компании</span>
+        </h2>
+      </div>
+      <scroller-component [data]="companies"></scroller-component>
+      <div class="view-all">
+        <a
+          class="title"
+          routerLink="/companies"
+        >
+          <span>Виж всички</span>
+        </a>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="container faq">
+  <div class="container faq">
     <div class="office">
-        <img
-            class="flex contain"
-            src="/assets/images/Znanie+_Banner_05.1.jpg"
-            width="100%"
-            height="auto"
-            loading="lazy"
-            decoding="async"
-            alt="card"
-        />
+      <img
+        class="flex contain"
+        src="/assets/images/Znanie+_Banner_05.1.jpg"
+        width="100%"
+        height="auto"
+        loading="lazy"
+        decoding="async"
+        alt="card"
+      />
     </div>
     <h2 class="title">
-        <span>Често задавани въпроси</span>
+      <span>Често задавани въпроси</span>
     </h2>
     <div class="content">
 
-        <div class="accordion flex">
+      <div class="accordion flex">
 
-            <div class="flex image">
-                <img
-                    class="flex contain"
-                    src="/assets/images/faq1.png"
-                    width="64px"
-                    height="64px"
-                    loading="lazy"
-                    decoding="async"
-                    alt="faq"
-                />
-                <h3>Обща информация</h3>
-            </div>
-
-            <mat-accordion>
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Какво е ЗНАНИЕ+?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            Изцяло нова услуга, която стартира пилотно в София. Нашата компания
-                            разработи първата по рода си социална придобивка в България, чрез която
-                            работодателят подпомага културното обогатяване на своите служители чрез
-                            фиксиран месечен абонамент на разумна цена.
-                            <br><br>
-                            ЗНАНИЕ+ е така необходимият мост между малкия и среден бизнес от една страна и културните и
-                            образователни институции от друга.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Какво представлява картaта ЗНАНИЕ+?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            Всеки притежател на дигитална карта ЗНАНИЕ+ получава месечни отстъпки при използване
-                            на услугите на десетки партньорски обекти, сред които театри, музеи, галерии,
-                            кина, книжарници, центрове за обучение и за групови творчески занимания.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
-            </mat-accordion>
+        <div class="flex image">
+          <img
+            class="flex contain"
+            src="/assets/images/faq1.png"
+            width="64px"
+            height="64px"
+            loading="lazy"
+            decoding="async"
+            alt="faq"
+          />
+          <h3>Обща информация</h3>
         </div>
 
-        <div class="accordion flex">
+        <mat-accordion>
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Какво е ЗНАНИЕ+?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                Изцяло нова услуга, която стартира пилотно в София. Нашата компания
+                разработи първата по рода си социална придобивка в България, чрез която
+                работодателят подпомага културното обогатяване на своите служители чрез
+                фиксиран месечен абонамент на разумна цена.
+                <br><br>
+                ЗНАНИЕ+ е така необходимият мост между малкия и среден бизнес от една страна и културните и
+                образователни институции от друга.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Какво представлява картaта ЗНАНИЕ+?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                Всеки притежател на дигитална карта ЗНАНИЕ+ получава месечни отстъпки при използване
+                на услугите на десетки партньорски обекти, сред които театри, музеи, галерии,
+                кина, книжарници, центрове за обучение и за групови творчески занимания.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
 
-            <div class="flex image">
-                <img
-                    class="flex contain"
-                    src="/assets/images/faq4.png"
-                    width="64px"
-                    height="64px"
-                    loading="lazy"
-                    decoding="async"
-                    alt="faq4"
-                />
-                <h3>Информация за бизнеса</h3>
-            </div>
+      <div class="accordion flex">
 
-            <mat-accordion>
-
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Всеки желаещ ли може да притежава ЗНАНИЕ+?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            Абонаментите на ЗНАНИЕ+ се предлагат ексклузивно за българските работодатели и техните
-                            служители. Те
-                            не
-                            са достъпни за индивидуални поръчки от физически лица.
-                            Ако Вие сте собственик на бизнес, който иска да се погрижи за мотивацията на своя екип,
-                            неговото
-                            личностно развитие и културно обогатяване, то ЗНАНИЕ+ е точно за Вас.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
-
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Аз съм работодател. Какви са ползите от ЗНАНИЕ+?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            <strong>Ние знаем</strong>, че за всеки работодател е от съществено значение неговият екип
-                            да бъде добре образован и високо квалифициран. Затова създадохме
-                            социална придобивка, чиито ползватели да имат възможността да надградят
-                            своите „меки умения“, да развият талантите си и да обогатят личния и
-                            професионалния си живот чрез активно взаимодействие с културната среда.
-                            <br /><br />
-                            <strong>Вие знаете</strong>, че комбинацията от добро месечно възнаграждение, справедлива
-                            бонусна система и богат набор от социални придобивки е от ключово значение
-                            за изграждането на добра мотивация в служителите. Намерението на
-                            компанията ни е да превърне ЗНАНИЕ+ в атрактивно и конкурентно
-                            предимство, което стотици работодатели ще предлагат.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
-
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Как да осигуря ЗНАНИЕ+ на служителите си?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            Не се колебайте да се свържете с нас, за да получите индивидуална оферта.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
-
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Как се заплаща за услугата и колко често?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            След сключване на договор, услугата се заплаща ежемесечно или ежегодно
-                            след предоставяне на фактура от наша страна.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
-
-            </mat-accordion>
-
+        <div class="flex image">
+          <img
+            class="flex contain"
+            src="/assets/images/faq4.png"
+            width="64px"
+            height="64px"
+            loading="lazy"
+            decoding="async"
+            alt="faq4"
+          />
+          <h3>Информация за бизнеса</h3>
         </div>
 
-        <div class="accordion flex">
+        <mat-accordion>
 
-            <div class="flex image">
-                <img
-                    class="flex contain"
-                    src="/assets/images/faq2.png"
-                    width="64px"
-                    height="64px"
-                    loading="lazy"
-                    decoding="async"
-                    alt="faq2"
-                />
-                <h3>Информация за ползватели</h3>
-            </div>
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Всеки желаещ ли може да притежава ЗНАНИЕ+?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                Абонаментите на ЗНАНИЕ+ се предлагат ексклузивно за българските работодатели и техните
+                служители. Те
+                не
+                са достъпни за индивидуални поръчки от физически лица.
+                Ако Вие сте собственик на бизнес, който иска да се погрижи за мотивацията на своя екип,
+                неговото
+                личностно развитие и културно обогатяване, то ЗНАНИЕ+ е точно за Вас.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
 
-            <mat-accordion>
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Аз съм работодател. Какви са ползите от ЗНАНИЕ+?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                <strong>Ние знаем</strong>, че за всеки работодател е от съществено значение неговият екип
+                да бъде добре образован и високо квалифициран. Затова създадохме
+                социална придобивка, чиито ползватели да имат възможността да надградят
+                своите „меки умения“, да развият талантите си и да обогатят личния и
+                професионалния си живот чрез активно взаимодействие с културната среда.
+                <br/><br/>
+                <strong>Вие знаете</strong>, че комбинацията от добро месечно възнаграждение, справедлива
+                бонусна система и богат набор от социални придобивки е от ключово значение
+                за изграждането на добра мотивация в служителите. Намерението на
+                компанията ни е да превърне ЗНАНИЕ+ в атрактивно и конкурентно
+                предимство, което стотици работодатели ще предлагат.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
 
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Колко често мога да използвам своята карта?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            Без ограничения в рамките на предплатения период. Кратко, точно и ясно.
-                            <br><br>
-                            Но какво означава това? Всеки ден можеш да черпиш от културния живот с
-                            пълни шепи – гледай кино, посети музей или пък закупи книга от твоята
-                            любима книжарница. Ти решаваш как и кога да се възползваш от отстъпките на
-                            ЗНАНИЕ+.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Как да осигуря ЗНАНИЕ+ на служителите си?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                Не се колебайте да се свържете с нас, за да получите индивидуална оферта.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
 
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Къде мога да видя списък с всички обекти?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            <a
-                                class="link"
-                                routerLink="/partners"
-                            ><b>Тук</b></a> можеш да намериш списък с всички обекти,
-                            които екипът ни актуализира
-                            ежеседмично. Всеки партньор има своя индивидуална страница, в която ще
-                            откриеш отстъпка и условия за прилагането ѝ.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Как се заплаща за услугата и колко често?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                След сключване на договор, услугата се заплаща ежемесечно или ежегодно
+                след предоставяне на фактура от наша страна.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
 
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Каква отстъпка ще получа с картата?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            Всеки обект от нашата партньорска мрежа предлага индивидуална отстъпка за
-                            посещение или потребление. В списъка с всички обекти ще откриеш повече
-                            информация.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
+        </mat-accordion>
 
-            </mat-accordion>
+      </div>
 
+      <div class="accordion flex">
+
+        <div class="flex image">
+          <img
+            class="flex contain"
+            src="/assets/images/faq2.png"
+            width="64px"
+            height="64px"
+            loading="lazy"
+            decoding="async"
+            alt="faq2"
+          />
+          <h3>Информация за ползватели</h3>
         </div>
 
-        <div class="accordion flex">
+        <mat-accordion>
 
-            <div class="flex image">
-                <img
-                    class="flex contain"
-                    src="/assets/images/faq3.png"
-                    width="64px"
-                    height="64px"
-                    loading="lazy"
-                    decoding="async"
-                    alt="faq3.png"
-                />
-                <h3>Информация за обекти</h3>
-            </div>
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Колко често мога да използвам своята карта?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                Без ограничения в рамките на предплатения период. Кратко, точно и ясно.
+                <br><br>
+                Но какво означава това? Всеки ден можеш да черпиш от културния живот с
+                пълни шепи – гледай кино, посети музей или пък закупи книга от твоята
+                любима книжарница. Ти решаваш как и кога да се възползваш от отстъпките на
+                ЗНАНИЕ+.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
 
-            <mat-accordion>
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Къде мога да видя списък с всички обекти?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                <a
+                  class="link"
+                  routerLink="/partners"
+                ><b>Тук</b></a> можеш да намериш списък с всички обекти,
+                които екипът ни актуализира
+                ежеседмично. Всеки партньор има своя индивидуална страница, в която ще
+                откриеш отстъпка и условия за прилагането ѝ.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
 
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Дължима ли е такса за включване?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            Не. От всеки обект-партньор на ЗНАНИЕ+ очакваме единствено топло
-                            посрещане и добро отношение към ползвателите на услугата, както и
-                            атрактивна отстъпка.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Каква отстъпка ще получа с картата?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                Всеки обект от нашата партньорска мрежа предлага индивидуална отстъпка за
+                посещение или потребление. В списъка с всички обекти ще откриеш повече
+                информация.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
 
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Кои обекти могат да бъдат част от партньорската мрежа?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            Частни, общински и държавни дружества, предлагащи услуги в сферата на
-                            културата и образованието. В това число влизат театри, кина, опери, галерии,
-                            музеи, къщи-музеи, книжарници, центрове за обучение и за групови творчески
-                            занимания и др.
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
+        </mat-accordion>
 
-                <mat-expansion-panel togglePosition="before">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Как кандидатствам за участие в партньорската мрежа?
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <div class="description">
-                            <br>
-                            ЗНАНИЕ+ е възможност за всеки обект да привлече хиляди нови посетители,
-                            затова не се колебайте да се свържете с нашия екип на office@znanieplus.bg
-                        </div>
-                    </ng-template>
-                </mat-expansion-panel>
+      </div>
 
-            </mat-accordion>
+      <div class="accordion flex">
 
+        <div class="flex image">
+          <img
+            class="flex contain"
+            src="/assets/images/faq3.png"
+            width="64px"
+            height="64px"
+            loading="lazy"
+            decoding="async"
+            alt="faq3.png"
+          />
+          <h3>Информация за обекти</h3>
         </div>
+
+        <mat-accordion>
+
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Дължима ли е такса за включване?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                Не. От всеки обект-партньор на ЗНАНИЕ+ очакваме единствено топло
+                посрещане и добро отношение към ползвателите на услугата, както и
+                атрактивна отстъпка.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Кои обекти могат да бъдат част от партньорската мрежа?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                Частни, общински и държавни дружества, предлагащи услуги в сферата на
+                културата и образованието. В това число влизат театри, кина, опери, галерии,
+                музеи, къщи-музеи, книжарници, центрове за обучение и за групови творчески
+                занимания и др.
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel togglePosition="before">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Как кандидатствам за участие в партньорската мрежа?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+              <div class="description">
+                <br>
+                ЗНАНИЕ+ е възможност за всеки обект да привлече хиляди нови посетители,
+                затова не се колебайте да се свържете с нашия екип на office@znanieplus.bg
+              </div>
+            </ng-template>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+      </div>
     </div>
-</div>
-<div class="container">
+  </div>
+  <div class="container">
     <div class="flex flex-center">
-        <h2 class="title media">
+      <h2 class="title media">
             <span>
                 МЕДИИТЕ ЗА НАС
             </span>
-        </h2>
+      </h2>
     </div>
     <media-scroller-component [data]="media"></media-scroller-component>
-</div>
-<contacts-component id="contacts"></contacts-component>
-<footer-component></footer-component>
+  </div>
+  <contacts-component id="contacts"></contacts-component>
+  <footer-component></footer-component>

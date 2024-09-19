@@ -91,15 +91,38 @@ h2.title {
         position: relative;
     }
 
-    &::before {
-        content: " ";
-        background-color: $yellow;
-        width: 100%;
-        height: 16px;
-        position: absolute;
-        bottom: 5px;
-        left: 8px;
-    }
+    //&::before {
+    //    content: " ";
+    //    background-color: $yellow;
+    //    width: 100%;
+    //    height: 16px;
+    //    position: absolute;
+    //    bottom: 5px;
+    //    left: 8px;
+    //}
+}
+
+.container-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 40px 0px;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.section {
+    display: flex;
+    flex: 1;
+}
+.yellow-bg {
+    background-color: $yellow-alpha;
 }
 
 .black {
@@ -127,6 +150,11 @@ mat-snack-bar-container.znp {
     button {
         color: #ffd145 !important;
     }
+}
+
+.flex-1 {
+    display: flex;
+    flex: 1
 }
 
 div.cookies.flex {
@@ -165,6 +193,12 @@ div.cookies.flex {
 
 div.flex-center{
     justify-content: center;
+}
+
+
+.font {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
 }
 
 @media (max-width: 800px) {
