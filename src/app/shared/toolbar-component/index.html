@@ -21,14 +21,14 @@
                     </span>
                 </a>
                 <a routerLink="/partners" routerLinkActive="active activated"
-                    (click)="removeFragment()"><span>Партньори</span></a>
+                    (click)="removeFragment()"><span>Обекти</span></a>
 
                     <a routerLink="/petrol" routerLinkActive="active activated"
                     *ngIf="userProvider.isLogedIn()"
-                    (click)="removeFragment()"><span>Петрол</span></a>    
+                    (click)="removeFragment()"><span>Петрол</span></a>
 
                     <a routerLink="/companies" routerLinkActive="active activated"
-                    (click)="removeFragment()"><span>Компании</span></a>    
+                    (click)="removeFragment()"><span>Работодатели</span></a>
 
                 <a routerLink="/" fragment="contacts" routerLinkActive="activated"
                     [class.active]="activeRoute == 'contacts'">

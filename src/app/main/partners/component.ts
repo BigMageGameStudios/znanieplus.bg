@@ -46,7 +46,7 @@ export class PartnersComponent {
 
     this.filters.unshift({
       id: null,
-      type: 'Всички партньори'
+      type: 'Всички обекти'
     })
 
     this.cities.unshift({
@@ -59,7 +59,7 @@ export class PartnersComponent {
     }
 
     this.SEOProvider.set({
-      title: `ЗНАНИЕ+ | Партньори`,
+      title: `ЗНАНИЕ+ | Обекти`,
       description: 'ЗНАНИЕ+ е първата социална придобивка в България, която дава възможност на работодателя да подпомогне културното обогатяване на своите служители чрез фиксиран месечен или годишен абонамент на разумна цена.',
       keywords: 'знание,карта,отстъпка,култура,социална придобивка,znanieplus,знание плюс,знаниеплюс,znanie plus,znanie+,знание+',
       ogUrl: 'https://www.znanieplus.bg/partners',
