@@ -1,54 +1,52 @@
 <div class="box">
-    <div class="list" #list drag>
-        <div *ngFor="let item of data; trackBy:track" class="item">
-            <a *ngIf="item.link === undefined" class="relative" [routerLink]="'/partner/'+item.id" aria-label="Виж">
-                <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + item.logo"
-                    width="100%" height="250px" alt="partner" />
-                <div class="information flex">
-                    <div *ngIf="item.promo > 0">
-                        Отстъпка
+  <div class="list" #list drag>
+    <div *ngFor="let item of data; trackBy:track" class="item">
+      <a *ngIf="item.link === undefined" class="relative" [routerLink]="'/partner/'+item.id" aria-label="Виж">
+        <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + item.logo"
+             width="100%" height="250px" alt="partner"/>
+        <div class="information flex">
+          <div>
+            <h3>
+              {{ item.name }}
+            </h3>
+          </div>
+          <div *ngIf="item.promo > 0">
                         <span class="block">
-                            {{item.promo | number:'1.0-0'}}{{item.promo_type}}
+                            {{ item.promo | number:'1.0-0' }}{{ item.promo_type }}
                         </span>
-                    </div>
-                    <div>
-                        <h3>
-                            {{item.name}}
-                        </h3>
-                    </div>
-                </div>
-            </a>
-            <a *ngIf="item.link !== undefined" class="relative" href="{{item.link}}" aria-label="Виж">
-                <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + item.logo"
-                    width="100%" alt="partner" />
-                <div *ngIf="item.promo > 0"class="information flex">
-                    <div>
-                        Отстъпка
-                        <span class="block">
-                            {{item.promo | number:'1.0-0'}}{{item.promo_type}}
-                        </span>
-                    </div>
-                    <div>
-                        <h3>
-                            {{item.name}}
-                        </h3>
-                    </div>
-                </div>
-            </a>
+          </div>
         </div>
+      </a>
+      <a *ngIf="item.link !== undefined" class="relative" href="{{item.link}}" aria-label="Виж">
+        <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + item.logo"
+             width="100%" alt="partner"/>
+        <div *ngIf="item.promo > 0" class="information flex">
+          <div>
+            <h3>
+              {{ item.name }}
+            </h3>
+          </div>
+          <div>
+            <span class="block">
+                {{ item.promo | number:'1.0-0' }}{{ item.promo_type }}
+            </span>
+          </div>
+        </div>
+      </a>
     </div>
+  </div>
 
-    <div class="prev" (click)="prev()">
-        <button class="image-button" matRipple>
-            <img class="flex contain" src="/assets/images/arrow-left.svg" width="32" height="32" loading="lazy"
-                decoding="async" alt="card" />
-        </button>
-    </div>
+  <div class="prev" (click)="prev()">
+    <button class="image-button" matRipple>
+      <img class="flex contain" src="/assets/images/arrow-left.svg" width="32" height="32" loading="lazy"
+           decoding="async" alt="card"/>
+    </button>
+  </div>
 
-    <div class="next" (click)="next()">
-        <button class="image-button" matRipple>
-            <img class="flex contain" src="/assets/images/arrow-right.svg" width="32" height="32" loading="lazy"
-                decoding="async" alt="card" />
-        </button>
-    </div>
+  <div class="next" (click)="next()">
+    <button class="image-button" matRipple>
+      <img class="flex contain" src="/assets/images/arrow-right.svg" width="32" height="32" loading="lazy"
+           decoding="async" alt="card"/>
+    </button>
+  </div>
 </div>

@@ -195,21 +195,24 @@
       </div>
     </div>
   </div>
-
+</div>
+<div class="section gray-bg font">
   <div
     class="container"
     id="partners"
   >
     <div class="list-places">
-      <div class="flex flex-center">
-        <h2 class="title">
-          <span>Обекти</span>
-        </h2>
+      <div class="info center section flex-col">
+        <div class="flex flex-center">
+          <h2 class="title font">
+            <span class="duotone-text small"><span>Обекти</span></span>
+          </h2>
+        </div>
       </div>
       <scroller-component [data]="items"></scroller-component>
-      <div class="view-all">
+      <div class="view-all top-spacing">
         <a
-          class="title"
+          class="button"
           routerLink="/partners"
         >
           <span>Виж всички</span>
@@ -217,21 +220,25 @@
       </div>
     </div>
   </div>
+</div>
 
+<div class="section section-spacing section-top-spacing light-gray-bg font">
   <div
     class="container"
     id="companies"
   >
     <div class="list-places">
-      <div class="flex flex-center">
-        <h2 class="title">
-          <span>Работодатели</span>
-        </h2>
+      <div class="info center section flex-col">
+        <div class="flex flex-center">
+          <h2 class="title font">
+            <span class="duotone-text small"><span>Работодатели</span></span>
+          </h2>
+        </div>
       </div>
       <scroller-component [data]="companies"></scroller-component>
-      <div class="view-all">
+      <div class="view-all top-spacing">
         <a
-          class="title"
+          class="button"
           routerLink="/companies"
         >
           <span>Виж всички</span>
@@ -239,21 +246,53 @@
       </div>
     </div>
   </div>
+</div>
 
-  <div class="container faq">
-    <div class="office">
-      <img
-        class="flex contain"
-        src="/assets/images/Znanie+_Banner_05.1.jpg"
-        width="100%"
-        height="auto"
-        loading="lazy"
-        decoding="async"
-        alt="card"
-      />
+
+<div class="section-spacing yellow-bg font">
+  <div
+    class="container"
+  >
+    <div class="duo-section">
+      <div class="image-section">
+        <img
+          class="flex contain"
+          src="/assets/images/Znanie+_Banner.jpg"
+          width="100%"
+          height="auto"
+          loading="lazy"
+          decoding="async"
+          alt="card"
+        />
+      </div>
+      <div class="text-section">
+        <h1>Знанието е<br />по-достъпно<br />от всякога</h1>
+        <div class="section-info">
+          <div class="price">
+            <span>Цени, започващи от</span>
+            <div class="price-text">
+              <span>8,50&nbsp;</span>
+              <span>лв / месец</span>
+            </div>
+          </div>
+          <div class="actions">
+            <a
+              class="button"
+              routerLink="/"
+            >
+              <span>Заяви своята карта</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <h2 class="title">
-      <span>Често задавани въпроси</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="container faq">
+    <h2 class="title font">
+      <span class="duotone-text small"><span>Често задавани въпроси</span></span>
     </h2>
     <div class="content">
 
@@ -269,7 +308,7 @@
             decoding="async"
             alt="faq"
           />
-          <h3>Обща информация</h3>
+          <h3 class="font">Обща информация</h3>
         </div>
 
         <mat-accordion>
@@ -322,7 +361,7 @@
             decoding="async"
             alt="faq4"
           />
-          <h3>Информация за бизнеса</h3>
+          <h3 class="font">Информация за бизнеса</h3>
         </div>
 
         <mat-accordion>
@@ -416,7 +455,7 @@
             decoding="async"
             alt="faq2"
           />
-          <h3>Информация за ползватели</h3>
+          <h3 class="font">Информация за ползватели</h3>
         </div>
 
         <mat-accordion>
@@ -492,7 +531,7 @@
             decoding="async"
             alt="faq3.png"
           />
-          <h3>Информация за обекти</h3>
+          <h3 class="font">Информация за обекти</h3>
         </div>
 
         <mat-accordion>
@@ -550,15 +589,27 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="flex flex-center">
-      <h2 class="title media">
-            <span>
-                МЕДИИТЕ ЗА НАС
-            </span>
-      </h2>
+
+</div>
+<div class="section section-spacing section-padding light-gray-bg font">
+  <div
+    class="container"
+  >
+    <div class="list-counters">
+      <div class="counter-item">
+        <span>500+</span>
+        <span>Обекта, в които можеш да използваш картата ЗНАНИЕ+</span>
+      </div>
+      <div class="counter-item">
+        <span>50+</span>
+        <span>Населени места</span>
+      </div>
+      <div class="counter-item">
+        <span>500+</span>
+        <span>Компании, които ни се довериха</span>
+      </div>
     </div>
-    <media-scroller-component [data]="media"></media-scroller-component>
   </div>
-  <contacts-component id="contacts"></contacts-component>
-  <footer-component></footer-component>
+</div>
+<contacts-component id="contacts"></contacts-component>
+<footer-component></footer-component>

@@ -1,6 +1,59 @@
 @import '../../../../stylesheets/variables';
 
+
+
+
+div.list {
+    flex-wrap: wrap;
+
+    h3.error {
+        font-size: 20px;
+        font-weight: 300;
+        text-align: center;
+        width: 100%;
+    }
+
+    //column-gap: 40px;
+    row-gap: 20px;
+
+    partner-component {
+        width: calc(100% * (1/4));
+        flex-grow: 1;
+        max-width: 275px;
+    }
+}
+
+
 div.container {
+
+    .section-title {
+        margin-top: 80px;
+        margin-bottom: 40px;
+    }
+
+
+    .section-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+
+        div {
+            flex: 1;
+        }
+
+        .mat-mdc-form-field {
+            width: 100%;
+
+
+            .mat-mdc-text-field-wrapper {
+                background-color: transparent;
+                border: 1px solid $border-color;
+            }
+        }
+    }
+
     div.title {
         padding-top: 40px;
         align-items: center;
@@ -11,34 +64,13 @@ div.container {
         }
     }
 
-    div.list {
-        flex-wrap: wrap;
-
-        h3.error {
-            font-size: 20px;
-            font-weight: 300;
-            text-align: center;
-            width: 100%;
-        }
-
-        partner-component {
-            width: calc(100% * (1/4) - 10px);
-            flex-grow: 1;
-            max-width: 275px;
-        }
-    }
-
-    #onlinecheck{
-        margin-left: 350px;
-    }
-
     .legend{
-        width: 20px; 
-        height: 20px; 
-        background-color: #ffd145; 
-        display: inline-block; 
-        border-radius:20px; 
-        margin-bottom: -5px; 
+        width: 20px;
+        height: 20px;
+        background-color: #ffd145;
+        display: inline-block;
+        border-radius:20px;
+        margin-bottom: -5px;
         margin-right:5px;
     }
 
@@ -49,7 +81,7 @@ div.container {
     .load-more{
         font-weight: 700;
         text-align: center;
-        background-color: #ffd145; 
+        background-color: #ffd145;
     }
 }
 
@@ -149,6 +181,7 @@ div.plus-one {
 
 
 @media (max-width: 550px) {
+
     div.title {
         padding: 10px;
     }
@@ -170,17 +203,37 @@ div.plus-one {
 
     div.flex {
         display: block;
+        &.section-title {
+            display: flex;
+        }
+
+        &.list {
+            display: flex;
+            partner-component {
+                max-width: 100% !important;
+            }
+        }
     }
+
 
     div.align-center{
         display: flex !important;
     }
-    
+
     #onlinecheck{
         margin-left: -10px !important;
         display: flex;
     }
     .legend{
         margin-left: 10px;
+    }
+
+    div.container .section-row {
+        flex-direction: column;
+        gap: 0px;
+        div {
+            width: 100%;
+            padding: 0px 24px;
+        }
     }
 }

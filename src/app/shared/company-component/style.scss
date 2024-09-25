@@ -1,52 +1,87 @@
 @import '../../../../stylesheets/variables';
 
 div.item {
-    margin: 10px;
+    flex: 0 0 auto;
+    width: 250px;
     text-align: left;
     cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
     position: relative;
+
+    &:not(:first-child) {
+        margin-left: 20px;
+    }
+
+    img {
+        border-radius: 2px;
+    }
+
+    img, a {
+        user-select: none;
+        -webkit-user-drag: none;
+    }
 
     a {
         color: black;
         text-decoration: none;
     }
 
-    img {
-        object-fit: scale-down;
-    }
-
-    &:not(:first-child) {
-        margin-left: 20px;
-    }
-
     div.information {
-        position: relative;
+        width: 100%;
+        position: absolute;
         background-color: $yellow;
-        padding: 5px;
-        top: -30px;
-        left: 50%;
-        transform: translate(-50%, 0);
+        bottom: 0px;
+        padding: 12px;
+        //top: -20px;
 
-        div:first-child {
-            font-size: 13px;
-            font-weight: 600;
-            white-space: pre;
+        &.person {
+            div {
+                text-align: right;
+                flex: 1;
+
+                h3 {
+                    margin: 0;
+                    font-weight: 300;
+                }
+            }
         }
 
-        div:nth-child(2) {
-            text-align: right;
+        div:first-child {
+            font-size: 12px;
+            font-weight: 600;
+            white-space: pre;
             flex: 1;
+            align-items: center;
+            display: flex;
+            justify-content: flex-start;
 
             h3 {
                 margin: 0;
-                font-weight: 300;
+                font-weight: bold;
                 font-size: 12px;
+                color: $white;
             }
+        }
+
+        div:nth-child(2) {
+            flex: 1;
+            align-items: center;
+            display: flex;
+            justify-content: flex-end;
+
+            span {
+                margin: 0;
+                font-weight: 900;
+                font-size: 20px;
+                color: $white;
+            }
+
         }
     }
 
-    .online{
-        background-color: #b3d4fc !important;
+    .online {
+        background-color: #0069FF !important;
     }
 }
 

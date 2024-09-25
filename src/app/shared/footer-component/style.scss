@@ -3,17 +3,17 @@
 div.footer {
     background-color: $footer_background;
     color: white;
-    
+
     div.container {
         &.information {
-            padding: 50px 0;
+            padding: 40px 0;
             justify-content: space-around;
 
             div.logo {
                 align-items: center;
                 flex-flow: column;
                 flex: 1;
-
+                margin-top: -28px;
                 div{
                     margin-top: -20px;
 
@@ -24,11 +24,14 @@ div.footer {
             }
 
             div.navigation {
-                flex: 1;
+                flex: 4;
+                display: flex;
+                gap: 60px;
 
                 div {
                     flex-direction: column;
-                    flex: 1;
+                    //flex: 1;
+                    display: flex;
 
                     &.bordered {
                         ul {
@@ -92,10 +95,19 @@ div.footer {
 
 
 @media (max-width: 800px) {
+
+    div.footer div.container.information div.logo {
+        align-items: flex-start;
+        padding: 0px 40px;
+    }
+
+    div.footer div.container.information div.navigation {
+        gap: 40px;
+    }
+
     div.footer {
 
         div.logo {
-            justify-content: center;
             margin-bottom: 20px;
         }
 
@@ -106,7 +118,14 @@ div.footer {
         }
 
         div.navigation {
+            padding: 0px 40px;
             width: 100% !important;
+            .bordered {
+                align-items: flex-start;
+                li {
+                    text-align: left;
+                }
+            }
         }
 
         div.rights {

@@ -1,105 +1,117 @@
 <div class="footer">
-    <div class="container information flex">
-        <div class="logo flex">
-            <img loading="lazy" decoding="async" class="contain" src="/assets/images/logo-banner-white.png" width="210px"
-                height="130px" alt="logo" />
-                <div>
-                 <a href="https://www.facebook.com/znanieplusbg" target="_blank"><img loading="lazy" decoding="async" class="contain" src="/assets/images/fb.png" width="60px"
-                    height="60px" /></a>
-                <a href="https://www.linkedin.com/company/znanieplus/" target="_blank">   <img loading="lazy" decoding="async" class="contain" src="/assets/images/linkedin.png" width="60px"
-                    height="60px" /></a>
-                <a href="https://www.instagram.com/znanieplus.bg/" target="_blank">    <img loading="lazy" decoding="async" class="contain" src="/assets/images/insta.png" width="60px"
-                    height="60px" /></a>
-                </div>
-        </div>
+  <div class="container information flex">
+    <div class="logo flex">
+      <img loading="lazy" decoding="async" class="contain" src="/assets/images/logo-banner-white.png" width="210px"
+           height="130px" alt="logo"/>
+      <div>
 
-        <div class="navigation flex">
-            <div class="bordered flex">
-                <ul>
-                    <li>
-                        <a routerLink="/card" class="card-desktop" *ngIf="userProvider.user()?.isAdmin">
-                            Провери карта
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/card" class="card-mobile" *ngIf="userProvider.user()?.isAdmin">
-                            Провери карта
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/" fragment="home">
-                            Начало
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/partners">
-                          Обекти
-                        </a>
-                    </li>
-                    <li *ngIf="userProvider.isLogedIn()">
-                        <a routerLink="/petrol">
-                            Петрол
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/companies">
-                          Работодатели
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/" fragment="contacts">
-                            Контакти
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/profile">
-                            {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
-
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="flex">
-                <b>Мобилно приложение:</b>
-                    <a href="https://apps.apple.com/bg/app/%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B5/id6469451734">
-                        <img loading="lazy" decoding="async" class="app-img" src="/assets/images/app-store.png" width="150px"
-                        />
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=bg.znanieplus.app&pcampaignid=web_share">
-                        <img loading="lazy" decoding="async" class="app-img" src="/assets/images/play-store.png" width="150px"
-                        />
-                    </a>
-                <div class="navigation flex">
-                    <div class="bordered flex">
-                        <ul>
-                            <li>
-                                <a routerLink="/cookies">
-                                    Използване на бисквитки
-                                </a>
-                            </li>
-
-                            <li>
-                                <a routerLink="/privacy">
-                                    Уведомление за поверителност
-                                </a>
-                            </li>
-
-                            <li>
-                                <a routerLink="/terms">
-                                    Условия за ползване
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <a href="https://www.linkedin.com/company/znanieplus/" target="_blank"> <img loading="lazy" decoding="async"
+                                                                                     class="contain"
+                                                                                     src="/assets/images/linkedin.png"
+                                                                                     width="32px"
+                                                                                     height="32px"/></a>
+        <a href="https://www.facebook.com/znanieplusbg" target="_blank"><img loading="lazy" decoding="async"
+                                                                             class="contain" src="/assets/images/fb.png"
+                                                                             width="32px"
+                                                                             height="32px"/></a>
+        <a href="https://www.instagram.com/znanieplus.bg/" target="_blank"> <img loading="lazy" decoding="async"
+                                                                                 class="contain"
+                                                                                 src="/assets/images/insta.png"
+                                                                                 width="32px"
+                                                                                 height="32px"/></a>
+      </div>
     </div>
-    <div class="rights">
-        <h4>
-            &copy; {{getDate()}} ЗНАНИЕ+ | <a href="https://www.prime-code.com" target="_blank"
-                rel="noreferrer">Designed by
-                Prime Code</a>
-        </h4>
+
+    <div class="navigation flex">
+      <div class="bordered flex">
+        <ul>
+          <li>
+            <a routerLink="/card" class="card-desktop" *ngIf="userProvider.user()?.isAdmin">
+              Провери карта
+            </a>
+          </li>
+          <li>
+            <a routerLink="/card" class="card-mobile" *ngIf="userProvider.user()?.isAdmin">
+              Провери карта
+            </a>
+          </li>
+          <li>
+            <a routerLink="/" fragment="home">
+              Начало
+            </a>
+          </li>
+          <li>
+            <a routerLink="/partners">
+              Обекти
+            </a>
+          </li>
+          <li *ngIf="userProvider.isLogedIn()">
+            <a routerLink="/petrol">
+              Петрол
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bordered flex">
+        <ul>
+          <li>
+            <a routerLink="/companies">
+              Работодатели
+            </a>
+          </li>
+          <li>
+            <a routerLink="/" fragment="contacts">
+              Контакти
+            </a>
+          </li>
+          <li>
+            <a routerLink="/profile">
+              {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
+
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bordered flex">
+        <ul>
+          <li>
+            <a routerLink="/cookies">
+              Използване на бисквитки
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/privacy">
+              Уведомление за поверителност
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/terms">
+              Условия за ползване
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="flex">
+        <a href="https://apps.apple.com/bg/app/%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B5/id6469451734">
+          <img loading="lazy" decoding="async" class="app-img" src="/assets/images/app-store.png" width="150px"
+          />
+        </a>
+      </div>
+      <div class="flex">
+        <a href="https://play.google.com/store/apps/details?id=bg.znanieplus.app&pcampaignid=web_share">
+          <img loading="lazy" decoding="async" class="app-img" src="/assets/images/play-store.png" width="150px"
+          />
+        </a>
+      </div>
     </div>
+  </div>
+  <div class="rights">
+    <h4>
+      &copy; {{ getDate() }} ЗНАНИЕ+ | <a href="https://www.prime-code.com" target="_blank"
+                                          rel="noreferrer">Designed by
+      Prime Code</a>
+    </h4>
+  </div>
 </div>

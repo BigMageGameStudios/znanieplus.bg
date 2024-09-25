@@ -1,6 +1,18 @@
 @import "variables";
 @import "fonts";
 
+
+
+// Manipulate initial background color
+.mdc-text-field--filled {
+    background-color: transparent !important;
+}
+
+// Manipulate background color on hover and focus
+.mat-mdc-form-field-focus-overlay {
+    background-color: transparent !important;
+}
+
 app-root {
     display: flex;
     min-height: 100%;
@@ -48,7 +60,7 @@ app-root {
 
 .container {
     width: 85vw;
-    max-width: 1100px;
+    max-width: 1512px;
     margin: 0 auto;
 }
 
@@ -121,8 +133,52 @@ h2.title {
     display: flex;
     flex: 1;
 }
+
+.section-padding {
+    padding: 40px 0px;
+}
+
+.duotone-text {
+    font-size: 75px;
+    line-height: 69px;
+    color: $gray;
+    font-weight: 900;
+    &.small {
+        font-size: 32px;
+        line-height: 44px;
+        span {
+            font-size: 32px;
+            color: $yellow;
+        }
+    }
+    span {
+        font-size: 80px;
+        color: $yellow;
+    }
+}
+
 .yellow-bg {
     background-color: $yellow-alpha;
+}
+
+.gray-bg {
+    background-color: $gray;
+}
+
+.section-spacing {
+    margin: 0px 0px 80px 0px;
+}
+
+.section-top-spacing {
+    margin-top: 80px;
+}
+
+.top-spacing {
+    margin-top: 60px;
+}
+
+.light-gray-bg {
+    background-color: $light-gray;
 }
 
 .black {
@@ -201,6 +257,29 @@ div.flex-center{
     font-optical-sizing: auto;
 }
 
+.roboto {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.button {
+    background-color: $yellow;
+    color: $white;
+    padding: 12px 32px;
+    border-radius: 8px;
+    &a {
+        color: white;
+    }
+
+    &button {
+        border: none;
+    }
+
+    &.mobile {
+        display: none;
+    }
+}
+
 @media (max-width: 800px) {
     div.cookies {
         flex-direction: column;
@@ -213,4 +292,92 @@ div.flex-center{
     div.container {
         width: 100vw !important;
     }
+}
+
+
+@media (max-width: 600px) {
+    #about-us {
+        div {
+            flex-direction: column;
+            .title {
+                .duotone-text {
+                    font-size: 53px;
+                    line-height: 49px;
+                    color: $gray;
+                    font-weight: 900;
+                    &.small {
+                        font-size: 32px;
+                        line-height: 44px;
+                        span {
+                            font-size: 32px;
+                            color: $yellow;
+                        }
+                    }
+                    span {
+                        font-size: 56px;
+                        color: $yellow;
+                    }
+                }
+            }
+
+            .p-text {
+                text-align: left;
+            }
+        }
+    }
+
+    .section {
+        .flex-1 {
+            padding: 0px 24px;
+
+            .ul-holder {
+                flex-direction: column;
+                ul {
+                    margin: 0px;
+                }
+            }
+        }
+    }
+
+    .container-row {
+        flex-direction: column;
+    }
+
+    .info.section {
+        .list {
+            padding: 0px 24px;
+            flex-direction: column;
+        }
+    }
+
+    .section-top-spacing {
+        margin-top: 0px;
+    }
+
+    .image-section {
+        img {
+            width: 100vw;
+        }
+    }
+
+    .button {
+        display: none;
+        &a {
+            color: white;
+        }
+
+        &button {
+            border: none;
+        }
+
+        &.mobile {
+            display: inherit;
+            align-self: center;
+        }
+    }
+
+    div.list div.item {
+        margin: 0 auto;
+    }
+
 }

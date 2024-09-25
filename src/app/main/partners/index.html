@@ -1,48 +1,58 @@
 <div class="container">
-  <div class="title flex">
-    <h2 class="title">
-      <span>Нашите обекти</span>
+  <div class="flex flex-center section-title">
+    <h2 class="title font">
+      <span class="duotone-text small"><span>Обекти</span></span>
     </h2>
-    <mat-checkbox id="onlinecheck"
-                  [(ngModel)]="online"
-                  (change)="onSort()">
-      Онлайн обекти
-    </mat-checkbox>
-    <mat-form-field color="accent">
-      <mat-label>град</mat-label>
-      <mat-select [(ngModel)]="city"
-                  (selectionChange)="onSort()">
-        <mat-option *ngFor="let item of cities | keyvalue"
-                    [value]="item.value.id">
-          {{ item.value.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field color="accent">
-      <mat-label>Филтрирай по</mat-label>
-      <mat-select [(ngModel)]="filter"
-                  (selectionChange)="onSort()">
-        <mat-option *ngFor="let item of filters | keyvalue"
-                    [value]="item.value.id">
-          {{ item.value.type }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field color="accent"
-    >
-      <input
-        matInput
-        [(ngModel)]="filterText"
-        placeholder="търси:"
-        (keyup)="onFilter()"
-      >
-    </mat-form-field>
   </div>
-  <div>
-    <p><span class="legend"></span>физически обект</p>
-    <p><span class="legend online"></span>онлайн обект</p>
 
+  <div class="section-row">
+    <div>
+      <mat-checkbox id="onlinecheck"
+                    [(ngModel)]="online"
+                    (change)="onSort()">
+        Онлайн обекти
+      </mat-checkbox>
+    </div>
+    <div>
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>град</mat-label>
+        <mat-select [(ngModel)]="city"
+                    (selectionChange)="onSort()">
+          <mat-option *ngFor="let item of cities | keyvalue"
+                      [value]="item.value.id">
+            {{ item.value.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field color="accent" appearance="outline">
+        <mat-label>Филтрирай по</mat-label>
+        <mat-select [(ngModel)]="filter"
+                    (selectionChange)="onSort()">
+          <mat-option *ngFor="let item of filters | keyvalue"
+                      [value]="item.value.id">
+            {{ item.value.type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field color="accent" appearance="outline">
+        <input
+          matInput
+          [(ngModel)]="filterText"
+          placeholder="търси:"
+          (keyup)="onFilter()"
+        >
+      </mat-form-field>
+    </div>
   </div>
+</div>
+
+<div class="section light-gray-bg font section-padding">
+  <div class="container">
   <div class="list flex">
     <partner-component *ngFor="let partner of filtered; trackBy:track"
                        [partner]="partner">
@@ -62,24 +72,6 @@
       Зареди още...
     </a>
   </div>
-  <div class="information flex">
-    <div class="characters">
-      <div class="flex align-center">
-        <div class="plus-one">
-          <img loading="lazy"
-               decoding="async"
-               src="/assets/images/4521868331556258219.svg"
-               width="30px"
-               height="30px"
-               alt="partner"/>
-          <span>
-                        +1
-                    </span>
-        </div>
-        Обекти, при които
-        отстъпката важи и за придружител, са отбелязани със специален символ.
-      </div>
-    </div>
   </div>
 </div>
 <contacts-component></contacts-component>

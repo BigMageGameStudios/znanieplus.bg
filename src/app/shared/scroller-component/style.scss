@@ -15,6 +15,9 @@ div.box {
             width: 250px;
             text-align: left;
             cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
 
             &:not(:first-child) {
                 margin-left: 20px;
@@ -35,12 +38,12 @@ div.box {
             }
 
             div.information {
-                width: 220px;
-                left: 20px;
-                position: relative;
+                width: 100%;
+                position: absolute;
                 background-color: $yellow;
-                padding: 5px;
-                top: -20px;
+                bottom: 0px;
+                padding: 12px;
+                //top: -20px;
 
                 &.person {
                     div {
@@ -58,17 +61,30 @@ div.box {
                     font-size: 12px;
                     font-weight: 600;
                     white-space: pre;
+                    flex: 1;
+                    align-items: center;
+                    display: flex;
+                    justify-content: flex-start;
+                    h3 {
+                        margin: 0;
+                        font-weight: bold;
+                        font-size: 12px;
+                        color: $white;
+                    }
                 }
 
                 div:nth-child(2) {
-                    text-align: right;
                     flex: 1;
-
-                    h3 {
+                    align-items: center;
+                    display: flex;
+                    justify-content: flex-end;
+                    span {
                         margin: 0;
-                        font-weight: 300;
-                        font-size: 12px;
+                        font-weight: 900;
+                        font-size: 20px;
+                        color: $white;
                     }
+
                 }
             }
         }

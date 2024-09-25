@@ -1,31 +1,36 @@
 <div class="container">
-    <div class="title flex">
-        <h2 class="title">
-            <span>Работодатели</span>
-        </h2>
-    </div>
-    <div>
-        <p>Част от работодателите, които ни се довериха и предлагат ЗНАНИЕ+ на своите служители.</p>
-    </div>
-    <div class="list flex">
-        <company-component *ngFor="let company of companies; trackBy:track"
-                           [company]="company">
+  <div class="flex flex-center section-title">
+    <h2 class="title font">
+      <span class="duotone-text small"><span>Работодатели</span></span>
+    </h2>
+  </div>
+  <div class="flex flex-center section-title">
+    <p>Част от работодателите, които ни се довериха и предлагат ЗНАНИЕ+ на своите служители.</p>
+  </div>
+</div>
 
-        </company-component>
-        <h3 class="error"
-            *ngIf="companies.length == 0">
-            Няма намерени резултати, моля опитайте по-късно !
-        </h3>
+<div class="section font section-padding">
+  <div class="container">
+    <div class="list flex">
+      <company-component *ngFor="let company of companies; trackBy:track"
+                         [company]="company">
+
+      </company-component>
+      <h3 class="error"
+          *ngIf="companies.length == 0">
+        Няма намерени резултати, моля опитайте по-късно !
+      </h3>
     </div>
     <div class="right">
-        <a class="load-more"
-           mat-button
-           (click)="onLoadMore()"
-           *ngIf="!loaded"
-           aria-label="load more">
-            Зареди още...
-        </a>
+      <a class="load-more"
+         mat-button
+         (click)="onLoadMore()"
+         *ngIf="!loaded"
+         aria-label="load more">
+        Зареди още...
+      </a>
     </div>
+  </div>
 </div>
 <contacts-component></contacts-component>
 <footer-component></footer-component>

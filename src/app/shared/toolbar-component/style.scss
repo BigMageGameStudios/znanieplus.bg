@@ -78,16 +78,7 @@ div.toolbar {
                     }
 
                     &.active.activated {
-                        &::before {
-                            content: " ";
-                            background-color: $yellow;
-                            width: 70%;
-                            min-width: calc(100% - 15px);
-                            height: 7px;
-                            position: absolute;
-                            bottom: 5px;
-                            left: 0;
-                        }
+                        color: $yellow;
                     }
                 }
 

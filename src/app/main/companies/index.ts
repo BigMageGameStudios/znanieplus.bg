@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { FooterModule } from 'src/app/shared/footer-component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {PartnerModule} from "../../shared/partner-component";
 
 
 @NgModule({
@@ -18,14 +19,15 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: '', component: CompaniesComponent }]),
+    RouterModule.forChild([{path: '', component: CompaniesComponent}]),
     FormsModule,
     MatSelectModule,
     MatButtonModule,
     ContactsModule,
     CompanyModule,
     FooterModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    PartnerModule
   ]
 })
 

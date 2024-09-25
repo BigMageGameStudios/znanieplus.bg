@@ -55,16 +55,7 @@ div.drawer {
                     }
 
                     &.active.activated {
-                        &::before {
-                            content: " ";
-                            background-color: rgb(255 209 69 / 65%);
-                            width: 70%;
-                            min-width: calc(100% - 15px);
-                            height: 5px;
-                            position: absolute;
-                            bottom: 2px;
-                            left: 0;
-                        }
+                        color: $yellow;
                     }
                 }
             }

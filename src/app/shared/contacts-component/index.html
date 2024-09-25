@@ -1,129 +1,127 @@
 <div class="gray">
-    <div class="container">
-        <div class="contacts">
-            <form
-                [formGroup]="form"
-                (ngSubmit)="onSubmit()"
-                [class.submitted]="submitted"
-                #formDirective="ngForm"
-            >
-                <div class="center">
-                    <h2 class="title">
-                        <span>Свържи се с нас</span>
-                    </h2>
-                    <p class="intro">
-                        Поискай от нас индивидуална оферта, кандидатствай за одобрение в партньорската ни
-                        мрежа или просто сподели какво мислиш за ЗНАНИЕ+
-                    </p>
+  <div class="container">
+    <div class="contacts">
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        [class.submitted]="submitted"
+        #formDirective="ngForm"
+      >
 
-                </div>
-                <div class="form flex">
-                    <div class="right">
-                        <div class="relative margin">
-                            <label
-                                class="input"
-                                for="name"
-                            >Име*</label>
-                            <input
-                                [class.error]="form.get('name').invalid"
-                                type="text"
-                                placeholder="Име и фамилия"
-                                autocomplete="nope"
-                                formControlName="name"
-                                aria-labelledby="name"
-                            />
-                        </div>
-                        <div class="relative margin">
-                            <label
-                                class="input"
-                                for="email"
-                            >Имейл*</label>
-                            <input
-                                [class.error]="form.get('email').invalid"
-                                type="email"
-                                placeholder="Имейл адрес"
-                                autocomplete="nope"
-                                formControlName="email"
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <div class="relative margin">
-                            <label
-                                class="input"
-                                for="phone"
-                            >Телефон*</label>
-                            <input
-                                [class.error]="form.get('phone').invalid"
-                                type="tel"
-                                placeholder="Телефонен номер"
-                                autocomplete="nope"
-                                formControlName="phone"
-                            />
-                        </div>
-                        <div class="relative margin">
-                            <label
-                                class="input"
-                                for="message"
-                            >Съобщение*</label>
-                            <textarea
-                                [class.error]="form.get('message').invalid"
-                                placeholder="Съобщение"
-                                rows="5"
-                                autocomplete="nope"
-                                formControlName="message"
-                            ></textarea>
-                        </div>
-                        <div class="relative flex checkbox">
-                            <input
-                                id="checkbox"
-                                type="checkbox"
-                                class="agreed"
-                                formControlName="agreed"
-                            />
-                            <label
-                                class="checkbox"
-                                for="checkbox"
-                                [class.error]="form.get('agreed').invalid"
-                            >Съгласен съм с обработката на личната ми информация в съответствие с
-                                <a
-                                    class="link"
-                                    href="/terms"
-                                    target="_blank"
-                                >Декларацията и уведомлението за поверителност.</a></label>
-                        </div>
-                        <button
-                            matRipple
-                            class="primary-btn"
-                            type="submit"
-                            [disabled]="loading"
-                        >Изпрати</button>
-                    </div>
-
-                    <div class="contact">
-                        <h3>Офис</h3>
-                        <a
-                            class="margin link block"
-                            href="https://goo.gl/maps/yTDLsgzHP3BapHS58"
-                            target="_blank"
-                        >
-                            гр. София, ул. Загоре 3
-                        </a>
-                        <a
-                            class="link block"
-                            href="tel:+359898564849"
-                        >
-                            +359 898 564 849
-                        </a>
-                        <a
-                            class="margin link block"
-                            href="mailto:office@znanieplus.bg"
-                        >
-                            office@znanieplus.bg
-                        </a>
-                    </div>
-                </div>
-            </form>
+        <div class="flex flex-center">
+          <h2 class="title font">
+            <span class="duotone-text small"><span>Свържи се с нас</span></span>
+          </h2>
         </div>
+
+        <div class="center">
+          <p class="intro">
+            Поискай от нас индивидуална оферта, кандидатствай за одобрение в партньорската ни мрежа или<br/> просто
+            сподели какво мислиш за ЗНАНИЕ+
+          </p>
+
+        </div>
+        <div class="form flex">
+          <div>
+            <div class="relative">
+              <input
+                [class.error]="form.get('name').invalid"
+                type="text"
+                placeholder="Име и фамилия"
+                autocomplete="nope"
+                formControlName="name"
+                aria-labelledby="name"
+              />
+            </div>
+            <div class="relative">
+              <input
+                [class.error]="form.get('email').invalid"
+                type="email"
+                placeholder="Имейл адрес"
+                autocomplete="nope"
+                formControlName="email"
+              />
+            </div>
+            <div class="relative">
+              <input
+                [class.error]="form.get('phone').invalid"
+                type="tel"
+                placeholder="Телефонен номер"
+                autocomplete="nope"
+                formControlName="phone"
+              />
+            </div>
+            <button
+              matRipple
+              class="button desktop"
+              type="submit"
+              [disabled]="loading"
+            >Изпрати
+            </button>
+          </div>
+          <div>
+
+            <div class="relative">
+
+              <textarea
+                [class.error]="form.get('message').invalid"
+                placeholder="Съобщение"
+                rows="5"
+                autocomplete="nope"
+                formControlName="message"
+              ></textarea>
+            </div>
+            <div class="relative flex checkbox">
+              <input
+                id="checkbox"
+                type="checkbox"
+                class="agreed"
+                formControlName="agreed"
+              />
+              <label
+                class="checkbox"
+                for="checkbox"
+                [class.error]="form.get('agreed').invalid"
+              >Съгласен съм с обработката на личната ми информация в съответствие с
+                <a
+                  class="link"
+                  href="/terms"
+                  target="_blank"
+                >Декларацията и уведомлението за поверителност.</a></label>
+            </div>
+            <button
+              matRipple
+              class="button mobile"
+              type="submit"
+              [disabled]="loading"
+            >Изпрати
+            </button>
+          </div>
+
+<!--          <div class="contact">-->
+<!--            <h3>Офис</h3>-->
+<!--            <a-->
+<!--              class="margin link block"-->
+<!--              href="https://goo.gl/maps/yTDLsgzHP3BapHS58"-->
+<!--              target="_blank"-->
+<!--            >-->
+<!--              гр. София, ул. Загоре 3-->
+<!--            </a>-->
+<!--            <a-->
+<!--              class="link block"-->
+<!--              href="tel:+359898564849"-->
+<!--            >-->
+<!--              +359 898 564 849-->
+<!--            </a>-->
+<!--            <a-->
+<!--              class="margin link block"-->
+<!--              href="mailto:office@znanieplus.bg"-->
+<!--            >-->
+<!--              office@znanieplus.bg-->
+<!--            </a>-->
+<!--          </div>-->
+        </div>
+      </form>
     </div>
+  </div>
 </div>
