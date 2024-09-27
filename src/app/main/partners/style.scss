@@ -169,6 +169,7 @@ div.plus-one {
             width: calc(100% * (1/2) - 10px) !important;
         }
     }
+
     #onlinecheck{
         margin-left: -10px !important;
         display: flex;
@@ -176,6 +177,12 @@ div.plus-one {
     .legend{
         margin-left: 10px;
     }
+
+
+    div.container .section-title {
+        margin: 20px 0px;
+    }
+
 
 }
 
