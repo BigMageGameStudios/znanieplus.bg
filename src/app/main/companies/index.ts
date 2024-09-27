@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { FooterModule } from 'src/app/shared/footer-component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {PartnerModule} from "../../shared/partner-component";
 
 
 @NgModule({
@@ -26,8 +25,7 @@ import {PartnerModule} from "../../shared/partner-component";
     ContactsModule,
     CompanyModule,
     FooterModule,
-    MatCheckboxModule,
-    PartnerModule
+    MatCheckboxModule
   ]
 })
 

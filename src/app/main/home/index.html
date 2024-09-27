@@ -32,7 +32,7 @@
 
       <div class="flex-1">
         <p class="p-text">
-          Представяме ви първата социална придобивка в България с <b>фокус върху знанието, културата и изкуствата.</b>
+          Представяме ви първата социална придобивка в България с фокус върху <b>културата, образованието, изкуствата и повишаване квалификацията на служителите.</b>
         </p>
       </div>
 
@@ -73,16 +73,20 @@
         <div>
           <ul>
             <li class="list-item">Театри</li>
-            <li class="list-item">Музеи</li>
-            <li class="list-item">Галерии</li>
+            <li class="list-item">Кина</li>
             <li class="list-item">Книжарници</li>
+            <li class="list-item">Музеи</li>
+            <li class="list-item">Опери</li>
+            <li class="list-item">Галерии</li>
           </ul>
         </div>
         <div>
           <ul>
             <li class="list-item">Чуждоезикови школи</li>
+            <li class="list-item">Обучителни центрове</li>
             <li class="list-item">Академии за професионално и личностно развитие</li>
             <li class="list-item">Центрове за творчески занимания</li>
+            <li class="list-item">Културни центрове</li>
           </ul>
         </div>
       </div>
@@ -278,9 +282,12 @@
           <div class="actions">
             <a
               class="button"
-              routerLink="/"
+              [routerLink]="[]"
+              [relativeTo]="activatedRoute"
+              [state]="{ disableScroll: true }"
+              [queryParams]="{ dialog: dialogs.offer }"
             >
-              <span>Заяви своята карта</span>
+              <span>Поискай оферта</span>
             </a>
           </div>
         </div>
@@ -597,15 +604,15 @@
   >
     <div class="list-counters">
       <div class="counter-item">
-        <span>500+</span>
+        <span>140+</span>
         <span>Обекта, в които можеш да използваш картата ЗНАНИЕ+</span>
       </div>
       <div class="counter-item">
-        <span>50+</span>
+        <span>30+</span>
         <span>Населени места</span>
       </div>
       <div class="counter-item">
-        <span>500+</span>
+        <span>200+</span>
         <span>Компании, които ни се довериха</span>
       </div>
     </div>

@@ -13,6 +13,11 @@ import { Environment } from 'src/globals';
 
 export class HomeComponent{
 
+  dialogs = {
+    offer: 'offer'
+  }
+  activatedRoute = inject(ActivatedRoute);
+
   private SEOProvider= inject(SEOProvider);
   private ActivatedRoute= inject(ActivatedRoute);
   private window: Window = inject(WINDOW);

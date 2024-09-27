@@ -229,6 +229,7 @@ div.container {
       display: flex;
       flex: 1;
       flex-direction: row;
+      align-items: center;
 
       .price {
         display: flex;
@@ -238,12 +239,12 @@ div.container {
         .price-text {
           position: relative;
 
-          &:after {
-            content: 'без ДДС';
-            position: absolute;
-            bottom: -8px;
-            right: 88px;
-          }
+          //&:after {
+          //  content: 'без ДДС';
+          //  position: absolute;
+          //  bottom: -8px;
+          //  right: 88px;
+          //}
         }
 
         > span:nth-child(1) {
