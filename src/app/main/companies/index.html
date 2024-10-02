@@ -7,6 +7,25 @@
   <div class="flex flex-center section-title">
     <p>Част от работодателите, които ни се довериха и предлагат ЗНАНИЕ+ на своите служители.</p>
   </div>
+  <div class="flex flex-center">
+    <a
+      class="image-button in-line offer"
+      matRipple
+      [routerLink]="[]"
+      [relativeTo]="activatedRoute"
+      [state]="{ disableScroll: true }"
+      [queryParams]="{ dialog: dialogs.offer }"
+    >
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/offernew-dark.svg"
+        width="100%"
+        height="100%"
+        alt="partner"
+      />
+    </a>
+  </div>
 </div>
 
 <div class="section font section-padding">

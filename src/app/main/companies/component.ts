@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {Component, ChangeDetectionStrategy, ChangeDetectorRef, inject} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyProvider } from '../providers';
 import { SEOProvider } from 'src/app/providers';
 import { IObjectKeys } from 'src/app/helpers/interfaces';
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'companies-page',
@@ -20,6 +21,10 @@ export class CompaniesComponent {
   loaded = false;
   online = false;
   page = 1;
+  dialogs = {
+    offer: 'offer'
+  }
+  activatedRoute = inject(ActivatedRoute);
 
   constructor(
     private ActivatedRoute: ActivatedRoute,

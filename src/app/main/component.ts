@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation, inject } from '@
 import { fadeAnimation } from '../helpers/animations';
 import { MatDialog } from '@angular/material/dialog';
 import { OfferDialog } from '../shared/offer-dialog';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {ActivatedRoute, ActivationEnd, NavigationEnd, Params, Router, RouterEvent} from '@angular/router';
 
 @Component({
   selector: 'main-page',
@@ -22,8 +22,17 @@ export class MainComponent {
   router = inject(Router);
   dialog = inject(MatDialog);
   activatedRoute = inject(ActivatedRoute);
+  hideOffer: boolean = false;
 
   constructor() {
+
+    this.router.events.subscribe((value) => {
+      if (value instanceof NavigationEnd) {
+        this.hideOffer = !value.url.startsWith('/companies')
+      }
+    })
+
+
     this.activatedRoute.queryParams.subscribe((params) => {
       this.check(params);
     });

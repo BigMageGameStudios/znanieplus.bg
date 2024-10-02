@@ -12,6 +12,15 @@ div.gray {
             padding: 10px;
             text-align: center;
             font-weight: 400;
+            margin-bottom: 0px;
+        }
+
+        p.contacts-info-details {
+            margin: 0;
+            a {
+                text-decoration: none;
+                color: $title-black;
+            }
         }
 
         div.form {

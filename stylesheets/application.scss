@@ -341,6 +341,10 @@ div.flex-center{
 
     .container-row {
         flex-direction: column;
+        gap: 0px;
+        ul {
+            margin: 0px;
+        }
     }
 
     .info.section {

@@ -8,8 +8,38 @@ video {
 
 
 div.container {
+
+  .image-row-data {
+    padding-top: 40px;
+    max-width: 1058px;
+
+    h4 {
+      font-size: 20px;
+    }
+    p.p-text {
+      font-size: 16px;
+    }
+  }
+
+  .row-inline-image {
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 199px;
+      height: 147px;
+    }
+  }
+
+  .max-25 {
+    max-width: 30%;
+    p, li {
+      font-size: 20px;
+    }
+  }
   ul li.list-item {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     color: $gray;
   }
@@ -193,6 +223,12 @@ div.container {
         text-align: center;
       }
     }
+  }
+}
+
+#about-us {
+  .p-text {
+    margin: 0;
   }
 }
 
@@ -443,6 +479,20 @@ mat-expansion-panel {
 
 @media (max-width: 800px) {
 
+  div.container {
+
+    .max-25 {
+      max-width: 100%;
+      padding: 0px 16px;
+    }
+
+    .image-row-container {
+      flex-direction: column;
+      padding: 0px 16px;
+    }
+
+  }
+
   #about-cover {
     display: none;
   }
@@ -481,12 +531,6 @@ mat-expansion-panel {
       h2 {
         left: 0 !important;
       }
-    }
-  }
-
-  #about-us {
-    .p-text {
-      margin: 20px 0 0 0;
     }
   }
 
