@@ -157,7 +157,7 @@ div.plus-one {
   partner-component {
     width: calc(100% * (1 / 3) - 10px) !important;
   }
-  #onlinecheck {
+  #onlinecheck, #locationcheck {
     margin-left: -10px !important;
     display: flex;
   }
@@ -172,7 +172,7 @@ div.plus-one {
       width: calc(100% * (1 / 2) - 10px) !important;
     }
   }
-  #onlinecheck {
+  #onlinecheck, #locationcheck {
     margin-left: -10px !important;
     display: flex;
   }
@@ -233,7 +233,7 @@ div.plus-one {
     display: flex !important;
   }
 
-  #onlinecheck {
+  #onlinecheck, #locationcheck {
     margin-left: -10px !important;
     display: flex;
   }
