@@ -3,11 +3,14 @@
 div.item {
     flex: 0 0 auto;
     width: 250px;
+    height: 250px;
     text-align: left;
     cursor: pointer;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.15);
+    background-color: $white;
 
     &:not(:first-child) {
         margin-left: 20px;

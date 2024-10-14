@@ -7,6 +7,10 @@ a.offer.mat-ripple.image-button {
   }
 }
 
+div.list {
+  gap: 20px;
+}
+
 a.offer {
   &.in-line {
     cursor: pointer;
@@ -180,6 +184,12 @@ div.plus-one {
 
 
 @media (max-width: 550px) {
+  //div.list {
+  //  div.item.company {
+  //    height: 90px;
+  //  }
+  //}
+
   div.flex {
     display: block;
 
@@ -214,6 +224,9 @@ div.plus-one {
 
   div.flex {
     display: block;
+    &.flex-mobile {
+      display: flex;
+    }
   }
 
   div.align-center {

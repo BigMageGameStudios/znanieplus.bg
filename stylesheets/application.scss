@@ -396,6 +396,9 @@ div.flex-center{
     div.list div.item {
         margin: 0 auto;
         height: 250px;
+        &.item-company {
+            //height: 90px;
+        }
     }
 
 }
