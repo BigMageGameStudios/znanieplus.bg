@@ -12,7 +12,7 @@ import { Environment } from 'src/globals';
 export class ScrollerComponent {
 
   interval;
-  api_url = Environment.api_url;
+  api_url = Environment.images_url;
   @Input('data') data: Array<any>;
 
   step = 500;

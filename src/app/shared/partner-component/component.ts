@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Environment } from 'src/globals/config';
+import {IObjectKeys} from "../../helpers/interfaces";
 
 @Component({
   selector: 'partner-component',
@@ -10,9 +11,13 @@ import { Environment } from 'src/globals/config';
 
 export class PartnerComponent {
 
-  api_url = Environment.api_url;
+  api_url = Environment.images_url;
   @Input('partner') partner;
+  @Input() onClick: (partner: IObjectKeys) => void;
 
   constructor() { }
+  onPress () {
+    this.onClick(this.partner);
+  }
 
 }
