@@ -8,7 +8,7 @@ div.item {
   text-align: left;
   cursor: pointer;
   border-radius: 8px;
-  overflow: hidden;
+  //overflow: hidden;
   position: relative;
   box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.15);
   background-color: $white;
@@ -118,6 +118,23 @@ div.plus-one {
     object-fit: contain;
   }
 }
+
+.hover-info {
+  display: none;
+}
+div.item {
+  &:hover {
+    .hover-info {
+      display: block;
+      background-color: $white;
+      position: absolute;
+      bottom: calc(100% + 12px);
+      width: 460px;
+      padding: 12px;
+    }
+  }
+}
+
 
 @media (max-width: 550px) {
   div.item {

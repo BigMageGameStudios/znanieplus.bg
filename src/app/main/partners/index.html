@@ -7,23 +7,24 @@
 
   <div class="section-row">
     <div>
+      <div class="location-check" (click)="onLocation()">
+        <img src="/assets/images/location.png" alt="Обекти близо до мен">
+        <span *ngIf="!locationLoading && !location">Обекти близо до мен</span>
+        <span *ngIf="locationLoading && location">Локализиране...</span>
+        <span *ngIf="!locationLoading && location">Покажи всички</span>
+      </div>
+    </div>
+    <div>
       <mat-checkbox id="onlinecheck"
                     [(ngModel)]="online"
                     (change)="onSort()">
         Онлайн обекти
       </mat-checkbox>
     </div>
-    <div>
-      <mat-checkbox id="locationcheck" [disabled]="locationLoading"
-                    [(ngModel)]="location"
-                    (change)="onLocation()">
-        Близо до мен
-      </mat-checkbox>
-    </div>
-    <div>
+    <div [ngClass]="{'hide-on-mobile': location}">
       <mat-form-field color="accent" appearance="outline">
         <mat-label>град</mat-label>
-        <mat-select [(ngModel)]="city"
+        <mat-select [(ngModel)]="city" [disabled]="location"
                     (selectionChange)="onSort()">
           <mat-option *ngFor="let item of cities | keyvalue"
                       [value]="item.value.id">
@@ -33,10 +34,10 @@
       </mat-form-field>
     </div>
 
-    <div>
+    <div [ngClass]="{'hide-on-mobile': location}">
       <mat-form-field color="accent" appearance="outline">
         <mat-label>Филтрирай по</mat-label>
-        <mat-select [(ngModel)]="filter"
+        <mat-select [(ngModel)]="filter" [disabled]="location"
                     (selectionChange)="onSort()">
           <mat-option *ngFor="let item of filters | keyvalue"
                       [value]="item.value.id">
@@ -45,45 +46,44 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div>
+    <div [ngClass]="{'hide-on-mobile': location}">
       <mat-form-field color="accent" appearance="outline">
         <input
           matInput
           [(ngModel)]="filterText"
           placeholder="търси:"
           (keyup)="onFilter()"
+          [disabled]="location"
         >
       </mat-form-field>
     </div>
   </div>
 </div>
-
-<div class="container">
+<div class="container" [ngClass]="{'hide-on-all': online}">
   <div id="map"></div>
 </div>
 
-
 <div class="section light-gray-bg font section-padding">
   <div class="container">
-  <div class="list flex">
-    <partner-component *ngFor="let partner of filtered; trackBy:track"
-                       [partner]="partner" [onClick]="onPartnerClick.bind(this)">
+    <div class="list flex">
+      <partner-component *ngFor="let partner of filtered; trackBy: track"
+                         [partner]="partner" [onClick]="onPartnerClick.bind(this)">
 
-    </partner-component>
-    <h3 class="error"
-        *ngIf="partners.length == 0">
-      Няма намерени резултати, моля опитайте по-късно !
-    </h3>
-  </div>
-  <div class="right">
-    <a class="load-more"
-       mat-button
-       (click)="onLoadMore()"
-       *ngIf="!loaded"
-       aria-label="load more">
-      Зареди още...
-    </a>
-  </div>
+      </partner-component>
+      <h3 class="error"
+          *ngIf="filtered.length == 0">
+        Няма намерени резултати, моля опитайте по-късно !
+      </h3>
+    </div>
+    <div class="right">
+      <a class="load-more"
+         mat-button
+         (click)="onLoadMore()"
+         *ngIf="!loaded"
+         aria-label="load more">
+        Зареди още...
+      </a>
+    </div>
   </div>
 </div>
 <contacts-component></contacts-component>

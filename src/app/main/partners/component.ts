@@ -114,10 +114,12 @@ export class PartnersComponent {
             <img src="https://dashboard.znanieplus.bg/storage/${partner.logo}" alt="${partner.name}"/>
           </div>
           <div class="info-window-name">${partner.name}</div>
-          <div class="info-window-address">${partner.address}</div>
+          <div class="info-window-address">
+              <a href="https://www.google.com/maps/@${partner.latitude},${partner.longitude},18z" target="_blank">${partner.address}</a>
+          </div>
           <div class="info-actions-container">
             <div class="info-window-phone"><a href="tel:${partner.phone}">${partner.phone}</a></div>
-            <div class="info-window-website"><a href="${partner.website}" target="_blank">${partner.website}</a></div>
+            <div class="info-window-website"><a href="${partner.website}" target="_blank">Страница на обекта</a></div>
           </div>
           <div class="info-window-see-more-container">
             <div class="info-window-see-more-button">
@@ -152,6 +154,10 @@ export class PartnersComponent {
         anchor: marker,
         map: this.map,
       });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     }
   }
 
@@ -193,6 +199,9 @@ export class PartnersComponent {
   }
 
   async onLocation () {
+    if (this.locationLoading) return
+    this.online = false
+    this.location = !this.location;
     this.locationLoading = true
     if (!this.location) {
       this.filtered = this.partners
@@ -301,6 +310,7 @@ export class PartnersComponent {
   }
 
   onFilter() {
+    this.location = false
     this.filtered = this.partners.filter((item) => {
       const name = item.name.toLowerCase();
       if (name.includes(this.filterText.toLocaleLowerCase())) {
@@ -314,6 +324,7 @@ export class PartnersComponent {
   }
 
   onSort() {
+    this.location = false
     this.skip = 0;
     this.limit = 300;
     this.page = 1;

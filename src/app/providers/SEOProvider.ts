@@ -21,8 +21,8 @@ export class SEOProvider {
     private Meta = inject(Meta);
     private Title = inject(Title);
     private Router = inject(Router);
-    
-    private document: Document = inject(DOCUMENT);;
+
+    private document: Document = inject(DOCUMENT);
     private window: Window = inject(WINDOW);
     private platformId: Object = inject(PLATFORM_ID);
 

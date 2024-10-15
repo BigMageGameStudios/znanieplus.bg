@@ -20,7 +20,7 @@ a.offer {
     bottom: -80px;
     right: 25px;
     padding: 8px;
-    background-color: #ffd145;
+    background-color: $yellow;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -80,6 +80,15 @@ a.offer {
         }
     }
 
+    .info-window-address {
+        a {
+            text-decoration: none;
+            color: $rights_background;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+
     .info-actions-container {
         display: flex;
         flex-direction: column;
@@ -98,6 +107,52 @@ a.offer {
             flex: 1;
         }
     }
+}
+
+.info-window-see-more-container {
+    display: flex;
+    margin-top: 12px;
+    align-items: center;
+    justify-content: center;
+    .info-window-see-more-button {
+        background-color: $title-black;
+        color: $white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        &:hover {
+            opacity: 0.9;
+            cursor: pointer;
+        }
+        a {
+            text-decoration: none;
+            color: $white;
+        }
+    }
+}
+
+.gm-style-iw-ch {
+    display: none !important;
+}
+
+
+[role='dialog'] {
+    .gm-style-iw-chr {
+        padding-top: 12px !important;
+        button[aria-label='Close'] {
+            position: absolute !important;
+            right: 0 !important;
+            top: 0 !important;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+
+    .info-window-image {
+        display: none !important;
+    }
 
     .info-window-see-more-container {
         display: flex;
@@ -105,11 +160,11 @@ a.offer {
         align-items: center;
         justify-content: center;
         .info-window-see-more-button {
-            background-color: $yellow;
+            background-color: $title-black;
             color: $white;
-            padding: 12px 24px;
+            padding: 8px 12px;
             border-radius: 8px;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: bold;
             &:hover {
                 opacity: 0.9;
@@ -122,3 +177,5 @@ a.offer {
         }
     }
 }
+
+
