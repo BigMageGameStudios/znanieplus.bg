@@ -27,6 +27,11 @@
     display: none;
 }
 
+.hide-on-all-with-space {
+    opacity: 0;
+    pointer-events: none;
+}
+
 .cluster-content {
     width: 36px;
     height: 36px;
@@ -232,6 +237,10 @@ div.plus-one {
 @media (max-width: 550px) {
 
     .hide-on-mobile {
+        display: none;
+    }
+
+    .hide-on-all-with-space {
         display: none;
     }
 

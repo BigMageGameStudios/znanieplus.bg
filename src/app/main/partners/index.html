@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="flex flex-center section-title">
+  <div class="flex flex-center section-title" style="margin-top: 20px;">
     <h2 class="title font">
       <span class="duotone-text small"><span>Обекти</span></span>
     </h2>
@@ -7,7 +7,7 @@
 
   <div class="section-row">
     <div>
-      <div class="location-check" (click)="onLocation()">
+      <div class="location-check" (click)="onLocation()" id="scroll-to-element">
         <img src="/assets/images/location.png" alt="Обекти близо до мен">
         <span *ngIf="!locationLoading && !location">Обекти близо до мен</span>
         <span *ngIf="locationLoading && location">Локализиране...</span>
@@ -21,7 +21,7 @@
         Онлайн обекти
       </mat-checkbox>
     </div>
-    <div [ngClass]="{'hide-on-mobile': location}">
+    <div [ngClass]="{'hide-on-all-with-space': online, 'hide-on-mobile': (location)}">
       <mat-form-field color="accent" appearance="outline">
         <mat-label>град</mat-label>
         <mat-select [(ngModel)]="city" [disabled]="location"
@@ -34,7 +34,7 @@
       </mat-form-field>
     </div>
 
-    <div [ngClass]="{'hide-on-mobile': location}">
+    <div [ngClass]="{'hide-on-all-with-space': online, 'hide-on-mobile': (location)}">
       <mat-form-field color="accent" appearance="outline">
         <mat-label>Филтрирай по</mat-label>
         <mat-select [(ngModel)]="filter" [disabled]="location"
@@ -46,7 +46,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div [ngClass]="{'hide-on-mobile': location}">
+    <div [ngClass]="{'hide-on-all-with-space': online, 'hide-on-mobile': (location)}">
       <mat-form-field color="accent" appearance="outline">
         <input
           matInput

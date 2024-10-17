@@ -154,8 +154,16 @@ export class PartnersComponent {
         anchor: marker,
         map: this.map,
       });
+
+      const map = document.querySelector('#scroll-to-element')
+      const rect = map.getBoundingClientRect()
+      const currentPosition = window.scrollY
+
+      const scrollTo = currentPosition + (rect?.top ?? 0) - (rect?.height ?? 0)
+
+
       window.scrollTo({
-        top: 0,
+        top: scrollTo ?? 0,
         behavior: 'smooth'
       })
     }
@@ -311,6 +319,7 @@ export class PartnersComponent {
 
   onFilter() {
     this.location = false
+    console.log(this.partners)
     this.filtered = this.partners.filter((item) => {
       const name = item.name.toLowerCase();
       if (name.includes(this.filterText.toLocaleLowerCase())) {
