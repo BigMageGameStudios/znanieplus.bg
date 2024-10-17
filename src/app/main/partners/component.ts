@@ -25,6 +25,7 @@ export class PartnersComponent {
   markers: google.maps.marker.AdvancedMarkerElement[]
   cluster: MarkerClusterer
   partners: IObjectKeys[] = [];
+  AllPartners: IObjectKeys[] = [];
   isMapLoaded = false;
 
   skip = 0;
@@ -72,13 +73,14 @@ export class PartnersComponent {
 
     const {partners = [], types = [], cities = []} = ActivatedRoute.snapshot.data.data;
     const {page = 1} = ActivatedRoute.snapshot.queryParams;
+    this.AllPartners = partners.slice(0);
     this.partners = partners;
 
     this.page = Number(page) + 1;
     this.skip = Number(page) * this.limit;
     this.filters = types;
     this.cities = cities;
-    this.filtered = partners;
+    this.filtered = partners.filter(item => item.priority !== 0);
 
     this.filters.unshift({
       id: null,
@@ -240,7 +242,7 @@ export class PartnersComponent {
   }
 
   async onMapLoaded() {
-    this.markers = this.filtered.filter(partner => {
+    this.markers = this.AllPartners.filter(partner => {
       return Boolean(partner.latitude)
     }).map(partner => {
       this.mapCleanUp()
@@ -319,7 +321,6 @@ export class PartnersComponent {
 
   onFilter() {
     this.location = false
-    console.log(this.partners)
     this.filtered = this.partners.filter((item) => {
       const name = item.name.toLowerCase();
       if (name.includes(this.filterText.toLocaleLowerCase())) {
@@ -372,14 +373,16 @@ export class PartnersComponent {
         this.page++;
         this.skip += this.limit;
 
+        const presentAll = (!this.city && !this.filter)
+
         if (reset) {
-          this.partners = data;
-          this.filtered = data;
+          this.partners = presentAll ? data.filter(item => item.priority !== 0) : data;
+          this.filtered = presentAll ? data.filter(item => item.priority !== 0) : data;
           this.loaded = false;
         } else {
           const arr = [...this.partners, ...data];
-          this.partners = arr;
-          this.filtered = arr;
+          this.partners = presentAll ? arr.filter(item => item.priority !== 0) : arr;
+          this.filtered = presentAll ? arr.filter(item => item.priority !== 0) : arr;
         }
 
         if (data.length < this.limit) {
