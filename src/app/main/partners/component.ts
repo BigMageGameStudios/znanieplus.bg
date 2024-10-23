@@ -24,9 +24,6 @@ const loader = new Loader({
 export class PartnersComponent {
   markers: google.maps.marker.AdvancedMarkerElement[]
   cluster: MarkerClusterer
-  partners: IObjectKeys[] = [];
-  AllPartners: IObjectKeys[] = [];
-  isMapLoaded = false;
 
   skip = 0;
   limit = 300;
@@ -40,9 +37,12 @@ export class PartnersComponent {
   city = this.cities[0];
   page = 1;
   filterText = "";
-  filtered: IObjectKeys[] = [];
   map: google.maps.Map;
   infoWindow: google.maps.InfoWindow;
+
+  list: IObjectKeys[] = [];
+  mapList: IObjectKeys[] = [];
+  fullList: IObjectKeys[] = [];
 
   constructor(
     private ActivatedRoute: ActivatedRoute,
@@ -73,14 +73,24 @@ export class PartnersComponent {
 
     const {partners = [], types = [], cities = []} = ActivatedRoute.snapshot.data.data;
     const {page = 1} = ActivatedRoute.snapshot.queryParams;
-    this.AllPartners = partners.slice(0);
-    this.partners = partners;
+
+    this.fullList = partners.slice(0)
+    this.list = partners.filter(item => item.priority !== 0)
+    this.mapList = partners.slice(0)
 
     this.page = Number(page) + 1;
     this.skip = Number(page) * this.limit;
     this.filters = types;
-    this.cities = cities;
-    this.filtered = partners.filter(item => item.priority !== 0);
+    this.cities = cities.sort((a, b) => {
+      if (a.id === null) {
+        return -1;
+      }
+      if (b.id === null) {
+        return -1;
+      }
+      return a.id - b.id
+    });
+
 
     this.filters.unshift({
       id: null,
@@ -140,6 +150,10 @@ export class PartnersComponent {
   }
 
   onPartnerClick (partner: IObjectKeys) {
+    if (partner.online) {
+      this.Router.navigate(['partner', partner.id])
+      return
+    }
     if (!partner.latitude || !partner.longitude) {
       return
     }
@@ -214,7 +228,8 @@ export class PartnersComponent {
     this.location = !this.location;
     this.locationLoading = true
     if (!this.location) {
-      this.filtered = this.partners
+      this.mapList = this.fullList;
+      this.list = this.fullList.filter(item => item.priority !== 0)
       this.map.setCenter({lat: 42.69, lng: 23.34})
       this.map.setZoom(12)
       this.onMapLoaded()
@@ -225,7 +240,7 @@ export class PartnersComponent {
 
     const location = await this.getCurrentLocation() as {lat: number; lng: number};
     const point = new google.maps.LatLng(location.lat, location.lng);
-    const nearPartners = this.filtered.filter(partner => {
+    const nearPartners = this.fullList.filter(partner => {
       const marker = this.markers.find(marker => {
         return marker.title === partner.name
       })
@@ -233,19 +248,20 @@ export class PartnersComponent {
       return Number(distance) < 25
     })
 
-    this.filtered = nearPartners
+    this.mapList = nearPartners
+    this.list = nearPartners.filter(partner => partner.priority !== 0)
     this.map.setCenter(point)
     this.map.setZoom(12)
-    this.onMapLoaded()
     this.ChangeDetectorRef.markForCheck();
+    this.onMapLoaded()
     this.locationLoading = false
   }
 
   async onMapLoaded() {
-    this.markers = this.AllPartners.filter(partner => {
+    this.mapCleanUp()
+    this.markers = this.mapList.filter(partner => {
       return Boolean(partner.latitude)
     }).map(partner => {
-      this.mapCleanUp()
       const pin = document.createElement('img')
       pin.src = '/assets/images/pin.png'
       pin.setAttribute('width', '36')
@@ -321,16 +337,21 @@ export class PartnersComponent {
 
   onFilter() {
     this.location = false
-    this.filtered = this.partners.filter((item) => {
-      const name = item.name.toLowerCase();
-      if (name.includes(this.filterText.toLocaleLowerCase())) {
-        return true;
-      }
-      return false;
+
+    this.mapList = this.fullList.filter((item) => {
+      return item.name.toLowerCase().includes(this.filterText.toLocaleLowerCase());
     });
 
-    this.onMapUpdate()
+    this.list = this.fullList.filter(item => {
+      if (this.filterText === '') {
+        return item.priority !== 0
+      }
+
+      return item.name.toLowerCase().includes(this.filterText.toLocaleLowerCase());
+    })
+
     this.ChangeDetectorRef.markForCheck();
+    this.onMapUpdate()
   }
 
   onSort() {
@@ -369,25 +390,38 @@ export class PartnersComponent {
         type: this.filter,
         online: this.online,
         city: this.city
-      }).subscribe((data) => {
+      }).subscribe((total) => {
         this.page++;
         this.skip += this.limit;
 
         const presentAll = (!this.city && !this.filter)
 
+        const data = total.filter((item) => {
+          if (!this.online) {
+            return item.online !== 1
+          }
+
+          return true
+        })
+
+
         if (reset) {
-          this.partners = presentAll ? data.filter(item => item.priority !== 0) : data;
-          this.filtered = presentAll ? data.filter(item => item.priority !== 0) : data;
+          this.fullList = data
+          this.mapList = data;
+          this.list = presentAll ? data.filter(item => item.priority !== 0) : data;
           this.loaded = false;
         } else {
-          const arr = [...this.partners, ...data];
-          this.partners = presentAll ? arr.filter(item => item.priority !== 0) : arr;
-          this.filtered = presentAll ? arr.filter(item => item.priority !== 0) : arr;
+          const arr = [...this.fullList, ...data];
+          this.fullList = arr;
+          this.mapList = arr;
+          this.list = presentAll ? arr.filter(item => item.priority !== 0) : arr;
         }
 
         if (data.length < this.limit) {
           this.loaded = true;
         }
+
+        this.onFilter()
 
         this.ChangeDetectorRef.markForCheck();
         this.onMapUpdate()

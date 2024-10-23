@@ -26,9 +26,9 @@
         <mat-label>град</mat-label>
         <mat-select [(ngModel)]="city" [disabled]="location"
                     (selectionChange)="onSort()">
-          <mat-option *ngFor="let item of cities | keyvalue"
-                      [value]="item.value.id">
-            {{ item.value.name }}
+          <mat-option *ngFor="let item of cities"
+                      [value]="item.id">
+            {{ item.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -66,12 +66,12 @@
 <div class="section light-gray-bg font section-padding">
   <div class="container">
     <div class="list flex">
-      <partner-component *ngFor="let partner of filtered; trackBy: track"
+      <partner-component *ngFor="let partner of list; trackBy: track"
                          [partner]="partner" [onClick]="onPartnerClick.bind(this)">
 
       </partner-component>
       <h3 class="error"
-          *ngIf="filtered.length == 0">
+          *ngIf="fullList.length == 0">
         Няма намерени резултати, моля опитайте по-късно !
       </h3>
     </div>
