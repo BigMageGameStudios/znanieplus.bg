@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import '../../../../stylesheets/variables';
+
+.carousel-component-container {
+  background-color: rgba(128, 205, 187, 0.2);
+  border-radius: 16px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  .carousel-images-holder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .carousel-component-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      position: relative;
+    }
+  }
+
+  .carousel-component-action-button {
+    padding: 24px 12px;
+    display: flex;
+    background-color: $title-black;
+    position: absolute;
+    z-index: 100;
+    transition: ease-in 0.1s all;
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.4);
+    &:hover {
+      cursor: pointer;
+      &.carousel-component-action-button-prev {
+        padding-left: 12px;
+      }
+      &.carousel-component-action-button-next {
+        padding-right: 12px;
+      }
+      .carousel-component-icon {
+        color: $yellow;
+      }
+    }
+    &.carousel-component-action-button-prev {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+      padding-left: 0;
+      left: 0;
+    }
+
+    &.carousel-component-action-button-next {
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+      padding-right: 0;
+      right: 0;
+    }
+    .carousel-component-icon {
+      font-size: 42px;
+      width: 42px;
+      height: 42px;
+      color: $white;
+    }
+  }
+}
+
+
+@media (max-width: 750px) {
+  .carousel-component-container {
+    //height: 290px;
+    border-radius: 0;
+
+    .carousel-component-action-button {
+      padding: 8px 4px;
+
+      &:hover {
+        cursor: pointer;
+        &.carousel-component-action-button-prev {
+          padding-left: 4px;
+        }
+        &.carousel-component-action-button-next {
+          padding-right: 4px;
+        }
+        .carousel-component-icon {
+          color: $yellow;
+        }
+      }
+
+      .carousel-component-icon {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+        color: $white;
+      }
+    }
+  }
+}

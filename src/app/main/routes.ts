@@ -50,14 +50,14 @@ export const MODULE_ROUTES: Route[] = [
             return forkJoin([
               partnerProvider.getList({
                 skip: 0,
-                limit: Number(page) * 40
+                limit: 300
               }),
               partnerProvider.getTypes(),
               partnerProvider.getCities()
             ]).pipe(map(([partners, types, cities]) => {
               return {
                 partners,
-                types, 
+                types,
                 cities
               }
             }))

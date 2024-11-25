@@ -1,6 +1,9 @@
-import { Component, ChangeDetectionStrategy, ViewChild, ElementRef, PLATFORM_ID, Inject, Input } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { Environment } from 'src/globals';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject, Input, PLATFORM_ID, ViewChild} from '@angular/core';
+import {Environment} from 'src/globals';
+
+
+type DirectionType = 'LEFT' | "RIGHT";
+const DESKTOP_SCROLL_DISTANCE = 500
 
 @Component({
   selector: 'scroller-component',
@@ -11,72 +14,88 @@ import { Environment } from 'src/globals';
 
 export class ScrollerComponent {
 
-  interval;
   api_url = Environment.images_url;
   @Input('data') data: Array<any>;
 
-  step = 500;
-  actions = {
-    next: 0,
-    prev: 1
+  isMobile: boolean = false;
+  current: number = 0;
+  frameStep: number = 16;
+  scrollLeft: number = 0;
+
+  @ViewChild('list', {static: true}) list: ElementRef<HTMLDivElement>;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   }
 
-  @ViewChild('list', { static: true }) list: ElementRef<HTMLDivElement>;
+  scrollTo(distance: number, direction: DirectionType) {
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
-
-  ngOnDestroy() {
-    if (this.interval) {
-      clearInterval(this.interval);
+    if (direction === 'LEFT') {
+      this.scrollLeft -= this.frameStep;
+      distance -= this.frameStep;
+      if (distance <= 0) {
+        return
+      }
+      this.list.nativeElement.scrollLeft -= this.frameStep
+      requestAnimationFrame(this.scrollTo.bind(this, distance, direction));
     }
+    if (direction === 'RIGHT') {
+      this.scrollLeft += this.frameStep;
+      distance -= this.frameStep;
+      if (distance <= 0) {
+        return
+      }
+      this.list.nativeElement.scrollLeft += this.frameStep
+      requestAnimationFrame(this.scrollTo.bind(this, distance, direction));
+    }
+
+
+  }
+
+  ngOnInit() {
+    this.scrollLeft = this.list.nativeElement.scrollLeft
+  }
+
+  getOffset() {
+    const elements = this.list.nativeElement.querySelectorAll('.scroll-item')
+    const totalScrollWidth = this.list.nativeElement.scrollWidth;
+    const currentScrollWidth = this.list.nativeElement.scrollLeft;
+    const elementWidth = totalScrollWidth / elements.length
+    const scrollOffsetRatio = parseInt(String(currentScrollWidth / elementWidth))
+
+    return currentScrollWidth - (scrollOffsetRatio * elementWidth)
+
   }
 
   next() {
-    this.setStep();
-    const distance = this.list.nativeElement.scrollLeft + this.step;
-    this.scrolltTo(distance, this.actions.next);
+    const scrollOffset = this.getOffset()
+    const element = this.list.nativeElement.querySelector('.scroll-item')
+    const dimensions = element.getBoundingClientRect()
+    let distance = this.isMobile ? dimensions.width + 26 - scrollOffset : DESKTOP_SCROLL_DISTANCE - scrollOffset;
+    if (distance <= this.frameStep) {
+      distance = dimensions.width + 26
+    }
+
+    this.scrollTo(distance, 'RIGHT')
   }
 
   prev() {
-    this.setStep();
-    const distance = this.list.nativeElement.scrollLeft - this.step;
-    this.scrolltTo(distance, this.actions.prev);
+    const scrollOffset = this.getOffset()
+    const element = this.list.nativeElement.querySelector('.scroll-item')
+    const dimensions = element.getBoundingClientRect()
+
+
+    let distance = this.isMobile ? scrollOffset + 26 : DESKTOP_SCROLL_DISTANCE - scrollOffset;
+    if (distance <= this.frameStep) {
+      distance = dimensions.width + 26
+    }
+    this.scrollTo(distance, 'LEFT')
+
   }
 
-  setStep() {
-    const element = this.list.nativeElement;
-    this.step = element.clientWidth;
-  }
 
   track(index, item) {
     return item._id;
-  }
-
-  private scrolltTo(distance, action) {
-    if (isPlatformBrowser(this.platformId)) {
-
-      const element = this.list.nativeElement;
-      const interval = setInterval(() => {
-
-        switch (action) {
-          case (this.actions.next): {
-            if (Math.ceil(element.scrollLeft + element.clientWidth) >= element.scrollWidth || element.scrollLeft > distance) {
-              return clearInterval(interval);
-            }
-            element.scrollLeft += 16;
-            break;
-          }
-          case (this.actions.prev): {
-            if (element.scrollLeft <= 0 || element.scrollLeft < distance) {
-              return clearInterval(interval);
-            }
-            element.scrollLeft -= 16;
-            break;
-          }
-        }
-      });
-    }
-
   }
 
 

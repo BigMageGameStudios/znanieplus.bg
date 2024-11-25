@@ -1,7 +1,7 @@
 <div class="box">
   <div class="list" #list drag>
     <div *ngFor="let item of data; trackBy:track" class="item">
-      <a *ngIf="item.link === undefined" class="relative" [routerLink]="'/partner/'+item.id" aria-label="Виж">
+      <a *ngIf="item.link === undefined" class="relative scroll-item" [routerLink]="'/partner/'+item.id" aria-label="Виж">
         <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + item.logo"
              width="100%" height="250px" alt="partner"/>
         <div class="information flex">
@@ -17,7 +17,7 @@
           </div>
         </div>
       </a>
-      <a *ngIf="item.link !== undefined" class="relative" href="{{item.link}}" aria-label="Виж">
+      <a *ngIf="item.link !== undefined" class="relative scroll-item" href="{{item.link}}" aria-label="Виж">
         <img class="flex cover" loading="lazy" decoding="async" [src]="api_url + '/storage/' + item.logo"
              width="100%" alt="partner"/>
         <div *ngIf="item.promo > 0" class="information flex">

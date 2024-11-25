@@ -1,12 +1,150 @@
 <div class="container">
-<!--    <div class="banner flex">-->
-<!--        <gallery-component [src]="api_url+'/storage/' + item.photo"></gallery-component>-->
-<!--        <div class="frame">-->
-<!--            <h4>-->
-<!--                Знание плюс-->
-<!--            </h4>-->
-<!--        </div>-->
-<!--    </div>-->
+
+
+  <div class="gallery-row" *ngIf="photos.length > 0">
+    <div class="gallery-container">
+      <carousel-component [photos]="photos"/>
+    </div>
+    <div class="gallery-content">
+      <div class="information flex">
+        <div class="characters promo-text">
+          <h3>
+            Отстъпка: {{ item.promo }}{{ item.promo_type }}
+          </h3>
+          <div class="flex">
+            <div [innerHTML]="item.promo_description | safeHTML"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="information flex" *ngIf="item.plus_one">
+        <div class="characters">
+          <h3 class="flex">
+            <div
+              class="plus-one"
+            >
+              <img
+                loading="lazy"
+                decoding="async"
+                src="/assets/images/4521868331556258219.svg"
+                width="30px"
+                height="30px"
+                alt="partner"
+              />
+              <span>
+                    +1
+                </span>
+            </div>
+            Сподели карта ЗДРАВЕ+
+          </h3>
+          <div class="flex">
+            Този обект предоставя същата отстъпка и за придружител.
+          </div>
+        </div>
+      </div>
+
+      <div class="information flex" *ngIf="item.activities.length > 0">
+        <div class="characters">
+          <h3>
+            Допълнителни уточнения:
+          </h3>
+          <div class="flex" *ngFor="let activity of item.activities">
+            <div>
+              {{ activity.name }}
+            </div>
+            <div>
+              <b>{{ activity.promotion }}{{ activity.promo_type }}</b> {{ activity.deskription }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="information flex">
+        <div class="characters">
+          <h3>
+            Контакти:
+          </h3>
+          <div class="flex">
+            <div>
+              Адрес:
+            </div>
+            <div>
+              <a href="https://www.google.com/maps/search/?api=1&query={{item.address}}, {{item.city}}" target="_blank">
+                {{ item.address == null ? '' : item.address + ', ' }} {{ item.city }}
+              </a>
+            </div>
+          </div>
+          <div class="flex">
+            <div>
+              Уебсайт:
+            </div>
+            <div>
+              <a href="{{item.website}}" target="_blank">{{ item.website }}</a>
+            </div>
+          </div>
+          <div class="flex" *ngIf="item.mail?.length > 0">
+            <div>
+              Електронна поща:
+            </div>
+            <div>
+              <a href="mailto:{{item.mail}}">{{ item.mail }}</a>
+            </div>
+          </div>
+          <div class="flex">
+            <div>
+              Телефон:
+            </div>
+            <div>
+              <a href="tel:{{item.phone}}">{{ item.phone }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="information flex" *ngIf="item.week">
+        <div class="characters">
+          <h3 *ngIf="item.id == 56">
+            Работно време на Билетната каса:
+          </h3>
+          <h3 *ngIf="item.id != 56">
+            Работно време:
+          </h3>
+          <div class="flex">
+            <div>
+              Делнични дни:
+            </div>
+            <div>
+              {{ item.week }}
+            </div>
+          </div>
+          <div class="flex">
+            <div>
+              Събота:
+            </div>
+            <div>
+              {{ item.sat }}
+            </div>
+          </div>
+          <div class="flex">
+            <div>
+              Неделя:
+            </div>
+            <div>
+              {{ item.sun }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
     <div class="description flex">
         <div>
             <h2 class="title">
@@ -17,7 +155,7 @@
         </div>
     </div>
 
-    <div class="information flex">
+    <div class="information flex" *ngIf="photos.length === 0">
         <div class="characters">
             <h3>
                 Отстъпка: {{ item.promo}}{{item.promo_type}}
@@ -28,7 +166,7 @@
         </div>
     </div>
 
-    <div class="information flex" *ngIf="item.plus_one">
+    <div class="information flex" *ngIf="item.plus_one && photos.length === 0">
         <div class="characters">
             <h3 class="flex">
                 <div
@@ -55,7 +193,7 @@
         </div>
     </div>
 
-    <div class="information flex" *ngIf="item.activities.length > 0">
+    <div class="information flex" *ngIf="item.activities.length > 0 && photos.length === 0">
         <div class="characters">
             <h3>
                 Допълнителни уточнения:
@@ -71,7 +209,7 @@
         </div>
     </div>
 
-    <div class="information flex" *ngIf="item.week">
+    <div class="information flex" *ngIf="item.week && photos.length === 0">
         <div class="characters">
             <h3  *ngIf="item.id == 56">
                 Работно време на Билетната каса:
@@ -106,7 +244,7 @@
         </div>
     </div>
 
-    <div class="information flex">
+    <div class="information flex" *ngIf="photos.length === 0">
         <div class="characters">
             <h3>
                 Контакти:

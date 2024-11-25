@@ -1,7 +1,7 @@
 export const CityCoords = {
   1: {
     lat: 42.69,
-    lng: 23.24
+    lng: 23.34
   },
   2: {
     lat: 42.1441135,

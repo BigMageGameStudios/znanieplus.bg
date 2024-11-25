@@ -1,0 +1,15 @@
+<div class="carousel-component-container">
+  <div *ngIf="hasPrev" class="carousel-component-action-button carousel-component-action-button-prev" (click)="onPrev()">
+    <mat-icon aria-hidden="false" class="carousel-component-icon" fontIcon="keyboard_arrow_left"></mat-icon>
+  </div>
+
+  <div class="carousel-images-holder">
+    <div class="carousel-component-item" *ngFor="let photo of photos; index as i">
+      <img *ngIf="current === i" [@inOutAnimation] [src]="api_url + '/storage/' + photo" alt="photo" width="300" height="300">
+    </div>
+  </div>
+
+  <div *ngIf="hasNext" class="carousel-component-action-button carousel-component-action-button-next" (click)="onNext()">
+    <mat-icon aria-hidden="false" class="carousel-component-icon" fontIcon="keyboard_arrow_right"></mat-icon>
+  </div>
+</div>

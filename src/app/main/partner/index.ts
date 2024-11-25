@@ -11,6 +11,7 @@ import { GalleryModule } from 'src/app/shared/gallery-component';
 import { GalleryDialogModule } from 'src/app/shared/gallery-dialog';
 import { SafeHTMLModule } from 'src/app/pipes/safe-html';
 import { FooterModule } from 'src/app/shared/footer-component';
+import {CarouselModule} from "../../shared/carousel-component";
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { FooterModule } from 'src/app/shared/footer-component';
         GalleryModule,
         SafeHTMLModule,
         GalleryDialogModule,
-        FooterModule
+        FooterModule,
+        CarouselModule
     ]
 })
 

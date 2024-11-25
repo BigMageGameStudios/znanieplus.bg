@@ -7,7 +7,7 @@
 
   <div class="section-row">
     <div>
-      <div class="location-check" (click)="onLocation()" id="scroll-to-element">
+      <div class="location-check" (click)="onLocation()">
         <img src="/assets/images/location.png" alt="Обекти близо до мен">
         <span *ngIf="!locationLoading && !location">Обекти близо до мен</span>
         <span *ngIf="locationLoading && location">Локализиране...</span>
@@ -26,18 +26,18 @@
         <mat-label>град</mat-label>
         <mat-select [(ngModel)]="city" [disabled]="location"
                     (selectionChange)="onSort()">
-          <mat-option *ngFor="let item of cities"
-                      [value]="item.id">
-            {{ item.name }}
+          <mat-option *ngFor="let item of cities | keyvalue"
+                      [value]="item.value.id">
+            {{ item.value.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
-    <div [ngClass]="{'hide-on-all-with-space': online, 'hide-on-mobile': (location)}">
+    <div>
       <mat-form-field color="accent" appearance="outline">
         <mat-label>Филтрирай по</mat-label>
-        <mat-select [(ngModel)]="filter" [disabled]="location"
+        <mat-select [(ngModel)]="filter"
                     (selectionChange)="onSort()">
           <mat-option *ngFor="let item of filters | keyvalue"
                       [value]="item.value.id">
@@ -66,12 +66,12 @@
 <div class="section light-gray-bg font section-padding">
   <div class="container">
     <div class="list flex">
-      <partner-component *ngFor="let partner of list; trackBy: track"
+      <partner-component *ngFor="let partner of filtered; trackBy: track"
                          [partner]="partner" [onClick]="onPartnerClick.bind(this)">
 
       </partner-component>
       <h3 class="error"
-          *ngIf="fullList.length == 0">
+          *ngIf="filtered.length == 0">
         Няма намерени резултати, моля опитайте по-късно !
       </h3>
     </div>

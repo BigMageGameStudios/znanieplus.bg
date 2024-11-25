@@ -6,13 +6,17 @@ import {IObjectKeys} from 'src/app/helpers/interfaces';
 import {Loader} from "@googlemaps/js-api-loader"
 import {MarkerClusterer} from "@googlemaps/markerclusterer";
 import {CityCoords} from "./cityCoords";
-import AdvancedMarkerElement = google.maps.marker.AdvancedMarkerElement;
 
 const loader = new Loader({
   apiKey: "AIzaSyCkjccHCYiCT3F1J4YKwGqS8c7AYyECg3U",
   version: "weekly",
 });
 
+
+type Point = {
+  lat: number;
+  lng: number;
+}
 
 @Component({
   selector: 'partners-page',
@@ -24,6 +28,9 @@ const loader = new Loader({
 export class PartnersComponent {
   markers: google.maps.marker.AdvancedMarkerElement[]
   cluster: MarkerClusterer
+  partners: IObjectKeys[] = [];
+  AllPartners: IObjectKeys[] = [];
+  isMapLoaded = false;
 
   skip = 0;
   limit = 300;
@@ -37,12 +44,11 @@ export class PartnersComponent {
   city = this.cities[0];
   page = 1;
   filterText = "";
+  filtered: IObjectKeys[] = [];
   map: google.maps.Map;
   infoWindow: google.maps.InfoWindow;
 
-  list: IObjectKeys[] = [];
-  mapList: IObjectKeys[] = [];
-  fullList: IObjectKeys[] = [];
+  centerLocation: google.maps.LatLng | undefined;
 
   constructor(
     private ActivatedRoute: ActivatedRoute,
@@ -51,6 +57,8 @@ export class PartnersComponent {
     private Router: Router,
     private SEOProvider: SEOProvider,
   ) {
+
+    this.centerLocation = null
 
     loader.load().then(async () => {
       const {Map} = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
@@ -73,24 +81,14 @@ export class PartnersComponent {
 
     const {partners = [], types = [], cities = []} = ActivatedRoute.snapshot.data.data;
     const {page = 1} = ActivatedRoute.snapshot.queryParams;
-
-    this.fullList = partners.slice(0)
-    this.list = partners.filter(item => item.priority !== 0)
-    this.mapList = partners.slice(0)
+    this.AllPartners = partners.slice(0);
+    this.partners = partners;
 
     this.page = Number(page) + 1;
     this.skip = Number(page) * this.limit;
     this.filters = types;
-    this.cities = cities.sort((a, b) => {
-      if (a.id === null) {
-        return -1;
-      }
-      if (b.id === null) {
-        return -1;
-      }
-      return a.id - b.id
-    });
-
+    this.cities = cities;
+    this.filtered = partners.filter(item => item.priority !== 0);
 
     this.filters.unshift({
       id: null,
@@ -142,16 +140,16 @@ export class PartnersComponent {
       `
   }
 
-  mapCleanUp () {
+  mapCleanUp() {
     this.markers?.forEach(marker => {
       marker.map = null
     })
     this.cluster?.setMap(null)
   }
 
-  onPartnerClick (partner: IObjectKeys) {
+  onPartnerClick(partner: IObjectKeys) {
     if (partner.online) {
-      this.Router.navigate(['partner', partner.id])
+      this.Router.navigate(['/partner', partner.id])
       return
     }
     if (!partner.latitude || !partner.longitude) {
@@ -171,31 +169,22 @@ export class PartnersComponent {
         map: this.map,
       });
 
-      const map = document.querySelector('#scroll-to-element')
-      const rect = map.getBoundingClientRect()
-      const currentPosition = window.scrollY
+      const map = document.querySelector('#map')
 
-      const scrollTo = currentPosition + (rect?.top ?? 0) - (rect?.height ?? 0)
 
+      const element1 = document.querySelector('.section-title')
+      const element2 = document.querySelector('.section-row')
+
+      const rect = element1.getBoundingClientRect()
+      const rect2 = element2.getBoundingClientRect()
+
+      const scrollTo =  rect.height + rect2.height
 
       window.scrollTo({
         top: scrollTo ?? 0,
         behavior: 'smooth'
       })
     }
-  }
-
-  calcDistance(p1: google.maps.LatLng, p2: google.maps.LatLng) {
-    return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
-  }
-
-  checkNear (userLocation: google.maps.LatLng, marker: AdvancedMarkerElement) {
-    if (marker) {
-      const point2 = new google.maps.LatLng(marker.position.lat as number, marker.position.lng as number);
-
-      return this.calcDistance(userLocation, point2)
-    }
-    return 9999
   }
 
   getCurrentLocation() {
@@ -222,15 +211,16 @@ export class PartnersComponent {
     });
   }
 
-  async onLocation () {
+  async onLocation() {
     if (this.locationLoading) return
     this.online = false
     this.location = !this.location;
     this.locationLoading = true
     if (!this.location) {
-      this.mapList = this.fullList;
-      this.list = this.fullList.filter(item => item.priority !== 0)
-      this.map.setCenter({lat: 42.69, lng: 23.34})
+      this.filtered = this.partners
+      this.centerLocation = null
+      this.onFilter()
+      this.map.setCenter(CityCoords[1])
       this.map.setZoom(12)
       this.onMapLoaded()
       this.ChangeDetectorRef.markForCheck();
@@ -238,28 +228,28 @@ export class PartnersComponent {
       return
     }
 
-    const location = await this.getCurrentLocation() as {lat: number; lng: number};
+    const location = await this.getCurrentLocation() as { lat: number; lng: number };
     const point = new google.maps.LatLng(location.lat, location.lng);
-    const nearPartners = this.fullList.filter(partner => {
-      const marker = this.markers.find(marker => {
-        return marker.title === partner.name
-      })
-      const distance = this.checkNear(point, marker)
+    this.centerLocation = point
+
+    const nearPartners = this.AllPartners.filter(partner => {
+      const distance = this.distance(location, {lat: partner.latitude, lng: partner.longitude}, 'K')
       return Number(distance) < 25
     })
 
-    this.mapList = nearPartners
-    this.list = nearPartners.filter(partner => partner.priority !== 0)
-    this.map.setCenter(point)
+    this.partners = nearPartners
+    this.filtered = nearPartners.filter(partner => partner.priority !== 0)
+    this.map.setCenter(this.centerLocation)
     this.map.setZoom(12)
     this.ChangeDetectorRef.markForCheck();
     this.onMapLoaded()
     this.locationLoading = false
   }
 
+
   async onMapLoaded() {
     this.mapCleanUp()
-    this.markers = this.mapList.filter(partner => {
+    this.markers = this.partners.filter(partner => {
       return Boolean(partner.latitude)
     }).map(partner => {
       const pin = document.createElement('img')
@@ -308,7 +298,8 @@ export class PartnersComponent {
           `)
 
           return new google.maps.marker.AdvancedMarkerElement(
-            {map: this.map,
+            {
+              map: this.map,
               position: position,
               title: String(count),
               content: markerImage
@@ -323,26 +314,30 @@ export class PartnersComponent {
     return item.id;
   }
 
-  setMapCoords () {
+  setMapCoords() {
     const city = this.cities.find(city => city.id === this.city)
     const coords = CityCoords?.[this.city] ?? {lat: 42.69, lng: 23.34}
-    this.map.setCenter(coords)
-    this.map.setZoom(12)
+    if (this.centerLocation) {
+      this.map.setCenter(this.centerLocation)
+    } else {
+      this.map.setCenter(coords)
+      this.map.setZoom(12)
+    }
   }
 
-  onMapUpdate () {
+  onMapUpdate() {
     this.onMapLoaded()
     this.setMapCoords()
   }
 
   onFilter() {
-    this.location = false
+    // this.location = false
 
-    this.mapList = this.fullList.filter((item) => {
+    this.partners = this.AllPartners.filter((item) => {
       return item.name.toLowerCase().includes(this.filterText.toLocaleLowerCase());
     });
 
-    this.list = this.fullList.filter(item => {
+    this.filtered = this.AllPartners.filter(item => {
       if (this.filterText === '') {
         return item.priority !== 0
       }
@@ -355,7 +350,6 @@ export class PartnersComponent {
   }
 
   onSort() {
-    this.location = false
     this.skip = 0;
     this.limit = 300;
     this.page = 1;
@@ -370,6 +364,30 @@ export class PartnersComponent {
         page: 1,
       }
     });
+  }
+
+  filterNear() {
+    const presentAll = (!this.city && !this.filter)
+    if (this.location && this.centerLocation) {
+      const location = {lat: this.centerLocation.lat(), lng: this.centerLocation.lng()}
+      const nearPartners = this.AllPartners.filter(partner => {
+        const distance = this.distance(location, {lat: partner.latitude, lng: partner.longitude}, 'K')
+        return Number(distance) < 25
+      })
+      this.filtered = nearPartners.filter(partner => {
+        if (presentAll) {
+          return partner.priority !== 0
+        }
+        return true
+      })
+    } else {
+      this.filtered = this.AllPartners.slice(0).filter(partner => {
+        if (presentAll) {
+          return partner.priority !== 0
+        }
+        return true
+      })
+    }
   }
 
   onLoadMore(reset?) {
@@ -390,42 +408,56 @@ export class PartnersComponent {
         type: this.filter,
         online: this.online,
         city: this.city
-      }).subscribe((total) => {
+      }).subscribe((data) => {
         this.page++;
         this.skip += this.limit;
 
         const presentAll = (!this.city && !this.filter)
 
-        const data = total.filter((item) => {
-          if (!this.online) {
-            return item.online !== 1
-          }
-
-          return true
-        })
-
-
         if (reset) {
-          this.fullList = data
-          this.mapList = data;
-          this.list = presentAll ? data.filter(item => item.priority !== 0) : data;
+          this.AllPartners = data.slice(0)
+          this.partners = data;
           this.loaded = false;
         } else {
-          const arr = [...this.fullList, ...data];
-          this.fullList = arr;
-          this.mapList = arr;
-          this.list = presentAll ? arr.filter(item => item.priority !== 0) : arr;
+          const arr = [...this.partners, ...data];
+          this.AllPartners = arr.slice(0);
+          this.partners = arr;
         }
 
         if (data.length < this.limit) {
           this.loaded = true;
         }
 
-        this.onFilter()
+        this.filterNear()
 
         this.ChangeDetectorRef.markForCheck();
         this.onMapUpdate()
       });
+    }
+  }
+
+  distance (point1: Point, point2: Point, unit: string = 'M') {
+    const {lat: lat1, lng: lon1} = point1
+    const {lat: lat2, lng: lon2} = point2
+
+    if ((lat1 == lat2) && (lon1 == lon2)) {
+      return 0;
+    }
+    else {
+      var radlat1 = Math.PI * lat1/180;
+      var radlat2 = Math.PI * lat2/180;
+      var theta = lon1-lon2;
+      var radtheta = Math.PI * theta/180;
+      var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      if (dist > 1) {
+        dist = 1;
+      }
+      dist = Math.acos(dist);
+      dist = dist * 180/Math.PI;
+      dist = dist * 60 * 1.1515;
+      if (unit=="K") { dist = dist * 1.609344 }
+      if (unit=="N") { dist = dist * 0.8684 }
+      return dist;
     }
   }
 

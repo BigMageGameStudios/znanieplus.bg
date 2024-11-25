@@ -20,6 +20,7 @@ export class PartnerComponent {
   item: any;
   api_url = Environment.api_url;
   locationUrl!: SafeUrl;
+  photos: string[] = [];
   gmapsUrl = (lat: number, lon: number) => `https://maps.google.com/maps?q=${lat},${lon}&hl=bg&output=embed`;
 
   constructor(
@@ -29,6 +30,13 @@ export class PartnerComponent {
     private SEOProvider: SEOProvider,
   ) {
     const { item } = ActivatedRoute.snapshot.data;
+    delete item.photo
+    console.log(item)
+    try {
+      this.photos = JSON.parse(item.photo);
+    } catch {
+      this.photos = [];
+    }
 
     if (item.latitude && item.longitude) {
       this.locationUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.gmapsUrl(item.latitude, item.longitude));
@@ -48,6 +56,47 @@ export class PartnerComponent {
       ogImage: `${Environment.api_url}/storage/${item.photo}`,
       canonicalURL: `/partner/${item.id}`
     });
+  }
+
+  ngOnInit() {
+    window.addEventListener('resize', this.onResize.bind(this));
+    setTimeout(() => {
+      this.onResize()
+    }, 100)
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.onResize.bind(this));
+  }
+
+  onResize () {
+    if (this.photos.length === 0) {
+      return
+    }
+    const windowWidth = window.innerWidth;
+    const galleryContainer = document.querySelector('.gallery-container');
+    const reference = document.querySelector('.gallery-content');
+
+    const page = document.querySelector('partner-page .container');
+    const pageDimensions = page.getBoundingClientRect()
+
+    const parentDimensions = reference.getBoundingClientRect();
+    const containerHeight = parentDimensions.height;
+    const containerWidth = parentDimensions.height * 1.6;
+
+    const pageStyle = getComputedStyle(page)
+
+    const pageOffset = Number(pageStyle.marginLeft.replace('px', ''));
+
+
+    const totalWidth = pageDimensions.width - (pageOffset * 2)
+
+    if (containerWidth >= pageDimensions.width) {
+      galleryContainer.setAttribute('style', `width: ${totalWidth}px; height: ${totalWidth / 1.6}px;`);
+    } else {
+      galleryContainer.setAttribute('style', `width: ${containerWidth}px; height: ${containerHeight}px;`);
+
+    }
   }
 
   openGallery() {
