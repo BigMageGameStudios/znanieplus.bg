@@ -10,6 +10,19 @@ import { ConfirmDialog } from 'src/app/shared/confirm-dialog';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Environment } from 'src/globals';
+import {StripeProvider} from "../providers/StripeProvider";
+import {CancelSubscriptionDialog} from "./dialog";
+
+type SubscriptionType = {
+  id: string,
+  active: boolean,
+  status: string,
+  plan: {
+    active: boolean,
+    amount: number,
+    nickname: string,
+  }
+}
 
 @Component({
   selector: 'profile-page',
@@ -29,6 +42,7 @@ export class ProfileComponent {
   codesTypes = {
     ZNP: 'ZNP'
   }
+  subscription: SubscriptionType | null = null;
 
   codes: IObjectKeys[];
   filtered: IObjectKeys[];
@@ -36,7 +50,8 @@ export class ProfileComponent {
   user: {
     actuve: number,
     first_name: string,
-    last_name: string
+    last_name: string,
+    email: string,
   };
 
   constructor(
@@ -48,6 +63,8 @@ export class ProfileComponent {
     private change: ChangeDetectorRef,
     private userProvider: UserProvider,
     private activatedRoute: ActivatedRoute,
+    private stripe: StripeProvider,
+    private changeDetectorRef: ChangeDetectorRef,
   ) {
     this.SEOProvider.set({
       title: 'ЗНАНИЕ+ | Профил',
@@ -61,6 +78,12 @@ export class ProfileComponent {
     });
     const [codes, user] = this.activatedRoute.snapshot.data.result;
     this.user = user;
+
+    this.stripe.getSubscription(this.user.email).subscribe(sub => {
+      this.subscription = sub
+      this.changeDetectorRef.markForCheck()
+    })
+
     this.token = this.userProvider.getCode();
     this.img = generateBarCode(this.token, 14, 90);
     this.codes = codes.map((item) => {
@@ -72,6 +95,23 @@ export class ProfileComponent {
       return item;
     });
     this.filtered = [...this.codes];
+  }
+
+  unSubscribe () {
+    const dialogRef = this.dialog.open(CancelSubscriptionDialog);
+
+    dialogRef.afterClosed().subscribe((confirm) => {
+      if (confirm) {
+        this.cancelSubscription()
+      }
+    })
+  }
+
+  cancelSubscription() {
+    this.stripe.cancelSubscription(this.subscription.id).subscribe((sub: SubscriptionType) => {
+      this.subscription = sub
+      this.changeDetectorRef.markForCheck()
+    })
   }
 
   exit() {

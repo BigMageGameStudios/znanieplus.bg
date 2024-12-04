@@ -1,5 +1,30 @@
 @import '../../../../stylesheets/variables';
 
+div.dialog-container {
+    padding: 12px;
+
+    h2 {
+        color: $title-black;
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .mat-mdc-dialog-actions {
+        justify-content: flex-end;
+        .primary-btn {
+            padding: 12px 32px;
+        }
+    }
+}
+
+
+span.inactive-subscription {
+    color: $inactive-card;
+}
+
 div.container {
     padding: 12px 24px;
     max-width: 1200px;

@@ -32,7 +32,8 @@ import { OfferDialogModule } from '../shared/offer-dialog';
     MainProvidersModule,
     MainResolversModule,
     MatRippleModule,
-    OfferDialogModule
+    OfferDialogModule,
+
   ]
 })
 

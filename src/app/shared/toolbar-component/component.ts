@@ -21,7 +21,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
 
   private mapProvider = inject(MapProvider);
-  private activated = inject(ActivatedRoute);
+  public activated = inject(ActivatedRoute);
   private change = inject(ChangeDetectorRef);
   public userProvider = inject(UserProvider);
 
@@ -38,7 +38,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   @ViewChild('toolbar', { static: true }) toolbar: ElementRef<HTMLElement>;
   translations: { [key: string]: string | Function | any } = this.activated.snapshot.data.translations;
 
-  constructor() { }
+  dialogs = {
+    offer: 'offer'
+  }
+
+  constructor(private ActivatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {

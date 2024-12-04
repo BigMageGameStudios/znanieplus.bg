@@ -80,6 +80,16 @@ div.toolbar {
                     &.active.activated {
                         color: $yellow;
                     }
+
+                    &.get-offer {
+                        border: 1px solid $yellow;
+                        padding: 12px 12px;
+                        border-radius: 32px;
+                        transition: ease-in-out 200ms all;
+                        &:hover {
+                            background-color: rgba(247, 188, 60, 0.2);
+                        }
+                    }
                 }
 
                 .yellow {

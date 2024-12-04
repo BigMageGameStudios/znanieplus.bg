@@ -5,6 +5,8 @@ import { MainComponent } from './component';
 import { CompanyProvider, NewsProvider, PartnerProvider } from './providers';
 import { HomeResolver, PartnerResolver } from './resolvers';
 import { UserProvider } from '../providers';
+import {StripeProvider} from "./providers/StripeProvider";
+import {IObjectKeys} from "../helpers/interfaces";
 
 export const MODULE_ROUTES: Route[] = [
   {
@@ -25,6 +27,46 @@ export const MODULE_ROUTES: Route[] = [
       {
         path: 'about',
         loadChildren: () => import('./about/index').then(m => m.AboutModule),
+        data: {
+          preload: true
+        },
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('./register/index').then(m => m.RegisterModule),
+        resolve: {
+          data: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+            const stripeProvider = inject(StripeProvider);
+
+            return forkJoin([
+              stripeProvider.getPrices(),
+              stripeProvider.getCompanies()
+            ]).pipe(map(([pricesResult, companiesResult]: IObjectKeys[]) => {
+              const prices = pricesResult.data.sort((a,b) => {
+                return a.unit_amount - b.unit_amount;
+              })
+              return {prices, companies: companiesResult.sort((a,b) => {
+                  if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                    return -1;
+                  }
+                  if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                    return 1;
+                  }
+                  return 0;
+                })}
+            }))
+          }
+        },
+        data: {
+          preload: true
+        },
+      },
+      {
+        path: 'subscripion-success',
+        loadChildren: () => import('./subscription-success/index').then(m => m.SubscriptionSuccessModule),
+        resolve: {
+          item: PartnerResolver
+        },
         data: {
           preload: true
         },

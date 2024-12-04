@@ -40,6 +40,22 @@
                         {{ userProvider.isLogedIn() ? 'Профил' : 'Вход' }}
                     </span>
                 </a>
+
+                <a *ngIf="!userProvider.isLogedIn()" routerLink="/register" routerLinkActive="active activated">
+                      <span>
+                          Регистрация
+                      </span>
+                </a>
+                <a
+                  class="get-offer"
+                  matRipple
+                  [routerLink]="[]"
+                  [relativeTo]="activated"
+                  [state]="{ disableScroll: true }"
+                  [queryParams]="{ dialog: dialogs.offer }"
+                >
+                  Поискай Оферта
+                </a>
             </div>
         </div>
     </div>

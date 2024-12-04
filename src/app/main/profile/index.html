@@ -42,6 +42,39 @@
 
         </div>
 
+      <mat-list>
+        <div
+          mat-subheader
+          class="list-header"
+        >
+          <h4>
+            <span>
+                Абонамент:
+            </span>
+          </h4>
+        </div>
+        <mat-list-item *ngIf="!subscription">
+          <div matListItemTitle>
+            Няма активен абонамент
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="subscription">
+          <div matListItemTitle >
+            {{ subscription.plan.nickname }} <span class="price">{{(subscription.plan.amount / 100).toFixed(2)}}лв</span>
+            <span class="inactive-subscription" *ngIf="subscription.status !== 'active'"> Неактивен</span>
+            <button
+              *ngIf="subscription.status === 'active'"
+              matRipple
+              style="margin-left: 12px"
+              class="primary-btn show"
+              (click)="unSubscribe()"
+            >
+              Прекрати
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+
         <mat-list>
             <div
                 mat-subheader

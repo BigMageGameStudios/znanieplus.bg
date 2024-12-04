@@ -13,6 +13,13 @@
                         </span>
                     </a>
                 </li>
+              <li *ngIf="!userProvider.isLogedIn()">
+                <a routerLink="/register" routerLinkActive="active activated" (click)="toggle();removeFragment()">
+                      <span>
+                        Регистрация
+                    </span>
+                </a>
+              </li>
                 <li>
                     <a routerLink="/profile" routerLinkActive="active activated" (click)="toggle();removeFragment()">
                         <span>
