@@ -48,7 +48,7 @@ export class ProfileComponent {
   filtered: IObjectKeys[];
   ngModel = '';
   user: {
-    actuve: number,
+    active: number,
     first_name: string,
     last_name: string,
     email: string,

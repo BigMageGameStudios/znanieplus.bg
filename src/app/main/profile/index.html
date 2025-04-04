@@ -53,9 +53,14 @@
             </span>
           </h4>
         </div>
-        <mat-list-item *ngIf="!subscription">
+        <mat-list-item *ngIf="!subscription && !user.active">
           <div matListItemTitle>
             Няма активен абонамент
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="!subscription && user.active">
+          <div matListItemTitle>
+            Активен
           </div>
         </mat-list-item>
         <mat-list-item *ngIf="subscription">
