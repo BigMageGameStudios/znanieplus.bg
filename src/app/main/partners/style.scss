@@ -204,7 +204,7 @@ div.plus-one {
 @media (max-width: 900px) {
     div.list {
         partner-component {
-            width: calc(100% * (1/2) - 10px) !important;
+            width: calc(100% * (1/3) - 10px) !important;
         }
     }
 
@@ -219,6 +219,18 @@ div.plus-one {
 
     div.container .section-title {
         margin: 20px 0px;
+    }
+
+    div.container .section-row {
+        flex-direction: column;
+        gap: 0px;
+        div {
+            width: 100%;
+            padding: 0px 24px;
+            &.location-check {
+                padding: 0px;
+            }
+        }
     }
 
 
