@@ -118,18 +118,25 @@ export class PartnersComponent {
   }
 
   contentWindow (partner: IObjectKeys) {
+
+    const phoneString = partner.phone ? `<div class="info-window-phone"><a href="tel:${partner.phone}">${partner.phone}</a></div>` : ''
+    const websiteString = partner.website ? `<div class="info-window-website"><a href="${partner.website}" target="_blank">Страница на обекта</a></div>` : ''
+    const mapString = partner.latitude && partner.longitude ? `
+      <div class="info-window-address">
+        <a href="https://www.google.com/maps/@${partner.latitude},${partner.longitude},18z" target="_blank">${partner.address}</a>
+      </div>
+    ` : ''
+
     return `
         <div class="info-window-content">
           <div class="info-window-image">
             <img src="https://dashboard.znanieplus.bg/storage/${partner.logo}" alt="${partner.name}"/>
           </div>
           <div class="info-window-name">${partner.name}</div>
-          <div class="info-window-address">
-              <a href="https://www.google.com/maps/@${partner.latitude},${partner.longitude},18z" target="_blank">${partner.address}</a>
-          </div>
+          ${mapString}
           <div class="info-actions-container">
-            <div class="info-window-phone"><a href="tel:${partner.phone}">${partner.phone}</a></div>
-            <div class="info-window-website"><a href="${partner.website}" target="_blank">Страница на обекта</a></div>
+            ${phoneString}
+            ${websiteString}
           </div>
           <div class="info-window-see-more-container">
             <div class="info-window-see-more-button">
