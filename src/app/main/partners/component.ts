@@ -121,7 +121,7 @@ export class PartnersComponent {
 
     const phoneString = partner.phone ? `<div class="info-window-phone"><a href="tel:${partner.phone}">${partner.phone}</a></div>` : ''
     const websiteString = partner.website ? `<div class="info-window-website"><a href="${partner.website}" target="_blank">Страница на обекта</a></div>` : ''
-    const mapString = partner.latitude && partner.longitude ? `
+    const mapString = partner.latitude && partner.longitude && partner.address ? `
       <div class="info-window-address">
         <a href="https://www.google.com/maps/@${partner.latitude},${partner.longitude},18z" target="_blank">${partner.address}</a>
       </div>
